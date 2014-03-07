@@ -3,7 +3,6 @@ ruby '2.0.0'
 
 gem 'rails', '~> 4.0.2'
 
-gem 'mysql2'
 gem "paperclip", "~> 4.1"
 #gem 'dalli',                        '~> 1.1.3'
 gem 'will_paginate',                '~> 3.0'
@@ -33,12 +32,15 @@ gem "thin"
 gem "bcrypt-ruby"
 gem 'email_validator'
 
+gem 'coveralls', :require => false
 group :production do
+  gem 'pg'
   gem 'rails_12factor'  #for Heroku
   gem 'newrelic_rpm'
 end
 
 group :development do
+  gem 'mysql2'
   gem "quiet_assets"              #Quiet assets turn off rails assets log.
   gem "binding_of_caller"          #is needed for better_errors
   gem "better_errors"               #https://github.com/charliesome/better_errors
@@ -60,6 +62,7 @@ group :development do
 end
 
 group :development , :test do
+  gem 'mysql2'
   gem 'g',                          :git => 'https://github.com/stereosupersonic/g'
   gem "rspec-rails",                "~> 2.14.0"
   gem "factory_girl_rails",         "~> 4.2.1"
