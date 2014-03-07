@@ -9,8 +9,8 @@
 #  iconsmall          :string(255)
 #  iconlarge          :string(255)
 #  collection_id      :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 class Album < ActiveRecord::Base

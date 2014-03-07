@@ -7,7 +7,8 @@ class CreatePosts < ActiveRecord::Migration
       t.integer  :user_id
       t.text     :media
       t.string   :media_type
-      t.string   :content_type
+      t.datetime :out_of_date
+      t.string   :content_type,                       :default => 'article'
       t.boolean  :twitter_export,                     :default => true
       t.string   :attachment_file_name
       t.string   :attachment_content_type

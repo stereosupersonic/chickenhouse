@@ -8,8 +8,8 @@
 #  flickr_title       :string(255)
 #  iconsmall          :string(255)
 #  iconlarge          :string(255)
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

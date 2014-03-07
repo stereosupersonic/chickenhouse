@@ -28,10 +28,10 @@ gem "exception_notification", "~> 4.0.1"
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'whenever',                     '~> 0.7.0',      :require => false
-gem "thin"
-gem "bcrypt-ruby"
+gem 'thin'
+gem 'bcrypt-ruby'
 gem 'email_validator'
-
+gem 'figaro'
 gem 'progressbar'
 gem 'coveralls', :require => false
 group :production do
@@ -58,8 +58,6 @@ group :development do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', '~> 0.9.3'
 
-
-  gem 'figaro'
 end
 
 group :development , :test do

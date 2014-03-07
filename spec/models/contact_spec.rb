@@ -32,7 +32,7 @@ describe Contact do
   end
 
   it "should send an email" do
-    build(:contact).save
+    build(:contact).save!
     ActionMailer::Base.deliveries.last.to.should == ['info@henaheisl.de']
   end
 end

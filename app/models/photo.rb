@@ -9,8 +9,8 @@
 #  url_icon           :string(255)
 #  url_big            :string(255)
 #  album_id           :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 class Photo < ActiveRecord::Base

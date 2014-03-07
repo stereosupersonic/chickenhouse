@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20140303103803) do
     t.string   "iconsmall"
     t.string   "iconlarge"
     t.integer  "collection_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "collections", force: true do |t|
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140303103803) do
     t.string   "flickr_title"
     t.string   "iconsmall"
     t.string   "iconlarge"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contacts", force: true do |t|
@@ -62,36 +62,27 @@ ActiveRecord::Schema.define(version: 20140303103803) do
     t.string   "url_icon"
     t.string   "url_big"
     t.integer  "album_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
     t.text     "content"
     t.string   "title"
-    t.boolean  "intern"
+    t.boolean  "intern",                  default: false
     t.integer  "user_id"
-    t.integer  "postable_id"
-    t.string   "postable_type",           limit: 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "out_of_date"
-    t.integer  "tweet_id"
-    t.text     "tags"
-    t.string   "content_type",                       default: "article"
     t.text     "media"
-    t.string   "media_type",                         default: ""
-    t.boolean  "twitter_export",                     default: true
+    t.string   "media_type"
+    t.datetime "out_of_date"
+    t.string   "content_type",            default: "article"
+    t.boolean  "twitter_export",          default: true
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "posts", ["out_of_date"], name: "index_posts_on_out_of_date", using: :btree
-  add_index "posts", ["postable_id"], name: "index_posts_on_postable_id", using: :btree
-  add_index "posts", ["postable_type", "out_of_date"], name: "index_posts_on_postable_type_and_out_of_date", using: :btree
-  add_index "posts", ["postable_type"], name: "index_posts_on_postable_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
