@@ -3,11 +3,12 @@ require "uri"
 namespace :import do
   # {"post"=>{"tweet_id"=>nil, "postable_type"=>"Article", "attachment_file_name"=>"Ergebnisse_2013.pdf",
   #    "postable"=>{"created_at"=>"2013-12-28T16:16:32+01:00", "updated_at"=>"2013-12-28T16:16:32+01:00", "id"=>62, "sticky"=>nil},
-  #    "media_type"=>"", "created_at"=>"2013-12-28T16:16:32+01:00", "attachment_file_size"=>66146, "attachment_content_type"=>"application/pdf", "twitter_export"=>true, "title"=>"Ergebnisse der 25. Clubmeisterschaft", "postable_id"=>62, "content_type"=>"article", "updated_at"=>"2013-12-28T16:17:49+01:00", "tags"=>"",
+  #    "media_type"=>"", "created_at"=>"2013-12-28T16:16:32+01:00", "attachment_file_size"=>66146, "attachment_content_type"=>"application/pdf", "twitter_export"=>true, "title"=>"Ergebnisse der 25. Clubmeisterschaft", "postable_id"=>62, "content_type"=>"article", "updated_at"=>"2013-12-28T16:17:49+01:00",
+  #    "tags"=>"",
   #    "id"=>132, "user_id"=>2, "media"=>nil, "content"=>"!http://farm8.staticflickr.com/7415/11602969364_171bfefc90.jpg!\r\nDer FC Bayern Fanclub wurde 7.\r\n\r\nDer Sieger der 25. Wartenberger Clubmeisterschaft ist der Fantasy-Club.\r\n\r\nDie Platzierungen:\r\n\r\n|_.  |_.  |\r\n| 1. | Fantasy  |\r\n| 2. | Cosmos |\r\n| 3. | Ski-Club |\r\n| 4. | Reif United |\r\n| 5. | St Ulrich Schützen|\r\n| 6. | Löwen Fanclub  |\r\n| 7. | Bayern FanclubReif-United |\r\n| 8. | Cluberer |\r\n\r\nBilder gibts \"hier\":http://www.flickr.com/photos/sereosonic70/sets/72157639109599746/",
   #    "out_of_date"=>"2014-01-18T16:17:49+01:00", "intern"=>nil, "attachment_updated_at"=>"2013-12-28T16:16:32+01:00"}}
   def create_article(post)
-    post = Post.new post.except( *['postable','tweet_id','out_of_date','postable_type', 'postable_id' ,'content_type'])
+    post = Post.new post.except( *['postable','tweet_id','out_of_date','postable_type', 'postable_id' ,'content_type' ,'tags'])
     post.content = post.html_content
     post.intern = false
     post.user  = User.first
