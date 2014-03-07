@@ -8,6 +8,7 @@ TODO
 * Pictures
 * friendly id
 * setup google analytics #see here http://railsapps.github.io/rails-google-analytics.html
+* add nicer 500 page
 
 # Version 2
 * atom feed
