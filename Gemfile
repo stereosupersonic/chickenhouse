@@ -17,7 +17,6 @@ gem 'sass-rails',              '~> 4.0.0'
 gem 'coffee-rails',            '~> 4.0.0'
 gem 'uglifier',                '>= 1.3.0'
 gem 'bootstrap-sass',          '~> 3.1'
-gem 'sass-rails',              '~> 4.0.0'
 gem 'font-awesome-sass',     '~> 4.0.2'
 gem 'simple_form',  '~> 3.0.1'
 gem 'haml-rails'
@@ -42,7 +41,6 @@ group :production do
 end
 
 group :development do
-  gem 'mysql2'
   gem "quiet_assets"              #Quiet assets turn off rails assets log.
   gem "binding_of_caller"          #is needed for better_errors
   gem "better_errors"               #https://github.com/charliesome/better_errors
