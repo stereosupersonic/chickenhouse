@@ -34,6 +34,7 @@ gem 'email_validator'
 gem 'figaro'
 gem 'progressbar'
 gem 'coveralls', :require => false
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'  #for Heroku
@@ -57,7 +58,6 @@ group :development do
 
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', '~> 0.9.3'
-
 end
 
 group :development , :test do
@@ -78,4 +78,3 @@ group :test do
   gem "selenium-webdriver",         "~> 2.38.0"
   gem 'simplecov'
 end
-
