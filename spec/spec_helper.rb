@@ -1,6 +1,4 @@
-# coding: UTF-8
-require 'rubygems'
-
+ENV["RAILS_ENV"] ||= 'test'
 #https://coveralls.io
 require 'coveralls'
 # testcover
