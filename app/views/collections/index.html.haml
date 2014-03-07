@@ -1,0 +1,21 @@
+%h1 Listing collections
+
+%table.table-bordered.table-striped.table-hover
+  %tr
+    %th
+    %th Flickr title
+    %th
+    %th
+    %th
+
+  - @collections.each do |collection|
+    %tr
+      %td= image_tag collection.iconsmall
+      %td= collection.flickr_title
+      %td= link_to 'Show', collection
+      %td= link_to 'Edit', edit_collection_path(collection)
+      %td= link_to 'Destroy', collection, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Collection', new_collection_path

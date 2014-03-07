@@ -1,0 +1,24 @@
+%p#notice= notice
+%p
+  = image_tag @collection.iconlarge
+%p
+  %b Flickr:
+  = @collection.flickr_id
+%p
+  %b Flickr description:
+  = @collection.flickr_description
+%p
+  %b Flickr title:
+  = @collection.flickr_title
+%p
+  %b Iconsmall:
+  = @collection.iconsmall
+%p
+  %b Iconlarge:
+  = @collection.iconlarge
+%p
+  %b Flickr
+  = simple_format @collection.flickr_info.to_yaml
+= link_to 'Edit', edit_collection_path(@collection)
+\|
+= link_to 'Back', collections_path

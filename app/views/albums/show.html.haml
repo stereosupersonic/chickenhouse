@@ -1,0 +1,23 @@
+%p#notice= notice
+
+%p
+  %b Flickr:
+  = @album.flickr_id
+%p
+  %b Flickr description:
+  = @album.flickr_description
+%p
+  %b Flickr title:
+  = @album.flickr_title
+%p
+  %b Iconsmall:
+  = @album.iconsmall
+%p
+  %b Iconlarge:
+  = @album.iconlarge
+%p
+  %b Flickr
+  = simple_format @album.flickr_info.to_yaml
+= link_to 'Edit', edit_album_path(@album)
+\|
+= link_to 'Back', albums_path

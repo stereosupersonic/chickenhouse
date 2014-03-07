@@ -1,0 +1,24 @@
+-# encoding: utf-8
+=page_header 'Posts'
+%h3= "Posts: #{Post.count}"
+%table.table.table-bordered.table-striped.table-hover
+  %tr
+    %th Name
+    %th Intern
+    %th Erstellt
+    %th
+  %tr
+    - @posts.each do |post|
+      %tr
+        %td= link_to post.title, [:admin, post]
+        %td= boolean_value post.intern
+        %td= format_date post.created_at
+        %td
+          = edit_button edit_admin_post_path(post)
+          = delete_button [:admin, post]
+
+= pagination_links @posts
+.panel
+  = new_button new_admin_post_path
+  = back_button :back
+

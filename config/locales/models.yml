@@ -1,0 +1,29 @@
+de:
+  activerecord:
+    models:
+      user: Benutzer
+      event: Event
+      contact: Nachricht
+    attributes: &labelAlias
+      event:
+        content: Beschreibung
+        location: Ort
+        title: Titel
+        start_date: Start
+        end_date: Ende
+        all_day: Ganztägig
+      post:
+        content: Beitrag
+        title: Titel
+      user:
+        name: Name
+        email: EMail
+      contact:
+        subject: Subject
+        body: Nachricht
+        name: Name
+        email: E-Mail
+        created_at: erstellt am
+  simple_form:
+    labels:
+      <<: *labelAlias

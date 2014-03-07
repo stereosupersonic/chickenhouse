@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+system "bundle exec rake db:create:all --trace" 
+system "bundle exec rake db:schema:load --trace"      
+#ENV['LIVEDUMP'] = "true"
+system "bundle exec rake db:sync_production_to_local_db --trace"  unless ARGV.include?('--no-dump') 
+File.open(File.expand_path(File.join(File.expand_path(__FILE__),'..','..','DBUPDATE')), 'w') { |f| f << "#{Time.now.strftime('%d.%m.%Y %H:%M')}"}
+system "bundle exec rake db:migrate --trace"    
+system "bundle exec rake db:test:clone --trace" unless ENV["RAILS_ENV"].to_s == 'production'

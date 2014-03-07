@@ -1,0 +1,91 @@
+//Sticky Footer
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    min-width: 90%;
+}
+
+main {
+    padding-bottom: 150px;
+    /* this needs to be bigger than footer height*/
+    background-color: white;
+    width: 100%;
+    margin-top: 80px;
+    // accommodate the navbar
+}
+
+header {
+    height: 170px;
+    background-color: $fcb-red;
+}
+
+#headerimage {
+    height: 170px;
+    background: url(/assets/banner_v2.png) top left no-repeat;
+}
+
+.footer {
+    position: relative;
+    margin-top: -150px;
+    /* negative value of footer height */
+    height: 150px;
+    clear: both;
+    padding: 40px 0;
+    color: $title-meta-color;
+    text-align: center;
+    background-color: $main-bg;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+#personal_box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 15pt;
+}
+
+#personal_box p {
+    margin: 0;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+
+#personal_box #current_user {
+    font-weight: bold;
+}
+
+#personal_box a {
+    color: #fff;
+}
+
+//navbar
+
+//center the navi bar
+.navbar > .container .navbar-brand, .navbar > main .navbar-brand {
+    margin-left: 23px;
+}
+
+.navbar {
+
+    font-size: $font-size-large;
+    .fa-home {
+      font-size: 30px;
+    }
+    .nav-pills > li >a {
+      color: $fcb-white;
+    }
+    .nav-pills > li > a:hover {
+        color: $fcb-red;
+    }
+    .nav-pills .active > a {
+        background-color: #ccc;
+        color: #0088cc;
+    }
+}

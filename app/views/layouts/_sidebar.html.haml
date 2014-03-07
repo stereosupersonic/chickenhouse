@@ -1,0 +1,20 @@
+-if Event.next_events.present?
+  #sidebar
+    .sidebar-module.sidebar-module-inset
+      %h3.title Nächste Events
+      %ul#next-events
+        - Event.next_events.each do |event|
+          %li.sidebar-event
+            =link_to admin_event_path(event) do
+              %i.fa.fa-calendar
+              ="#{truncate(event.title, :length => 21)} (#{time_ago_in_words event.start_date})".html_safe
+
+    .sidebar-module.sidebar-module-inset
+      %h3.title Henaheisl on Facebook
+      .fb-like-box{'data-href' => "http://www.facebook.com/pages/Henaheisl/361493021165",
+                   'data-colorscheme' => 'light',
+                   'data-show-faces'  => 'true',
+                   'data-header'      => 'false',
+                   'data-stream'      => 'false',
+                   'data-show-border' => 'false'}
+

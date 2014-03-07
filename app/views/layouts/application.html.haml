@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Henaheisl'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Rails Bootstrap'}"}
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body{ :id => "#{controller.controller_name}_#{controller.action_name}", :class => "#{controller.controller_name} #{controller.action_name}" }
+    #wrap.container
+      %header
+        #headerimage
+        = render 'layouts/navigation'
+
+      %main{:role => "main"}
+        .row
+          = render 'layouts/messages'
+          .col-sm-8
+            = yield
+          .col-sm-4
+            = render 'layouts/sidebar'
+
+    = render 'layouts/footer'
+

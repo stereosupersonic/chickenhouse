@@ -1,0 +1,13 @@
+= simple_form_for [:admin, @post] do |f|
+  = f.error_notification
+  = f.input :title
+  = f.input :content, :input_html => { :class => 'wysihtml5'}
+  = f.input :media_type
+  = f.input :media
+  = f.input :intern
+  = f.input :attachment
+  = save_button
+  = cancel_button :back
+
+:javascript
+   $('.wysihtml5').wysihtml5({"html": true});

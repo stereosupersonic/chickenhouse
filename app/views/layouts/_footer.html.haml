@@ -1,0 +1,11 @@
+%footer.footer
+  %p
+    ="© 1996 - #{Time.now.year} Henaheisl e.V. - Alle Rechte vorbehalten"
+  %p
+    %span
+      = link_to 'Impressum', impressum_path
+      = "|"
+    %span
+      = link_to 'http://twitter.com/henaheisl',:target => '_blank' do
+        %i.fa.fa-twitter-square
+        Twitter

@@ -1,0 +1,19 @@
+.blog-post {
+    border: 1px solid $border-color;
+    margin-bottom: 20px;
+    background-color: $main-bg;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+}
+
+.blog-post-title {
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.blog-post-meta {
+    margin-bottom: 20px;
+    color: $title-meta-color;
+}

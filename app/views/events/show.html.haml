@@ -1,0 +1,6 @@
+= render @event
+= @event.html_content
+
+=back_button root_path
+-if admin?
+  = edit_button [:edit, :admin, @event]

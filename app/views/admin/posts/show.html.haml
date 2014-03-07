@@ -1,0 +1,7 @@
+=page_header @post.title
+
+%p= raw @post.html_content
+%p= debug @post
+
+= edit_button [:edit, :admin, @post]
+= back_button admin_posts_path

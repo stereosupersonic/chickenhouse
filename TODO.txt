@@ -1,0 +1,25 @@
+TODO
+
+# Version 0.1 => before Release
+
+* opensource on github remove old private and save a backup
+* add travis-ci
+* add codeclimate
+* add coveralls
+
+==> Deploy
+
+# Version 1
+* twitter post on create an event or article
+* Pictures
+* setup google analytics #see here http://railsapps.github.io/rails-google-analytics.html
+
+# Version 2
+* atom feed
+* ical feed
+
+# Version 3
+* authentification with twitter or FB
+* mitglieder verwaltung
+* geburtstags kalender
+
