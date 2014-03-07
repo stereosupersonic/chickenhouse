@@ -32,6 +32,7 @@ gem "thin"
 gem "bcrypt-ruby"
 gem 'email_validator'
 
+gem 'progressbar'
 gem 'coveralls', :require => false
 group :production do
   gem 'pg'
@@ -57,7 +58,7 @@ group :development do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', '~> 0.9.3'
 
-  gem 'progressbar'
+
   gem 'figaro'
 end
 
