@@ -13,18 +13,13 @@ main {
     /* this needs to be bigger than footer height*/
     background-color: white;
     width: 100%;
-    margin-top: 80px;
+    margin-top: 215px;
     // accommodate the navbar
 }
 
 header {
-    height: 170px;
-    background-color: $fcb-red;
-}
-
-#headerimage {
-    height: 170px;
-    background: url(/assets/banner_v2.png) top left no-repeat;
+    //height: 170px
+    marging-bottom: 30px
 }
 
 .footer {

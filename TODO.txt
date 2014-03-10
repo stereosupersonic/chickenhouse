@@ -1,8 +1,5 @@
 TODO
 
-# Version 0.1 => before Release
-==> Deploy
-
 # Version 1
 * twitter post on create an event or article
 * Pictures

@@ -17,9 +17,9 @@
       %main{:role => "main"}
         .row
           = render 'layouts/messages'
-          .col-sm-8
+          .col-sm-8.col-xs-12
             = yield
-          .col-sm-4
+          .col-sm-4.hidden-xs
             = render 'layouts/sidebar'
 
     = render 'layouts/footer'
