@@ -1,4 +1,5 @@
 #posts.row
   -  posts.each do | post |
-    = render post
+    - cache(post) do
+      = render post
   = pagination_links posts
