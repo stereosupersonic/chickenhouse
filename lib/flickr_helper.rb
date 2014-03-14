@@ -1,26 +1,18 @@
 require 'flickraw'
 
+# https://github.com/hanklords/flickraw
 module FlickrHelper
+  FlickRaw.api_key       = ENV["FLICKR_API_KEY"]
+  FlickRaw.shared_secret = ENV["FLICKR_SHARED_SECRET"]
 
   def flickr_access
+    @flickr_access ||= login
+  end
 
-    config = {
-      :api_key            => ENV["FLICKR_API_KEY"],
-      :shared_secret      => ENV["FLICKR_SHARED_SECRET"],
-      :oauth_token        => ENV["FLICKR_OAUTH_TOKEN"],
-      :oauth_token_secret => ENV["FLICKR_OAUTH_TOKEN_SECRET"]
-    }
-    puts config
-
-    FlickRaw.api_key= config[:api_key]
-    FlickRaw.shared_secret= config[:shared_secret]
-
-    puts "FlickRaw.api_key: #{FlickRaw.api_key}"
-    puts "FlickRaw.shared_secret: #{FlickRaw.shared_secret}"
-
+  def login
     begin
-      flickr.access_token = config[:oauth_token]
-      flickr.access_secret = config[:oauth_token_secret]
+      flickr.access_token = ENV["FLICKR_OAUTH_TOKEN"]
+      flickr.access_secret = ENV["FLICKR_OAUTH_TOKEN_SECRET"]
 
       @login ||= flickr.test.login
       Rails.logger.info "Flickr  authenticated as #{@login.username}"
