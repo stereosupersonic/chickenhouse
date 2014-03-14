@@ -1,9 +1,21 @@
 TODO
 
+# Version 0.6
+
+* better footer here: http://www.coders-guide.com/watch?v=53
+* try otherfont
+* try this: http://abrahamfarris.com/2014/02/28/responsive-bootstrap-header/
+* Facebookseite: www.facebook.com/henaheisl
+* Twitter Background like https://twitter.com/talktothemanagr
+* login and search like: https://talktothemanager.com/
+
 # Version 1
 * twitter post on create an event or article
 * Pictures
+** https://github.com/blueimp/Bootstrap-Image-Gallery
+** http://www.jasonbutz.info/bootstrap-lightbox/
 * friendly id
+** https://github.com/norman/friendly_id
 * setup google analytics #see here http://railsapps.github.io/rails-google-analytics.html
 * add nicer 500 page
 
@@ -15,4 +27,8 @@ TODO
 * authentification with twitter or FB
 * mitglieder verwaltung
 * geburtstags kalender
+
+# Future
+* Add logger
+* backup (backup gem db dumps)
 

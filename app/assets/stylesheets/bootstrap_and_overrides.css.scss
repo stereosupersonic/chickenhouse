@@ -1,24 +1,22 @@
 @import "bootstrap_variables.css.scss";
 
 $fcb-red: #ff2019;
-
-//#BF000C
 $fcb-red-2: #bf000c;
 $border-color: #e0dbdb;
 $fcb-white: white;
+$meta-grey: #999999;
+$link-hover-color: #bf000c;
 
-//#EBDADA;
 $navbar-default-bg: $fcb-red;
 $navbar-default-color: $fcb-white;
 $navbar-default-link-color: $fcb-white;
 $link-color: $text-color;
 $navbar-default-bg: $fcb-red;
-$link-hover-color: #bf000c;
 
 $main-bg: whitesmoke;
-$title-meta-color: #999999;
+$title-meta-color: $meta-grey;
 
-$pagination-active-color: $text-color;
+$pagination-active-color:  $text-color;
 $pagination-active-border: $text-color;
 
 $brand-primary: $main-bg;
