@@ -3,7 +3,7 @@ class Admin::EventsController < Admin::BaseController
 
   # GET /admin/events
   def index
-    @events = Event.order('start_date desc').paginate :page => params[:page], :per_page => 20
+    @events = Event.order('start_date DESC').paginate :page => params[:page], :per_page => 20
   end
 
   # GET /admin/events/1

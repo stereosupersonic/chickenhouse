@@ -1,0 +1,29 @@
+-# encoding: utf-8
+=page_header 'Flickr Fotos'
+
+%table.table.table-bordered.table-striped.table-hover
+  %tr
+    %th
+    - %w{flickr_id flickr_title}.each do |attr_name|
+      %th= attr_name
+    %th Album
+    %th Erstellt
+    %th
+  %tr
+    - @photos.each do |photo|
+      %tr
+        %td= link_to image_tag( photo.url_icon , :class => "img-thumbnail"), admin_photo_path(photo)
+        - %w{flickr_id flickr_title}.each do |attr_name|
+          %td= truncate photo.send(attr_name).to_s
+
+        %td= photo.album.try(:flickr_title)
+        %td= format_date photo.created_at
+        %td
+          = show_button admin_photo_path(photo)
+          = edit_button edit_admin_photo_path(photo)
+          = delete_button admin_photo_path(photo)
+= pagination_links @photos
+.panel
+  = new_button new_admin_photo_path
+  = back_button :back
+

@@ -1,9 +1,7 @@
 class PhotosController < ApplicationController
-  # GET /photos
-  # GET /photos.json
-  def index
-    #@photos = Photo.all
 
+  def index
+    @photos = Photo.recent
   end
 
 end

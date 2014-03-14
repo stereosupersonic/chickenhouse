@@ -34,66 +34,68 @@ namespace :import do
   end
 
   def build_photo(album,photo_hash)
+    if photo_hash["media"] == "photo"
+      album.photos.build do | photo |
+        #{ "id"=>"4409987415",
+        #  "secret"=>"f387431a19",
+        #  "server"=>"4037",
+        #  "farm"=>5,
+        #  "title"=>"Bettelhochzeit 2010 - 060",
+        #  "isprimary"=>"0"}
 
-    album.photos.build do | photo |
-      #{ "id"=>"4409987415",
-      #  "secret"=>"f387431a19",
-      #  "server"=>"4037",
-      #  "farm"=>5,
-      #  "title"=>"Bettelhochzeit 2010 - 060",
-      #  "isprimary"=>"0"}
 
+        #{"id"=>"5939153627",
+        #"secret"=>"ff8d1e8b5b",
+        #"server"=>"6149",
+        #"farm"=>7,
+        #"title"=>"Original_0046",
+        # "isprimary"=>"0",
+        # "license"=>"0",
+        # "dateupload"=>"1310721177",
+        # "datetaken"=>"2010-01-22 12:50:06",
+        # "datetakengranularity"=>"0",
+        # "ownername"=>"henaheisl1991",
+        # "iconserver"=>"1101",
+        # "iconfarm"=>2,
+        # "originalsecret"=>"f24ecf9885",
+        # "originalformat"=>"jpg",
+        # "lastupdate"=>"1310721468",
+        # "latitude"=>0,
+        # "longitude"=>0,
+        # "accuracy"=>0,
+        # "context"=>0,
+        # "tags"=>"",
+        # "machine_tags"=>"",
+        # "o_width"=>"3488",
+        # "o_height"=>"2368",
+        # "views"=>"3",
+        # "media"=>"photo",
+        # "media_status"=>"ready",
+        # "pathalias"=>"sereosonic70",
+        # "url_sq"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b_s.jpg",
+        # "height_sq"=>75,
+        # "width_sq"=>75,
+        # "url_t"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b_t.jpg",
+        # "height_t"=>"68",
+        # "width_t"=>"100",
+        # "url_s"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b_m.jpg",
+        # "height_s"=>"163",
+        # "width_s"=>"240",
+        # "url_m"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b.jpg",
+        # "height_m"=>"339",
+        # "width_m"=>"500",
+        # "url_o"=>"http://farm7.staticflickr.com/6149/5939153627_f24ecf9885_o.jpg",
+        # "height_o"=>"2368",
+        # "width_o"=>"3488"}
 
-      #{"id"=>"5939153627",
-      #"secret"=>"ff8d1e8b5b",
-      #"server"=>"6149",
-      #"farm"=>7,
-      #"title"=>"Original_0046",
-      # "isprimary"=>"0",
-      # "license"=>"0",
-      # "dateupload"=>"1310721177",
-      # "datetaken"=>"2010-01-22 12:50:06",
-      # "datetakengranularity"=>"0",
-      # "ownername"=>"henaheisl1991",
-      # "iconserver"=>"1101",
-      # "iconfarm"=>2,
-      # "originalsecret"=>"f24ecf9885",
-      # "originalformat"=>"jpg",
-      # "lastupdate"=>"1310721468",
-      # "latitude"=>0,
-      # "longitude"=>0,
-      # "accuracy"=>0,
-      # "context"=>0,
-      # "tags"=>"",
-      # "machine_tags"=>"",
-      # "o_width"=>"3488",
-      # "o_height"=>"2368",
-      # "views"=>"3",
-      # "media"=>"photo",
-      # "media_status"=>"ready",
-      # "pathalias"=>"sereosonic70",
-      # "url_sq"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b_s.jpg",
-      # "height_sq"=>75,
-      # "width_sq"=>75,
-      # "url_t"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b_t.jpg",
-      # "height_t"=>"68",
-      # "width_t"=>"100",
-      # "url_s"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b_m.jpg",
-      # "height_s"=>"163",
-      # "width_s"=>"240",
-      # "url_m"=>"http://farm7.staticflickr.com/6149/5939153627_ff8d1e8b5b.jpg",
-      # "height_m"=>"339",
-      # "width_m"=>"500",
-      # "url_o"=>"http://farm7.staticflickr.com/6149/5939153627_f24ecf9885_o.jpg",
-      # "height_o"=>"2368",
-      # "width_o"=>"3488"}
-      photo.flickr_id    = photo_hash['id']
-      photo.flickr_title = photo_hash['title']
-      photo.url_icon     = photo_hash['url_sq']
-      photo.url_big      = photo_hash['url_m']
-      photo.created_at      = photo_hash['datetaken'].to_datetime
-      photo.updated_at      = photo_hash['datetaken'].to_datetime
-
+        photo.flickr_id    = photo_hash['id']
+        photo.flickr_title = photo_hash['title']
+        photo.url_icon     = photo_hash['url_sq']
+        photo.url_big      = photo_hash['url_l']
+        photo.url_original = photo_hash['url_o']
+        photo.created_at   = photo_hash['datetaken'].to_datetime
+        photo.updated_at   = photo_hash['datetaken'].to_datetime
+      end
     end
   end
 
@@ -102,7 +104,7 @@ namespace :import do
     #  "title"=>"Freising 1996",
     #  "description"=>""}
     collection.albums.build do |album|
-       puts album_hash.inspect
+      puts "import Album #{album_hash['title']}"
       album.flickr_id             = album_hash['id']
       album.flickr_title          = album_hash['title']
       album.flickr_description    = album_hash['description']
@@ -111,7 +113,7 @@ namespace :import do
 
       flickr_access.photosets.getPhotos(
           :photoset_id => album.flickr_id,
-          :extras => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
+          :extras => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
         build_photo album, photo
       end
     end
@@ -126,7 +128,7 @@ namespace :import do
   #  "iconsmall"=>"http://farm8.staticflickr.com/7142/cols/72157627074638797_13f7be3a93_s.jpg",
 
     Collection.new do | col |
-      puts collection_hash.inspect
+      puts "import collection: #{collection_hash['title']}"
       col.flickr_id             = collection_hash['id']
       col.flickr_title          = collection_hash['title']
       col.flickr_description    = collection_hash['description']

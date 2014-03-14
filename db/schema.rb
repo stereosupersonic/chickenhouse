@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303103803) do
+ActiveRecord::Schema.define(version: 20140314101759) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140303103803) do
     t.integer  "album_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url_original"
   end
 
   create_table "posts", force: true do |t|

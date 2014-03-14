@@ -1,0 +1,11 @@
+=page_header "Flickr Foto"
+- Photo.attribute_names.each do |attr_name|
+  %p
+    -#%b=I18n.t("activerecord.attributes.photo.#{attr_name}")
+    %b= attr_name
+    = @photo.send attr_name
+
+%p= image_tag  @photo.url_big , :class => "img-thumbnail"
+= debug @photo.flickr_info
+= edit_button [:edit, :admin, @photo]
+= back_button admin_photos_path
