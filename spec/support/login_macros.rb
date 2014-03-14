@@ -5,8 +5,7 @@ def login_as_admin
 end
 
 def sign_in(user)
-  visit root_path
-  click_link 'Login'
+  visit login_path
   fill_in 'Username', with: user.username
   fill_in 'Password', with: user.password
   click_button 'Ok'
