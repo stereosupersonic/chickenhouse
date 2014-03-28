@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $('#posts .blog-post img').addClass('center-block img-thumbnail');
 
-
   $(".carousel").swiperight(function() {
     $(this).carousel('prev');
   });
