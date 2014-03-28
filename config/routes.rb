@@ -12,8 +12,18 @@ Chickenhouse::Application.routes.draw do
   end
 
   resources :posts
-  resources :photos
+  resources :collections
+
+  resources :albums
+
+  resources :photos do
+  collection do
+    get 'recent'
+  end
+end
   resources :events
+  get '/fotos',      :to => "collections#index",     :as => 'fotos'
+
   get '/contact',    :to => "contacts#new",     :as => 'contact'
   post '/contacts',  :to => "contacts#create",  :as => 'contacts'
   #login

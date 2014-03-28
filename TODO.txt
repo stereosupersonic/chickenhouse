@@ -1,6 +1,10 @@
 TODO
 
-# Version 0.6
+* uralt homepage file://localhost/Users/deimel/Dropbox/doc/henaheisl/Homepage/Henaheisl/fanclub/index.htm
+   screenshot auf die about site
+* http://www.bayernfanclubholzland.de/ newsletter für Karten
+
+# Version 0.7
 
 * better footer here: http://www.coders-guide.com/watch?v=53
 * try otherfont

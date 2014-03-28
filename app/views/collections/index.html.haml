@@ -1,21 +1,16 @@
-%h1 Listing collections
+-# -*- coding: UTF-8 -*-
+=page_header 'Bilder'
 
-%table.table-bordered.table-striped.table-hover
-  %tr
-    %th
-    %th Flickr title
-    %th
-    %th
-    %th
+%ul.list-group
+  %li.list-group-item
+    = link_to recent_photos_path do
+      letzte Bilder
+      = image_tag(@recent_photo.url_icon, :class => "img-thumbnail img-responsive")
 
-  - @collections.each do |collection|
-    %tr
-      %td= image_tag collection.iconsmall
-      %td= collection.flickr_title
-      %td= link_to 'Show', collection
-      %td= link_to 'Edit', edit_collection_path(collection)
-      %td= link_to 'Destroy', collection, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  -  @collections.each do | collection |
+    %li.list-group-item
+      = link_to collection do
+        =  collection.name
+        =  image_tag collection.iconlarge
 
-%br
 
-= link_to 'New Collection', new_collection_path

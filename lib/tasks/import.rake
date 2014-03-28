@@ -95,8 +95,15 @@ namespace :import do
         photo.url_original = photo_hash['url_o']
         photo.created_at   = photo_hash['datetaken'].to_datetime
         photo.updated_at   = photo_hash['datetaken'].to_datetime
+        if photo_hash["isprimary"].to_i == 1
+          #TODO set only ref to photo
+          album.iconsmall   =  photo.url_icon
+          album.iconlarge   =   photo.url_big
+        end
+        photo
       end
     end
+
   end
 
   def build_album(collection,album_hash)
@@ -108,12 +115,12 @@ namespace :import do
       album.flickr_id             = album_hash['id']
       album.flickr_title          = album_hash['title']
       album.flickr_description    = album_hash['description']
-      album.iconsmall             = album_hash['iconsmall']
-      album.iconlarge             = album_hash['iconlarge']
+
+      # https://www.flickr.com/services/api/flickr.photosets.getPhotos.html
 
       flickr_access.photosets.getPhotos(
-          :photoset_id => album.flickr_id,
-          :extras => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
+        :photoset_id => album.flickr_id,
+      :extras => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
         build_photo album, photo
       end
     end
@@ -121,12 +128,11 @@ namespace :import do
 
   def build_collection(collection_hash)
 
-  #{  "id"=>"3851219-72157627074638797",
-  #  "title"=>"sportlich",
-  #  "description"=>"Unser Sportlichen Aktivitäten",
-  #  "iconlarge"=>"http://farm8.staticflickr.com/7142/cols/72157627074638797_13f7be3a93_l.jpg",
-  #  "iconsmall"=>"http://farm8.staticflickr.com/7142/cols/72157627074638797_13f7be3a93_s.jpg",
-
+    #{  "id"=>"3851219-72157627074638797",
+    #  "title"=>"sportlich",
+    #  "description"=>"Unser Sportlichen Aktivitäten",
+    #  "iconlarge"=>"http://farm8.staticflickr.com/7142/cols/72157627074638797_13f7be3a93_l.jpg",
+    #  "iconsmall"=>"http://farm8.staticflickr.com/7142/cols/72157627074638797_13f7be3a93_s.jpg",
     Collection.new do | col |
       puts "import collection: #{collection_hash['title']}"
       col.flickr_id             = collection_hash['id']
@@ -176,11 +182,18 @@ namespace :import do
     Album.delete_all
     Collection.delete_all
     puts "start download"
-
+    # https://www.flickr.com/services/api/flickr.collections.getTree.html
     flickr_access.collections.getTree.to_hash['collection'].find {|c|c.title == 'henaheisl'}.to_hash['collection'].to_a.each do |collection_hash|
       collection = build_collection(collection_hash)
       collection.save!
     end
-  end
 
+    #update created_at
+    Album.all.each do |album|
+      album.created_at = album.photos.order('created_at').last.created_at
+      album.created_at = album.created_at
+      album.save
+    end
+
+  end
 end

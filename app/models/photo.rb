@@ -17,12 +17,17 @@
 class Photo < ActiveRecord::Base
   belongs_to :album
   validates_presence_of :flickr_id
+
   include FlickrHelper
 
   scope :recent, -> { order('created_at DESC').limit(25) }
 
   def flickr_info
     flickr_access.photos.getInfo :photo_id => flickr_id
+  end
+
+  def name
+    flickr_title.titleize
   end
 
   def view_on_flickr_url

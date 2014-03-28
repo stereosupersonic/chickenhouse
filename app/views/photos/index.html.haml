@@ -1,18 +1,8 @@
 -# -*- coding: UTF-8 -*-
-=page_header 'Letzte Bilder'
+=page_header 'Bilder'
 
-#carousel.carousel.slide{data: {ride: 'carousel'}}
-  %ol.carousel-indicators
-    - @photos.each_with_index do |image, index|
-      %li{class: ('active' unless index > 0), data: {target: '#carousel', slide_to: index } }
-  .carousel-inner
-    - @photos.each_with_index do |image, index|
-      .item{class: ('active' unless index > 0)}
-        = image_tag(image.url_big, :class => "img-thumbnail img-responsive")
-        .carousel-caption
-          %h3= image.album.flickr_title.titleize
-          %p= link_to "Original", image.view_on_flickr_url, :class => 'flickr-link'
-  = link_to '#carousel', :"data-slide" => 'prev', :class => 'carousel-control left' do
-    .span.glyphicon.glyphicon-chevron-left
-  = link_to '#carousel', :"data-slide" => 'next', :class => 'carousel-control right' do
-    .span.glyphicon.glyphicon-chevron-right
+%h2 Bilder
+-  @collections.each do | collection |
+  = link_to collection.flickr_description, collection
+  = image_tag collection.iconlarge
+  = debug collection

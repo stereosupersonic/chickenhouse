@@ -2,3 +2,12 @@
   color: $fcb-white;
   font-weight: bold;
 }
+
+// do not show this white points
+.carousel-indicators {
+  display: none;
+}
+
+.carousel-control {
+  font-size: 44px;
+}

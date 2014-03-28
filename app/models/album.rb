@@ -27,6 +27,10 @@ class Album < ActiveRecord::Base
                                       :extras => "original_format, last_update, geo, tags, url_sq, url_t, url_s, url_m, url_o")
   end
 
+  def name
+    flickr_title.titleize
+  end
+
   def build_photos
     flickr_photos.to_hash['photo'].each do |fp|
       self.photos.find_or_create_by_flickr_id(fp['id']) do |photo|
@@ -39,4 +43,5 @@ class Album < ActiveRecord::Base
       end
     end
   end
+
 end
