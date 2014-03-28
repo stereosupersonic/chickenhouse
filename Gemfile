@@ -10,6 +10,7 @@ gem 'will_paginate',                '~> 3.0'
 gem 'RedCloth'
 gem 'flickraw'
 gem 'jquery-rails'
+gem 'jquery_mobile_rails'
 gem 'turbolinks'
 
 #bootstrap

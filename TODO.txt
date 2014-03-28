@@ -9,6 +9,7 @@ TODO
 * photo#show ???
 * rake import only override
 * letzte bilder auch ohne album
+* iphone http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/
 
 # Version 0.8
 
