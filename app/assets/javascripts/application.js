@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile
 //= require turbolinks
 //= require bootstrap-wysihtml5
 //= require bootstrap
