@@ -9,9 +9,9 @@
         .carousel-caption.hidden-xs
           %h3= photo.album.flickr_title.titleize
           %p= link_to "Original", photo.view_on_flickr_url, :class => 'flickr-link'
-  .hidden-xs
-    = link_to '#carousel', :"data-slide" => 'prev', :class => 'carousel-control left' do
-      .span.glyphicon.glyphicon-chevron-left
-    = link_to '#carousel', :"data-slide" => 'next', :class => 'carousel-control right' do
-      .span.glyphicon.glyphicon-chevron-right
+
+  = link_to '#carousel', :"data-slide" => 'prev', :class => 'carousel-control left' do
+    .span.glyphicon.glyphicon-chevron-left
+  = link_to '#carousel', :"data-slide" => 'next', :class => 'carousel-control right' do
+    .span.glyphicon.glyphicon-chevron-right
 
