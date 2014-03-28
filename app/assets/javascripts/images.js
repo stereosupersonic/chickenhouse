@@ -2,11 +2,15 @@ $(document).ready(function() {
   $('#posts .blog-post img').addClass('center-block img-thumbnail');
 
   $(".carousel").swiperight(function() {
-    $(this).carousel('prev');
+    $(".carousel").carousel('prev');
   });
 
   $(".carousel").swipeleft(function() {
-    $(this).carousel('next');
+    $(".carousel").carousel('next');
+  });
+
+   $(".carousel img").bind('click',function() {
+    $(".carousel").carousel('next');
   });
 
 });

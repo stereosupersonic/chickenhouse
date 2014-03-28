@@ -8,12 +8,23 @@ html, body {
     min-width: 90%;
 }
 
+
+
+.row.blah {
+  margin-top: 15%;
+}
+@media (max-width: 480px) {
+ .row.blah {
+  margin-top: 25%;
+}
+
+}
 main {
     padding-bottom: 150px;
     /* this needs to be bigger than footer height*/
     background-color: white;
     width: 100%;
-    margin-top: 215px;
+   //margin-top: 30%;
     // accommodate the navbar
 }
 
