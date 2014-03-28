@@ -5,6 +5,12 @@ TODO
 * http://www.bayernfanclubholzland.de/ newsletter für Karten
 
 # Version 0.7
+* friendly id for photos
+* photo#show ???
+* rake import only override
+* letzte bilder auch ohne album
+
+# Version 0.8
 
 * better footer here: http://www.coders-guide.com/watch?v=53
 * try otherfont

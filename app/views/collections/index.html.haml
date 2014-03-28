@@ -4,13 +4,11 @@
 %ul.list-group
   %li.list-group-item
     = link_to recent_photos_path do
-      letzte Bilder
       = image_tag(@recent_photo.url_icon, :class => "img-thumbnail img-responsive")
-
+      letzte Bilder
   -  @collections.each do | collection |
     %li.list-group-item
       = link_to collection do
+        =  image_tag collection.iconlarge,  :class => "img-thumbnail img-responsive"
         =  collection.name
-        =  image_tag collection.iconlarge
-
 
