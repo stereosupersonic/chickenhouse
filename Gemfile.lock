@@ -211,6 +211,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    psych (2.0.5)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -380,6 +381,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   pg
   progressbar
+  psych (~> 2.0.5)
   quiet_assets
   rack-mini-profiler
   rails (~> 4.0.2)
