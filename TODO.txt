@@ -1,17 +1,18 @@
 TODO
 
-* uralt homepage file://localhost/Users/deimel/Dropbox/doc/henaheisl/Homepage/Henaheisl/fanclub/index.htm
-   screenshot auf die about site
-* http://www.bayernfanclubholzland.de/ newsletter für Karten
-
 # Version 0.7
-* friendly id for photos
+* photo anzeige
+** siehe http://suedkurve-muenchen.org/
+** sortiert nach Erstellungsdatum der Alben
+** nur link mit test
+
+# Version 0.8
 * photo#show ???
 * rake import only override
 * letzte bilder auch ohne album
 * iphone http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/
 
-# Version 0.8
+# Version 0.9
 
 * better footer here: http://www.coders-guide.com/watch?v=53
 * try otherfont
@@ -25,8 +26,6 @@ TODO
 * Pictures
 ** https://github.com/blueimp/Bootstrap-Image-Gallery
 ** http://www.jasonbutz.info/bootstrap-lightbox/
-* friendly id
-** https://github.com/norman/friendly_id
 * setup google analytics #see here http://railsapps.github.io/rails-google-analytics.html
 * add nicer 500 page
 
@@ -42,4 +41,6 @@ TODO
 # Future
 * Add logger
 * backup (backup gem db dumps)
-
+* uralt homepage file://localhost/Users/deimel/Dropbox/doc/henaheisl/Homepage/Henaheisl/fanclub/index.htm
+   screenshot auf die about site
+* http://www.bayernfanclubholzland.de/ newsletter für Karten

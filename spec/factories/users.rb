@@ -9,6 +9,7 @@
 #  admin           :boolean          default(FALSE)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  slug            :string(255)
 #
 
 require 'faker'

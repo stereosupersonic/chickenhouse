@@ -18,9 +18,12 @@
 #  attachment_updated_at   :datetime
 #  created_at              :datetime
 #  updated_at              :datetime
+#  slug                    :string(255)
 #
 
 class Post < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
 
   belongs_to :user
   has_attached_file :attachment

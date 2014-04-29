@@ -10,9 +10,12 @@
 #  iconlarge          :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
+#  slug               :string(255)
 #
 
 class Collection < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :flickr_description, :use => :slugged
   extend FlickrHelper
 
   has_many :albums

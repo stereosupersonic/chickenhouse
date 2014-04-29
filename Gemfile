@@ -35,6 +35,8 @@ gem 'figaro'
 gem 'progressbar'
 gem 'coveralls', :require => false
 
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'  #for Heroku

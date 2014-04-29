@@ -136,6 +136,8 @@ GEM
     font-awesome-sass (4.0.2)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     growl (1.0.3)
     guard (2.2.5)
       formatador (>= 0.2.4)
@@ -366,6 +368,7 @@ DEPENDENCIES
   figaro
   flickraw
   font-awesome-sass (~> 4.0.2)
+  friendly_id (~> 5.0.0)
   g!
   growl
   guard-bundler

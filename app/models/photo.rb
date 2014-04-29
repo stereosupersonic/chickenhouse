@@ -12,9 +12,13 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  url_original       :string(255)
+#  slug               :string(255)
 #
 
 class Photo < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :flickr_description, :use => :slugged
+
   belongs_to :album
   validates_presence_of :flickr_id
 

@@ -11,9 +11,13 @@
 #  collection_id      :integer
 #  created_at         :datetime
 #  updated_at         :datetime
+#  slug               :string(255)
 #
 
 class Album < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :flickr_description, :use => :slugged
+
   belongs_to :collection
   has_many :photos
 

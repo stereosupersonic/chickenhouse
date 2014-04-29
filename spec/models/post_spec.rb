@@ -18,6 +18,7 @@
 #  attachment_updated_at   :datetime
 #  created_at              :datetime
 #  updated_at              :datetime
+#  slug                    :string(255)
 #
 
 require 'spec_helper'
@@ -33,4 +34,9 @@ describe Post do
     end
 
   end
+
+  it "should have a friendly title" do
+     create(:post, :title => 'How cool is that').to_param.should == 'how-cool-is-that'
+  end
+
 end

@@ -12,6 +12,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  url_original       :string(255)
+#  slug               :string(255)
 #
 
 require 'spec_helper'

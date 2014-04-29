@@ -18,6 +18,7 @@
 #  attachment_updated_at   :datetime
 #  created_at              :datetime
 #  updated_at              :datetime
+#  slug                    :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

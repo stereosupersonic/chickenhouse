@@ -12,9 +12,13 @@
 #  all_day    :boolean
 #  created_at :datetime
 #  updated_at :datetime
+#  slug       :string(255)
 #
 
 class Event < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+
   validates_presence_of :title
 
   belongs_to :user
