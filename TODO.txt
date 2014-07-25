@@ -1,7 +1,14 @@
+UPDATE
+* Posts
+
 TODO
+# Current
+
+* photos mit breadcrumbs
 
 # Version 0.7
 * photo anzeige
+* sortiert nach jahre
 ** siehe http://suedkurve-muenchen.org/
 ** sortiert nach Erstellungsdatum der Alben
 ** nur link mit test
