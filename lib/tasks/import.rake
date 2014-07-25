@@ -201,11 +201,13 @@ namespace :import do
   desc "create missing album pist db"
   task :create_album_posts  => :environment do
     #update created_at
-    Album.where("id not in (?)", Post.all.map(&:album_id).compact).each do |album|
-      album.created_at = album.photos.order('created_at').last.created_at
-      album.save!
-      post = album.create_post
-      puts "created: #{post.title}"
+    Album.find_each do |album|
+      if album.post.nil?
+        album.created_at = album.photos.order('created_at').last.created_at
+        album.save!
+        post = album.create_post
+        puts "created: #{post.title}"
+      end
     end
 
   end

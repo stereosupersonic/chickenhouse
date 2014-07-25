@@ -1,6 +1,7 @@
 UPDATE
 * rake import:blog                    # pull down the production data and ins...
 * rake import:flickr                  # pull down all collections from flickr db
+
 DEPLOY Heroku
 * git push heroku master
 * heroku run rake db:migrate
