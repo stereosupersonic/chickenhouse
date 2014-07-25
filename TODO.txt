@@ -6,6 +6,7 @@ DEPLOY Heroku
 * heroku run rake db:migrate
 * heroku run rake import:blog
 * heroku run rake import:flickr
+* heroku run rake import:create_album_posts
 
 
 TODO
