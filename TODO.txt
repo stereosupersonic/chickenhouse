@@ -1,10 +1,11 @@
 UPDATE
-* Posts
+* rake import:blog                    # pull down the production data and ins...
+* rake import:flickr                  # pull down all collections from flickr db
 
 TODO
 # Current
 
-* photos mit breadcrumbs
+*sidebar only on main pager
 
 # Version 0.7
 * photo anzeige
@@ -16,7 +17,6 @@ TODO
 # Version 0.8
 * photo#show ???
 * rake import only override
-* letzte bilder auch ohne album
 * iphone http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/
 
 # Version 0.9
