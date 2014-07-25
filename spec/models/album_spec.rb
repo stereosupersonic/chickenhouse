@@ -12,6 +12,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  slug               :string(255)
+#  main_photo_id      :integer
 #
 
 require 'spec_helper'

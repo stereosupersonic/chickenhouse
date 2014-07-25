@@ -25,7 +25,7 @@ class CollectionsController < ApplicationController
   end
 
   def edit
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
   end
 
   def create
@@ -41,7 +41,7 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
     respond_to do |format|
       if @collection.update_attributes(params[:collection])
         format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
@@ -52,7 +52,7 @@ class CollectionsController < ApplicationController
   end
 
   def destroy
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
     @collection.destroy
 
     respond_to do |format|

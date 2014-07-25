@@ -1,3 +1,4 @@
+
 = simple_form_for [:admin, @post] do |f|
   = f.error_notification
   = f.input :title
@@ -8,6 +9,9 @@
   = f.input :attachment
   = save_button
   = cancel_button :back
+
+%br
+= delete_button [:admin, @post] unless @post.new_record?
 
 :javascript
    $('.wysihtml5').wysihtml5({"html": true});

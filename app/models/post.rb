@@ -19,6 +19,7 @@
 #  created_at              :datetime
 #  updated_at              :datetime
 #  slug                    :string(255)
+#  album_id                :integer
 #
 
 class Post < ActiveRecord::Base
@@ -26,6 +27,8 @@ class Post < ActiveRecord::Base
   friendly_id :title, :use => :slugged
 
   belongs_to :user
+  belongs_to :album
+
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
 

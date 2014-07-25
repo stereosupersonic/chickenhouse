@@ -93,12 +93,13 @@ namespace :import do
         photo.url_icon     = photo_hash['url_sq']
         photo.url_big      = photo_hash['url_l']
         photo.url_original = photo_hash['url_o']
+        photo.url_small    = photo_hash['url_s']
         photo.created_at   = photo_hash['datetaken'].to_datetime
         photo.updated_at   = photo_hash['datetaken'].to_datetime
         if photo_hash["isprimary"].to_i == 1
-          #TODO set only ref to photo
           album.iconsmall   =  photo.url_icon
-          album.iconlarge   =   photo.url_big
+          album.iconlarge   =  photo.url_big
+          album.main_photo  =  photo
         end
         photo
       end
@@ -180,6 +181,7 @@ namespace :import do
     puts "delete all"
     Photo.delete_all
     Album.delete_all
+    Post.destroy_all("album_id is not null")
     Collection.delete_all
     puts "start download"
     # https://www.flickr.com/services/api/flickr.collections.getTree.html
@@ -191,8 +193,8 @@ namespace :import do
     #update created_at
     Album.all.each do |album|
       album.created_at = album.photos.order('created_at').last.created_at
-      album.created_at = album.created_at
-      album.save
+      album.save!
+      album.create_post
     end
 
   end

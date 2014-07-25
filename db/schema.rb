@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429072826) do
+ActiveRecord::Schema.define(version: 20140725090536) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140429072826) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "main_photo_id"
   end
 
   create_table "collections", force: true do |t|
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140429072826) do
     t.datetime "updated_at"
     t.string   "url_original"
     t.string   "slug"
+    t.string   "url_small"
   end
 
   create_table "posts", force: true do |t|
@@ -101,6 +103,7 @@ ActiveRecord::Schema.define(version: 20140429072826) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "album_id"
   end
 
   create_table "users", force: true do |t|

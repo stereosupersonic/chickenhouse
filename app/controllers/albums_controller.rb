@@ -34,7 +34,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = Album.find(params[:id])
+    @album = Album.friendly.find(params[:id])
   end
 
   # POST /albums
@@ -56,7 +56,7 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.json
   def update
-    @album = Album.find(params[:id])
+    @album = Album.friendly.find(params[:id])
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
@@ -72,7 +72,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
-    @album = Album.find(params[:id])
+    @album = Album.friendly.find(params[:id])
     @album.destroy
 
     respond_to do |format|

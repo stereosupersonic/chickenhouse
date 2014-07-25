@@ -19,6 +19,7 @@
 #  created_at              :datetime
 #  updated_at              :datetime
 #  slug                    :string(255)
+#  album_id                :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

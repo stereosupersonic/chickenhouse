@@ -12,6 +12,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  slug               :string(255)
+#  main_photo_id      :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

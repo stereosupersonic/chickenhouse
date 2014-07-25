@@ -19,6 +19,7 @@
 #  created_at              :datetime
 #  updated_at              :datetime
 #  slug                    :string(255)
+#  album_id                :integer
 #
 
 require 'spec_helper'
