@@ -10,10 +10,12 @@ DEPLOY Heroku
 * heroku run rake import:create_album_posts
 
 
+
 TODO
 # Current
 
 *sidebar only on main pager
+*videos zentrieren
 
 # Version 0.7
 * photo anzeige

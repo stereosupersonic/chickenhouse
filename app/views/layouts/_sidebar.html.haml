@@ -5,7 +5,7 @@
       %ul#next-events
         - Event.next_events.each do |event|
           %li.sidebar-event
-            =link_to admin_event_path(event) do
+            =link_to event_path(event) do
               %i.fa.fa-calendar
               ="#{truncate(event.title, :length => 21)} (#{time_ago_in_words event.start_date})".html_safe
 
