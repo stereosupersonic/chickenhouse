@@ -5,7 +5,7 @@
   .carousel-inner
     - photos.each_with_index do |photo, index|
       .item{class: ('active' unless index > 0)}
-        = image_tag(photo.url_big, :class => "img-thumbnail img-responsive")#,  photo
+        = image_tag(photo.url_big.presence || photo.url_original , :class => "img-thumbnail img-responsive")#,  photo
         .carousel-caption.hidden-xs
           %h3= photo.album.flickr_title.titleize
           -#%p= link_to "Original", photo.view_on_flickr_url, :class => 'flickr-link'

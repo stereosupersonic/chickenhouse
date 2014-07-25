@@ -22,7 +22,7 @@ Chickenhouse::Application.routes.draw do
   end
 end
   resources :events
-  get '/fotos',      :to => "collections#index",     :as => 'fotos'
+  get '/bilder',      :to => "collections#index",     :as => 'bilder'
 
   get '/contact',    :to => "contacts#new",     :as => 'contact'
   post '/contacts',  :to => "contacts#create",  :as => 'contacts'
