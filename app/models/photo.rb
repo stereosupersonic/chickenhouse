@@ -17,7 +17,7 @@
 
 class Photo < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :flickr_description, :use => :slugged
+  friendly_id :flickr_title, :use => :slugged
 
   belongs_to :album
   validates_presence_of :flickr_id

@@ -1,5 +1,10 @@
 -# -*- coding: UTF-8 -*-
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Bilder', fotos_path
+  %li= link_to @album.collection.name, @album.collection
+
 =page_header "#{@album.name}"
-%h4= format_date @album.created_at
+
 = render 'photos/photos', :photos => @album.photos
 

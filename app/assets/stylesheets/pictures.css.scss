@@ -1,13 +1,21 @@
 .flickr-link {
-  color: $fcb-white;
-  font-weight: bold;
+    color: $fcb-white;
+    font-weight: bold;
 }
 
 // do not show this white points
 .carousel-indicators {
-  display: none;
+    display: none;
 }
 
 .carousel-control {
-  font-size: 300%;
+    font-size: 300%;
+}
+
+.collection a {
+    font-weight: bold;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding-bottom: 20px;
 }

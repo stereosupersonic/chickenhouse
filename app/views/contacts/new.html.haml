@@ -1,3 +1,6 @@
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to I18n.t("activerecord.models.contact"), contact_path
 =page_header I18n.t("activerecord.models.contact")
 = simple_form_for [@contact] do |f|
   = f.error_notification
