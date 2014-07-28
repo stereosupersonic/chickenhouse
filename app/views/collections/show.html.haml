@@ -2,12 +2,12 @@
 %ol.breadcrumb
   %li= link_to 'Home',   root_path
   %li= link_to 'Bilder', bilder_path
-  %li= link_to @collection.name,  @collection
+  %li.strong= @collection.name
 
 %ul.list-group
   - @collection.albums.order('created_at desc').each do | album |
     %li.list-group-item
-      = link_to album do
+      = link_to seo_album_path(@collection, album) do
         = image_tag album.iconsmall, :class => "img-thumbnail img-responsive"
         = album.name
 

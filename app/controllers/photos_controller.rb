@@ -1,8 +1,7 @@
 class PhotosController < ApplicationController
 
   def index
-
-    @collections   = Collection.all
+    @collections  = Collection.all
   end
 
     def recent

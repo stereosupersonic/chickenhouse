@@ -1,6 +1,6 @@
 %ol.breadcrumb
   %li= link_to 'Home', root_path
-  %li= link_to "Kommende Events", events_path
+  %li.strong= "Events"
 - @events.each do | event |
   = render event
 = pagination_links @events

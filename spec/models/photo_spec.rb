@@ -14,6 +14,7 @@
 #  url_original       :string(255)
 #  slug               :string(255)
 #  url_small          :string(255)
+#  taken_at           :datetime
 #
 
 require 'spec_helper'

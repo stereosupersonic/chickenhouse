@@ -3,7 +3,7 @@
   %li= link_to 'Home', root_path
   %li= link_to 'Bilder', bilder_path
   %li= link_to @album.collection.name, @album.collection
-  %li= link_to "#{@album.name}", @album
+  %li.strong= @album.name
 
 = render 'photos/photos', :photos => @album.photos
 

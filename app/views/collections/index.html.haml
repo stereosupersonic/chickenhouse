@@ -1,13 +1,14 @@
 -# -*- coding: UTF-8 -*-
 %ol.breadcrumb
   %li= link_to 'Home',  root_path
-  %li= link_to 'Bilder', bilder_path
+  %li.strong= 'Bilder'
 
 .row
   .collection.col-md-3
-    = link_to recent_photos_path do
+    = link_to recent_collections_path do
       = image_tag @recent_photo.url_icon, :class => "img-thumbnail img-responsive"
-      letzte Bilder
+      %br
+      = "letzte Bilder"
 
 %h3='Alben'
 %br

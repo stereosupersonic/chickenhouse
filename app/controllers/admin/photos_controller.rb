@@ -22,7 +22,7 @@ class Admin::PhotosController < Admin::BaseController
   # PATCH/PUT /admin/photos/1
   def update
     if @photo.update(photo_params)
-      redirect_to @photo, notice: 'Photo was successfully updated.'
+      redirect_to [:admin, :photos], notice: 'Photo was successfully updated.'
     else
       render action: 'edit'
     end
@@ -31,7 +31,7 @@ class Admin::PhotosController < Admin::BaseController
   # DELETE /admin/photos/1
   def destroy
     @photo.destroy
-    redirect_to photos_url, notice: 'Photo was successfully destroyed.'
+    redirect_to [:admin, :photos], notice: 'Photo was successfully destroyed.'
   end
 
   private
@@ -42,8 +42,6 @@ class Admin::PhotosController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def photo_params
-
-
       params.require(:photo).permit(:flickr_id, :flickr_description, :flickr_title, :url_icon, :url_big, :album_id, :url_original)
     end
 end

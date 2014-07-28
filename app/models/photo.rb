@@ -14,6 +14,7 @@
 #  url_original       :string(255)
 #  slug               :string(255)
 #  url_small          :string(255)
+#  taken_at           :datetime
 #
 
 class Photo < ActiveRecord::Base
@@ -24,8 +25,9 @@ class Photo < ActiveRecord::Base
   validates_presence_of :flickr_id
 
   include FlickrHelper
+  scope :visible, -> { where(:visible => true) }
 
-  scope :recent, -> { order('created_at DESC').limit(25) }
+  scope :recent,  -> { visible.order('taken_at DESC').limit(25) }
 
   def flickr_info
     flickr_access.photos.getInfo :photo_id => flickr_id

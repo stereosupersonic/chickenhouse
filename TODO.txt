@@ -12,12 +12,19 @@ DEPLOY Heroku
 
 
 TODO
-# Current
 
-*sidebar only on main pager
-*videos zentrieren
+# before golive
+* letzte fotos sortiert neueste zuerst
+* photo visible flag
+* SEO Fix url bilder/collection_name/album_name/bilder
+* FIX breadcrums bilder/collection_name/album_name/bilder
+* sidebar only on main pager
+* videos zentrieren
+* seite 2 / Höhe evtl banner img 100 px height
+* breadcrums siehe http://www.miasanrot.de/mission-statement/
 
 # Version 0.7
+* mission-statement http://www.miasanrot.de/mission-statement/
 * photo anzeige
 * sortiert nach jahre
 ** siehe http://suedkurve-muenchen.org/

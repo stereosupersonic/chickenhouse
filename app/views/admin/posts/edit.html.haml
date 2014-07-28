@@ -1,5 +1,6 @@
 %ol.breadcrumb
   %li= link_to 'Home', root_path
   %li= link_to 'Posts', admin_posts_path
-=page_header "Edit posts"
+  %li.strong= "Edit posts"
+
 =render 'form'

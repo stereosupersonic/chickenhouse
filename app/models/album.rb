@@ -21,7 +21,7 @@ class Album < ActiveRecord::Base
 
   belongs_to :collection
   belongs_to :main_photo, :class_name => "Photo"
-  has_many :photos
+  has_many :photos, -> { where(:visible => true) }
   has_one :post
 
   include FlickrHelper

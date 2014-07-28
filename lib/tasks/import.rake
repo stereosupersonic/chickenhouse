@@ -94,6 +94,7 @@ namespace :import do
         photo.url_big      = photo_hash['url_l']
         photo.url_original = photo_hash['url_o']
         photo.url_small    = photo_hash['url_s']
+        photo.taken_at     = photo_hash['datetaken'].to_datetime
         photo.created_at   = photo_hash['datetaken'].to_datetime
         photo.updated_at   = photo_hash['datetaken'].to_datetime
         if photo_hash["isprimary"].to_i == 1

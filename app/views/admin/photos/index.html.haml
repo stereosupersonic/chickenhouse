@@ -16,10 +16,11 @@
         - %w{flickr_id flickr_title}.each do |attr_name|
           %td= truncate photo.send(attr_name).to_s
 
-        %td= photo.album.try(:flickr_title)
+        %td= truncate photo.album.try(:flickr_title)
         %td= format_date photo.created_at
         %td
           = show_button admin_photo_path(photo)
+          %br
           = edit_button edit_admin_photo_path(photo)
           = delete_button admin_photo_path(photo)
 = pagination_links @photos
