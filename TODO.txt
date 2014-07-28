@@ -13,15 +13,10 @@ DEPLOY Heroku
 
 TODO
 
-# before golive
-* letzte fotos sortiert neueste zuerst
-* photo visible flag
-* SEO Fix url bilder/collection_name/album_name/bilder
-* FIX breadcrums bilder/collection_name/album_name/bilder
+# Version 0.6
+
 * sidebar only on main pager
 * videos zentrieren
-* seite 2 / Höhe evtl banner img 100 px height
-* breadcrums siehe http://www.miasanrot.de/mission-statement/
 
 # Version 0.7
 * mission-statement http://www.miasanrot.de/mission-statement/

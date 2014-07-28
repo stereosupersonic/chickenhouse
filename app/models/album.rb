@@ -55,8 +55,8 @@ class Album < ActiveRecord::Base
   def create_post
     content = %(<div class="collection">
       <p>
-      <a href='#{Rails.application.routes.url_helpers.album_path(self)}' target="" rel=""><img alt="" src='#{self.main_photo.try(:url_small).presence || iconsmall}' class="center-block img-thumbnail"></a>
-      <a href='#{Rails.application.routes.url_helpers.album_path(self)}' target="" rel="">Hier gehts zu den Bildern</a>
+      <a href='#{Rails.application.routes.url_helpers.seo_album_path(self.collection, self)}' target="" rel=""><img alt="" src='#{self.main_photo.try(:url_small).presence || iconsmall}' class="center-block img-thumbnail"></a>
+      <a href='#{Rails.application.routes.url_helpers.seo_album_path(self.collection, self)}' target="" rel="">Hier gehts zu den Bildern</a>
       </p>
       </div>)
 

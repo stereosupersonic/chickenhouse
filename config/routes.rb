@@ -20,6 +20,7 @@ Chickenhouse::Application.routes.draw do
   end
 
   resources :events
+
   get '/bilder',      :to => "collections#index",     :as => 'bilder'
   get '/bilder/:collection_id/:id',   :to => "albums#show", :as => 'seo_album'
 
