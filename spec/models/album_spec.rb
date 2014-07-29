@@ -8,7 +8,7 @@
 #  flickr_title       :string(255)
 #  iconsmall          :string(255)
 #  iconlarge          :string(255)
-#  collection_id      :integer
+#  collection_id      :integer          indexed
 #  created_at         :datetime
 #  updated_at         :datetime
 #  slug               :string(255)

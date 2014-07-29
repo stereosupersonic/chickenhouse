@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order('created_at DESC')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @posts }
     end
   end

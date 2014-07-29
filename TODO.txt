@@ -11,20 +11,17 @@ DEPLOY Heroku
 
 
 
+http://suedkurve-muenchen.org/
+
 TODO
 
 # Version 0.6
-
 * sidebar only on main pager
 * videos zentrieren
 
 # Version 0.7
 * mission-statement http://www.miasanrot.de/mission-statement/
-* photo anzeige
-* sortiert nach jahre
-** siehe http://suedkurve-muenchen.org/
-** sortiert nach Erstellungsdatum der Alben
-** nur link mit test
+* photo anzeige Description
 
 # Version 0.8
 * photo#show ???
@@ -51,6 +48,8 @@ TODO
 # Version 2
 * atom feed
 * ical feed
+* twitter for each post
+* facebook for each post
 
 # Version 3
 * authentification with twitter or FB

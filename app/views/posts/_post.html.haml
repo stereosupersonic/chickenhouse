@@ -1,23 +1,24 @@
-%div{:id => dom_id(post), :class => 'post blog-post'}
-  -if admin?
-    .edit_it
-      =link_to [:edit, :admin, post] do
-        %i.fa.fa-edit
-  .blog-post-title= link_to post.title, post
-  %p.blog-post-meta= format_date post.created_at
-  %p
-    -if post.content_type.to_s == 'picture'
-      = image_tag post.media, :class => "img-responsive thumbnail"
-    -if post.content_type.to_s == 'video'
-      .flex-video.widescreen.img-thumbnail
-        =youtube_video post.media
-    = post.html_content
+- cache(post) do
+  %div{:id => dom_id(post), :class => 'post blog-post'}
+    -if admin?
+      .edit_it
+        =link_to [:edit, :admin, post] do
+          %i.fa.fa-edit
+    .blog-post-title= link_to post.title, post
+    %p.blog-post-meta= format_date post.created_at
+    %p
+      -if post.content_type.to_s == 'picture'
+        = image_tag post.media, :class => "img-responsive thumbnail"
+      -if post.content_type.to_s == 'video'
+        .flex-video.widescreen.img-thumbnail
+          =youtube_video post.media
+      = post.html_content
 
-  -if post.attachment.present?
-    .attachment
-      = link_to post.attachment.url do
-        %i.fa.fa-external-link-square
-        =post.attachment.original_filename
+    -if post.attachment.present?
+      .attachment
+        = link_to post.attachment.url do
+          %i.fa.fa-external-link-square
+          =post.attachment.original_filename
 
 
 

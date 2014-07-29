@@ -8,7 +8,7 @@
 #  flickr_title       :string(255)
 #  iconsmall          :string(255)
 #  iconlarge          :string(255)
-#  collection_id      :integer
+#  collection_id      :integer          indexed
 #  created_at         :datetime
 #  updated_at         :datetime
 #  slug               :string(255)
@@ -21,7 +21,7 @@ class Album < ActiveRecord::Base
 
   belongs_to :collection
   belongs_to :main_photo, :class_name => "Photo"
-  has_many :photos, -> { where(:visible => true) }
+  has_many :photos, -> { where(:visible => true).order('taken_at') }
   has_one :post
 
   include FlickrHelper

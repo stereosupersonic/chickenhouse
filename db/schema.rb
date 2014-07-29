@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728091736) do
+ActiveRecord::Schema.define(version: 20140729054150) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20140728091736) do
     t.string   "slug"
     t.integer  "main_photo_id"
   end
+
+  add_index "albums", ["collection_id"], name: "index_albums_on_collection_id", using: :btree
 
   create_table "collections", force: true do |t|
     t.string   "flickr_id"
@@ -59,6 +61,8 @@ ActiveRecord::Schema.define(version: 20140728091736) do
     t.string   "slug"
   end
 
+  add_index "events", ["start_date"], name: "index_events_on_start_date", using: :btree
+
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -88,6 +92,10 @@ ActiveRecord::Schema.define(version: 20140728091736) do
     t.boolean  "visible",            default: true
   end
 
+  add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
+  add_index "photos", ["taken_at"], name: "index_photos_on_taken_at", using: :btree
+  add_index "photos", ["visible"], name: "index_photos_on_visible", using: :btree
+
   create_table "posts", force: true do |t|
     t.text     "content"
     t.string   "title"
@@ -107,6 +115,9 @@ ActiveRecord::Schema.define(version: 20140728091736) do
     t.string   "slug"
     t.integer  "album_id"
   end
+
+  add_index "posts", ["album_id"], name: "index_posts_on_album_id", using: :btree
+  add_index "posts", ["intern"], name: "index_posts_on_intern", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

@@ -7,7 +7,7 @@
 #  content    :text
 #  user_id    :integer
 #  location   :string(255)
-#  start_date :datetime
+#  start_date :datetime         indexed
 #  end_date   :datetime
 #  all_day    :boolean
 #  created_at :datetime

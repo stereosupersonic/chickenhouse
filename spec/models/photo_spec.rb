@@ -8,13 +8,14 @@
 #  flickr_title       :string(255)
 #  url_icon           :string(255)
 #  url_big            :string(255)
-#  album_id           :integer
+#  album_id           :integer          indexed
 #  created_at         :datetime
 #  updated_at         :datetime
 #  url_original       :string(255)
 #  slug               :string(255)
 #  url_small          :string(255)
-#  taken_at           :datetime
+#  taken_at           :datetime         indexed
+#  visible            :boolean          default(TRUE), indexed
 #
 
 require 'spec_helper'

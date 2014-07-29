@@ -89,7 +89,7 @@ namespace :import do
         # "width_o"=>"3488"}
 
         photo.flickr_id    = photo_hash['id']
-        photo.flickr_title = photo_hash['title']
+        photo.flickr_title = photo_hash['title'].presence || photo_hash['id']
         photo.url_icon     = photo_hash['url_sq']
         photo.url_big      = photo_hash['url_l']
         photo.url_original = photo_hash['url_o']

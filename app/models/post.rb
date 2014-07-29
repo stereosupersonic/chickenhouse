@@ -5,7 +5,7 @@
 #  id                      :integer          not null, primary key
 #  content                 :text
 #  title                   :string(255)
-#  intern                  :boolean          default(FALSE)
+#  intern                  :boolean          default(FALSE), indexed
 #  user_id                 :integer
 #  media                   :text
 #  media_type              :string(255)
@@ -19,7 +19,7 @@
 #  created_at              :datetime
 #  updated_at              :datetime
 #  slug                    :string(255)
-#  album_id                :integer
+#  album_id                :integer          indexed
 #
 
 class Post < ActiveRecord::Base
