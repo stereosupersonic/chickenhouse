@@ -13,6 +13,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  slug       :string(255)
+#  visible    :boolean          default(TRUE), indexed
 #
 
 require 'spec_helper'

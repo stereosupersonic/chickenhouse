@@ -1,10 +1,15 @@
 -# encoding: utf-8
-=page_header 'Posts'
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li.strong= "Posts"
+
 %h3= "Posts: #{Post.count}"
 %table.table.table-bordered.table-striped.table-hover
   %tr
     %th Name
     %th Intern
+    %th Sichtbar
     %th Erstellt
     %th
   %tr
@@ -12,6 +17,7 @@
       %tr
         %td= link_to post.title, [:admin, post]
         %td= boolean_value post.intern
+        %td= boolean_value post.visible
         %td= format_date post.created_at
         %td
           = edit_button edit_admin_post_path(post)

@@ -34,6 +34,7 @@ namespace :import do
   end
 
   def build_photo(album,photo_hash)
+    puts photo_hash.inspect
     if photo_hash["media"] == "photo"
       album.photos.build do | photo |
         #{ "id"=>"4409987415",
@@ -89,6 +90,7 @@ namespace :import do
         # "width_o"=>"3488"}
 
         photo.flickr_id    = photo_hash['id']
+        photo.flickr_description = photo_hash['title']
         photo.flickr_title = photo_hash['title'].presence || photo_hash['id']
         photo.url_icon     = photo_hash['url_sq']
         photo.url_big      = photo_hash['url_l']
@@ -122,7 +124,7 @@ namespace :import do
 
       flickr_access.photosets.getPhotos(
         :photoset_id => album.flickr_id,
-      :extras => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
+        :extras      => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
         build_photo album, photo
       end
     end
@@ -199,9 +201,21 @@ namespace :import do
 
   end
 
-  desc "create missing album pist db"
+  desc "create missing album posts"
   task :create_album_posts  => :environment do
-    #update created_at
+
+    Album.find_each do |album|
+      if album.post.nil?
+        post = album.create_post
+        puts "created: #{post.title}"
+      end
+    end
+
+  end
+
+  desc "create all album posts new"
+  task :create_all_album_posts  => :environment do
+    Post.destroy_all("album_id is not null")
     Album.find_each do |album|
       if album.post.nil?
         post = album.create_post

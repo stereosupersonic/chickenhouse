@@ -20,6 +20,7 @@
 #  updated_at              :datetime
 #  slug                    :string(255)
 #  album_id                :integer          indexed
+#  visible                 :boolean          default(TRUE), indexed
 #
 
 require 'spec_helper'

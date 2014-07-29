@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729054150) do
+ActiveRecord::Schema.define(version: 20140729082512) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -59,9 +59,11 @@ ActiveRecord::Schema.define(version: 20140729054150) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.boolean  "visible",    default: true
   end
 
   add_index "events", ["start_date"], name: "index_events_on_start_date", using: :btree
+  add_index "events", ["visible"], name: "index_events_on_visible", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -114,10 +116,12 @@ ActiveRecord::Schema.define(version: 20140729054150) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "album_id"
+    t.boolean  "visible",                 default: true
   end
 
   add_index "posts", ["album_id"], name: "index_posts_on_album_id", using: :btree
   add_index "posts", ["intern"], name: "index_posts_on_intern", using: :btree
+  add_index "posts", ["visible"], name: "index_posts_on_visible", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

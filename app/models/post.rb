@@ -20,6 +20,7 @@
 #  updated_at              :datetime
 #  slug                    :string(255)
 #  album_id                :integer          indexed
+#  visible                 :boolean          default(TRUE), indexed
 #
 
 class Post < ActiveRecord::Base
@@ -28,6 +29,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :album
+
+  scope :visible, -> { where(:visible => true) }
 
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment

@@ -1,4 +1,8 @@
-=page_header I18n.t("activerecord.models.event")
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Events', admin_events_path
+  %li.strong=  @event.title
 
 %p
   %b Title:

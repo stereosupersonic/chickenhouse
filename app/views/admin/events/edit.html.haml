@@ -1,2 +1,7 @@
-=page_header "Edit Events"
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Events', admin_events_path
+  %li.strong= "Edit Event"
+
 =render 'form'

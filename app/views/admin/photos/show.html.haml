@@ -1,4 +1,9 @@
-=page_header "Flickr Foto"
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Photos', admin_photos_path
+  %li.strong= @photo.flickr_title
+
 - Photo.attribute_names.each do |attr_name|
   %p
     -#%b=I18n.t("activerecord.attributes.photo.#{attr_name}")

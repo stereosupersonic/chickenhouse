@@ -6,13 +6,17 @@
           %i.fa.fa-edit
     .blog-post-title= link_to post.title, post
     %p.blog-post-meta= format_date post.created_at
+    -#%p.blog-post-meta= " #{format_date post.created_at} von #{post.user.try(:username).presence || 'Admin'}"
     %p
       -if post.content_type.to_s == 'picture'
         = image_tag post.media, :class => "img-responsive thumbnail"
-      -if post.content_type.to_s == 'video'
+        = post.html_content
+      -elsif post.content_type.to_s == 'video'
         .flex-video.widescreen.img-thumbnail
           =youtube_video post.media
-      = post.html_content
+        .video-description= post.html_content
+      -else
+        = post.html_content
 
     -if post.attachment.present?
       .attachment

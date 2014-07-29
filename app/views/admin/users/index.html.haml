@@ -1,5 +1,8 @@
 -# encoding: utf-8
-=page_header 'Users'
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li.strong= "Benutzer"
 %h3= "Users: #{User.count}"
 %table.table.table-bordered.table-striped.table-hover
   %tr
@@ -17,5 +20,6 @@
         %td= edit_button edit_admin_user_path user
         %td= delete_button admin_user_path(user)
 .panel
+  = new_button new_admin_user_path
   = back_button :back
 

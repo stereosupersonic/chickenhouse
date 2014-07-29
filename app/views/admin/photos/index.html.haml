@@ -1,5 +1,8 @@
 -# encoding: utf-8
-=page_header 'Flickr Fotos'
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li.strong= "Photos"
 
 %table.table.table-bordered.table-striped.table-hover
   %tr
@@ -17,7 +20,7 @@
           %td= truncate photo.send(attr_name).to_s
 
         %td= truncate photo.album.try(:flickr_title)
-        %td= format_date photo.created_at
+        %td= format_datetime photo.created_at
         %td
           = show_button admin_photo_path(photo)
           %br
@@ -25,6 +28,5 @@
           = delete_button admin_photo_path(photo)
 = pagination_links @photos
 .panel
-  = new_button new_admin_photo_path
   = back_button :back
 

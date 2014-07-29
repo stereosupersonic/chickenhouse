@@ -1,10 +1,15 @@
 -# encoding: utf-8
-=page_header I18n.t("activerecord.models.event")
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li.strong=  'Events'
+
 %h3= "Events: #{Event.count}"
 %table.table.table-bordered.table-striped.table-hover
   %tr
     %th= I18n.t('activerecord.attributes.event.title')
     %th= I18n.t('activerecord.attributes.event.location')
+    %th Sichtbar
     %th= I18n.t('activerecord.attributes.event.start_date')
     %th= I18n.t('activerecord.attributes.event.end_date')
     %th
@@ -13,6 +18,7 @@
       %tr{:class => "#{ event.start_date.past? ? 'danger' : ''}"}
         %td= event.title
         %td= event.location
+        %td= boolean_value event.visible
         %td= format_datetime event.start_date
         %td= format_datetime event.end_date
         %td

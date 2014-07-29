@@ -13,6 +13,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  slug       :string(255)
+#  visible    :boolean          default(TRUE), indexed
 #
 
 class Event < ActiveRecord::Base
@@ -23,7 +24,9 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
 
-  scope :next_events, lambda { where("start_date >= ? ", Time.now).order('start_date') }
+  scope :visible, -> { where(:visible => true) }
+
+  scope :next_events, lambda { visible.where("start_date >= ? ", Time.now).order('start_date') }
 
   def self.next_event
     next_events.first
