@@ -35,5 +35,10 @@ Chickenhouse::Application.routes.draw do
   get 'about' => 'pages#about',         :as => 'about'
   get 'impressum' => 'pages#impressum', :as => 'impressum'
 
+  #legacy routes
+  get 'empfenbach.html', :to => "collections#show", :id => 'empfenbach'
+  get 'empfenbach',      :to => "collections#show", :id => 'empfenbach'
+  get 'nobigbirds',      :to => "collections#show", :id => 'nobigbirds'
+
   root :to => 'pages#welcome'
 end

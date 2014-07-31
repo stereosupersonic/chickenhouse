@@ -9,15 +9,19 @@ DEPLOY Heroku
 * heroku run rake import:flickr
 * heroku run rake import:create_album_posts
 
-
-
+Inspiration
 http://suedkurve-muenchen.org/
+http://www.miasanrot.de/mission-statement/
 
 TODO
 
 # Version 0.6
 * sidebar only on main pager
-* videos zentrieren
+* einfachers erstellen für Artikel, Event, Video, Bild Post
+* google analystics check
+
+#Collection description
+* anzeige wie zb. unter Bilder/empfenbach
 
 # Version 0.7
 * mission-statement http://www.miasanrot.de/mission-statement/
@@ -49,7 +53,7 @@ TODO
 * atom feed
 * ical feed
 * twitter for each post
-* facebook for each post
+* facebook post for each post
 
 # Version 3
 * authentification with twitter or FB
