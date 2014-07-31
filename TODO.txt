@@ -1,16 +1,3 @@
-UPDATE
-* rake import:blog                    # pull down the production data and ins...
-* rake import:flickr                  # pull down all collections from flickr db
-
-DEPLOY Heroku
-* git push heroku master
-* heroku run rake db:migrate
-* heroku run rake import:blog
-* heroku run rake import:flickr
-* heroku run rake import:create_album_posts
-
-
-
 http://suedkurve-muenchen.org/
 
 TODO

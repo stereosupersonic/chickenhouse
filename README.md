@@ -4,8 +4,17 @@ Chickenhouse
 [![Coverage Status](https://coveralls.io/repos/stereosupersonic/chickenhouse/badge.png?branch=master)](https://coveralls.io/r/stereosupersonic/chickenhouse?branch=master)
 [![Code Climate](https://codeclimate.com/github/stereosupersonic/chickenhouse.png)](https://codeclimate.com/github/stereosupersonic/chickenhouse)
 
-[This is the source of Henaheisl.de](http://www.heneheisl.de)
+[This is the source of Henaheisl.de](http://www.henaheisl.de)
 
+## UPDATE
+* rake import:flickr                  # pull down all collections from flickr db
+
+## DEPLOY to Heroku
+* git push heroku master
+* heroku run rake db:migrate
+* heroku run rake import:blog
+* heroku run rake import:flickr
+* heroku run rake import:create_album_posts
 
 Contributor
 ------------
