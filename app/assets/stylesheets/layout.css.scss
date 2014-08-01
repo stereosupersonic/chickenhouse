@@ -8,10 +8,6 @@ html, body {
     min-width: 90%;
 }
 
-.row.spacer {
-    margin-top: 12%;
-}
-
 @media (max-width: 480px) {
     .row.spacer {
         margin-top: 40%;
@@ -23,13 +19,11 @@ main {
     /* this needs to be bigger than footer height*/
     background-color: white;
     width: 100%;
-    //margin-top: 30%;
-    // accommodate the navbar
+    margin-top: 13%;
 }
 
 header {
-    //height: 170px
-    marging-bottom: 30px;
+ //nothing
 }
 
 .footer {
