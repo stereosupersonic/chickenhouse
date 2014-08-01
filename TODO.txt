@@ -5,20 +5,22 @@ http://www.miasanrot.de/mission-statement/
 TODO
 
 # Version 0.6
-* sidebar only on main pager
+* sidebar only on main pager #1
 * einfachers erstellen für Artikel, Event, Video, Bild Post
 * google analystics check
 
-#Collection description
+# Collection description
 * anzeige wie zb. unter Bilder/empfenbach
+
+# album description
+* anzeige wie zb. unter Bilder/empfenbach/empfenbach-2014
 
 # Version 0.7
 * mission-statement http://www.miasanrot.de/mission-statement/
 * photo anzeige Description
 
 # Version 0.8
-* photo#show ???
-* rake import only override
+* rake import only overrides photos entries
 * iphone http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/
 
 # Version 0.9
