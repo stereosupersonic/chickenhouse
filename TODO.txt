@@ -7,7 +7,7 @@ TODO
 # Version 0.6
 * sidebar only on main pager #1
 * einfachers erstellen für Artikel, Event, Video, Bild Post
-* google analystics check
+
 
 # Collection description
 * anzeige wie zb. unter Bilder/empfenbach
@@ -24,10 +24,11 @@ TODO
 * iphone http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/
 
 # Version 0.9
-
 * better footer here: http://www.coders-guide.com/watch?v=53
-* try otherfont
+* try other font
+
 * try this: http://abrahamfarris.com/2014/02/28/responsive-bootstrap-header/
+
 * Facebookseite: www.facebook.com/henaheisl
 * Twitter Background like https://twitter.com/talktothemanagr
 * login and search like: https://talktothemanager.com/
@@ -37,7 +38,6 @@ TODO
 * Pictures
 ** https://github.com/blueimp/Bootstrap-Image-Gallery
 ** http://www.jasonbutz.info/bootstrap-lightbox/
-* setup google analytics #see here http://railsapps.github.io/rails-google-analytics.html
 * add nicer 500 page
 
 # Version 2
@@ -52,6 +52,8 @@ TODO
 * geburtstags kalender
 
 # Future
+* suche in artikeln bilder events
+* alte events anzeigen
 * Add logger
 * backup (backup gem db dumps)
 * uralt homepage file://localhost/Users/deimel/Dropbox/doc/henaheisl/Homepage/Henaheisl/fanclub/index.htm
