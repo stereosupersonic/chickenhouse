@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/stereosupersonic/chickenhouse.png?label=ready&title=Ready)](https://waffle.io/stereosupersonic/chickenhouse)
 Chickenhouse
 ===========
 [![Build Status](https://travis-ci.org/stereosupersonic/chickenhouse.png?branch=master)](https://travis-ci.org/stereosupersonic/chickenhouse)
