@@ -1,6 +1,15 @@
 Chickenhouse::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  #memcachier setting heroku https://devcenter.heroku.com/articles/memcachier#rails-3-and-4
+  config.cache_store = :dalli_store,
+                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                    {:username => ENV["MEMCACHIER_USERNAME"],
+                     :password => ENV["MEMCACHIER_PASSWORD"],
+                     :failover => true,
+                     :socket_timeout => 1.5,
+                     :socket_failure_delay => 0.2
+                    }
   # Code is not reloaded between requests
   config.cache_classes = true
   config.eager_load = true

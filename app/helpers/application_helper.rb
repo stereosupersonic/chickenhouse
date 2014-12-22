@@ -2,7 +2,6 @@ module ApplicationHelper
 
   include BootstrapHelper
   include BootstrapPaginationHelper
-  include BootstrapPaginationHelper
 
   def error_messages_for( symbol)
     model_object = instance_variable_get "@#{symbol}"

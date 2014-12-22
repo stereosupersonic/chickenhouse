@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 require 'spec_helper'
 
-feature "Posts" ,:focus => true do
+feature "Posts" do
 
   let(:user) { create :user, :username => "stereosupersonic" }
 

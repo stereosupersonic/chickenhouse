@@ -4,13 +4,7 @@
       %li{class: ('active' unless index > 0), data: {target: '#carousel', slide_to: index } }
   .carousel-inner
     - photos.each_with_index do |photo, index|
-      .item{class: ('active' unless index > 0)}
-        = image_tag(photo.url_big.presence || photo.url_original , :class => "img-thumbnail img-responsive")#,  photo
-        .carousel-caption.hidden-xs
-          %h3= photo.album.flickr_title.titleize
-          = photo.flickr_description if photo.flickr_description.present?
-          -if admin?
-            %p= link_to "Edit on Flickr", photo.view_on_flickr_url, :class => 'flickr-link'
+      = render 'photos/photo',:photo => photo, :index => index
 
   = link_to '#carousel', :"data-slide" => 'prev', :class => 'carousel-control left' do
     .span.glyphicon.glyphicon-chevron-left

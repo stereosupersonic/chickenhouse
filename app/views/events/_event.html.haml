@@ -1,4 +1,4 @@
-- cache(event) do
+- cache(event,current_role) do
   %div{:id => dom_id(event), :class => 'event'}
     -if admin?
       .edit_it

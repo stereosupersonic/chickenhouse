@@ -12,17 +12,12 @@ feature "about page" do
     page.should have_content "Das Henaheisl ist wohl einer der bekanntesten \"Underground-Treffs\" in Wartenberg"
   end
 
-   scenario "impressum page" ,:focus => true do
+   scenario "impressum page" do
     visit root_path
     click_link 'Impressum'
     page.should have_content 'Haftungsausschluss (Disclaimer)'
     page.should have_content 'Datenschutzerklärung'
   end
-
-
-
-
-
 
 end
 

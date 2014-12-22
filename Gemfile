@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '~> 4.0.2'
-gem 'psych', '~> 2.0.5'
+gem 'psych', '~> 2.0.0'
 gem "paperclip", "~> 4.1"
-#gem 'dalli',                        '~> 1.1.3'
+gem 'dalli'
 gem 'will_paginate',                '~> 3.0'
 #textile
 gem 'RedCloth'

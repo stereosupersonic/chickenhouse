@@ -5,6 +5,6 @@
   %li= link_to @album.collection.name, @album.collection
   %li.strong= @album.name
 
-- cache(@album) do
+- cache(@album,current_role) do
   = render 'photos/photos', :photos => @album.photos
 

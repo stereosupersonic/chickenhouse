@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :admin?
 
+  def current_role
+    if current_user
+      admin? ? 'admin' : 'user'
+    else
+      'anonymous'
+    end
+  end
+  helper_method :current_role
+
   def require_signin_as_admin!
     redirect_to root_path, alert: "You are not an admin. GO AWAY!!!"    unless admin?
   end

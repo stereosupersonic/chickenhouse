@@ -8,6 +8,10 @@ TODO
 * sidebar only on main pager #1
 * einfachers erstellen für Artikel, Event, Video, Bild Post
 
+# Try
+* http://errbit.github.io/errbit for error showing
+* https://github.com/discourse/logster show log files
+* https://github.com/kandanapp/kandan for chat
 
 # Collection description
 * anzeige wie zb. unter Bilder/empfenbach
