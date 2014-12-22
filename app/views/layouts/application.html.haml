@@ -21,6 +21,6 @@
             = yield
           .col-sm-4.hidden-xs
             = render 'layouts/sidebar'
-
+    = auto_discovery_link_tag :atom,  posts_url(:format=>'atom'), :title=>'Henaheisl Blog'
     = render 'layouts/footer'
 

@@ -40,4 +40,8 @@ class Post < ActiveRecord::Base
   def html_content
     RedCloth.new(content).to_html.html_safe
   end
+
+  def author
+    user.try(:username)
+  end
 end
