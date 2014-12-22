@@ -1,4 +1,4 @@
-- cache(post,current_role) do
+- cache([post,current_role]) do
   %div{:id => dom_id(post), :class => 'post blog-post'}
     -if admin?
       .edit_it
