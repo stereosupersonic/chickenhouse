@@ -5,7 +5,6 @@ xml.feed("xml:lang" => "de-DE", :xmlns => "http://www.w3.org/2005/Atom") do |fee
   feed.link(:href => "http://#{request.host_with_port}/", :rel => "alternate", :type => "text/html")
   feed.link(:href => "#{request.protocol}#{request.host_with_port}#{request.fullpath}", :rel => "self", :type => "application/atom+xml")
   feed.updated(@posts.first.updated_at.iso8601) if @posts.first
- # feed.generator('Henaheisl', :uri => 'http://www..com/tag/maitako')
   @posts.each do |post|
     feed.entry do |entry|
       entry.id("tag:#{request.host},#{post.updated_at.year}:Post/#{post.id}")

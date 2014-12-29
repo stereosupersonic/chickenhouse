@@ -110,6 +110,37 @@ namespace :import do
 
   end
 
+  def build_or_update_photo(album,photo_hash)
+
+    if photo_hash["media"] == "photo"
+      flickr_id    = photo_hash['id']
+      album.photos.find_or_initialize_by_flickr_id do | photo |
+        if photo.new_record?
+          puts "create new photo: #{flickr_id}"
+          photo.flickr_id    = flickr_id
+        else
+          puts "update photo"
+          photo.flickr_description = photo_hash['title']
+          photo.flickr_title = photo_hash['title'].presence || photo_hash['id']
+          photo.url_icon     = photo_hash['url_sq']
+          photo.url_big      = photo_hash['url_l']
+          photo.url_original = photo_hash['url_o']
+          photo.url_small    = photo_hash['url_s']
+          photo.taken_at     = photo_hash['datetaken'].to_datetime
+          photo.created_at   = photo_hash['datetaken'].to_datetime
+          photo.updated_at   = photo_hash['datetaken'].to_datetime
+          if photo_hash["isprimary"].to_i == 1
+            album.iconsmall   =  photo.url_icon
+            album.iconlarge   =  photo.url_big
+            album.main_photo  =  photo
+          end
+        end
+        photo
+      end
+    end
+
+  end
+
   def build_album(collection,album_hash)
     #{ "id"=>"72157627074677447",
     #  "title"=>"Freising 1996",
@@ -124,9 +155,35 @@ namespace :import do
 
       flickr_access.photosets.getPhotos(
         :photoset_id => album.flickr_id,
-        :extras      => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
+      :extras      => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
         build_photo album, photo
       end
+    end
+  end
+
+  def build_or_update_album(collection,album_hash)
+    flickr_id             = album_hash['id']
+    fotos = []
+    collection.albums.find_or_initialize_by_flickr_id(flickr_id) do |album|
+      if  album.new_record?
+        puts "create Album #{album_hash['title']}"
+        album.flickr_id             = flickr_id
+      else
+        puts "update Album #{album_hash['title']}"
+        album.flickr_title          = album_hash['title']
+        album.flickr_description    = album_hash['description']
+      end
+
+      flickr_access.photosets.getPhotos(
+        :photoset_id => album.flickr_id,
+      :extras      => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
+        fotos << build_or_update_photo(album, photo)
+      end
+
+      # TODO remove fotos
+      # album.fotos.where(:flickr_id not in fotos.map(:flickr_id))
+
+      album
     end
   end
 
@@ -149,38 +206,34 @@ namespace :import do
     end
   end
 
-  desc "pull down the production data and inster it to db"
-  task :blog  => :environment do
-    puts "delete all"
-    Post.delete_all
-    Event.delete_all
-    puts "start download"
-    http = Net::HTTP.new("henaheisl.com", 80)
-    response = http.request(Net::HTTP::Get.new("/posts.json"))
-    posts = JSON.parse(response.body)
-    pbar = ProgressBar.new("Import",  posts.count)
-    events = 0
-    articles = 0
-    posts.each do |post_hash|
-      post = post_hash['post']
-      case
-      when post['postable_type'] == 'Article'
-        create_article(post)
-        articles +=1
-      when post['postable_type'] == 'Event'
-        create_event(post)
-        events +=1
+
+  def build_or_update_collection(collection_hash)
+    flickr_id             = collection_hash['id']
+    albums = []
+    Collection.find_or_initialize_by_flickr_id(flickr_id) do | col |
+      if col.new_record?
+        puts "create collection: #{collection_hash['title']}"
+        col.flickr_id             = flickr_id
       else
-        raise  "unknow type #{post['postable_type']}"
+        puts "update collection: #{collection_hash['title']}"
+        col.flickr_title          = collection_hash['title']
+        col.flickr_description    = collection_hash['description']
+        col.iconsmall             = collection_hash['iconsmall']
+        col.iconlarge             = collection_hash['iconlarge']
       end
-      pbar.inc
+      collection_hash['set'].each do |album_hash |
+        albums << build_or_update_album(col, album_hash)
+      end
+
+      # TODO
+      # remove albums are not in the collection
+      # albums
+
     end
-    puts ""
-    puts "import: #{posts.size} events: #{events} articles: #{articles}"
   end
 
-  desc "pull down all collections from flickr db"
-  task :flickr  => :environment do
+  desc "pull down all collections from flickr and create all new"
+  task :flickr_all  => :environment do
     puts "delete all"
     Photo.delete_all
     Album.delete_all
@@ -201,9 +254,34 @@ namespace :import do
 
   end
 
+  desc "pull down all collections from flickr and update"
+  task :flickr  => :environment do
+    puts "start download"
+    collections = []
+    # https://www.flickr.com/services/api/flickr.collections.getTree.html
+    flickr_access.collections.getTree.to_hash['collection'].find {|c|c.title == 'henaheisl'}.to_hash['collection'].to_a.each do |collection_hash|
+      collection = build_or_update_collection(collection_hash)
+      collection.save!
+      collections << collection
+    end
+
+    #TODO delete all collections not by flickr
+    # collections
+
+    #update created_at and create blog post
+    Album.find_each  do |album|
+      album.created_at = album.photos.order('created_at').last.created_at
+      album.save!
+      if album.post.nil?
+        post = album.create_post
+        puts "created: #{post.title}"
+      end
+    end
+
+  end
+
   desc "create missing album posts"
   task :create_album_posts  => :environment do
-
     Album.find_each do |album|
       if album.post.nil?
         post = album.create_post
