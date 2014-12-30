@@ -13,8 +13,6 @@
 #
 
 class User < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :username, :use => :slugged
 
   has_secure_password
 
@@ -25,8 +23,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,  :on =>  :create
 
   def self.reset_admin(pw)
-    u = User.find_or_create_by(:username =>  'admin')
-    u.attributes= {:admin => true,  :password => pw, :password_confirmation => pw, :email => "michael@henaheisl.de"}
+    u = User.find_or_create_by(:username => 'admin')
+    u.attributes= {:admin => true,  :password => pw, :password_confirmation => pw, :email => "info@henaheisl.de"}
     u.save!
     u
   end

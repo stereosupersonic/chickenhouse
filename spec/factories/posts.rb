@@ -21,6 +21,7 @@
 #  slug                    :string(255)
 #  album_id                :integer          indexed
 #  visible                 :boolean          default(TRUE), indexed
+#  display_type            :string(255)      default("textile")
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729082512) do
+ActiveRecord::Schema.define(version: 20141230094548) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20140729082512) do
     t.string   "slug"
     t.integer  "album_id"
     t.boolean  "visible",                 default: true
+    t.string   "display_type",            default: "textile"
   end
 
   add_index "posts", ["album_id"], name: "index_posts_on_album_id", using: :btree

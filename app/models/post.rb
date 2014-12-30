@@ -21,6 +21,7 @@
 #  slug                    :string(255)
 #  album_id                :integer          indexed
 #  visible                 :boolean          default(TRUE), indexed
+#  display_type            :string(255)      default("textile")
 #
 
 class Post < ActiveRecord::Base
@@ -38,7 +39,11 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
 
   def html_content
-    RedCloth.new(content).to_html.html_safe
+    if display_type.to_s == 'raw'
+      content.html_safe
+    else
+      RedCloth.new(content).to_html.html_safe
+    end
   end
 
   def author
