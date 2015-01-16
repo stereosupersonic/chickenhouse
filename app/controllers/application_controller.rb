@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
 
   def send_as_csv(data, filename="output.csv")
     send_data convert_array_to_csv(data),
-      :type => 'text/csv; charset=iso8859-15; header=present',
+      :type     => 'text/csv; charset=utf-8; header=present',
       :filename => filename
   end
 
