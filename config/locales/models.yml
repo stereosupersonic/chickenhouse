@@ -4,6 +4,7 @@ de:
       user: Benutzer
       event: Event
       contact: Nachricht
+      member: Mitglied
     attributes: &labelAlias
       event:
         content: Beschreibung
@@ -24,6 +25,17 @@ de:
         name: Name
         email: E-Mail
         created_at: erstellt am
+      member:
+        first_name: Vorname
+        last_name: Nachname
+        street: Straße
+        plz: PLZ
+        city: Ort
+        mobil: Mobil
+        email: EMail
+        occurs_at: Eintrittsdatum
+        birthday: Geburtstag
+
   simple_form:
     labels:
       <<: *labelAlias

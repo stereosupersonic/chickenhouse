@@ -36,7 +36,6 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  # DELETE /admin/posts/1
   def destroy
     if current_user !=  @user
       @user.destroy

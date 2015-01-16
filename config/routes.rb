@@ -9,6 +9,7 @@ Chickenhouse::Application.routes.draw do
     resources :posts
     resources :contacts
     resources :photos
+    resources :members
   end
 
   resources :posts

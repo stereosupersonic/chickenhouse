@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230094548) do
+ActiveRecord::Schema.define(version: 20150116073822) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -77,6 +77,21 @@ ActiveRecord::Schema.define(version: 20141230094548) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "members", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
+    t.string   "plz"
+    t.string   "city"
+    t.string   "mobil"
+    t.string   "email"
+    t.date     "occurs_at"
+    t.date     "birthday"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "photos", force: true do |t|
     t.string   "flickr_id"

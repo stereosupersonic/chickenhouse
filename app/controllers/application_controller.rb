@@ -32,4 +32,29 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: "You are not an admin. GO AWAY!!!"    unless admin?
   end
   helper_method :require_signin_as_admin!
+
+  protected
+
+  def convert_array_to_csv(data)
+    csv_value = ""
+    require 'csv'
+    csv = CSV.new(csv_value, :force_quotes => true, :col_sep  =>  ";", :row_sep => "\n")
+    data.each do |value|
+      csv << value.map  do |v|
+        begin
+          v.to_s
+        rescue StandardError => error
+          raise "Error in iconv with value: #{value}: "+ error.message
+        end
+      end
+    end
+    csv_value
+  end
+
+  def send_as_csv(data, filename="output.csv")
+    send_data convert_array_to_csv(data),
+      :type => 'text/csv; charset=iso8859-15; header=present',
+      :filename => filename
+  end
+
 end
