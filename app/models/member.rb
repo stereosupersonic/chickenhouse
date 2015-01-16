@@ -21,4 +21,7 @@ class Member < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :first_name, :last_name, :street, :city, :plz
+  def years
+    (Time.now.to_date - occurs_at).to_i / 360 if occurs_at
+  end
 end

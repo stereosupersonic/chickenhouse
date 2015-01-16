@@ -3,7 +3,7 @@ class Admin::MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
-    @members = Member.order('last_name')
+    @members = Member.order(:occurs_at)
     respond_to do |format|
       format.html
       format.csv { send_as_csv(member_data(@members), "Mitgliederliste.csv") }

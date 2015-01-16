@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap-wysihtml5
 //= require bootstrap
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker-rails
 //= require_tree .

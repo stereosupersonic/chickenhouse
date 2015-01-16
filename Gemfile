@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '~> 4.0.2'
-gem 'psych', '~> 2.0.0'
+gem 'psych', '2.0.0'
 gem "paperclip", "~> 4.1"
 gem 'dalli'
 gem 'will_paginate',                '~> 3.0'
@@ -22,7 +22,7 @@ gem 'font-awesome-sass',     '~> 4.0.2'
 gem 'simple_form',  '~> 3.0.1'
 gem 'haml-rails'
 gem 'bootstrap-wysihtml5-rails'
-
+gem 'bootstrap-datepicker-rails'
 gem "exception_notification", "~> 4.0.1"
 
 gem 'capistrano'

@@ -7,8 +7,8 @@
   = f.input :city
   = f.input :mobil
   = f.input :email
-  = f.input :occurs_at
-  = f.input :birthday
+  = f.input :occurs_at, :as => :bootstrap_datepicker
+  = f.input :birthday, :as => :bootstrap_datepicker
   = f.association :user, :label => 'Login', :collection => User.all, :label_method => :label, :prompt => "Choose a User"
   = save_button
   = cancel_button [:admin, :members]

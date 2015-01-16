@@ -5,7 +5,9 @@ de:
       short: "%e. %b"
       long: "%e. %B %Y"
       only_day: "%e"
-
+    datepicker:
+      default: "dd.mm.yyyy"
+      long: "dd MM, yyyy"
     day_names:
       - Sonntag
       - Montag
