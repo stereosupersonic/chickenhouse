@@ -23,7 +23,7 @@ class Album < ActiveRecord::Base
   belongs_to :main_photo, :class_name => "Photo"
   has_many :photos, -> { where(:visible => true).order('taken_at') }
   has_one :post
-
+  scope :by_year, lambda { |year| where(:created_at => Date.parse("#{year}.1.1").beginning_of_year..Date.parse("#{year}.1.1").end_of_year).order('created_at') }
   include FlickrHelper
   def flickr_info
     flickr_access.photosets.getInfo :photoset_id => flickr_id

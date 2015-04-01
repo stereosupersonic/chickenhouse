@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  layout 'welcome', :only => :welcome
   def welcome
     @posts = Post.visible.order("created_at desc").paginate :page => params[:page], :per_page => 5
     @next_event = Event.next_event

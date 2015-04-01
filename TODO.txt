@@ -4,17 +4,13 @@ http://www.miasanrot.de/mission-statement/
 
 TODO
 
-# Version 0.6
-* sidebar only on main pager #1
-* einfachers erstellen für Artikel, Event, Video, Bild Post
+# better webserver to unicorn here https://devcenter.heroku.com/articles/getting-started-with-rails4
+# sidebar next 3 birthdays for logged in users
 
 # Try
 * http://errbit.github.io/errbit for error showing
 * https://github.com/discourse/logster show log files
 * https://github.com/kandanapp/kandan for chat
-
-# Collection description
-* anzeige wie zb. unter Bilder/empfenbach
 
 # album description
 * anzeige wie zb. unter Bilder/empfenbach/empfenbach-2014

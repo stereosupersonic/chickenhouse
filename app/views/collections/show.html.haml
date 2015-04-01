@@ -4,6 +4,7 @@
   %li= link_to 'Bilder', bilder_path
   %li.strong= @collection.name
 
+= simple_format @collection.flickr_description if @collection.flickr_description.present?
 %ul.list-group
   - @collection.albums.order('created_at desc').each do | album |
     %li.list-group-item

@@ -1,4 +1,4 @@
-class Admin::MembersController < ApplicationController
+class Admin::MembersController < Admin::BaseController
 
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 

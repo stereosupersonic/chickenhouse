@@ -1,0 +1,19 @@
+-# -*- coding: UTF-8 -*-
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Bilder', bilder_path
+  %li.strong= @year
+
+%h3= @year
+- if @albums.present?
+  %ul.list-group
+    - @albums.each do | album |
+      %li.list-group-item
+        = link_to seo_album_path(album.collection, album) do
+          = image_tag album.iconsmall, :class => "img-thumbnail img-responsive"
+          = album.name
+          %br
+          = "(#{album.created_at.strftime('%B %Y')})"
+- else
+  %h4= "Leider keine Bilder aus #{@year}"
+

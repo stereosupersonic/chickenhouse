@@ -18,12 +18,15 @@ Chickenhouse::Application.routes.draw do
       get 'recent',:to => "photos#recent"
     end
     resources :albums
+
   end
 
   resources :events
 
   get '/bilder',      :to => "collections#index",     :as => 'bilder'
+  get '/bilder/jahr/:year',  :to => "albums#year", :as => 'albums_by_year'
   get '/bilder/:collection_id/:id',   :to => "albums#show", :as => 'seo_album'
+
 
   get '/contact',    :to => "contacts#new",     :as => 'contact'
   post '/contacts',  :to => "contacts#create",  :as => 'contacts'

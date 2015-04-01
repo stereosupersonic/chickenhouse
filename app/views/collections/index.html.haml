@@ -9,14 +9,23 @@
       = image_tag @recent_photo.url_icon, :class => "img-thumbnail img-responsive"
       %br
       = "letzte Bilder"
-
-%h3='Alben'
+%h3 nach Jahren
 %br
-- @collections.in_groups_of(3) do | collections |
+- (1991..Time.now.year).to_a.in_groups_of(5) do | years |
+  .row
+  - years.each do | year |
+    .year= link_to "#{year}", albums_by_year_path(year)
+.row
+%h3 Alben
+%br
+- @collections.in_groups_of(4) do | collections |
   .row
   - collections.compact.each do | collection |
     .collection.col-md-3
       = link_to collection do
         = image_tag collection.iconlarge,  :class => "img-thumbnail img-responsive"
+        %br
         = collection.name
+
+
 
