@@ -13,7 +13,7 @@
 %br
 - (1989..Time.now.year).to_a.in_groups_of(5) do | years |
   .row
-  - years.each do | year |
+  - years.compact.each do | year |
     .year= link_to "#{year}", albums_by_year_path(year)
 .row
 %h3 Alben

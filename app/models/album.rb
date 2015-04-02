@@ -42,6 +42,10 @@ class Album < ActiveRecord::Base
     flickr_title.titleize
   end
 
+  def name_without_year
+    name.gsub(/\d{4}/,'')
+  end
+
   def reload_from_flickr!
     self.flickr_id             = flickr_info['id']
     self.flickr_title          = flickr_info['title']

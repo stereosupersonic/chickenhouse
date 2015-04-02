@@ -4,16 +4,21 @@
   %li= link_to 'Bilder', bilder_path
   %li.strong= @year
 
-%h3= @year
+%h2= @year
 - if @albums.present?
-  %ul.list-group
-    - @albums.each do | album |
-      %li.list-group-item
-        = link_to seo_album_path(album.collection, album) do
-          = image_tag album.iconsmall, :class => "img-thumbnail img-responsive"
-          = album.name
-          %br
-          = "(#{album.created_at.strftime('%B %Y')})"
+  - @albums.group_by{|a| a.created_at.strftime("%m")}.each do | m,albums |
+    %h3= I18n.l albums.first.created_at, :format => "%B"
+    %ul.list-group
+      - albums.each do | album |
+        %li.list-group-item
+          - if admin?
+            .edit_it
+              = link_to [:edit, :admin,album] do
+                %i.fa.fa-edit
+
+          = link_to seo_album_path(album.collection, album) do
+            = image_tag album.iconsmall, :class => "img-thumbnail img-responsive"
+            = album.name_without_year
 - else
   %h4= "Leider keine Bilder aus #{@year}"
 
