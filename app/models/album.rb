@@ -72,6 +72,12 @@ class Album < ActiveRecord::Base
       end.save
     end
     self.created_at = photos.order('created_at').last.created_at
+
+    if self.post
+      self.post.created_at = self.created_at
+      self.post.save
+    end
+
     self.save!
   end
 
