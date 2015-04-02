@@ -48,6 +48,6 @@ class Admin::AlbumsController < Admin::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def album_params
-    params.require(:album).permit(:flickr_id, :flickr_description, :flickr_title, :visible, :created_at)
+    params.require(:album).permit(:flickr_description, :flickr_title, :visible, :created_at)
   end
 end

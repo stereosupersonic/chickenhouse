@@ -3,7 +3,7 @@
   %li= link_to 'Administration', admin_root_path
   %li= link_to 'Albums', admin_albums_path
   %li.strong= @album.flickr_title
-
+= show_button seo_album_path(@album.collection, @album), "Bilder"
 - Album.attribute_names.each do |attr_name|
   %p
     %b= attr_name

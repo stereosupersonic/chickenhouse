@@ -10,7 +10,7 @@
         %i.fa.fa-edit
   %br
   %br.clear
-
+%h4= @album.flickr_description if @album.flickr_description.present?
 - cache([@album,current_role]) do
   = render 'photos/photos', :photos => @album.photos
 

@@ -8,6 +8,7 @@
 %table.table.table-bordered.table-striped.table-hover
   %tr
     %th Name
+    %th Beschreibung
     %th Sichtbar
     %th Anzahl Bilder
     %th  Datum
@@ -16,6 +17,7 @@
     - @albums.each do |album|
       %tr
         %td= link_to album.flickr_title, [:admin, album]
+        %td= truncate album.flickr_description
         %td= boolean_value album.visible
         %td= album.photos.count
         %td= I18n.l album.created_at, :format => "%B %Y"
