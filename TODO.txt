@@ -3,7 +3,6 @@ http://suedkurve-muenchen.org/
 http://www.miasanrot.de/mission-statement/
 
 TODO
-
 # better webserver to unicorn here https://devcenter.heroku.com/articles/getting-started-with-rails4
 # sidebar next 3 birthdays for logged in users
 
@@ -12,8 +11,6 @@ TODO
 * https://github.com/discourse/logster show log files
 * https://github.com/kandanapp/kandan for chat
 
-# album description
-* anzeige wie zb. unter Bilder/empfenbach/empfenbach-2014
 
 # Version 0.7
 * mission-statement http://www.miasanrot.de/mission-statement/
@@ -26,8 +23,8 @@ TODO
 # Version 0.9
 * better footer here: http://www.coders-guide.com/watch?v=53
 * try other font
-
 * try this: http://abrahamfarris.com/2014/02/28/responsive-bootstrap-header/
+
 
 * Facebookseite: www.facebook.com/henaheisl
 * Twitter Background like https://twitter.com/talktothemanagr
@@ -48,7 +45,6 @@ TODO
 
 # Version 3
 * authentification with twitter or FB
-* mitglieder verwaltung
 * geburtstags kalender
 
 # Future
@@ -59,3 +55,4 @@ TODO
 * uralt homepage file://localhost/Users/deimel/Dropbox/doc/henaheisl/Homepage/Henaheisl/fanclub/index.htm
    screenshot auf die about site
 * http://www.bayernfanclubholzland.de/ newsletter für Karten
+*http://www.bayernfanclubholzland.de/index.php/gruendung/mitgliedfcb
