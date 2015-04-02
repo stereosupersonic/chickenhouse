@@ -1,5 +1,6 @@
 = info_button  "https://www.flickr.com/photos/organize/?start_tab=one_set#{@album.flickr_id}", "edit on Flickr"
 = button_with_icon 'Neu von Flickr laden', reload_from_flickr_admin_album_path(@album), 'repeat', :method => :put
+= show_button seo_album_path(@album.collection, @album), "Bilder"
 
 %br
 %h3= "flickr_id: #{@album.flickr_id}"

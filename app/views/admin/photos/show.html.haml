@@ -11,6 +11,7 @@
     = @photo.send attr_name
 
 %p= image_tag  @photo.url_big , :class => "img-thumbnail"
+= show_button "https://www.flickr.com/photos/sereosonic70/#{@photo.flickr_id}/", 'Flickr anzeigen'
 = debug @photo.flickr_info
 = edit_button [:edit, :admin, @photo]
 = back_button admin_photos_path

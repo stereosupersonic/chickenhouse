@@ -3,11 +3,29 @@
   %li= link_to 'Administration', admin_root_path
   %li= link_to 'Albums', admin_albums_path
   %li.strong= @album.flickr_title
-= show_button seo_album_path(@album.collection, @album), "Bilder"
+
+= info_button  "https://www.flickr.com/photos/organize/?start_tab=one_set#{@album.flickr_id}", "edit on Flickr"
+= show_button seo_album_path(@album.collection, @album), "Bilder anzeigen"
 - Album.attribute_names.each do |attr_name|
   %p
     %b= attr_name
     = @album.send attr_name
+%h3 Bilder
+%table.table.table-bordered.table-striped.table-hover
+  %tr
+    %th
+    %th Erstellt
+    %th
+  %tr
+    - @album.photos.each do |photo|
+      %tr
+        %td= link_to image_tag( photo.url_icon , :class => "img-thumbnail"), admin_photo_path(photo)
+        %td= format_datetime photo.created_at
+        %td
+          = show_button "https://www.flickr.com/photos/sereosonic70/#{photo.flickr_id}/", 'Flickr anzeigen'
+          = show_button admin_photo_path(photo)
+          %br
+          = edit_button edit_admin_photo_path(photo)
 
 = debug @album.flickr_info
 = edit_button [:edit, :admin, @album]
