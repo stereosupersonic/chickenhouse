@@ -22,7 +22,7 @@ inputs.each do |input_type|
 end
 
 SimpleForm.setup do |config|
-
+  config.boolean_style = :inline
   config.wrappers :bootstrap, :tag => 'div', :class => 'form-group', :error_class => 'error field_with_errors' do |b|
     b.use :html5
     b.use :placeholder
@@ -55,6 +55,12 @@ SimpleForm.setup do |config|
     b.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
     b.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
   end
+
+  config.wrappers :inline_checkbox, :tag => 'div', :class => 'checkbox', :error_class => 'has-error' do |b|
+  b.use :html5
+  b.use :placeholder
+  b.use :label_input
+end
 
   # Wrappers for forms and inputs using the Twitter Bootstrap toolkit.
   # Check the Bootstrap docs (http://twitter.github.com/bootstrap)

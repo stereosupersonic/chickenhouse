@@ -18,7 +18,7 @@ class Collection < ActiveRecord::Base
   friendly_id :flickr_title, :use => :slugged
   extend FlickrHelper
 
-  has_many :albums
+  has_many :albums, -> { where(:visible => true).order('created_at') }
 
   def flickr_info
     flickr_access.collections.getInfo :collection_id => flickr_id

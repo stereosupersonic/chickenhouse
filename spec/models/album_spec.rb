@@ -13,6 +13,7 @@
 #  updated_at         :datetime
 #  slug               :string(255)
 #  main_photo_id      :integer
+#  visible            :boolean          default(TRUE), indexed
 #
 
 require 'spec_helper'

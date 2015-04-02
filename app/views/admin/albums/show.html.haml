@@ -1,0 +1,14 @@
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Albums', admin_albums_path
+  %li.strong= @album.flickr_title
+
+- Album.attribute_names.each do |attr_name|
+  %p
+    %b= attr_name
+    = @album.send attr_name
+
+= debug @album.flickr_info
+= edit_button [:edit, :admin, @album]
+= back_button admin_albums_path

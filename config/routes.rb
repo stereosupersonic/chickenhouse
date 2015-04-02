@@ -10,6 +10,11 @@ Chickenhouse::Application.routes.draw do
     resources :contacts
     resources :photos
     resources :members
+    resources :albums do
+      member do
+        put :reload_from_flickr
+      end
+    end
   end
 
   resources :posts

@@ -155,7 +155,7 @@ namespace :import do
 
       flickr_access.photosets.getPhotos(
         :photoset_id => album.flickr_id,
-      :extras      => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
+        :extras      => 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
         build_photo album, photo
       end
     end
@@ -165,7 +165,7 @@ namespace :import do
     flickr_id             = album_hash['id']
     fotos = []
     collection.albums.find_or_initialize_by_flickr_id(flickr_id) do |album|
-      if  album.new_record?
+      if album.new_record?
         puts "create Album #{album_hash['title']}"
         album.flickr_id             = flickr_id
       else

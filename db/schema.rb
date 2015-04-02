@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116073822) do
+ActiveRecord::Schema.define(version: 20150402082620) do
 
   create_table "albums", force: true do |t|
     t.string   "flickr_id"
@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 20150116073822) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "main_photo_id"
+    t.boolean  "visible",            default: true
   end
 
   add_index "albums", ["collection_id"], name: "index_albums_on_collection_id", using: :btree
+  add_index "albums", ["visible"], name: "index_albums_on_visible", using: :btree
 
   create_table "collections", force: true do |t|
     t.string   "flickr_id"

@@ -3,25 +3,14 @@ class CollectionsController < ApplicationController
   def index
     @collections = Collection.all
     @recent_photo  = Photo.recent.first
-    respond_to do |format|
-      format.html
-    end
   end
 
   def show
     @collection = Collection.friendly.find(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def new
     @collection = Collection.new
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def edit

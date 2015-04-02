@@ -1,0 +1,10 @@
+= simple_form_for([:admin, @album]) do |f|
+  = f.error_notification
+
+  - (Album.attribute_names - ['id','visible', 'created_at', 'updated_at', 'slug']).each do |attr_name|
+    = f.input attr_name
+  = f.input :visible, :as => :boolean, :wrapper => :inline_checkbox
+  = f.input :created_at, :as => :bootstrap_datepicker
+  %br.clear
+  = save_button
+  = cancel_button :back

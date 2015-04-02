@@ -11,7 +11,7 @@
       = "letzte Bilder"
 %h3 nach Jahren
 %br
-- (1991..Time.now.year).to_a.in_groups_of(5) do | years |
+- (1989..Time.now.year).to_a.in_groups_of(5) do | years |
   .row
   - years.each do | year |
     .year= link_to "#{year}", albums_by_year_path(year)
