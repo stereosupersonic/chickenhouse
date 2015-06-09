@@ -1,8 +1,62 @@
 #!/usr/bin/env ruby
-system "bundle exec rake db:create:all --trace" 
-system "bundle exec rake db:schema:load --trace"      
-#ENV['LIVEDUMP'] = "true"
-system "bundle exec rake db:sync_production_to_local_db --trace"  unless ARGV.include?('--no-dump') 
-File.open(File.expand_path(File.join(File.expand_path(__FILE__),'..','..','DBUPDATE')), 'w') { |f| f << "#{Time.now.strftime('%d.%m.%Y %H:%M')}"}
-system "bundle exec rake db:migrate --trace"    
-system "bundle exec rake db:test:clone --trace" unless ENV["RAILS_ENV"].to_s == 'production'
+
+#/ Usage: script/dbsync </path/to_a_dump> [<options>]
+#/ setup the database and imports data from
+#/ a given file or from the porduction database
+#/
+#/ --no-dump                     setup the the database but with no data
+#/ --help                        show usage message
+#
+# =============================================================================
+# Uses bundler to install all gems specified in the Gemfile.
+# inspired by http://zachholman.com/talk/ruby-patterns
+# and https://github.com/github/developer.github.com/blob/master/script/bootstrap.rb
+#
+
+APPNAME = 'chickenhouse'
+
+if ARGV.include?('help') || ARGV.include?('--help')
+  system "grep '^#/' <'#{__FILE__}' |cut -c4-"
+  exit 2
+end
+
+def safe_system(cmd)
+  system cmd
+  raise "ERROR during: '#{cmd}'" if $? != 0
+end
+
+def import_dump(file)
+  prepare_db
+  puts "import DUMP: #{file}"
+  safe_system "pg_restore -O -d #{APPNAME}_development #{file}"
+end
+
+def create_dump
+  puts "create dump on heroku"
+  safe_system "bundle exec heroku pg:backups capture"
+  dump_dir = File.expand_path(File.join(File.dirname(__FILE__),'..','dumps'))
+  safe_system "mkdir -p #{dump_dir}"
+  local_dump = File.join(dump_dir,"#{Time.now.strftime('%Y-%m-%d_%H:%M')}.dump")
+  puts "download dump: `bundle exec heroku pg:backups public-url`"
+  safe_system "curl -o #{local_dump} `bundle exec heroku pg:backups public-url`"
+  local_dump
+end
+
+def prepare_db
+  safe_system "bundle exec rake db:drop:all --trace"
+  safe_system "bundle exec rake db:create:all --trace"
+end
+
+unless ARGV.include?('--no-dump')
+  if ARGV[0] and File.file?(ARGV[0])
+    import_dump ARGV[0]
+  else
+    import_dump create_dump
+  end
+end
+
+safe_system "bundle exec rake db:migrate --trace"
+safe_system "bundle exec rake db:test:clone --trace" unless ENV["RAILS_ENV"].to_s == 'production'
+
+
+

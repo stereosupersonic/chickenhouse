@@ -52,6 +52,7 @@ group :development do
   gem 'rack-mini-profiler'          #http://railscasts.com/episodes/368-miniprofiler
   gem 'rails_best_practices'
   gem 'rubocop'
+  gem 'heroku'
 
   gem 'guard-rspec', '~> 3.0.2'
   gem 'guard-spork', '~> 1.5.1'
