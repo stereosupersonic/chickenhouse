@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.1'
 
-gem 'rails', '~> 4.0.2'
+gem 'rails', '~> 4.2'
 gem 'psych', '2.0.0'
 gem "paperclip", "~> 4.1"
 gem 'dalli'
@@ -14,13 +14,13 @@ gem 'jquery_mobile_rails'
 gem 'turbolinks'
 
 #bootstrap
-gem 'sass-rails',              '~> 4.0.0'
+gem 'sass-rails'
 gem 'sprockets-rails'
-gem 'coffee-rails',            '~> 4.0.0'
-gem 'uglifier',                '>= 1.3.0'
-gem 'bootstrap-sass',          '~> 3.3.4'
-gem 'font-awesome-sass',       '~> 4.0.2'
-gem 'simple_form',             '~> 3.0.1'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'simple_form'
 gem 'haml-rails'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
@@ -61,6 +61,20 @@ group :development do
 
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', '~> 0.9.3'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+
+  gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+  gem 'pry-byebug'
+
+   gem 'brakeman', :require => false
+   gem 'bundler-audit', :require => false
 end
 
 group :development , :test do
@@ -70,6 +84,7 @@ group :development , :test do
   gem "factory_girl_rails",         "~> 4.2.1"
   gem 'growl'
   gem 'annotate',                   :git => 'git://github.com/ctran/annotate_models.git'
+    gem 'byebug'
 end
 
 group :test do

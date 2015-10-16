@@ -5,9 +5,9 @@
 require File.expand_path('../config/application', __FILE__)
 
 Chickenhouse::Application.load_tasks
-require 'rubocop/rake_task'
+#require 'rubocop/rake_task'
 
-Rubocop::RakeTask.new
+#Rubocop::RakeTask.new
 desc "start the local server"
 task :start_server do
   port = 3000

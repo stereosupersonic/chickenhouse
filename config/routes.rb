@@ -1,5 +1,4 @@
-Chickenhouse::Application.routes.draw do
-
+Rails.application.routes.draw do
   get "contacts/new"
   namespace :admin do
     root "base#index"
