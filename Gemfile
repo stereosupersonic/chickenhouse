@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem 'rails', '~> 4.2'
+gem 'pg'
+
 gem 'psych', '2.0.0'
 gem "paperclip", "~> 4.1"
 gem 'dalli'
@@ -38,7 +40,6 @@ gem 'coveralls', :require => false
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'  #for Heroku
   gem 'newrelic_rpm'
 end
@@ -77,7 +78,6 @@ group :development do
 end
 
 group :development , :test do
-  gem 'mysql2'
   gem 'g',                          :git => 'https://github.com/stereosupersonic/g'
   gem "rspec-rails",                "~> 2.14.0"
   gem "factory_girl_rails",         "~> 4.2.1"
