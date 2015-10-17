@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+def system!(args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+puts 'start deploy to HEROKU'
+system! 'git push heroku master'
+#system! 'heroku run RAILS_ENV=production rake assets:clean assets:precompile'
+system! 'figaro heroku:set -e production'
+system! 'heroku run rake db:migrate'
+system! 'heroku open'
