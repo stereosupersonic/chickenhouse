@@ -25,6 +25,7 @@ $brand-primary: $main-bg;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
 @import "font-awesome";
 
 .edit_it {
@@ -33,22 +34,22 @@ $brand-primary: $main-bg;
 
 //ERRORS
 
-#error_explanation {
-    @extend .alert;
-    @extend .alert-error;
-    @extend .alert-danger;
-}
-
-.field_with_errors {
-    @extend .has-error;
-    @extend .control-group;
-    @extend .error;
-    .help-inline {
-        color: $state-danger-text;
-        padding-left: 10px;
-    }
-}
-
+// #error_explanation {
+//     @extend .alert;
+//     @extend .alert-error;
+//     @extend .alert-danger;
+// }
+//
+// .field_with_errors {
+//     @extend .has-error;
+//     @extend .control-group;
+//     @extend .error;
+//     .help-inline {
+//         color: $state-danger-text;
+//         padding-left: 10px;
+//     }
+// }
+//
 .inline_value {
     padding-left: 10px;
 }

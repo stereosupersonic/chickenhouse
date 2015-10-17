@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.2.3'
 
 gem 'rails', '~> 4.2'
 gem 'psych', '2.0.0'
@@ -8,6 +8,7 @@ gem 'dalli'
 gem 'will_paginate',                '~> 3.0'
 #textile
 gem 'RedCloth'
+
 gem 'flickraw'
 gem 'jquery-rails'
 gem 'jquery_mobile_rails'
@@ -26,8 +27,6 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
 gem "exception_notification", "~> 4.0.1"
 
-gem 'capistrano'
-gem 'capistrano-ext'
 gem 'whenever',                     '~> 0.7.0',      :require => false
 gem 'thin'
 gem 'bcrypt-ruby'
@@ -84,7 +83,6 @@ group :development , :test do
   gem "factory_girl_rails",         "~> 4.2.1"
   gem 'growl'
   gem 'annotate',                   :git => 'git://github.com/ctran/annotate_models.git'
-    gem 'byebug'
 end
 
 group :test do
@@ -92,7 +90,6 @@ group :test do
   gem "capybara",                   "~> 2.1.0"
   gem "database_cleaner",           "~> 1.0.1"
   gem "launchy",                    "~> 2.3.0"
-  gem "shoulda-matchers",           "~> 2.2.0"
   gem "selenium-webdriver",         "~> 2.38.0"
   gem 'simplecov'
 end
