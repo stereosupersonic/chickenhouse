@@ -4,4 +4,3 @@
     .carousel-caption.hidden-xs
       %h3= photo.album.flickr_title.titleize
       -#= photo.flickr_description if photo.flickr_description.present?
-      %p= link_to "Original", photo.view_on_flickr_url, :class => 'flickr-link'
