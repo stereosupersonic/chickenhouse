@@ -50,6 +50,7 @@ class FlickrUpdater
       album.flickr_id             = album_hash['id']
       album.flickr_title          = album_hash['title']
       album.flickr_description    = album_hash['description']
+      album.save!
       flickr_access.photosets.getPhotos(
         photoset_id: album.flickr_id,
         extras: 'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o').to_hash['photo'].to_a.each do |photo|
