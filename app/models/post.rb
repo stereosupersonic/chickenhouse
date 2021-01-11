@@ -24,7 +24,7 @@
 #  display_type            :string(255)      default("textile")
 #
 
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, :use => :slugged
 

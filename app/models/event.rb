@@ -16,7 +16,7 @@
 #  visible    :boolean          default(TRUE), indexed
 #
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   extend FriendlyId
   friendly_id :title, :use => :slugged
 

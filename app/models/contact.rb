@@ -11,7 +11,7 @@
 #  updated_at :datetime
 #
 
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
 
   validates_presence_of :name, :subject, :body
   validates :email, :email => true

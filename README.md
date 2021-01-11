@@ -1,22 +1,24 @@
-Chickenhouse
-===========
-[![Build Status](https://travis-ci.org/stereosupersonic/chickenhouse.png?branch=master)](https://travis-ci.org/stereosupersonic/chickenhouse)
-[![Coverage Status](https://coveralls.io/repos/stereosupersonic/chickenhouse/badge.png?branch=master)](https://coveralls.io/r/stereosupersonic/chickenhouse?branch=master)
-[![Code Climate](https://codeclimate.com/github/stereosupersonic/chickenhouse.png)](https://codeclimate.com/github/stereosupersonic/chickenhouse)
+# README
 
-[This is the source of Henaheisl.de](http://www.henaheisl.de)
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## UPDATE
-* rake import:flickr                  # pull down all collections from flickr db
+Things you may want to cover:
 
-## DEPLOY to Heroku
-* git push heroku master
-* heroku run rake db:migrate
-* heroku run rake import:blog
-* heroku run rake import:flickr
-* heroku run rake import:create_album_posts
+* Ruby version
 
-Contributor
-------------
+* System dependencies
 
-* Michael Deimel (stereosupersonic) - [m.deimel@deimel.de](mailto:m.deimel@deimel.de)
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

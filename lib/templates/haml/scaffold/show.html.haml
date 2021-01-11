@@ -1,9 +1,0 @@
-=page_header "<%= singular_table_name %>"
-
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-%p
-  %b<%= attribute.human_name %>:
-  = @<%= singular_table_name %>.<%= attribute.name %>
-<%- end -%>
-= edit_button [:edit, @<%= singular_table_name %>]
-= back_button <%= index_helper %>_path

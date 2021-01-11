@@ -13,7 +13,7 @@
 #  slug               :string(255)
 #
 
-class Collection < ActiveRecord::Base
+class Collection < ApplicationRecord
   extend FriendlyId
   friendly_id :flickr_title, :use => :slugged
   extend FlickrHelper

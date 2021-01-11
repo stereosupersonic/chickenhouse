@@ -18,7 +18,7 @@
 #  visible            :boolean          default(TRUE), indexed
 #
 
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   extend FriendlyId
   friendly_id :flickr_title, :use => :slugged
 

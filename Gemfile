@@ -1,95 +1,46 @@
-source 'https://rubygems.org'
-ruby '2.2.3'
+source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 4.2'
-gem 'pg'
+ruby "2.6.3"
 
-gem 'psych', '2.0.0'
-gem "paperclip", "~> 4.1"
-gem 'dalli'
-gem 'will_paginate',                '~> 3.0'
-#textile
-gem 'RedCloth'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "rails", "~> 6.1.1"
+# Use postgresql as the database for Active Record
+gem "pg", "~> 1.1"
+# Use Puma as the app server
+gem "puma", "~> 5.0"
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem "webpacker", "~> 5.0"
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem "turbolinks", "~> 5"
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "jbuilder", "~> 2.7"
+# Use Active Model has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
-gem 'flickraw'
-gem 'jquery-rails'
-gem 'jquery_mobile_rails'
-gem 'turbolinks'
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", ">= 1.4.4", require: false
 
-#bootstrap
-gem 'sass-rails'
-gem 'sprockets-rails'
-gem 'coffee-rails'
-gem 'uglifier'
-gem 'bootstrap-sass'
-gem 'font-awesome-sass'
-gem 'simple_form'
-gem 'haml-rails'
-gem 'bootstrap-wysihtml5-rails'
-gem 'bootstrap-datepicker-rails'
-gem "exception_notification", "~> 4.0.1"
+gem "haml-rails", "~> 2.0"
 
-gem 'whenever',                     '~> 0.7.0',      :require => false
-gem 'thin'
-gem 'bcrypt-ruby'
-gem 'email_validator'
-gem 'figaro'
-gem 'progressbar'
-gem 'coveralls', :require => false
-
-gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
-
-group :production do
-  gem 'rails_12factor'  #for Heroku
-  gem 'newrelic_rpm'
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "pry-rails"
+  gem "pry-nav"
+  gem "rubocop"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
-  gem "quiet_assets"              #Quiet assets turn off rails assets log.
-  gem "binding_of_caller"          #is needed for better_errors
-  gem "better_errors"               #https://github.com/charliesome/better_errors
-
-  gem 'rack-mini-profiler'          #http://railscasts.com/episodes/368-miniprofiler
-  gem 'rails_best_practices'
-  gem 'rubocop'
-  gem 'heroku'
-
-  gem 'guard-rspec', '~> 3.0.2'
-  gem 'guard-spork', '~> 1.5.1'
-  gem 'guard-livereload'
-  gem 'guard-bundler'
-
-  gem 'spork-rails', github: 'sporkrb/spork-rails'
-  gem 'rb-fsevent', '~> 0.9.3'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-
-  gem 'pry-rails'
-  gem 'pry-rescue'
-  gem 'pry-stack_explorer'
-  gem 'pry-byebug'
-
-   gem 'brakeman', :require => false
-   gem 'bundler-audit', :require => false
+  # Display performance information such as SQL time and flame graphs for each request in your browser.
+  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  gem "rack-mini-profiler", "~> 2.0"
+  gem "listen", "~> 3.3"
+  gem "capybara"
+  gem "launchy" # for capybara save_and_open_page
+  gem "webdrivers"
 end
 
-group :development , :test do
-  gem 'g',                          :git => 'https://github.com/stereosupersonic/g'
-  gem "rspec-rails",                "~> 2.14.0"
-  gem "factory_girl_rails",         "~> 4.2.1"
-  gem 'growl'
-  gem 'annotate',                   :git => 'git://github.com/ctran/annotate_models.git'
-end
-
-group :test do
-  gem "faker",                      "~> 1.1.2"
-  gem "capybara",                   "~> 2.1.0"
-  gem "database_cleaner",           "~> 1.0.1"
-  gem "launchy",                    "~> 2.3.0"
-  gem "selenium-webdriver",         "~> 2.38.0"
-  gem 'simplecov'
-end
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
