@@ -1,0 +1,14 @@
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li.strong= I18n.t("activerecord.models.contact")
+
+=page_header I18n.t("activerecord.models.contact")
+= simple_form_for [@contact] do |f|
+  = f.error_notification
+  = f.input :name
+  = f.input :email, :as => :email
+  = f.input :subject
+  = f.input :body
+
+  = save_button '#', 'Absenden'
+  = cancel_button root_path

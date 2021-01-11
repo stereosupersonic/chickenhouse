@@ -1,0 +1,12 @@
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Nachrichten', admin_contacts_path
+  %li.strong= @contact.subject
+
+- %w(name email subject body).each do |attr_name|
+  %p
+    %b=I18n.t("activerecord.attributes.contact.#{attr_name}")
+    = @contact.send attr_name
+
+= back_button admin_contacts_path

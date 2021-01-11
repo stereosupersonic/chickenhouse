@@ -1,0 +1,20 @@
+
+= simple_form_for [:admin, @post] do |f|
+  = f.error_notification
+  = f.input :title
+  = f.input :content, :input_html => { :class => 'wysihtml5'}
+  = f.input :content_type, :as =>:select,  :collection => ['article', 'video', 'picture']
+  = f.input :display_type, :as =>:select,  :collection => ['textile', 'raw']
+  = f.input :media
+  = f.input :visible
+  = f.input :intern
+  = f.input :created_at, :as => :bootstrap_datepicker
+  = f.input :attachment
+  = save_button
+  = cancel_button :back
+
+%br
+= delete_button [:admin, @post] unless @post.new_record?
+
+:javascript
+   $('.wysihtml5').wysihtml5({"html": true});

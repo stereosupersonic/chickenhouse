@@ -1,16 +1,6 @@
 !!!
 %html
- = render 'layouts/head'
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Chickenhouse
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-
+  = render 'layouts/head'
   %body{ :id => "#{controller.controller_name}_#{controller.action_name}", :class => "#{controller.controller_name} #{controller.action_name}" }
     #wrap.container
       %header
@@ -20,8 +10,10 @@
       %main{:role => "main"}
         .row.spacer
           = render 'layouts/messages'
-          .col-sm-12.col-xs-12
+          .col-sm-8.col-xs-12
             = yield
+          .col-sm-4.hidden-xs
+            = render 'layouts/sidebar'
     = auto_discovery_link_tag :atom,  posts_url(:format=>'atom'), :title=>'Henaheisl Blog'
     = render 'layouts/footer'
 

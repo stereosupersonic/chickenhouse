@@ -1,0 +1,6 @@
+-# -*- coding: UTF-8 -*-
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Bilder', bilder_path
+  %li.strong= 'Letzte Bilder'
+= render 'photos', :photos => @recent
