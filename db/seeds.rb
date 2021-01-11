@@ -1,26 +1,7 @@
-# Generated with RailsBricks
-# Initial seed file to use with Devise User Model
-
-# Temporary admin account
-u = User.new(
-    username: "admin",
-    email: "admin@example.com",
-    password: "1234",
-    password_confirmation: "1234",
-    admin: true
-)
-u.save!
-# Test user accounts
-(1..5).each do |i|
-  u = User.new(
-      username: "user#{i}",
-      email: "user#{i}@example.com",
-      password: "1234",
-      password_confirmation: "1234"
-  )
-  u.save!
-
-  puts "#{i} test users created..." if (i % 5 == 0)
-
-end
-
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
