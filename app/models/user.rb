@@ -3,16 +3,16 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  username        :string(255)
-#  email           :string(255)
-#  password_digest :string(255)
 #  admin           :boolean          default(FALSE)
+#  email           :string
+#  password_digest :string
+#  slug            :string
+#  username        :string
 #  created_at      :datetime
 #  updated_at      :datetime
-#  slug            :string(255)
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 
   has_secure_password
 

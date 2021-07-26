@@ -3,20 +3,20 @@
 # Table name: collections
 #
 #  id                 :integer          not null, primary key
-#  flickr_id          :string(255)
 #  flickr_description :text
-#  flickr_title       :string(255)
-#  iconsmall          :string(255)
-#  iconlarge          :string(255)
+#  flickr_title       :string
+#  iconlarge          :string
+#  iconsmall          :string
+#  slug               :string
 #  created_at         :datetime
 #  updated_at         :datetime
-#  slug               :string(255)
+#  flickr_id          :string
 #
 
-class Collection < ActiveRecord::Base
+class Collection < ApplicationRecord
   extend FriendlyId
   friendly_id :flickr_title, :use => :slugged
-  extend FlickrHelper
+  #extend FlickrHelper
 
   has_many :albums, -> { where(:visible => true).order('created_at') }
 

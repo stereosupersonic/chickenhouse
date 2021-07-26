@@ -3,20 +3,25 @@
 # Table name: albums
 #
 #  id                 :integer          not null, primary key
-#  flickr_id          :string(255)
 #  flickr_description :text
-#  flickr_title       :string(255)
-#  iconsmall          :string(255)
-#  iconlarge          :string(255)
-#  collection_id      :integer          indexed
+#  flickr_title       :string
+#  iconlarge          :string
+#  iconsmall          :string
+#  slug               :string
+#  visible            :boolean          default(TRUE)
 #  created_at         :datetime
 #  updated_at         :datetime
-#  slug               :string(255)
+#  collection_id      :integer
+#  flickr_id          :string
 #  main_photo_id      :integer
-#  visible            :boolean          default(TRUE), indexed
+#
+# Indexes
+#
+#  index_albums_on_collection_id  (collection_id)
+#  index_albums_on_visible        (visible)
 #
 
-class Album < ActiveRecord::Base
+class Album < ApplicationRecord
 
   extend FriendlyId
   friendly_id :flickr_title, :use => :slugged
@@ -28,7 +33,7 @@ class Album < ActiveRecord::Base
 
   scope :by_year, lambda { |year| where(:created_at => Date.parse("#{year}.1.1").beginning_of_year..Date.parse("#{year}.1.1").end_of_year).where(:visible => true).order('created_at') }
 
-  include FlickrHelper
+#  include FlickrHelper
   def flickr_info
     @flickr_info ||= flickr_access.photosets.getInfo :photoset_id => flickr_id
   end

@@ -3,25 +3,31 @@
 # Table name: posts
 #
 #  id                      :integer          not null, primary key
-#  content                 :text
-#  title                   :string(255)
-#  intern                  :boolean          default(FALSE), indexed
-#  user_id                 :integer
-#  media                   :text
-#  media_type              :string(255)
-#  out_of_date             :datetime
-#  content_type            :string(255)      default("article")
-#  twitter_export          :boolean          default(TRUE)
-#  attachment_file_name    :string(255)
-#  attachment_content_type :string(255)
+#  attachment_content_type :string
+#  attachment_file_name    :string
 #  attachment_file_size    :integer
 #  attachment_updated_at   :datetime
+#  content                 :text
+#  content_type            :string           default("article")
+#  display_type            :string           default("textile")
+#  intern                  :boolean          default(FALSE)
+#  media                   :text
+#  media_type              :string
+#  out_of_date             :datetime
+#  slug                    :string
+#  title                   :string
+#  twitter_export          :boolean          default(TRUE)
+#  visible                 :boolean          default(TRUE)
 #  created_at              :datetime
 #  updated_at              :datetime
-#  slug                    :string(255)
-#  album_id                :integer          indexed
-#  visible                 :boolean          default(TRUE), indexed
-#  display_type            :string(255)      default("textile")
+#  album_id                :integer
+#  user_id                 :integer
+#
+# Indexes
+#
+#  index_posts_on_album_id  (album_id)
+#  index_posts_on_intern    (intern)
+#  index_posts_on_visible   (visible)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

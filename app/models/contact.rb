@@ -3,15 +3,15 @@
 # Table name: contacts
 #
 #  id         :integer          not null, primary key
-#  subject    :string(255)
 #  body       :text
-#  email      :string(255)
-#  name       :string(255)
+#  email      :string
+#  name       :string
+#  subject    :string
 #  created_at :datetime
 #  updated_at :datetime
 #
 
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
 
   validates_presence_of :name, :subject, :body
   validates :email, :email => true

@@ -3,18 +3,18 @@
 # Table name: members
 #
 #  id         :integer          not null, primary key
-#  first_name :string(255)
-#  last_name  :string(255)
-#  street     :string(255)
-#  plz        :string(255)
-#  city       :string(255)
-#  mobil      :string(255)
-#  email      :string(255)
-#  occurs_at  :date
 #  birthday   :date
-#  user_id    :integer
+#  city       :string
+#  email      :string
+#  first_name :string
+#  last_name  :string
+#  mobil      :string
+#  occurs_at  :date
+#  plz        :string
+#  street     :string
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

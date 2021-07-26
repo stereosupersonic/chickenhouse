@@ -1,12 +1,15 @@
-source 'https://rubygems.org'
-ruby '2.6.6'
+source "https://rubygems.org"
 
-gem 'rails', '~> 4.2'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+
+gem "rails", "~> 5.2.0"
 gem 'pg', '~> 0.18.4'
 
 gem 'psych', '2.0.0'
 gem "paperclip", "~> 4.1"
 gem 'dalli'
+gem 'bootsnap', require: false
 gem 'will_paginate',                '~> 3.0'
 #textile
 gem 'RedCloth'
@@ -47,7 +50,6 @@ end
 group :development do
   gem 'rubocop'
 
-  gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', '~> 0.9.3'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -64,16 +66,15 @@ group :development do
 end
 
 group :development , :test do
-  gem "rspec-rails",                "~> 2.14.0"
-  gem "factory_girl_rails",         "~> 4.2.1"
-  gem 'annotate',                   :git => 'git://github.com/ctran/annotate_models.git'
+  gem "listen"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem 'annotate'
 end
 
 group :test do
   gem "faker",                      "~> 1.1.2"
-  gem "capybara",                   "~> 2.1.0"
-  gem "database_cleaner",           "~> 1.0.1"
+  gem "capybara"
   gem "launchy",                    "~> 2.3.0"
-  gem "selenium-webdriver",         "~> 2.38.0"
   gem 'simplecov'
 end

@@ -3,22 +3,28 @@
 # Table name: photos
 #
 #  id                 :integer          not null, primary key
-#  flickr_id          :string(255)
 #  flickr_description :text
-#  flickr_title       :string(255)
-#  url_icon           :string(255)
-#  url_big            :string(255)
-#  album_id           :integer          indexed
+#  flickr_title       :string
+#  slug               :string
+#  taken_at           :datetime
+#  url_big            :string
+#  url_icon           :string
+#  url_original       :string
+#  url_small          :string
+#  visible            :boolean          default(TRUE)
 #  created_at         :datetime
 #  updated_at         :datetime
-#  url_original       :string(255)
-#  slug               :string(255)
-#  url_small          :string(255)
-#  taken_at           :datetime         indexed
-#  visible            :boolean          default(TRUE), indexed
+#  album_id           :integer
+#  flickr_id          :string
+#
+# Indexes
+#
+#  index_photos_on_album_id  (album_id)
+#  index_photos_on_taken_at  (taken_at)
+#  index_photos_on_visible   (visible)
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Photo do
   pending "add some examples to (or delete) #{__FILE__}"
