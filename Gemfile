@@ -38,7 +38,7 @@ gem 'progressbar'
 gem 'coveralls', :require => false
 
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
-gem 'rake', '< 11.0'          # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
+gem 'rake', '< 13.0'          # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 group :production do
   gem 'rails_12factor'  #for Heroku
   gem 'newrelic_rpm'
