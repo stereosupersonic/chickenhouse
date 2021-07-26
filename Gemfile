@@ -5,7 +5,7 @@ gem 'rails', '~> 4.2'
 gem 'pg', '~> 0.18.4'
 
 gem 'psych', '2.0.0'
-gem "paperclip", "~> 4.1"
+gem "paperclip", "~> 6.1"
 gem 'dalli'
 gem 'will_paginate',                '~> 3.0'
 #textile
