@@ -1,4 +1,4 @@
-shared_examples :a_resource_controller_with_destroy do | _options|
+  shared_examples :a_resource_controller_with_destroy do | _options|
   it_behaves_like :a_resource_controller, _options do | options |
 
     def _base_params
