@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "contacts/new"
+
   namespace :admin do
     root "base#index"
     get "info", to: "base#info", as: "info"
@@ -27,13 +27,14 @@ Rails.application.routes.draw do
 
   resources :events
 
-  get '/bilder',      :to => "collections#index",     :as => 'bilder'
-  get '/bilder/jahr/:year',  :to => "albums#year", :as => 'albums_by_year'
-  get '/bilder/:collection_id/:id',   :to => "albums#show", :as => 'seo_album'
+  #get '/bilder',      :to => "collections#index",     :as => 'bilder'
+  #get '/bilder/jahr/:year',  :to => "albums#year", :as => 'albums_by_year'
+  #get '/bilder/:collection_id/:id',   :to => "albums#show", :as => 'seo_album'
 
 
-  get '/contact',    :to => "contacts#new",     :as => 'contact'
-  post '/contacts',  :to => "contacts#create",  :as => 'contacts'
+  #get '/contact',    :to => "contacts#new",     :as => 'contact'
+  #post '/contacts',  :to => "contacts#create",  :as => 'contacts'
+
   #login
   get    "/login",  :to => "sessions#new",      :as  => "login"
   post   "/login",  :to => "sessions#create"
@@ -44,9 +45,9 @@ Rails.application.routes.draw do
   get 'impressum' => 'pages#impressum', :as => 'impressum'
 
   #legacy routes
-  get 'empfenbach.html', :to => "collections#show", :id => 'empfenbach'
-  get 'empfenbach',      :to => "collections#show", :id => 'empfenbach'
-  get 'nobigbirds',      :to => "collections#show", :id => 'nobigbirds'
+  #get 'empfenbach.html', :to => "collections#show", :id => 'empfenbach'
+  #get 'empfenbach',      :to => "collections#show", :id => 'empfenbach'
+  #get 'nobigbirds',      :to => "collections#show", :id => 'nobigbirds'
 
   root :to => 'pages#welcome'
 end

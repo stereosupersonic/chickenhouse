@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.6.6'
 
 gem 'rails', '~> 4.2'
-gem 'pg'
+gem 'pg', '~> 0.18.4'
 
 gem 'psych', '2.0.0'
 gem "paperclip", "~> 4.1"
@@ -18,7 +18,7 @@ gem 'turbolinks'
 
 #bootstrap
 gem 'sass-rails'
-gem 'sprockets-rails'
+gem 'sprockets-rails', '~> 2.3.3'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
@@ -38,32 +38,19 @@ gem 'progressbar'
 gem 'coveralls', :require => false
 
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
-
+gem 'rake', '< 11.0'          # https://stackoverflow.com/questions/35893584/nomethoderror-undefined-method-last-comment-after-upgrading-to-rake-11
 group :production do
   gem 'rails_12factor'  #for Heroku
   gem 'newrelic_rpm'
 end
 
 group :development do
-  gem "quiet_assets"              #Quiet assets turn off rails assets log.
-  gem "binding_of_caller"          #is needed for better_errors
-  gem "better_errors"               #https://github.com/charliesome/better_errors
-
-  gem 'rack-mini-profiler'          #http://railscasts.com/episodes/368-miniprofiler
-  gem 'rails_best_practices'
   gem 'rubocop'
-  gem 'heroku'
-
-  gem 'guard-rspec', '~> 3.0.2'
-  gem 'guard-spork', '~> 1.5.1'
-  gem 'guard-livereload'
-  gem 'guard-bundler'
 
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', '~> 0.9.3'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -74,14 +61,11 @@ group :development do
   gem 'pry-byebug'
 
    gem 'brakeman', :require => false
-   gem 'bundler-audit', :require => false
 end
 
 group :development , :test do
-  gem 'g',                          :git => 'https://github.com/stereosupersonic/g'
   gem "rspec-rails",                "~> 2.14.0"
   gem "factory_girl_rails",         "~> 4.2.1"
-  gem 'growl'
   gem 'annotate',                   :git => 'git://github.com/ctran/annotate_models.git'
 end
 
