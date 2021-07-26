@@ -9,4 +9,3 @@ git checkout master
 git push heroku
 
 heroku run rake db:migrate --trace
-heroku run rake clear_cache --trace
