@@ -8,4 +8,5 @@ git checkout master
 # heroku git:remote -a
 git push heroku
 
-heroku run rake db:migrate --trace
+heroku run bundle exec rake db:migrate --trace
+heroku run RAILS_ENV=production bundle exec rake assets:precompile
