@@ -7,15 +7,15 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      redirect_to root_url, notice: 'Nachricht wurde versendet'
+      redirect_to root_url, notice: "Nachricht wurde versendet"
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
   protected
 
-    def contact_params
-      params.require(:contact).permit(:name, :email, :subject, :body)
-    end
+  def contact_params
+    params.require(:contact).permit(:name, :email, :subject, :body)
+  end
 end

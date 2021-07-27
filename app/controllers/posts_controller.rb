@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
-  # GET /posts
-  # GET /posts.json
   def index
-    @posts = Post.visible.order('created_at DESC')
+    @posts = Post.visible.order("created_at desc").paginate page: params[:page], per_page: 5
 
     respond_to do |format|
       format.html
@@ -16,10 +14,8 @@ class PostsController < ApplicationController
     @post = Post.friendly.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @post }
     end
   end
-
-
 end

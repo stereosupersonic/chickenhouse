@@ -4,8 +4,7 @@
   %li= link_to 'Posts', admin_posts_path
   %li.strong= @post.title
 
-%p= raw @post.html_content
-%p= debug @post
+%p= debug @post.html_content
 
 %br
 = render "/posts/post", :post =>  @post

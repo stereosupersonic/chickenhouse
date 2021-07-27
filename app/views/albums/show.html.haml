@@ -1,7 +1,6 @@
--# -*- coding: UTF-8 -*-
 %ol.breadcrumb
   %li= link_to 'Home', root_path
-  %li= link_to 'Bilder', bilder_path
+  -#%li= link_to 'Bilder', bilder_path
   %li= link_to @album.collection.name, @album.collection
   %li.strong= @album.name
   - if admin?
@@ -13,4 +12,3 @@
 %h4= @album.flickr_description if @album.flickr_description.present?
 - cache([@album,current_role]) do
   = render 'photos/photos', :photos => @album.photos
-

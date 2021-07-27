@@ -1,8 +1,7 @@
 class CollectionsController < ApplicationController
-
   def index
     @collections = Collection.all
-    @recent_photo  = Photo.recent.first
+    @recent_photo = Photo.recent.first
   end
 
   def show
@@ -22,7 +21,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       if @collection.save
-        format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
+        format.html { redirect_to @collection, notice: "Collection was successfully created." }
       else
         format.html { render action: "new" }
       end
@@ -32,8 +31,8 @@ class CollectionsController < ApplicationController
   def update
     @collection = Collection.friendly.find(params[:id])
     respond_to do |format|
-      if @collection.update_attributes(params[:collection])
-        format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
+      if @collection.update(params[:collection])
+        format.html { redirect_to @collection, notice: "Collection was successfully updated." }
       else
         format.html { render action: "edit" }
       end

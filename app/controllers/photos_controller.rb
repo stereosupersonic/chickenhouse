@@ -1,7 +1,6 @@
 class PhotosController < ApplicationController
-
   def index
-    @collections  = Collection.all
+    @collections = Collection.all
   end
 
   def recent
@@ -11,5 +10,4 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.friendly.find params[:id]
   end
-
 end

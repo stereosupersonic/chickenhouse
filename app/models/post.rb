@@ -3,43 +3,50 @@
 # Table name: posts
 #
 #  id                      :integer          not null, primary key
-#  content                 :text
-#  title                   :string(255)
-#  intern                  :boolean          default(FALSE), indexed
-#  user_id                 :integer
-#  media                   :text
-#  media_type              :string(255)
-#  out_of_date             :datetime
-#  content_type            :string(255)      default("article")
-#  twitter_export          :boolean          default(TRUE)
-#  attachment_file_name    :string(255)
-#  attachment_content_type :string(255)
+#  attachment_content_type :string
+#  attachment_file_name    :string
 #  attachment_file_size    :integer
 #  attachment_updated_at   :datetime
+#  content                 :text
+#  content_type            :string           default("article")
+#  display_type            :string           default("textile")
+#  intern                  :boolean          default(FALSE)
+#  media                   :text
+#  media_type              :string
+#  out_of_date             :datetime
+#  slug                    :string
+#  title                   :string
+#  twitter_export          :boolean          default(TRUE)
+#  visible                 :boolean          default(TRUE)
 #  created_at              :datetime
 #  updated_at              :datetime
-#  slug                    :string(255)
-#  album_id                :integer          indexed
-#  visible                 :boolean          default(TRUE), indexed
-#  display_type            :string(255)      default("textile")
+#  album_id                :integer
+#  user_id                 :integer
+#
+# Indexes
+#
+#  index_posts_on_album_id  (album_id)
+#  index_posts_on_intern    (intern)
+#  index_posts_on_visible   (visible)
 #
 
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: :slugged
 
-  belongs_to :user
-  belongs_to :album
+  belongs_to :user, optional: true
+  belongs_to :album, optional: true
 
-  scope :visible, -> { where(:visible => true) }
+  scope :visible, -> { where(visible: true) }
+  scope :current, -> { where("created_at > ?", 6.month.ago) }
 
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
 
-  validates_presence_of :title
+  validates :title, presence: true
 
   def html_content
-    if display_type.to_s == 'raw'
+    if display_type.to_s == "raw"
       content.html_safe
     else
       RedCloth.new(content).to_html.html_safe

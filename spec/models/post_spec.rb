@@ -3,43 +3,51 @@
 # Table name: posts
 #
 #  id                      :integer          not null, primary key
-#  content                 :text
-#  title                   :string(255)
-#  intern                  :boolean          default(FALSE), indexed
-#  user_id                 :integer
-#  media                   :text
-#  media_type              :string(255)
-#  out_of_date             :datetime
-#  content_type            :string(255)      default("article")
-#  twitter_export          :boolean          default(TRUE)
-#  attachment_file_name    :string(255)
-#  attachment_content_type :string(255)
+#  attachment_content_type :string
+#  attachment_file_name    :string
 #  attachment_file_size    :integer
 #  attachment_updated_at   :datetime
+#  content                 :text
+#  content_type            :string           default("article")
+#  display_type            :string           default("textile")
+#  intern                  :boolean          default(FALSE)
+#  media                   :text
+#  media_type              :string
+#  out_of_date             :datetime
+#  slug                    :string
+#  title                   :string
+#  twitter_export          :boolean          default(TRUE)
+#  visible                 :boolean          default(TRUE)
 #  created_at              :datetime
 #  updated_at              :datetime
-#  slug                    :string(255)
-#  album_id                :integer          indexed
-#  visible                 :boolean          default(TRUE), indexed
-#  display_type            :string(255)      default("textile")
+#  album_id                :integer
+#  user_id                 :integer
+#
+# Indexes
+#
+#  index_posts_on_album_id  (album_id)
+#  index_posts_on_intern    (intern)
+#  index_posts_on_visible   (visible)
 #
 
-require 'spec_helper'
+require "rails_helper"
 
 describe Post do
   describe "validation" do
-    it "should create a valid factory" do
-      build(:post).should be_valid
+    it "creates a valid factory" do
+      expect(build(:post)).to be_valid
     end
 
-    it "should not be valid without a title" do
-      build(:post, :title => nil).should have(1).error_on(:title)
+    it "is not valid without a title" do
+      invalid_post = build(:post, title: nil)
+
+      expect(invalid_post).not_to be_valid
     end
-
   end
 
-  it "should have a friendly title" do
-     create(:post, :title => 'How cool is that').to_param.should == 'how-cool-is-that'
-  end
+  it "has a friendly title" do
+    post = create(:post, title: "How cool is that")
 
+    expect(post.to_param).to eq "how-cool-is-that"
+  end
 end

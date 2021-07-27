@@ -1,3 +1,5 @@
 = render 'next_event', :event => @next_event
-= render 'posts',      :posts => @posts
-
+- if @posts.any?
+  = render 'posts/posts', :posts => @posts
+- else
+  = image_tag "logo_fcb.png", :class => "img-responsive"

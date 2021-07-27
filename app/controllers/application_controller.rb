@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
 
   # require sign in
   def require_signin!
-    if current_user.nil?
-      redirect_to login_url, alert: "You need to sign in first"
-    end
+    redirect_to login_url, alert: "You need to sign in first" if current_user.nil?
   end
   helper_method :require_signin!
 
@@ -21,15 +19,15 @@ class ApplicationController < ActionController::Base
 
   def current_role
     if current_user
-      admin? ? 'admin' : 'user'
+      admin? ? "admin" : "user"
     else
-      'anonymous'
+      "anonymous"
     end
   end
   helper_method :current_role
 
   def require_signin_as_admin!
-    redirect_to root_path, alert: "You are not an admin. GO AWAY!!!"    unless admin?
+    redirect_to root_path, alert: "You are not an admin. GO AWAY!!!" unless admin?
   end
   helper_method :require_signin_as_admin!
 
@@ -37,24 +35,21 @@ class ApplicationController < ActionController::Base
 
   def convert_array_to_csv(data)
     csv_value = ""
-    require 'csv'
-    csv = CSV.new(csv_value, :force_quotes => true, :col_sep  =>  ";", :row_sep => "\n")
+    require "csv"
+    csv = CSV.new(csv_value, force_quotes: true, col_sep: ";", row_sep: "\n")
     data.each do |value|
-      csv << value.map  do |v|
-        begin
-          v.to_s
-        rescue StandardError => error
-          raise "Error in iconv with value: #{value}: "+ error.message
-        end
+      csv << value.map do |v|
+        v.to_s
+      rescue => e
+        raise "Error in iconv with value: #{value}: " + e.message
       end
     end
     csv_value
   end
 
-  def send_as_csv(data, filename="output.csv")
+  def send_as_csv(data, filename = "output.csv")
     send_data convert_array_to_csv(data),
-      :type     => 'text/csv; charset=utf-8; header=present',
-      :filename => filename
+      type: "text/csv; charset=utf-8; header=present",
+      filename: filename
   end
-
 end

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.where(username: params[:signin][:username].strip).first
 
-    if user && user.authenticate(params[:signin][:password])
+    if user&.authenticate(params[:signin][:password])
 
       session[:user_id] = user.id
       redirect_to admin_root_path, notice: "Signed in successfully."
@@ -20,5 +20,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url, notice: "Signed out."
   end
-
 end

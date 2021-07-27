@@ -1,7 +1,6 @@
--# -*- coding: UTF-8 -*-
 %ol.breadcrumb
   %li= link_to 'Home',   root_path
-  %li= link_to 'Bilder', bilder_path
+  -# %li= link_to 'Bilder', bilder_path
   %li.strong= @collection.name
 
 = simple_format @collection.flickr_description if @collection.flickr_description.present?
@@ -11,5 +10,3 @@
       = link_to seo_album_path(@collection, album) do
         = image_tag album.iconsmall, :class => "img-thumbnail img-responsive"
         = album.name
-
-

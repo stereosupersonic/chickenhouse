@@ -1,5 +1,4 @@
 class AlbumsController < ApplicationController
-
   def index
     @albums = Album.all
   end
@@ -12,5 +11,4 @@ class AlbumsController < ApplicationController
     @year = params[:year]
     @albums = Album.by_year(@year)
   end
-
 end

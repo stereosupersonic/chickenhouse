@@ -1,8 +1,8 @@
-require 'flickraw'
+require "flickraw"
 
 # https://github.com/hanklords/flickraw
 module FlickrHelper
-  FlickRaw.api_key       = ENV["FLICKR_API_KEY"]
+  FlickRaw.api_key = ENV["FLICKR_API_KEY"]
   FlickRaw.shared_secret = ENV["FLICKR_SHARED_SECRET"]
 
   def flickr_access

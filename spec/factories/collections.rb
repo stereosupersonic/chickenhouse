@@ -3,24 +3,24 @@
 # Table name: collections
 #
 #  id                 :integer          not null, primary key
-#  flickr_id          :string(255)
 #  flickr_description :text
-#  flickr_title       :string(255)
-#  iconsmall          :string(255)
-#  iconlarge          :string(255)
+#  flickr_title       :string
+#  iconlarge          :string
+#  iconsmall          :string
+#  slug               :string
 #  created_at         :datetime
 #  updated_at         :datetime
-#  slug               :string(255)
+#  flickr_id          :string
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :collection do
-    flickr_id 1
-    flickr_description "MyText"
-    flickr_title "MyString"
-    iconsmall "MyString"
-    iconlarge "MyString"
+    flickr_id { 1 }
+    flickr_description { "my destcription" }
+    flickr_title { "my flickr_title" }
+    iconsmall { "my iconsmall" }
+    iconlarge { "my iconlarge" }
   end
 end

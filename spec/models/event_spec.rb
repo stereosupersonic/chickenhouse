@@ -3,70 +3,80 @@
 # Table name: events
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
-#  content    :text
-#  user_id    :integer
-#  location   :string(255)
-#  start_date :datetime         indexed
-#  end_date   :datetime
 #  all_day    :boolean
+#  content    :text
+#  end_date   :datetime
+#  location   :string
+#  slug       :string
+#  start_date :datetime
+#  title      :string
+#  visible    :boolean          default(TRUE)
 #  created_at :datetime
 #  updated_at :datetime
-#  slug       :string(255)
-#  visible    :boolean          default(TRUE), indexed
+#  user_id    :integer
+#
+# Indexes
+#
+#  index_events_on_start_date  (start_date)
+#  index_events_on_visible     (visible)
 #
 
-require 'spec_helper'
+require "rails_helper"
 
 describe Event do
-  describe 'validation' do
-    it "should build a valid factory" do
-      build(:event).should be_valid
+  describe "validation" do
+    it "builds a valid factory" do
+      expect(build(:event)).to be_valid
     end
 
     it "not be valid without a title" do
-      build(:event,:title => nil).should have(1).errors_on(:title)
+      event = build(:event, title: nil)
+      expect(event).not_to be_valid
+      expect(event.errors[:title]).to be_present
     end
   end
 
   describe "next_event" do
+    it "is the next" do
+      event = create(:event, start_date: 1.day.since)
 
-    it "should be the next" do
-      event = create(:event, :start_date => 1.day.since)
-      Event.next_event.should == event
+      expect(described_class.next_event).to eq event
     end
 
-    it "should not load events in the past" do
-      event = create(:event, :start_date => 1.day.ago)
-      Event.next_event.should be_nil
+    it "does not load events in the past" do
+      create(:event, start_date: 1.day.ago)
+
+      expect(described_class.next_event).to be_nil
     end
 
-    it "should  load the nearest event" do
-      event_1 = create(:event, :start_date => 2.day.since)
-      event  = create(:event, :start_date => 1.day.since)
-      event_3 = create(:event, :start_date => 1.day.ago)
-      Event.next_event.should == event
+    it "loads the nearest event" do
+      create(:event, start_date: 2.days.since)
+      event = create(:event, start_date: 1.day.since)
+      create(:event, start_date: 1.day.ago)
+
+      expect(described_class.next_event).to eq event
     end
   end
 
   describe "next_events" do
+    it "is the next" do
+      event = create(:event, start_date: 1.day.since)
 
-    it "should be the next" do
-      event = create(:event, :start_date => 1.day.since)
-      Event.next_events.should == [event]
+      expect(described_class.next_events).to eq [event]
     end
 
-    it "should not load events in the past" do
-      event = create(:event, :start_date => 1.day.ago)
-      Event.next_events.should be_empty
+    it "does not load events in the past" do
+      create(:event, start_date: 1.day.ago)
+
+      expect(described_class.next_events).to be_empty
     end
 
-    it "should load the nearest event" do
-      event_1 = create(:event, :start_date => 2.day.since)
-      event  = create(:event, :start_date => 1.day.since)
-      event_3 = create(:event, :start_date => 1.day.ago)
-      Event.next_events.should == [event,event_1]
-    end
+    it "loads the nearest event" do
+      event_1 = create(:event, start_date: 2.days.since)
+      event = create(:event, start_date: 1.day.since)
+      create(:event, start_date: 1.day.ago)
 
+      expect(described_class.next_events).to eq [event, event_1]
+    end
   end
 end
