@@ -56,7 +56,6 @@ class Admin::UsersController < Admin::BaseController
     params.require(:user).permit(
       :username,
       :email,
-      :admin,
       :password,
       :password_confirmation
     )
