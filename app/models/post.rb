@@ -42,7 +42,7 @@ class Post < ApplicationRecord
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
 
-  validates_presence_of :title
+  validates :title, presence: true
 
   def html_content
     if display_type.to_s == "raw"

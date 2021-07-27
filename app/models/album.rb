@@ -30,7 +30,7 @@ class Album < ApplicationRecord
   has_many :photos, -> { where(visible: true).order("taken_at") }
   has_one :post
 
-  scope :by_year, lambda { |year| where(created_at: Date.parse("#{year}.1.1").beginning_of_year..Date.parse("#{year}.1.1").end_of_year).where(visible: true).order("created_at") }
+  scope :by_year, ->(year) { where(created_at: Date.parse("#{year}.1.1").beginning_of_year..Date.parse("#{year}.1.1").end_of_year).where(visible: true).order("created_at") }
 
   #  include FlickrHelper
   def flickr_info

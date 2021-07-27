@@ -1,5 +1,5 @@
 class Admin::PhotosController < Admin::BaseController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: %i[show edit update destroy]
 
   # GET /admin/photos
   def index
@@ -22,7 +22,7 @@ class Admin::PhotosController < Admin::BaseController
   # PATCH/PUT /admin/photos/1
   def update
     if @photo.update(photo_params)
-      redirect_to [:admin, :photos], notice: "Photo was successfully updated."
+      redirect_to %i[admin photos], notice: "Photo was successfully updated."
     else
       render action: "edit"
     end
@@ -31,7 +31,7 @@ class Admin::PhotosController < Admin::BaseController
   # DELETE /admin/photos/1
   def destroy
     @photo.destroy
-    redirect_to [:admin, :photos], notice: "Photo was successfully destroyed."
+    redirect_to %i[admin photos], notice: "Photo was successfully destroyed."
   end
 
   private

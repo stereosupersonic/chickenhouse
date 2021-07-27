@@ -34,18 +34,18 @@ require "rails_helper"
 
 describe Post do
   describe "validation" do
-    it "should create a valid factory" do
+    it "creates a valid factory" do
       expect(build(:post)).to be_valid
     end
 
-    it "should not be valid without a title" do
+    it "is not valid without a title" do
       invalid_post = build(:post, title: nil)
 
-      expect(invalid_post).to_not be_valid
+      expect(invalid_post).not_to be_valid
     end
   end
 
-  it "should have a friendly title" do
+  it "has a friendly title" do
     post = create(:post, title: "How cool is that")
 
     expect(post.to_param).to eq "how-cool-is-that"

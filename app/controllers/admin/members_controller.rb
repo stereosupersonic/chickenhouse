@@ -1,5 +1,5 @@
 class Admin::MembersController < Admin::BaseController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: %i[show edit update destroy]
 
   def index
     @members = Member.order("occurs_at,last_name")
@@ -37,9 +37,7 @@ class Admin::MembersController < Admin::BaseController
   end
 
   def destroy
-    if @member.destroy
-      redirect_to admin_members_url, notice: "Member was successfully destroyed."
-    end
+    redirect_to admin_members_url, notice: "Member was successfully destroyed." if @member.destroy
   end
 
   private
@@ -49,15 +47,15 @@ class Admin::MembersController < Admin::BaseController
   end
 
   def member_data(members)
-    export_attributs = [:first_name,
-      :last_name,
-      :street,
-      :plz,
-      :city,
-      :mobil,
-      :email,
-      :occurs_at,
-      :birthday]
+    export_attributs = %i[first_name
+      last_name
+      street
+      plz
+      city
+      mobil
+      email
+      occurs_at
+      birthday]
     members.map do |m|
       export_attributs.map do |p|
         value = m.send(p)

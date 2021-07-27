@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: {case_sensitive: false}
   validates :email, uniqueness: {case_sensitive: false}
   validates :password, length: {minimum: 4}, on: :create
-  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create
+  validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create}
   def label
     "#{username} (#{email})"
   end

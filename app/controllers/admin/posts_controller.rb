@@ -1,5 +1,5 @@
 class Admin::PostsController < Admin::BaseController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: %i[show edit update destroy]
 
   # GET /admin/posts
   def index

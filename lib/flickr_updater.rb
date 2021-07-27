@@ -63,15 +63,13 @@ class FlickrUpdater
 
   def build_or_update_album(collection, album_hash)
     flickr_id = album_hash["id"]
-    unless collection.albums.find_by_flickr_id(flickr_id)
-      build_album(collection, album_hash)
-    end
+    build_album(collection, album_hash) unless collection.albums.find_by(flickr_id: flickr_id)
   end
 
   def update!
     flickr_access.collections.getTree.to_hash["collection"].find { |c| c.title == "henaheisl" }.to_hash["collection"].to_a.each do |collection_hash|
       flickr_id = collection_hash["id"]
-      Collection.find_by_flickr_id(flickr_id) do |col|
+      Collection.find_by(flickr_id: flickr_id) do |col|
         puts "***** Update collection #{col["title"]}"
         collection_hash["set"].each do |album_hash|
           build_or_update_album(col, album_hash)

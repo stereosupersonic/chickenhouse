@@ -25,13 +25,13 @@ class Event < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  validates_presence_of :title
+  validates :title, presence: true
 
   belongs_to :user
 
   scope :visible, -> { where(visible: true) }
 
-  scope :next_events, lambda { visible.where("start_date >= ? ", Time.now).order("start_date") }
+  scope :next_events, -> { visible.where("start_date >= ? ", Time.zone.now).order("start_date") }
 
   def self.next_event
     next_events.first

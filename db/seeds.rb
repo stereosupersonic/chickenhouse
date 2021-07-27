@@ -20,5 +20,5 @@ u.save!
   )
   u.save!
 
-  puts "#{i} test users created..." if i % 5 == 0
+  puts "#{i} test users created..." if (i % 5).zero?
 end

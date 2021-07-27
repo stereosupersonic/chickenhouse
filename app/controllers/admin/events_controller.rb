@@ -1,5 +1,5 @@
 class Admin::EventsController < Admin::BaseController
-  before_action :set_admin_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_event, only: %i[show edit update destroy]
 
   def index
     @events = Event.order("start_date DESC").paginate page: params[:page], per_page: 20

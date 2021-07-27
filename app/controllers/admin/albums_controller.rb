@@ -1,5 +1,5 @@
 class Admin::AlbumsController < Admin::BaseController
-  before_action :set_album, only: [:show, :edit, :update, :destroy, :reload_from_flickr]
+  before_action :set_album, only: %i[show edit update destroy reload_from_flickr]
 
   # GET /admin/photos
   def index
@@ -22,7 +22,7 @@ class Admin::AlbumsController < Admin::BaseController
   # PATCH/PUT /admin/photos/1
   def update
     if @album.update(album_params)
-      redirect_to [:admin, :albums], notice: "Albums was successfully updated."
+      redirect_to %i[admin albums], notice: "Albums was successfully updated."
     else
       render action: "edit"
     end
@@ -30,13 +30,13 @@ class Admin::AlbumsController < Admin::BaseController
 
   def reload_from_flickr
     @album.reload_from_flickr!
-    redirect_to [:admin, :albums], notice: "Albums was successfully reload from flickr."
+    redirect_to %i[admin albums], notice: "Albums was successfully reload from flickr."
   end
 
   # DELETE /admin/photos/1
   def destroy
     @album.destroy
-    redirect_to [:admin, :photos], notice: "Photo was successfully destroyed."
+    redirect_to %i[admin photos], notice: "Photo was successfully destroyed."
   end
 
   private

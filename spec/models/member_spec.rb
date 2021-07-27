@@ -21,7 +21,7 @@ require "rails_helper"
 
 describe Member do
   describe "validation" do
-    it "should build a valid factory" do
+    it "builds a valid factory" do
       build(:member).should be_valid
     end
   end

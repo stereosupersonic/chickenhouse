@@ -4,12 +4,12 @@ describe "Login", type: :system do
   xit "as normal user" do
     visit root_path
 
-    expect(page).to_not have_link "Login"
+    expect(page).not_to have_link "Login"
 
     sign_in create(:user, username: "tim")
 
     expect(page).to have_content "Signed in successfully."
-    expect(page).to_not have_link "Admin"
+    expect(page).not_to have_link "Admin"
 
     click_link "Ausloggen"
     expect(page).to have_content "Signed out."
@@ -18,7 +18,7 @@ describe "Login", type: :system do
   it "as admin user" do
     visit root_path
 
-    expect(page).to_not have_link "Login"
+    expect(page).not_to have_link "Login"
 
     sign_in create(:admin)
     expect(page).to have_content "Signed in successfully."

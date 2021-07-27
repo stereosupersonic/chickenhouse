@@ -29,7 +29,7 @@ class Photo < ApplicationRecord
   friendly_id :flickr_title, use: :slugged
 
   belongs_to :album
-  validates_presence_of :flickr_id
+  validates :flickr_id, presence: true
 
   # include FlickrHelper
   scope :visible, -> { where(visible: true) }

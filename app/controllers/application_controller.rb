@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
 
   # require sign in
   def require_signin!
-    if current_user.nil?
-      redirect_to login_url, alert: "You need to sign in first"
-    end
+    redirect_to login_url, alert: "You need to sign in first" if current_user.nil?
   end
   helper_method :require_signin!
 
@@ -42,8 +40,8 @@ class ApplicationController < ActionController::Base
     data.each do |value|
       csv << value.map do |v|
         v.to_s
-      rescue => error
-        raise "Error in iconv with value: #{value}: " + error.message
+      rescue => e
+        raise "Error in iconv with value: #{value}: " + e.message
       end
     end
     csv_value

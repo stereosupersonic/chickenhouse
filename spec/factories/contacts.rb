@@ -16,6 +16,7 @@
 FactoryBot.define do
   factory :contact do
     subject { "cooler Verein" }
+
     body { "whats up" }
     email { "mrcool@sample.com" }
     name { "mr cool" }

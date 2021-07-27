@@ -1,7 +1,7 @@
 require "capybara_helper"
 
 describe "static pages", type: :system do
-  scenario "about page" do
+  it "about page" do
     visit root_path
 
     click_link "Über Uns"
@@ -10,7 +10,7 @@ describe "static pages", type: :system do
     expect(page).to have_content "Das Henaheisl"
   end
 
-  scenario "impressum page" do
+  it "impressum page" do
     visit root_path
 
     click_link "Impressum"

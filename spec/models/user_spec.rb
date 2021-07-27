@@ -16,34 +16,34 @@ require "rails_helper"
 
 describe User do
   describe "validation" do
-    it "should build a valid factory" do
+    it "builds a valid factory" do
       expect(build(:user)).to be_valid
     end
 
-    it "should build a valid factory for admin" do
+    it "builds a valid factory for admin" do
       expect(build(:admin)).to be_valid
     end
 
-    it "should create as admin" do
+    it "creates as admin" do
       expect(create(:admin)).to be_admin
     end
   end
 
   describe "reset_admin" do
-    it "should not be valid without a title" do
+    it "is not valid without a title" do
       expect do
-        User.reset_admin("12345")
-      end.to change(User, :count).by(1)
+        described_class.reset_admin("12345")
+      end.to change(described_class, :count).by(1)
     end
 
-    it "should create as admin" do
-      User.reset_admin("12345").should be_admin
+    it "creates as admin" do
+      described_class.reset_admin("12345").should be_admin
 
-      expect(User.reset_admin("12345")).to be_admin
+      expect(described_class.reset_admin("12345")).to be_admin
     end
 
-    it "should create as admin as name" do
-      expect(User.reset_admin("12345").username).to eq "admin"
+    it "creates as admin as name" do
+      expect(described_class.reset_admin("12345").username).to eq "admin"
     end
   end
 end

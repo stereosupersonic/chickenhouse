@@ -31,7 +31,7 @@ class CollectionsController < ApplicationController
   def update
     @collection = Collection.friendly.find(params[:id])
     respond_to do |format|
-      if @collection.update_attributes(params[:collection])
+      if @collection.update(params[:collection])
         format.html { redirect_to @collection, notice: "Collection was successfully updated." }
       else
         format.html { render action: "edit" }

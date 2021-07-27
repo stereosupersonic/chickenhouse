@@ -8,7 +8,7 @@ class BootstrapDatepickerInput < SimpleForm::Inputs::Base
     text_field_options[:class] << "bootstrap-datepicker"
     text_field_options[:type] = "text"
     text_field_options[:value] ||= format_date(value(object), format)
-    set_data_option text_field_options, "date-format", I18n.t(format, scope: [:date, :datepicker], default: :default)
+    set_data_option text_field_options, "date-format", I18n.t(format, scope: %i[date datepicker], default: :default)
     default_data_option text_field_options, "provide", "datepicker"
 
     return_string =
@@ -36,6 +36,6 @@ class BootstrapDatepickerInput < SimpleForm::Inputs::Base
   end
 
   def format_date(value, format = nil)
-    value.try(:strftime, I18n.t(format, scope: [:date, :formats], default: :default))
+    value.try(:strftime, I18n.t(format, scope: %i[date formats], default: :default))
   end
 end

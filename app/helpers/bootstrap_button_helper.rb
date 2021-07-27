@@ -2,7 +2,7 @@
 module BootstrapButtonHelper
   def button_with_icon(text, link, icon, options = {})
     options.reverse_merge! class: "btn btn-default btn-sm"
-    link_to content_tag(:i, "&nbsp;".html_safe, class: "fa fa-#{icon}") + text, link, options
+    link_to tag.i("&nbsp;".html_safe, class: "fa fa-#{icon}") + text, link, options
   end
 
   def export_button(text, link, options = {})

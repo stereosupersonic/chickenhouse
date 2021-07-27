@@ -6,9 +6,9 @@ describe "welcome", type: :system do
 
     expect(page).to have_title "Henaheisl"
     expect(page).to have_content "Henaheisl"
-    expect(page).to_not have_link "Bilder"
+    expect(page).not_to have_link "Bilder"
     expect(page).to have_link "Kalender"
-    expect(page).to_not have_link "Kontakt"
+    expect(page).not_to have_link "Kontakt"
     expect(page).to have_link "Über Uns"
     expect(page).to have_link "Henaheisl on Facebook"
     expect(page).to have_link "Impressum"

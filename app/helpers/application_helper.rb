@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def youtube_video(video_id)
-    embed_code = '<iframe src="http://www.youtube.com/embed/' + h(video_id) + '" frameborder="0" allowfullscreen></iframe>'
+    embed_code = "<iframe src=\"http://www.youtube.com/embed/#{h(video_id)}\" frameborder=\"0\" allowfullscreen></iframe>"
     embed_code.html_safe
   end
 
@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def detect_youtube_url(line)
-    regexp = /http:\/\/www.youtube.com\/watch\?[^\s]*/
+    regexp = %r{http://www.youtube.com/watch\?[^\s]*}
     match = line.match(regexp)
     match[0] if match
   end

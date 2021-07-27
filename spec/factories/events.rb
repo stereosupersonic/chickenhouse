@@ -30,7 +30,7 @@ FactoryBot.define do
     user
     location { "MyString" }
     start_date { 1.day.since }
-    end_date { Time.now }
+    end_date { Time.zone.now }
     all_day { false }
   end
 end

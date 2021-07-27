@@ -1,9 +1,9 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [
-    :edit,
-    :show,
-    :destroy,
-    :update
+  before_action :set_user, only: %i[
+    edit
+    show
+    destroy
+    update
   ]
 
   def index

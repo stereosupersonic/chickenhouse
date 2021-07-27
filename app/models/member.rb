@@ -20,8 +20,8 @@
 class Member < ApplicationRecord
   belongs_to :user
 
-  validates_presence_of :first_name, :last_name, :street, :city, :plz
+  validates :first_name, :last_name, :street, :city, :plz, presence: true
   def years
-    (Time.now.to_date - occurs_at).to_i / 360 if occurs_at
+    (Time.zone.now.to_date - occurs_at).to_i / 360 if occurs_at
   end
 end

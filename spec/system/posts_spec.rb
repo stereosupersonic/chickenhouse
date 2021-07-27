@@ -31,7 +31,7 @@ describe "Posts", type: :system, js: true do
       title: "Coole Mega Fugge",
       content: "der Lorem Ipsum of the Posts",
       user: user,
-      attachment: File.new(Rails.root + "spec/fixtures/cooler_upload.pdf")
+      attachment: File.new("#{Rails.root}/spec/fixtures/cooler_upload.pdf")
 
     visit root_path
     within("#posts") do

@@ -1,7 +1,7 @@
 xml.instruct!(:xml, version: "1.0")
 xml.feed("xml:lang" => "de-DE", :xmlns => "http://www.w3.org/2005/Atom") do |feed|
   feed.title("Henaheisl Blog")
-  feed.id("tag:#{request.host},#{Time.now.year}:/posts")
+  feed.id("tag:#{request.host},#{Time.zone.now.year}:/posts")
   feed.link(href: "http://#{request.host_with_port}/", rel: "alternate", type: "text/html")
   feed.link(href: "#{request.protocol}#{request.host_with_port}#{request.fullpath}", rel: "self", type: "application/atom+xml")
   feed.updated(@posts.first.updated_at.iso8601) if @posts.first

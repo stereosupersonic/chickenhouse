@@ -17,7 +17,7 @@ describe Contact do
   let(:contact) { build(:contact) }
 
   describe "validation" do
-    it "should build a valid factory" do
+    it "builds a valid factory" do
       expect(contact).to be_valid
     end
 
@@ -25,16 +25,16 @@ describe Contact do
       it "not be valid without a #{attr_name}" do
         contact = build(:contact, attr_name.to_s => nil)
 
-        expect(contact).to_not be_valid
+        expect(contact).not_to be_valid
         expect(contact.errors.count).to eq 1
         expect(contact.errors[attr_name.to_s]).to be_present
       end
     end
 
-    it "should not not be vaild without an valid email_address" do
+    it "does not not be vaild without an valid email_address" do
       contact = build(:contact, email: nil)
 
-      expect(contact).to_not be_valid
+      expect(contact).not_to be_valid
       expect(contact.errors.count).to eq 1
       expect(contact.errors[:email]).to eq ["is invalid"]
     end
