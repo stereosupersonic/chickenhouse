@@ -38,6 +38,7 @@ class Post < ApplicationRecord
   belongs_to :album, optional: true
 
   scope :visible, -> { where(visible: true) }
+  scope :current, -> { where("created_at > ?", 6.month.ago) }
 
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
