@@ -1,6 +1,6 @@
 %ol.breadcrumb
   %li= link_to 'Home', root_path
-  %li= link_to 'Bilder', bilder_path
+  -#%li= link_to 'Bilder', bilder_path
   %li= link_to @album.collection.name, @album.collection
   %li.strong= @album.name
   - if admin?

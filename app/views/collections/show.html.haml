@@ -1,6 +1,6 @@
 %ol.breadcrumb
   %li= link_to 'Home',   root_path
-  %li= link_to 'Bilder', bilder_path
+  -# %li= link_to 'Bilder', bilder_path
   %li.strong= @collection.name
 
 = simple_format @collection.flickr_description if @collection.flickr_description.present?

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # get '/bilder',      :to => "collections#index",     :as => 'bilder'
   # get '/bilder/jahr/:year',  :to => "albums#year", :as => 'albums_by_year'
-  # get '/bilder/:collection_id/:id',   :to => "albums#show", :as => 'seo_album'
+  get "/bilder/:collection_id/:id", to: "albums#show", as: "seo_album"
 
   # get '/contact',    :to => "contacts#new",     :as => 'contact'
   # post '/contacts',  :to => "contacts#create",  :as => 'contacts'
