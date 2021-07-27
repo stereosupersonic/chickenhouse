@@ -12,19 +12,19 @@
 #  updated_at      :datetime
 #
 
-require 'faker'
-FactoryGirl.define do
+require "faker"
+FactoryBot.define do
   factory :user do
-    username  { Faker::Name.last_name }
-    email     { Faker::Internet.email }
-    password  { 1234 }
+    username { Faker::Name.last_name }
+    email { Faker::Internet.email }
+    password { "test" }
     password_confirmation { |r| r.password }
-    admin false
+    admin { false }
 
     factory :admin do
-      username 'SuperAdmin'
-      email  'admin@henaheisl.de'
-      admin true
+      username { "SuperAdmin" }
+      email { "admin@henaheisl.de" }
+      admin { true }
     end
   end
 end

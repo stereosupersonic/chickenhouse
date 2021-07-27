@@ -21,57 +21,62 @@
 #  index_events_on_visible     (visible)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 describe Event do
-  describe 'validation' do
+  describe "validation" do
     it "should build a valid factory" do
-      build(:event).should be_valid
+      expect(build(:event)).to be_valid
     end
 
     it "not be valid without a title" do
-      build(:event,:title => nil).should have(1).errors_on(:title)
+      event = build(:event, title: nil)
+      expect(event).to_not be_valid
+      expect(event.errors[:title]).to be_present
     end
   end
 
   describe "next_event" do
-
     it "should be the next" do
-      event = create(:event, :start_date => 1.day.since)
-      Event.next_event.should == event
+      event = create(:event, start_date: 1.day.since)
+
+      expect(Event.next_event).to eq event
     end
 
     it "should not load events in the past" do
-      event = create(:event, :start_date => 1.day.ago)
-      Event.next_event.should be_nil
+      create(:event, start_date: 1.day.ago)
+
+      expect(Event.next_event).to be_nil
     end
 
     it "should  load the nearest event" do
-      event_1 = create(:event, :start_date => 2.day.since)
-      event  = create(:event, :start_date => 1.day.since)
-      event_3 = create(:event, :start_date => 1.day.ago)
-      Event.next_event.should == event
+      create(:event, start_date: 2.day.since)
+      event = create(:event, start_date: 1.day.since)
+      create(:event, start_date: 1.day.ago)
+
+      expect(Event.next_event).to eq event
     end
   end
 
   describe "next_events" do
-
     it "should be the next" do
-      event = create(:event, :start_date => 1.day.since)
-      Event.next_events.should == [event]
+      event = create(:event, start_date: 1.day.since)
+
+      expect(Event.next_events).to eq [event]
     end
 
     it "should not load events in the past" do
-      event = create(:event, :start_date => 1.day.ago)
-      Event.next_events.should be_empty
+      create(:event, start_date: 1.day.ago)
+
+      expect(Event.next_events).to be_empty
     end
 
     it "should load the nearest event" do
-      event_1 = create(:event, :start_date => 2.day.since)
-      event  = create(:event, :start_date => 1.day.since)
-      event_3 = create(:event, :start_date => 1.day.ago)
-      Event.next_events.should == [event,event_1]
-    end
+      event_1 = create(:event, start_date: 2.day.since)
+      event = create(:event, start_date: 1.day.since)
+      create(:event, start_date: 1.day.ago)
 
+      expect(Event.next_events).to eq [event, event_1]
+    end
   end
 end

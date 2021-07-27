@@ -3,7 +3,7 @@ class Admin::PhotosController < Admin::BaseController
 
   # GET /admin/photos
   def index
-    @photos = Photo.order('created_at DESC').paginate :page => params[:page], :per_page => 20
+    @photos = Photo.order("created_at DESC").paginate page: params[:page], per_page: 20
   end
 
   # GET /admin/photos/1
@@ -22,26 +22,27 @@ class Admin::PhotosController < Admin::BaseController
   # PATCH/PUT /admin/photos/1
   def update
     if @photo.update(photo_params)
-      redirect_to [:admin, :photos], notice: 'Photo was successfully updated.'
+      redirect_to [:admin, :photos], notice: "Photo was successfully updated."
     else
-      render action: 'edit'
+      render action: "edit"
     end
   end
 
   # DELETE /admin/photos/1
   def destroy
     @photo.destroy
-    redirect_to [:admin, :photos], notice: 'Photo was successfully destroyed.'
+    redirect_to [:admin, :photos], notice: "Photo was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_photo
-      @photo = Photo.friendly.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def photo_params
-      params.require(:photo).permit(:flickr_id, :flickr_description, :flickr_title, :url_icon, :url_big, :album_id, :url_original)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_photo
+    @photo = Photo.friendly.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def photo_params
+    params.require(:photo).permit(:flickr_id, :flickr_description, :flickr_title, :url_icon, :url_big, :album_id, :url_original)
+  end
 end

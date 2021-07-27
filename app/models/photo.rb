@@ -26,18 +26,18 @@
 
 class Photo < ApplicationRecord
   extend FriendlyId
-  friendly_id :flickr_title, :use => :slugged
+  friendly_id :flickr_title, use: :slugged
 
   belongs_to :album
   validates_presence_of :flickr_id
 
-  #include FlickrHelper
-  scope :visible, -> { where(:visible => true) }
+  # include FlickrHelper
+  scope :visible, -> { where(visible: true) }
 
-  scope :recent,  -> { visible.order('taken_at DESC').limit(25) }
+  scope :recent, -> { visible.order("taken_at DESC").limit(25) }
 
   def flickr_info
-    flickr_access.photos.getInfo :photo_id => flickr_id
+    flickr_access.photos.getInfo photo_id: flickr_id
   end
 
   def name

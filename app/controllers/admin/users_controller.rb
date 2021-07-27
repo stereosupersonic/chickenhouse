@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only:[
+  before_action :set_user, only: [
     :edit,
     :show,
     :destroy,
@@ -18,9 +18,9 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_users_url, notice: 'User was successfully created.'
+      redirect_to admin_users_url, notice: "User was successfully created."
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
@@ -37,9 +37,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    if current_user !=  @user
+    if current_user != @user
       @user.destroy
-      redirect_to admin_users_url, notice: 'User was successfully destroyed.'
+      redirect_to admin_users_url, notice: "User was successfully destroyed."
     else
       flash[:alert] = "Sich selbst kann man nicht löschen"
       redirect_to admin_users_url
@@ -61,5 +61,4 @@ class Admin::UsersController < Admin::BaseController
       :password_confirmation
     )
   end
-
 end

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.visible.order('created_at DESC')
+    @posts = Post.visible.order("created_at DESC")
 
     respond_to do |format|
       format.html
@@ -20,6 +20,4 @@ class PostsController < ApplicationController
       format.json { render json: @post }
     end
   end
-
-
 end

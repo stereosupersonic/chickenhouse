@@ -26,12 +26,12 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
-    flickr_id 1
-    flickr_description "MyText"
-    flickr_title "MyString"
-    url_icon "MyString"
-    url_big "MyString"
+    flickr_id { 1 }
+    flickr_description { "my flickr_description" }
+    flickr_title { "my flickr_title" }
+    url_icon { "my url_icon" }
+    url_big { "my url_big" }
   end
 end

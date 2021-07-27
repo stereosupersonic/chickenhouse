@@ -24,7 +24,7 @@
 #  index_photos_on_visible   (visible)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 describe Photo do
   pending "add some examples to (or delete) #{__FILE__}"

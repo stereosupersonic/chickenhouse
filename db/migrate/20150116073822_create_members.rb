@@ -8,8 +8,8 @@ class CreateMembers < ActiveRecord::Migration
       t.string :city
       t.string :mobil
       t.string :email
-      t.date   :occurs_at
-      t.date   :birthday
+      t.date :occurs_at
+      t.date :birthday
       t.integer :user_id
 
       t.timestamps

@@ -15,12 +15,12 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :collection do
-    flickr_id 1
-    flickr_description "MyText"
-    flickr_title "MyString"
-    iconsmall "MyString"
-    iconlarge "MyString"
+    flickr_id { 1 }
+    flickr_description { "my destcription" }
+    flickr_title { "my flickr_title" }
+    iconsmall { "my iconsmall" }
+    iconlarge { "my iconlarge" }
   end
 end

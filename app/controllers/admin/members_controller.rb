@@ -1,9 +1,8 @@
 class Admin::MembersController < Admin::BaseController
-
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
-    @members = Member.order('occurs_at,last_name')
+    @members = Member.order("occurs_at,last_name")
     respond_to do |format|
       format.html
       format.csv { send_as_csv(member_data(@members), "Mitgliederliste.csv") }
@@ -14,7 +13,6 @@ class Admin::MembersController < Admin::BaseController
   end
 
   def edit
-
   end
 
   def new
@@ -24,26 +22,25 @@ class Admin::MembersController < Admin::BaseController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to admin_members_url, notice: 'Member was successfully created.'
+      redirect_to admin_members_url, notice: "Member was successfully created."
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
   def update
     if @member.update(member_params)
-      redirect_to admin_members_url, notice: 'Member was successfully updated.'
+      redirect_to admin_members_url, notice: "Member was successfully updated."
     else
-      render action: 'edit'
+      render action: "edit"
     end
   end
 
   def destroy
     if @member.destroy
-      redirect_to admin_members_url, notice: 'Member was successfully destroyed.'
+      redirect_to admin_members_url, notice: "Member was successfully destroyed."
     end
   end
-
 
   private
 
@@ -52,24 +49,22 @@ class Admin::MembersController < Admin::BaseController
   end
 
   def member_data(members)
-    export_attributs =  [:first_name,
-                         :last_name,
-                         :street,
-                         :plz,
-                         :city,
-                         :mobil,
-                         :email,
-                         :occurs_at,
-                         :birthday]
+    export_attributs = [:first_name,
+      :last_name,
+      :street,
+      :plz,
+      :city,
+      :mobil,
+      :email,
+      :occurs_at,
+      :birthday]
     members.map do |m|
       export_attributs.map do |p|
-        value =  m.send(p)
-        value.is_a?(Date) ? value.strftime('%d.%m.%Y') : value
+        value = m.send(p)
+        value.is_a?(Date) ? value.strftime("%d.%m.%Y") : value
       end
-    end.insert(0,export_attributs.map{|a|I18n.t("activerecord.attributes.member.#{a}")})
+    end.insert(0, export_attributs.map { |a| I18n.t("activerecord.attributes.member.#{a}") })
   end
-
-
 
   def member_params
     params.require(:member).permit(

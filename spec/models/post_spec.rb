@@ -30,22 +30,24 @@
 #  index_posts_on_visible   (visible)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 describe Post do
   describe "validation" do
     it "should create a valid factory" do
-      build(:post).should be_valid
+      expect(build(:post)).to be_valid
     end
 
     it "should not be valid without a title" do
-      build(:post, :title => nil).should have(1).error_on(:title)
-    end
+      invalid_post = build(:post, title: nil)
 
+      expect(invalid_post).to_not be_valid
+    end
   end
 
   it "should have a friendly title" do
-     create(:post, :title => 'How cool is that').to_param.should == 'how-cool-is-that'
-  end
+    post = create(:post, title: "How cool is that")
 
+    expect(post.to_param).to eq "how-cool-is-that"
+  end
 end

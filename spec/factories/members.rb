@@ -19,16 +19,17 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :member do
-    first_name "MyString"
-    last_name "MyString"
-    street "MyString"
-    plz "MyString"
-    city "MyString"
-    mobil "MyString"
-    email "MyString"
-    occurs_at "2015-01-16"
-    birthday "2015-01-16"
+    first_name { "MyString" }
+    last_name { "MyString" }
+    street { "MyString" }
+    plz { "MyString" }
+    city { "MyString" }
+    mobil { "MyString" }
+    email { "MyString" }
+    occurs_at { "2015-01-16" }
+    birthday { "2015-01-16" }
+    user
   end
 end

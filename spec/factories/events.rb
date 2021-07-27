@@ -23,14 +23,14 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :event do
-    title "MyString"
-    content "MyText"
-    user_id 1
-    location "MyString"
-    start_date {1.day.since }
+    title { "MyString" }
+    content { "MyText" }
+    user
+    location { "MyString" }
+    start_date { 1.day.since }
     end_date { Time.now }
-    all_day false
+    all_day { false }
   end
 end

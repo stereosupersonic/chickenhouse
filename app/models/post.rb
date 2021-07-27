@@ -32,12 +32,12 @@
 
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: :slugged
 
-  belongs_to :user
-  belongs_to :album
+  belongs_to :user, optional: true
+  belongs_to :album, optional: true
 
-  scope :visible, -> { where(:visible => true) }
+  scope :visible, -> { where(visible: true) }
 
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
@@ -45,7 +45,7 @@ class Post < ApplicationRecord
   validates_presence_of :title
 
   def html_content
-    if display_type.to_s == 'raw'
+    if display_type.to_s == "raw"
       content.html_safe
     else
       RedCloth.new(content).to_html.html_safe

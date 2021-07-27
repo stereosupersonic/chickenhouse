@@ -1,6 +1,6 @@
 class ContactMailer < ActionMailer::Base
-  def contact(_contact)
-    @contact   =_contact
-    mail(:from => %["#{ _contact.name}" <#{_contact.email}>], :to => ENV['SENDER_EMAIL'], :subject => _contact.subject)
+  def contact(val)
+    @contact = val
+    mail(from: %("#{val.name}" <#{val.email}>), to: ENV["SENDER_EMAIL"], subject: val.subject)
   end
 end

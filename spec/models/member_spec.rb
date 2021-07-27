@@ -17,12 +17,12 @@
 #  user_id    :integer
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 describe Member do
-  describe 'validation' do
+  describe "validation" do
     it "should build a valid factory" do
-      build(:Member).should be_valid
+      build(:member).should be_valid
     end
   end
 end

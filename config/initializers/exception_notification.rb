@@ -1,6 +1,4 @@
-require 'exception_notification/rails'
-
-
+require "exception_notification/rails"
 
 ExceptionNotification.configure do |config|
   # Ignore additional exception types.
@@ -17,9 +15,9 @@ ExceptionNotification.configure do |config|
 
   # Email notifier sends notifications by email.
   config.add_notifier :email, {
-    :email_prefix         => "[ERROR][#{Rails.env}][HENAHEISL] ",
-    :sender_address       => %{"Henaheisl.de" <#{ENV['SENDER_EMAIL']}>},
-    :exception_recipients => ENV['DEBUG_EMAIL']
+    email_prefix: "[ERROR][#{Rails.env}][HENAHEISL] ",
+    sender_address: %("Henaheisl.de" <#{ENV["SENDER_EMAIL"]}>),
+    exception_recipients: ENV["DEBUG_EMAIL"]
   }
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
@@ -40,5 +38,4 @@ ExceptionNotification.configure do |config|
   #   :url => 'http://example.com:5555/hubot/path',
   #   :http_method => :post
   # }
-
 end

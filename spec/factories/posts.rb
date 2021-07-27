@@ -31,11 +31,11 @@
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
-require 'faker'
-FactoryGirl.define do
+require "faker"
+FactoryBot.define do
   factory :post do
-    content  { Faker::Lorem.sentence }
-    title  'My Coole Post'
-    #user_id 1
+    content { Faker::Lorem.sentence }
+    title { "My Coole Post" }
+    # user_id 1
   end
 end

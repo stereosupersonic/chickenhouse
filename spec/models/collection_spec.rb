@@ -13,7 +13,7 @@
 #  flickr_id          :string
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 describe Collection do
   pending "add some examples to (or delete) #{__FILE__}"

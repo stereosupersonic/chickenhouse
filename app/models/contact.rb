@@ -12,13 +12,12 @@
 #
 
 class Contact < ApplicationRecord
+  validates :name, :subject, :body, presence: true
+  validates :email, email: true
 
-  validates_presence_of :name, :subject, :body
-  validates :email, :email => true
   after_save :send_email
 
   def send_email
-    ContactMailer.contact(self).deliver!
+    # ContactMailer.contact(self).deliver!
   end
-
 end
