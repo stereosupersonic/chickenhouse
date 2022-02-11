@@ -3,7 +3,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "pg", "~> 0.18.4"
-gem "puma", "~> 5.3.1"
+gem "puma", "~> 5.6.2"
 gem "rails", "~> 5.2.0"
 
 gem "bootsnap", require: false
