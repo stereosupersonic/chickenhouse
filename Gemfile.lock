@@ -92,7 +92,7 @@ GEM
       term-ansicolor
       thor
     crass (1.0.6)
-    dalli (2.7.11)
+    dalli (3.2.3)
     diff-lcs (1.4.4)
     docile (1.4.0)
     domain_name (0.5.20190701)
