@@ -12,6 +12,7 @@
 # and https://github.com/github/developer.github.com/blob/master/script/bootstrap.rb
 #
 
+require "English"
 require "yaml"
 require "erb"
 
@@ -22,7 +23,7 @@ end
 
 def safe_system(cmd)
   system cmd
-  raise "ERROR during: '#{cmd}'" if $? != 0
+  raise "ERROR during: '#{cmd}'" if $CHILD_STATUS != 0
 end
 
 db_config_file = File.expand_path(File.join(File.dirname(__FILE__), "..", "config", "database.yml"))
@@ -44,12 +45,12 @@ end
 
 puts "start import dump file"
 postgres_pw = development_db_password ? { "PGPASSWORD" => development_db_password } : {}
-#pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d chickenhouse_development latest.dump
+# pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d chickenhouse_development latest.dump
 
 system(postgres_pw,
        "pg_restore --verbose --clean --no-acl --no-owner " \
-       "#{' -U ' + development_db_user if development_db_user} " \
-       "#{' -h ' + development_db_host if development_db_host} " \
+       "#{" -U #{development_db_user}" if development_db_user} " \
+       "#{" -h #{development_db_host}" if development_db_host} " \
        " -d #{development_db_name} #{dump_file_name}")
 
 safe_system "bundle exec rake db:migrate --trace"

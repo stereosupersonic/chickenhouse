@@ -1,0 +1,118 @@
+# comes from standardrb https://github.com/testdouble/standard
+#https://github.com/testdouble/standard/blob/master/config/base.yml
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rake
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+#    - "db/schema.rb"
+#    - "bin/*"
+#    - "vendor/**/*"
+#  TargetRubyVersion: 2.4
+  ExtraDetails: true
+  NewCops: enable
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+# Group together all attr_accessor attributes.
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+#  Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+Style/IfUnlessModifier:
+  Enabled: false
+
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+#Style/FormatStringToken:
+#  Enabled: false
+#
+## Layout
+#Layout/ExtraSpacing:
+#  AllowForAlignment: true
+#
+#Layout/SpaceInsideHashLiteralBraces:
+#  EnforcedStyle: no_space
+#
+#Layout/CaseIndentation:
+#  Enabled: false
+#
+#Layout/MultilineOperationIndentation:
+#  EnforcedStyle: indented
+#
+#Layout/AlignParameters:
+#  EnforcedStyle: with_fixed_indentation
+#
+#Layout/IndentArray:
+#  Enabled: false
+#
+#Layout/MultilineMethodCallIndentation:
+#  Enabled: false
+#
+## Metrics
+#Metrics/LineLength:
+#  Max: 120
+#
+#Metrics/AbcSize:
+#  Enabled: false
+#
+#Metrics/MethodLength:
+#  Enabled: false
+#
+#Metrics/ClassLength:
+#  Enabled: false
+#
+#Metrics/ModuleLength:
+#  Enabled: false
+#
+#Metrics/BlockLength:
+#  Enabled: false
+#
+#Metrics/CyclomaticComplexity:
+#  Enabled: false
+#
+#Metrics/PerceivedComplexity:
+#  Enabled: false
+#
+## Naming
+#Naming/VariableNumber:
+#  Enabled: false
+#
+## Lint
+#Lint/EndAlignment:
+#  EnforcedStyleAlignWith: variable
+#
+#Lint/AmbiguousBlockAssociation:
+#  Exclude:
+#    - "spec/**/*"

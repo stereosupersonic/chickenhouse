@@ -7,8 +7,7 @@ class Admin::ContactsController < Admin::BaseController
   end
 
   # GET /admin/contacts/1
-  def show
-  end
+  def show; end
 
   private
 

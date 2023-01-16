@@ -30,7 +30,7 @@ class Album < ApplicationRecord
   has_many :photos, -> { where(visible: true).order("taken_at") }
   has_one :post
 
-  scope :by_year, ->(year) { where(created_at: Date.parse("#{year}.1.1").beginning_of_year..Date.parse("#{year}.1.1").end_of_year).where(visible: true).order("created_at") }
+  scope :by_year, ->(year) { where(created_at: Date.parse("#{year}.1.1").all_year).where(visible: true).order("created_at") }
 
   #  include FlickrHelper
   def flickr_info
@@ -39,7 +39,7 @@ class Album < ApplicationRecord
 
   def flickr_photos
     @flickr_photos ||= flickr_access.photosets.getPhotos(photoset_id: flickr_id,
-      extras: "license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o")
+                                                         extras:      "license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_c, url_l, url_s, url_m, url_o")
   end
 
   def name
@@ -93,6 +93,6 @@ class Album < ApplicationRecord
                 <a href='#{Rails.application.routes.url_helpers.seo_album_path(collection, self)}' target="" rel="">Hier gehts zu den Bildern</a>
                 </p>
                 </div>)
-    Post.create(title: " Neue Bilder: #{name}", content: content, created_at: created_at, album_id: id)
+    Post.create(title: " Neue Bilder: #{name}", content:, created_at:, album_id: id)
   end
 end

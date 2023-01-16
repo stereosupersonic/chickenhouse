@@ -5,15 +5,13 @@ class Admin::EventsController < Admin::BaseController
     @events = Event.order("start_date DESC").paginate page: params[:page], per_page: 20
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @event = Event.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @event = Event.new event_params.merge(user: current_user)

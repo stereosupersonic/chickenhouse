@@ -40,17 +40,17 @@ module BootstrapButtonHelper
   end
 
   def delete_button(link, text = "Löschen", options = {})
-    options.reverse_merge! data: {confirm: "Sind Sie sicher?"}, method: :delete, class: "form_submitter btn btn-danger btn-sm"
+    options.reverse_merge! data: { confirm: "Sind Sie sicher?" }, method: :delete, class: "form_submitter btn btn-danger btn-sm"
     button_with_icon text, link, "trash-o", options
   end
 
   def deactivating_button(link, text = "Deaktivieren", options = {})
-    options.reverse_merge! data: {confirm: "Sind Sie sicher?"}, method: :delete, class: "form_submitter btn btn-danger btn-sm"
+    options.reverse_merge! data: { confirm: "Sind Sie sicher?" }, method: :delete, class: "form_submitter btn btn-danger btn-sm"
     button_with_icon text, link, "minus-circle", options
   end
 
   def activation_button(link, text = "Aktivieren", options = {})
-    options.reverse_merge! data: {confirm: "Sind Sie sicher?"}, method: :delete, class: "form_submitter btn btn-success btn-sm"
+    options.reverse_merge! data: { confirm: "Sind Sie sicher?" }, method: :delete, class: "form_submitter btn btn-success btn-sm"
     button_with_icon text, link, "check-circle", options
   end
 

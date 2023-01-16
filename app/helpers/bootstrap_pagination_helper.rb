@@ -1,5 +1,6 @@
 module BootstrapPaginationHelper
-  class BootstrapLinkRenderer # < WillPaginate::ActionView::LinkRenderer
+  # < WillPaginate::ActionView::LinkRenderer
+  class BootstrapLinkRenderer
     protected
 
     def html_container(html)

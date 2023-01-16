@@ -40,7 +40,7 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -53,11 +53,11 @@ gem "haml-rails", "~> 2.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-gem "simple_form"
-gem "figaro"
-gem "progressbar"
-gem "friendly_id", "~> 5.0.0" # NOTE: You MUST use 5.0.0 or greater for Rails 4.0+
 gem "coveralls", require: false
+gem "figaro"
+gem "friendly_id", "~> 5.0.0" # NOTE: You MUST use 5.0.0 or greater for Rails 4.0+
+gem "progressbar"
+gem "simple_form"
 
 group :development do
   gem "annotate"

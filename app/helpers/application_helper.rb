@@ -4,10 +4,10 @@ module ApplicationHelper
 
   def error_messages_for(symbol)
     model_object = instance_variable_get "@#{symbol}"
-    if model_object&.errors&.any?
-      lines = model_object.errors.full_messages.collect { |msg| "<li>#{h(msg)}</li>" }.join
-      "<div id='error_explanation'><ul>#{lines}</ul> </div>".html_safe
-    end
+    return unless model_object&.errors&.any?
+
+    lines = model_object.errors.full_messages.collect { |msg| "<li>#{h(msg)}</li>" }.join
+    "<div id='error_explanation'><ul>#{lines}</ul> </div>".html_safe
   end
 
   def format_time(time)

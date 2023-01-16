@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     data.each do |value|
       csv << value.map do |v|
         v.to_s
-      rescue => e
+      rescue StandardError => e
         raise "Error in iconv with value: #{value}: " + e.message
       end
     end
@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
 
   def send_as_csv(data, filename = "output.csv")
     send_data convert_array_to_csv(data),
-      type: "text/csv; charset=utf-8; header=present",
-      filename: filename
+              type:     "text/csv; charset=utf-8; header=present",
+              filename:
   end
 end
