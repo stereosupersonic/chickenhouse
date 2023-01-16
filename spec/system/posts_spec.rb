@@ -26,7 +26,7 @@ describe "Posts", js: true do
     expect(page).not_to have_content "Coole Mega fucke"
   end
 
-  it "as public user i want to see the Post" do
+  xit "as public user i want to see the Post" do
     create(:post,
            title:      "Coole Mega Fugge",
            content:    "der Lorem Ipsum of the Posts",

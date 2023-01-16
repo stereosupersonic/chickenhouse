@@ -3,7 +3,6 @@ de:
     models:
       user: Benutzer
       event: Event
-      contact: Nachricht
       member: Mitglied
     attributes: &labelAlias
       event:
@@ -19,12 +18,6 @@ de:
       user:
         name: Name
         email: EMail
-      contact:
-        subject: Subject
-        body: Nachricht
-        name: Name
-        email: E-Mail
-        created_at: erstellt am
       member:
         first_name: Vorname
         last_name: Nachname

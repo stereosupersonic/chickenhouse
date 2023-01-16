@@ -1,4 +1,4 @@
-require "flickraw"
+# require "flickraw"
 
 # https://github.com/hanklords/flickraw
 module FlickrHelper

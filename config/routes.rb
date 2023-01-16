@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root "base#index"
     get "info", to: "base#info", as: "info"
+
     resources :users
     resources :events
     resources :posts
-    resources :contacts
     resources :photos
     resources :members
     resources :albums do
@@ -27,10 +27,7 @@ Rails.application.routes.draw do
 
   # get '/bilder',      :to => "collections#index",     :as => 'bilder'
   # get '/bilder/jahr/:year',  :to => "albums#year", :as => 'albums_by_year'
-  get "/bilder/:collection_id/:id", to: "albums#show", as: "seo_album"
-
-  # get '/contact',    :to => "contacts#new",     :as => 'contact'
-  # post '/contacts',  :to => "contacts#create",  :as => 'contacts'
+  # get "/bilder/:collection_id/:id", to: "albums#show", as: "seo_album"
 
   # login
   get "/login", to: "sessions#new", as: "login"
