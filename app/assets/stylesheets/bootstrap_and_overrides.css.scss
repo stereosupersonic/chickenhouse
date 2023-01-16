@@ -1,0 +1,89 @@
+@import "bootstrap_variables.css.scss";
+
+$fcb-red: rgb(246,30,27);
+$fcb-red-2: #bf000c;
+$border-color: #e0dbdb;
+$fcb-white: white;
+$meta-grey: #999999;
+$link-hover-color: #bf000c;
+
+$navbar-default-bg: $fcb-red;
+$navbar-default-color: $fcb-white;
+$navbar-default-link-color: $fcb-white;
+$link-color: $text-color;
+$navbar-default-bg: $fcb-red;
+
+$main-bg: whitesmoke;
+$title-meta-color: $meta-grey;
+
+$pagination-active-color:  $text-color;
+$pagination-active-border: $text-color;
+
+$brand-primary: $main-bg;
+
+@media (min-width: 1200px) {}
+
+
+.edit_it {
+    float: right;
+}
+
+//ERRORS
+
+// #error_explanation {
+//     @extend .alert;
+//     @extend .alert-error;
+//     @extend .alert-danger;
+// }
+//
+// .field_with_errors {
+//     @extend .has-error;
+//     @extend .control-group;
+//     @extend .error;
+//     .help-inline {
+//         color: $state-danger-text;
+//         padding-left: 10px;
+//     }
+// }
+//
+.inline_value {
+    padding-left: 10px;
+}
+
+textarea.form-control {
+    height: 150px;
+}
+
+
+// override for the 'Home' navigation link
+.navbar-brand {
+    font-size: inherit;
+}
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+    @extend .col-md-6;
+    @extend .text-center;
+}
+
+.form {
+    @extend .col-md-6;
+}
+
+.form-centered {
+    @extend .col-md-6;
+    @extend .text-center;
+}
+
+.submit {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-lg;
+}
+
+section {
+    @extend .row;
+    margin-top: 20px;
+}

@@ -1,0 +1,7 @@
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Photos', admin_photos_path
+  %li.strong= "Edit Photo"
+
+=render 'form'

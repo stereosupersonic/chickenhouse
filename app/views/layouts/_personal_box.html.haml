@@ -1,0 +1,13 @@
+#personal_box
+  - if current_user
+    %i.fa.fa-user
+    -#= link_to current_user.username, [:admin, current_user]
+    =  current_user.username
+    |
+    = link_to logout_path, :data => { :method => :delete } do
+      %i.glyphicon.glyphicon-log-out
+      Ausloggen
+  -else
+    -# =link_to  login_path do
+    -#  %i.glyphicon.glyphicon-log-in
+    -#  Login

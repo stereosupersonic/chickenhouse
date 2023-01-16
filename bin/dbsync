@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+# / Usage: bin/dbsync </path/to_a_dump> [<options>]
+# / setup the database and imports data from
+# / a given file or from the latest production database dump
+# /
+# / --help                        show usage message
+#
+# =============================================================================
+# Uses bundler to install all gems specified in the Gemfile.
+# inspired by http://zachholman.com/talk/ruby-patterns
+# and https://github.com/github/developer.github.com/blob/master/script/bootstrap.rb
+#
+
+require "yaml"
+require "erb"
+
+if ARGV.include?("help") || ARGV.include?("--help")
+  system "grep '^#/' <'#{__FILE__}' |cut -c4-"
+  exit 2
+end
+
+def safe_system(cmd)
+  system cmd
+  raise "ERROR during: '#{cmd}'" if $? != 0
+end
+
+db_config_file = File.expand_path(File.join(File.dirname(__FILE__), "..", "config", "database.yml"))
+
+db_config = YAML.load(ERB.new(File.read(db_config_file)).result, aliases: true)
+
+development_db_name     = db_config["development"]["database"]
+development_db_user     = db_config["development"]["username"]
+development_db_host     = db_config["development"]["host"]
+development_db_password = db_config["development"]["password"]
+
+if ARGV[0] && File.file?(ARGV[0])
+  dump_file_name = ARGV[0]
+else
+  dump_file_name = "latest.dump"
+  safe_system("rm -rfv #{dump_file_name}")
+  safe_system("heroku pg:backups:download -a henaheisl")
+end
+
+puts "start import dump file"
+postgres_pw = development_db_password ? { "PGPASSWORD" => development_db_password } : {}
+#pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d chickenhouse_development latest.dump
+
+system(postgres_pw,
+       "pg_restore --verbose --clean --no-acl --no-owner " \
+       "#{' -U ' + development_db_user if development_db_user} " \
+       "#{' -h ' + development_db_host if development_db_host} " \
+       " -d #{development_db_name} #{dump_file_name}")
+
+safe_system "bundle exec rake db:migrate --trace"
+safe_system "bundle exec rake db:test:prepare --trace" unless ENV["RAILS_ENV"].to_s == "production"

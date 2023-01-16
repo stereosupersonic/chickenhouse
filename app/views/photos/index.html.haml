@@ -1,0 +1,7 @@
+= page_header 'Bilder'
+
+%h2 Bilder
+- @collections.each do | collection |
+  = link_to collection.flickr_description, collection
+  = image_tag collection.iconlarge
+  = debug collection

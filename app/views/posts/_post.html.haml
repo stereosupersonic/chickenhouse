@@ -1,0 +1,19 @@
+- cache([post,current_role]) do
+  %div{:id => dom_id(post), :class => 'post blog-post'}
+    -if admin?
+      .edit_it
+        =link_to [:edit, :admin, post] do
+          %i.fa.fa-edit
+    .blog-post-title= link_to post.title, post
+    %p.blog-post-meta= format_date post.created_at
+    -#%p.blog-post-meta= " #{format_date post.created_at} von #{post.user.try(:username).presence || 'Admin'}"
+    %p
+      -if post.content_type.to_s == 'picture'
+        = image_tag post.media, :class => "img-responsive thumbnail"
+        = post.html_content
+      -elsif post.content_type.to_s == 'video'
+        .flex-video.widescreen.img-thumbnail
+          =youtube_video post.media
+        .video-description= post.html_content
+      -else
+        = post.html_content

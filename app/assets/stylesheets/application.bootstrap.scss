@@ -1,2 +1,16 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import "bootstrap_and_overrides.css.scss";
+@import "bootstrap-wysihtml5.css";
+@import "layout.css.scss";
+@import "next_event.css.scss";
+@import "video.css.scss";
+@import "bootstrap3-wysihtml5.css";
+@import "bootstrap3-wysiwyg5-color.css";
+@import "blog.css.scss";
+@import "events.css.scss";
+@import "sidebar.css.scss";
+@import "pictures.css.scss";
+@import "helper.css.scss";
+
+// @import "bootstrap-datepicker";

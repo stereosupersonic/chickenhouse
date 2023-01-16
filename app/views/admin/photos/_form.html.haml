@@ -1,0 +1,7 @@
+= simple_form_for([:admin, @photo]) do |f|
+  = f.error_notification
+  - (Photo.attribute_names - ['id']).each do |attr_name|
+    = f.input attr_name
+
+  = save_button
+  = cancel_button :back

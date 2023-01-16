@@ -1,0 +1,28 @@
+.flickr-link {
+    color: $fcb-white;
+    font-weight: bold;
+}
+
+// do not show this white points
+.carousel-indicators {
+    display: none;
+}
+
+.carousel-control {
+    font-size: 300%;
+}
+
+.collection a {
+    font-weight: bold;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.year {
+  display: inline;
+  margin: 50px;
+  font-weight: bold;
+  font-size: 200%;
+}

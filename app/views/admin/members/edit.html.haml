@@ -1,0 +1,8 @@
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li= link_to 'Mitglieder', admin_members_path
+  %li.strong= "Edit Mitglieder"
+
+=render 'form'
+

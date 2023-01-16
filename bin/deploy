@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+git checkout master
+
+# if heroku remote is not setup: git config --list --local | grep heroku
+# heroku git:remote -a
+git push heroku
+
+heroku run bundle exec rake db:migrate --trace
+
+#heroku run RAILS_ENV=production bundle exec rake assets:precompile
