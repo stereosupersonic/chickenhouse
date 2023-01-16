@@ -2,18 +2,18 @@
 %html
   = render 'layouts/head'
   %body{ :id => "#{controller.controller_name}_#{controller.action_name}", :class => "#{controller.controller_name} #{controller.action_name}" }
-    #wrap.container
+    #wrap
       %header
-        #headerimage
-        .banner= image_tag 'banner_v3.png',:class => 'img-responsive'
-        = render 'layouts/navigation'
-
+        .banner
+          = image_tag 'banner_v3.png',:class => 'img-responsive'
+          = render 'layouts/navigation'
+    .container
       %main{:role => "main"}
-        .row.spacer
+        .row
           = render 'layouts/messages'
-          .col-sm-8.col-xs-12
+          .col-sm-9.col-xs-12
             = yield
-          .col-sm-4.hidden-xs
+          .col-sm-3.hidden-xs.float-right
             = render 'layouts/sidebar'
     = auto_discovery_link_tag :atom,  posts_url(:format=>'atom'), :title=>'Henaheisl Blog'
     = render 'layouts/footer'
