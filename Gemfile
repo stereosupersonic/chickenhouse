@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -61,8 +61,6 @@ gem "simple_form"
 
 group :development do
   gem "annotate"
-  gem "rack-mini-profiler", "~> 2.0"
-  gem "spring"
 
   gem "brakeman", require: false
   gem "rubocop"
@@ -78,7 +76,6 @@ group :development, :test do
 
   gem "dotenv-rails"
   gem "factory_bot_rails"
-  gem "listen"
   gem "rspec-rails"
 end
 
