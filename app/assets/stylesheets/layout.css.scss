@@ -1,11 +1,10 @@
 //Sticky Footer
-html, body {
+html,
+body {
     height: 100%;
 }
 
-#wrap {
-
-}
+#wrap {}
 
 @media (max-width: 480px) {
     .row.spacer {
@@ -28,8 +27,9 @@ main {
     font-size: 20pt;
     font-weight: bold;
 }
+
 header {
- //nothing
+    //nothing
 }
 
 .footer {
@@ -72,24 +72,147 @@ header {
 // //navbar
 
 //center the navi bar
-.navbar > .container .navbar-brand, .navbar > main .navbar-brand {
+.navbar>.container .navbar-brand,
+.navbar>main .navbar-brand {
     margin-left: 23px;
 }
 
 .navbar {
-   // font-size: $font-size-large;
-   background-color: $fcb-red;
+    // font-size: $font-size-large;
+    background-color: $fcb-red;
+
     .fa-home {
         font-size: 30px;
     }
-   .nav-link  > a {
+
+    .nav-link>a {
         color: $fcb-white;
     }
-    .nav-link > a:hover {
+
+    .nav-link>a:hover {
         color: $fcb-red;
     }
-    .nav-link .active > a {
+
+    .nav-link .active>a {
         background-color: #ccc;
         color: #0088cc;
+    }
+}
+
+#sidebar {
+    text-align: left;
+    padding-left: 30px;
+
+    .fa-calendar {
+        color: $title-meta-color;
+    }
+
+    li.sidebar-event {
+        list-style: none;
+        padding-bottom: 10px;
+    }
+
+    #next-events {
+        padding-left: 0;
+    }
+
+    .title {
+        text-decoration: underline;
+    }
+
+    /* Sidebar modules for boxing content */
+    .sidebar-module {
+        border: 1px solid $border-color;
+        padding: 15px;
+        margin: 0 -15px 15px;
+    }
+
+    .sidebar-module-inset {
+        padding: 15px;
+        background-color: $main-bg;
+        border-radius: 4px;
+    }
+
+    .sidebar-module-inset p:last-child,
+    .sidebar-module-inset ul:last-child,
+    .sidebar-module-inset ol:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.blog-post {
+    border: 1px solid $border-color;
+    margin-bottom: 20px;
+    background-color: $main-bg;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+}
+
+.blog-post-title {
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.blog-post-meta {
+    margin-bottom: 20px;
+    color: $title-meta-color;
+}
+
+
+.strong {
+    font-weight: bold;
+}
+
+.strong-inline {
+    font-weight: bold;
+    display: inline
+}
+
+.event {
+    border: 1px solid $border-color;
+    background-color: $main-bg;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    span.calicon {
+        float: left;
+        display: inline;
+        text-align: center;
+    }
+    span.caliconSmall {
+        border: 1px solid #D3D3D3;
+        width: 50px;
+        margin-top: 25px;
+        height: 50px;
+        font-size: 15px;
+        background-color: $fcb-white;
+    }
+    span.calicon span {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+    span.calicon span.month {
+        background-color: #B60000;
+        color: #FFFFFF;
+        font-weight: bold;
+        line-height: 1.2em;
+        text-align: center;
+        height: 23px;
+    }
+    .date {
+        margin-left: 15px;
+    }
+    .event-header {
+        margin-left: 70px;
+    }
+    .event-title {
+        margin-top: 17px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .event-meta {
+        color: $title-meta-color;
     }
 }

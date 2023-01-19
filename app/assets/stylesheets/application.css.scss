@@ -10,3 +10,25 @@
  *
  *= require_self
  */
+
+
+$fcb-red: rgb(246,30,27);
+$fcb-red-2: #bf000c;
+$fcb-white: white;
+$meta-grey: #999999;
+$link-hover-color: #bf000c;
+
+$navbar-default-bg: $fcb-red;
+$navbar-default-color: $fcb-white;
+$navbar-default-link-color: $fcb-white;
+
+$navbar-default-bg: $fcb-red;
+
+$main-bg: whitesmoke;
+$title-meta-color: $meta-grey;
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@import "layout.css.scss";
+@import "video.css.scss";
