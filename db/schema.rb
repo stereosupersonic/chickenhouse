@@ -10,36 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_104540) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_19_092117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "albums", id: :serial, force: :cascade do |t|
-    t.string "flickr_id", limit: 255
-    t.text "flickr_description"
-    t.string "flickr_title", limit: 255
-    t.string "iconsmall", limit: 255
-    t.string "iconlarge", limit: 255
-    t.integer "collection_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "slug", limit: 255
-    t.integer "main_photo_id"
-    t.boolean "visible", default: true
-    t.index ["collection_id"], name: "index_albums_on_collection_id"
-    t.index ["visible"], name: "index_albums_on_visible"
-  end
-
-  create_table "collections", id: :serial, force: :cascade do |t|
-    t.string "flickr_id", limit: 255
-    t.text "flickr_description"
-    t.string "flickr_title", limit: 255
-    t.string "iconsmall", limit: 255
-    t.string "iconlarge", limit: 255
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "slug", limit: 255
-  end
 
   create_table "events", id: :serial, force: :cascade do |t|
     t.string "title", limit: 255
@@ -82,25 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_104540) do
     t.integer "user_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-  end
-
-  create_table "photos", id: :serial, force: :cascade do |t|
-    t.string "flickr_id", limit: 255
-    t.text "flickr_description"
-    t.string "flickr_title", limit: 255
-    t.string "url_icon", limit: 255
-    t.string "url_big", limit: 255
-    t.integer "album_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "url_original", limit: 255
-    t.string "slug", limit: 255
-    t.string "url_small", limit: 255
-    t.datetime "taken_at", precision: nil
-    t.boolean "visible", default: true
-    t.index ["album_id"], name: "index_photos_on_album_id"
-    t.index ["taken_at"], name: "index_photos_on_taken_at"
-    t.index ["visible"], name: "index_photos_on_visible"
   end
 
   create_table "posts", id: :serial, force: :cascade do |t|

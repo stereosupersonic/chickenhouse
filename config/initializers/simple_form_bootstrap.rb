@@ -29,8 +29,8 @@ SimpleForm.setup do |config|
     b.use :label
     b.wrapper tag: "div", class: "controls" do |ba|
       ba.use :input
-      ba.use :error, wrap_with: {tag: "span", class: "help-inline"}
-      ba.use :hint, wrap_with: {tag: "p", class: "help-block"}
+      ba.use :error, wrap_with: { tag: "span", class: "help-inline" }
+      ba.use :hint, wrap_with: { tag: "p", class: "help-block" }
     end
   end
 
@@ -42,8 +42,8 @@ SimpleForm.setup do |config|
       input.wrapper tag: "div", class: "input-prepend" do |prepend|
         prepend.use :input
       end
-      input.use :hint, wrap_with: {tag: "span", class: "help-block"}
-      input.use :error, wrap_with: {tag: "span", class: "help-inline"}
+      input.use :hint, wrap_with: { tag: "span", class: "help-block" }
+      input.use :error, wrap_with: { tag: "span", class: "help-inline" }
     end
   end
 
@@ -52,8 +52,8 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.use :label
     b.use :input
-    b.use :error, wrap_with: {tag: "span", class: "help-inline"}
-    b.use :hint, wrap_with: {tag: "p", class: "help-block"}
+    b.use :error, wrap_with: { tag: "span", class: "help-inline" }
+    b.use :hint, wrap_with: { tag: "p", class: "help-block" }
   end
 
   config.wrappers :inline_checkbox, tag: "div", class: "checkbox", error_class: "has-error" do |b|
