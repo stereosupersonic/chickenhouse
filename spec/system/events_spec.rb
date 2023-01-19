@@ -1,7 +1,7 @@
 require "capybara_helper"
 
 describe "Events", js: true do
-  let(:user) { create(:user, username: "stereosupersonic") }
+  let(:user)  { create(:user, username: "stereosupersonic") }
   let(:admin) { create(:admin) }
 
   it "as admin i want to create a new event" do
