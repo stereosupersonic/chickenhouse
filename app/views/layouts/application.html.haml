@@ -1,6 +1,16 @@
 !!!
 %html
-  = render 'layouts/head'
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Henaheisl'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Henaheisl'}"}
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+    = csrf_meta_tags
+    = csp_meta_tag
+
+
   %body{ :id => "#{controller.controller_name}_#{controller.action_name}", :class => "#{controller.controller_name} #{controller.action_name}" }
     #wrap
       %header
@@ -16,4 +26,18 @@
           .col-sm-3.hidden-xs.float-right
             = render 'layouts/sidebar'
     = auto_discovery_link_tag :atom,  posts_url(:format=>'atom'), :title=>'Henaheisl Blog'
-    = render 'layouts/footer'
+
+    %footer.footer
+      %p
+        ="© 1996 - #{Time.now.year} Henaheisl e.V. - Alle Rechte vorbehalten"
+      %p
+        %span
+          = link_to 'Impressum', impressum_path
+          = "|"
+        %span
+          = link_to 'info@henaheisl.de', "mailto:info@henaheisl.de"
+          = "|"
+        %span
+          = link_to 'http://facebook.com/henaheisl',:target => '_blank' do
+            %i.fa.fa-facebook-square
+            Facebook
