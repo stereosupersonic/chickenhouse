@@ -40,6 +40,7 @@ if ARGV[0] && File.file?(ARGV[0])
 else
   dump_file_name = "latest.dump"
   safe_system("rm -rfv #{dump_file_name}")
+  safe_system("heroku pg:backups:capture -a henaheisl")
   safe_system("heroku pg:backups:download -a henaheisl")
 end
 
@@ -53,5 +54,6 @@ system(postgres_pw,
        "#{" -h #{development_db_host}" if development_db_host} " \
        " -d #{development_db_name} #{dump_file_name}")
 
-safe_system "bundle exec rake db:migrate --trace"
-safe_system "bundle exec rake db:test:prepare --trace" unless ENV["RAILS_ENV"].to_s == "production"
+safe_system "bundle exec rails db:create:all --trace"
+safe_system "bundle exec rails db:migrate --trace"
+safe_system "bundle exec rails db:test:prepare --trace" unless ENV["RAILS_ENV"].to_s == "production"
