@@ -1,25 +1,14 @@
--# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .banner= image_tag 'banner_v3.png',:class => 'img-responsive'
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-
-    .collapse.navbar-collapse
-      %ul.nav.nav-pills.nav-justified
-        %li
-          = link_to root_path do
-            %i.fa.fa-home
-
-        -# %li= link_to "Bilder",   bilder_path
-        %li= link_to "Kalender", events_path
-        %li= link_to "Blog", posts_path
-        - #%li= link_to "Kontakt",  contact_path
-        %li= link_to "Über Uns", about_path
+%nav.navbar.navbar-expand-lg.navbar-light
+  .container-fluid
+    .navbar-brand
+      .nav-link= link_to "Home", root_path
+    %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNavAltMarkup", "data-bs-toggle" => "collapse", type: "button"}
+      %span.navbar-toggler-icon
+    #navbarNavAltMarkup.collapse.navbar-collapse
+      .navbar-nav
+        .nav-link= link_to "Kalender", events_path
+        .nav-link= link_to "Blog", posts_path
+        .nav-link= link_to "Über Uns", about_path
         - if admin?
-          %li= link_to "Admin", admin_root_path
+          .nav-link=  link_to "Admin", admin_root_path
   = render 'layouts/personal_box'

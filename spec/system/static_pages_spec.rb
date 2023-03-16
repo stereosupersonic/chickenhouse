@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "static pages", type: :system do
+describe "static pages" do
   it "about page" do
     visit root_path
 

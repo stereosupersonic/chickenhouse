@@ -7,8 +7,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   # GET /admin/posts/1
-  def show
-  end
+  def show; end
 
   # GET /admin/posts/new
   def new
@@ -16,8 +15,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   # GET /admin/posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /admin/posts
   def create

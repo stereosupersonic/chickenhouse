@@ -1,54 +1,65 @@
 source "https://rubygems.org"
-
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "pg", "~> 0.18.4"
-gem "puma", "~> 5.3.1"
-gem "rails", "~> 5.2.0"
+ruby "3.1.2"
 
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 7.0.4"
+
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets-rails"
+
+# Use postgresql as the database for Active Record
+gem "pg", "~> 1.1"
+
+# Use the Puma web server [https://github.com/puma/puma]
+gem "puma", "~> 5.0"
+
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails", "~> 1.3.2"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
+
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+# gem "jbuilder"
+
+# Use Redis adapter to run Action Cable in production
+# gem "redis", "~> 4.0"
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# gem "kredis"
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+# Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-gem "dalli"
-gem "paperclip", ">= 5.2.0"
 
 gem "will_paginate", "~> 3.0"
 # textile
 gem "RedCloth"
 
-gem "flickraw"
-gem "jquery_mobile_rails"
-gem "jquery-rails"
-gem "turbolinks"
-
-# bootstrap
-gem "bootstrap-datepicker-rails"
-gem "bootstrap-sass"
-gem "bootstrap-wysihtml5-rails"
-gem "coffee-rails"
-gem "exception_notification", "~> 4.0.1"
-gem "font-awesome-sass"
-gem "haml-rails"
-gem "sass-rails"
-gem "simple_form"
-gem "sprockets-rails", "~> 2.3.3"
-gem "uglifier"
-
-gem "bcrypt-ruby"
+gem "haml-rails", "~> 2.0"
+# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# gem "image_processing", "~> 1.2"
 gem "coveralls", require: false
-gem "email_validator"
 gem "figaro"
-gem "progressbar"
-
 gem "friendly_id", "~> 5.0.0" # NOTE: You MUST use 5.0.0 or greater for Rails 4.0+
-gem "rake", "~>  12.3.3"
-group :production do
-  gem "newrelic_rpm"
-  gem "rails_12factor" # for Heroku
-end
+gem "progressbar"
+gem "simple_form"
 
 group :development do
   gem "annotate"
-  gem "rack-mini-profiler", "~> 2.0"
-  gem "spring"
 
   gem "brakeman", require: false
   gem "rubocop"
@@ -64,7 +75,6 @@ group :development, :test do
 
   gem "dotenv-rails"
   gem "factory_bot_rails"
-  gem "listen"
   gem "rspec-rails"
 end
 

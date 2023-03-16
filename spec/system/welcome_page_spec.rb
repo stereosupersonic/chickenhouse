@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "welcome", type: :system do
+describe "welcome" do
   it "see all public menu items" do
     visit root_path
 

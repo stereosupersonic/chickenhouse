@@ -11,17 +11,24 @@
  *= require_self
  */
 
-@import "bootstrap_and_overrides.css.scss";
-@import "bootstrap-wysihtml5.css";
-@import "layout.css.scss";
-@import "next_event.css.scss";
-@import "video.css.scss";
-@import "bootstrap3-wysihtml5.css";
-@import "bootstrap3-wysiwyg5-color.css";
-@import "blog.css.scss";
-@import "events.css.scss";
-@import "sidebar.css.scss";
-@import "pictures.css.scss";
-@import "helper.css.scss";
 
-@import "bootstrap-datepicker";
+$fcb-red: rgb(246,30,27);
+$fcb-red-2: #bf000c;
+$fcb-white: white;
+$meta-grey: #999999;
+$link-hover-color: #bf000c;
+
+$navbar-default-bg: $fcb-red;
+$navbar-default-color: $fcb-white;
+$navbar-default-link-color: $fcb-white;
+
+$navbar-default-bg: $fcb-red;
+
+$main-bg: whitesmoke;
+$title-meta-color: $meta-grey;
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@import "layout.css.scss";
+@import "video.css.scss";

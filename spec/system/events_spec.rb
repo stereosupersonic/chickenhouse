@@ -1,8 +1,8 @@
 require "capybara_helper"
 
-describe "Events", type: :system, js: true do
-  let(:user) { create :user, username: "stereosupersonic" }
-  let(:admin) { create :admin }
+describe "Events", js: true do
+  let(:user)  { create(:user, username: "stereosupersonic") }
+  let(:admin) { create(:admin) }
 
   it "as admin i want to create a new event" do
     sign_in admin
@@ -21,7 +21,7 @@ describe "Events", type: :system, js: true do
   end
 
   it "as public user i want to see the last event on top of the page" do
-    create :event, title: "Megasuper event", user: user
+    create(:event, title: "Megasuper event", user:)
 
     visit root_path
     within("#next-event") do
@@ -30,9 +30,9 @@ describe "Events", type: :system, js: true do
   end
 
   it "as public user i want to see the next 3 events in the sidebar" do
-    create :event, title: "Megasuper event", user: user
-    create :event, title: "Geiler event", user: user
-    create :event, title: "Perfekter event", user: user
+    create(:event, title: "Megasuper event", user:)
+    create(:event, title: "Geiler event", user:)
+    create(:event, title: "Perfekter event", user:)
 
     visit root_path
     within("#sidebar") do
@@ -43,10 +43,10 @@ describe "Events", type: :system, js: true do
   end
 
   it "as public user i want to see the all next events under 'Kalender'" do
-    create :event, title: "Megasuper event", user: user
-    create :event, title: "Geiler event", user: user
-    create :event, title: "Perfekter event", user: user
-    create :event, title: "alter event", user: user, start_date: 1.day.ago
+    create(:event, title: "Megasuper event", user:)
+    create(:event, title: "Geiler event", user:)
+    create(:event, title: "Perfekter event", user:)
+    create(:event, title: "alter event", user:, start_date: 1.day.ago)
 
     visit root_path
 

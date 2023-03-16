@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
-#/ Usage: script/bootstrap [<options>]
-#/ Bootstraps the app environment.
-#/
-#/ Options are passed through to the bundle-install command. In most cases you
-#/ won't need these.
+# / Usage: script/bootstrap [<options>]
+# / Bootstraps the app environment.
+# /
+# / Options are passed through to the bundle-install command. In most cases you
+# / won't need these.
 #
-#/ --db     setup the the database and load seeds'
-#/ --assets loads assets from the production server '
-#/ --all    do all i can do with --all
-#/ --help   show usage message
+# / --db     setup the the database and load seeds'
+# / --assets loads assets from the production server '
+# / --all    do all i can do with --all
+# / --help   show usage message
 #
 # =============================================================================
 # Uses bundler to install all gems specified in the Gemfile.
@@ -16,36 +16,37 @@
 # and https://github.com/github/developer.github.com/blob/master/script/bootstrap.rb
 #
 
-if ARGV.include?('--help')
+require "English"
+if ARGV.include?("--help")
   system "grep '^#/' <'#{__FILE__}' |cut -c4-"
   exit 2
 end
 
 # go into the project root because it makes everything easier
-root = File.expand_path('../..', __FILE__)
+root = File.expand_path("..", __dir__)
 Dir.chdir(root)
 
 # bring in rubygems and make sure bundler is installed.
-require 'rubygems'
+require "rubygems"
 begin
-  require 'bundler'
-rescue LoadError => boom
+  require "bundler"
+rescue LoadError => e
   warn "Bundler not found. Install it with `gem install bundler' and try again."
   exit 1
 end
 
 # run bundle-install to install any missing gems
-argv  = ['install']
+argv  = ["install"]
 argv += ARGV
 system("bundle", *argv) || begin
-  if $?.exitstatus == 127
-    warn "bundle executable not found. Ensure bundler is installed (`gem " +
+  if $CHILD_STATUS.exitstatus == 127
+    warn "bundle executable not found. Ensure bundler is installed (`gem " \
          "install bundler`) and that the gem bin path is in your PATH"
   end
-  exit($?.exitstatus)
+  exit($CHILD_STATUS.exitstatus)
 end
 
-#make db script executable
-File.chmod 0755, "script/dbsync"
+# make db script executable
+File.chmod 0o755, "script/dbsync"
 
-system("script/dbsync") if ARGV.include?('--db')  or  ARGV.include?('--all')
+system("script/dbsync") if ARGV.include?("--db") || ARGV.include?("--all")

@@ -7,8 +7,7 @@ class Admin::AlbumsController < Admin::BaseController
   end
 
   # GET /admin/photos/1
-  def show
-  end
+  def show; end
 
   # GET /admin/photos/new
   def new
@@ -16,8 +15,7 @@ class Admin::AlbumsController < Admin::BaseController
   end
 
   # GET /admin/photos/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /admin/photos/1
   def update

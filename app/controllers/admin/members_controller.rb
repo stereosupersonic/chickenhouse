@@ -9,15 +9,13 @@ class Admin::MembersController < Admin::BaseController
     end
   end
 
-  def show
-  end
-
-  def edit
-  end
+  def show; end
 
   def new
     @member = Member.new
   end
+
+  def edit; end
 
   def create
     @member = Member.new(member_params)
@@ -48,14 +46,14 @@ class Admin::MembersController < Admin::BaseController
 
   def member_data(members)
     export_attributs = %i[first_name
-      last_name
-      street
-      plz
-      city
-      mobil
-      email
-      occurs_at
-      birthday]
+                          last_name
+                          street
+                          plz
+                          city
+                          mobil
+                          email
+                          occurs_at
+                          birthday]
     members.map do |m|
       export_attributs.map do |p|
         value = m.send(p)

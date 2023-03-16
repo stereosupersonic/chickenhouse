@@ -17,12 +17,3 @@
         .video-description= post.html_content
       -else
         = post.html_content
-
-    -if post.attachment.present?
-      .attachment
-        = link_to post.attachment.url do
-          %i.fa.fa-external-link-square
-          =post.attachment.original_filename
-
-
-

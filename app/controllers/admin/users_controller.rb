@@ -37,12 +37,12 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    if current_user != @user
-      @user.destroy
-      redirect_to admin_users_url, notice: "User was successfully destroyed."
-    else
+    if current_user == @user
       flash[:alert] = "Sich selbst kann man nicht löschen"
       redirect_to admin_users_url
+    else
+      @user.destroy
+      redirect_to admin_users_url, notice: "User was successfully destroyed."
     end
   end
 

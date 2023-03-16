@@ -1,5 +1,6 @@
 module BootstrapPaginationHelper
-  class BootstrapLinkRenderer < WillPaginate::ActionView::LinkRenderer
+  # < WillPaginate::ActionView::LinkRenderer
+  class BootstrapLinkRenderer
     protected
 
     def html_container(html)
@@ -20,7 +21,7 @@ module BootstrapPaginationHelper
   end
 
   def pagination_links(collection, options = {})
-    options[:renderer] ||= "BootstrapPaginationHelper::BootstrapLinkRenderer"
+    # options[:renderer] ||= "BootstrapPaginationHelper::BootstrapLinkRenderer"
     options[:page_links] ||= false # shows only previous/next links
     will_paginate(collection, options)
   end
