@@ -29,8 +29,7 @@ FactoryBot.define do
     content { Faker::Lorem.paragraph(sentence_count: 5) }
     user
     location { "#{Faker::Address.city}, #{Faker::Address.country}" }
-    start_date { 1.day.since }
-    end_date { Time.zone.now }
+    start_date {  Faker::Date.between(from: 2.days.ago, to: 1.year.from_now) }
     all_day { false }
   end
 end

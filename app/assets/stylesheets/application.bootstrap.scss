@@ -1,2 +1,62 @@
+$fa-font-path: 'fafonts';
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+
+$fcb-red: rgb(246,30,27);
+$fcb-red-2: #bf000c;
+$fcb-white: white;
+$meta-grey: #999999;
+$link-hover-color: #bf000c;
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+
+
+
+body {
+  background-color: $fcb-white;
+  a {
+    transition: .3s all ease;
+
+    &:hover {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  header {
+    background-color: $fcb-red;
+    a {
+      color: $fcb-white;
+
+
+      &:hover {
+        color: $link-hover-color;
+      }
+
+
+    }
+  }
+
+  footer {
+    background-color: whitesmoke;
+  }
+
+  .sidebar-module {
+    background-color: whitesmoke;
+  }
+
+  #next-event {
+    background-color: whitesmoke;
+  }
+}

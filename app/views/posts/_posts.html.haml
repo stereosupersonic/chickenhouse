@@ -1,4 +1,5 @@
 #posts.row
   - posts.each do | post |
     = render post
-  = will_paginate posts
+
+= raw pagy_bootstrap_nav @pagy

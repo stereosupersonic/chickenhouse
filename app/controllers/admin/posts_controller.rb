@@ -3,7 +3,7 @@ class Admin::PostsController < Admin::BaseController
 
   # GET /admin/posts
   def index
-    @posts = Post.order("created_at desc").paginate page: params[:page], per_page: 10
+    @pagy, @posts = pagy(Post.order("created_at desc"))
   end
 
   # GET /admin/posts/1

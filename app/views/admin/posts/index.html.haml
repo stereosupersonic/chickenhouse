@@ -18,7 +18,7 @@
           = edit_button edit_admin_post_path(post)
           = delete_button [ :admin, post ]
 
-= will_paginate @posts
+= raw pagy_bootstrap_nav @pagy
 .panel
   = new_button new_admin_post_path
   = back_button :back

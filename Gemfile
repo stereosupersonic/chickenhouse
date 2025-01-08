@@ -44,7 +44,6 @@ gem "thruster", require: false
 
 gem "haml-rails", "~> 2.1"
 gem "friendly_id", "~> 5.5"
-gem "will_paginate", "~> 4.0"
 gem "simple_form", "~> 5.3"
 
 group :development, :test do
@@ -75,3 +74,5 @@ group :test do
   gem "webdrivers", "~> 5.3"
   gem "launchy", "~> 3.0"
 end
+
+gem "pagy", "~> 9.3"

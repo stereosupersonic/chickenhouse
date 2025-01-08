@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def admin?
     # TODO
     current_user&.admin?

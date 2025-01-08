@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_action :resume_session
 
   def welcome
-    @current_posts = Post.current.visible.order("created_at desc").paginate page: params[:page], per_page: 5
+    @pagy, @current_posts = pagy(Post.current.visible.order("created_at desc"))
     @next_event = Event.next_event
   end
 end

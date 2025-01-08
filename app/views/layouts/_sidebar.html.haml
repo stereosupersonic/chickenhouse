@@ -1,13 +1,17 @@
 #sidebar
-  - if Event.next_events.present?
-    .sidebar-module.sidebar-module-inset
-      %h3.title Nächste Events
+
+  .sidebar-module.sidebar-module-inset
+    %h3.title Nächste Events
+    - if Event.next_events.present?
       %ul#next-events
         - Event.next_events.limit(3).each do |event|
           %li.sidebar-event
             = link_to event_path(event) do
               %i.fa.fa-calendar
               = "#{truncate(event.title, length: 21)} (#{time_ago_in_words event.start_date})".html_safe
+    - else
+      .sidebar-event
+        = "Keine Events in der nächsten Zeit"
 
   .sidebar-module.sidebar-module-inset
     %h3.title= link_to "Henaheisl on Facebook", "http://www.facebook.com/henaheisl"
