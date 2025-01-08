@@ -1,7 +1,7 @@
 -# encoding: utf-8
 %ol.breadcrumb
-  %li= link_to 'Home', root_path
-  %li= link_to 'Administration', admin_root_path
+  %li= link_to "Home", root_path
+  %li= link_to "Administration", admin_root_path
   %li.strong= "Posts"
 
 %h3= "Posts: #{Post.count}"
@@ -15,13 +15,13 @@
   %tr
     - @posts.each do |post|
       %tr
-        %td= link_to post.title, [:admin, post]
+        %td= link_to post.title, [ :admin, post ]
         %td= boolean_value post.intern
         %td= boolean_value post.visible
         %td= format_date post.created_at
         %td
           = edit_button edit_admin_post_path(post)
-          = delete_button [:admin, post]
+          = delete_button [ :admin, post ]
 
 = pagination_links @posts
 .panel

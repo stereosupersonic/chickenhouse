@@ -1,19 +1,19 @@
 #sidebar
-  -if Event.next_events.present?
+  - if Event.next_events.present?
     .sidebar-module.sidebar-module-inset
       %h3.title Nächste Events
       %ul#next-events
         - Event.next_events.each do |event|
           %li.sidebar-event
-            =link_to event_path(event) do
+            = link_to event_path(event) do
               %i.fa.fa-calendar
-              ="#{truncate(event.title, :length => 21)} (#{time_ago_in_words event.start_date})".html_safe
+              = "#{truncate(event.title, length: 21)} (#{time_ago_in_words event.start_date})".html_safe
 
   .sidebar-module.sidebar-module-inset
     %h3.title= link_to "Henaheisl on Facebook", "http://www.facebook.com/henaheisl"
-    .fb-like-box{'data-href' => "http://www.facebook.com/henaheisl",
-                 'data-colorscheme' => 'light',
-                 'data-show-faces'  => 'true',
-                 'data-header'      => 'false',
-                 'data-stream'      => 'false',
-                 'data-show-border' => 'false'}
+    .fb-like-box{"data-href" => "http://www.facebook.com/henaheisl",
+                 "data-colorscheme" => "light",
+                 "data-show-faces"  => "true",
+                 "data-header"      => "false",
+                 "data-stream"      => "false",
+                 "data-show-border" => "false"}

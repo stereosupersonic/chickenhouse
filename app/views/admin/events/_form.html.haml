@@ -1,13 +1,13 @@
-= simple_form_for [:admin, @event] do |f|
+= simple_form_for [ :admin, @event ] do |f|
   = f.error_notification
-  = f.input :title, :hint => 'Titel des Events'
-  = f.input :content, :input_html => { :class => 'wysihtml5'}
+  = f.input :title, hint: "Titel des Events"
+  = f.input :content, input_html: { class: "wysihtml5" }
   = f.input :location
   = f.input :start_date
   = f.input :end_date
   = f.input :all_day
   = f.input :visible
   = save_button
-  = cancel_button [:admin, :events]
+  = cancel_button [ :admin, :events ]
 :javascript
   $('.wysihtml5').wysihtml5({"html": true});

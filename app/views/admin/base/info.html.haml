@@ -1,7 +1,7 @@
 -# encoding: utf-8
 %ol.breadcrumb
-  %li= link_to 'Home', root_path
-  %li= link_to 'Administration', admin_root_path
+  %li= link_to "Home", root_path
+  %li= link_to "Administration", admin_root_path
   %li.strong Info
 
 %p
@@ -13,7 +13,7 @@
   %br
   = "Platform: #{RUBY_PLATFORM}"
   %h4 Environment
-  -ENV.keys.each do |key |
+  - ENV.keys.each do |key |
     = "ENV[#{key}] => #{ENV[key]}"
     %br
 
