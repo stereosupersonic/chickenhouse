@@ -24,10 +24,10 @@
         .banner
           = image_tag "banner_v3.png", class: "img-responsive"
           = render "layouts/navigation"
+          = render "layouts/messages"
     .container
       %main{role: "main"}
         .row
-          = render "layouts/messages"
           .col-sm-9.col-xs-12
             = yield
           .col-sm-3.hidden-xs.float-right

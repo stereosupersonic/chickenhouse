@@ -3,7 +3,7 @@
     .sidebar-module.sidebar-module-inset
       %h3.title Nächste Events
       %ul#next-events
-        - Event.next_events.each do |event|
+        - Event.next_events.limit(3).each do |event|
           %li.sidebar-event
             = link_to event_path(event) do
               %i.fa.fa-calendar
