@@ -1,5 +1,4 @@
 #posts.row
   - posts.each do | post |
-    - cache([ post, current_role ]) do
-      = render post
+    = render post
   = will_paginate posts

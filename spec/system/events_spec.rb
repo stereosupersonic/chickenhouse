@@ -12,9 +12,9 @@ describe "Events", js: true do
     click_link "Events"
     click_link "Neu"
 
-    fill_in " Title", with: "SuperMega Event"
+    fill_in "* Titel", with: "SuperMega Event"
 
-    click_link "Speichern"
+    click_on "Speichern"
 
     expect(page).to have_content "Event was successfully created."
     expect(page).to have_content "SuperMega Event"

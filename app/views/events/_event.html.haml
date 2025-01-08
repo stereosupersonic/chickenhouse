@@ -1,20 +1,18 @@
-- cache([ event, current_role ]) do
-  %div{id: dom_id(event), class: "event"}
-    - if admin?
-      .edit_it
-        = link_to [ :edit, :admin, event ] do
-          %i.fa.fa-edit
-    .date
-      %span.calicon.caliconSmall
-        %span
-          %span.month
-            = "#{event.start_date.strftime('%d')}."
-          %span.day
-            = "#{event.start_date.strftime('%b')}"
-    .event-header
-      .event-title= link_to event.title, event
-      %p.event-meta
-        = format_datetime event.start_date
-        Uhr
-        = event.location
-
+%div{id: dom_id(event), class: "event"}
+  - if admin?
+    .edit_it
+      = link_to [ :edit, :admin, event ] do
+        %i.fa.fa-edit
+  .date
+    %span.calicon.caliconSmall
+      %span
+        %span.month
+          = "#{event.start_date.strftime('%d')}."
+        %span.day
+          = "#{event.start_date.strftime('%b')}"
+  .event-header
+    .event-title= link_to event.title, event
+    %p.event-meta
+      = format_datetime event.start_date
+      Uhr
+      = event.location

@@ -1,12 +1,3 @@
-%ol.breadcrumb
-  %li= link_to "Home", root_path
-  %li= link_to "Administration", admin_root_path
-  %li= link_to "Posts", admin_posts_path
-  %li.strong= @post.title
-
-%p= debug @post.html_content
-
-%br
 = render "/posts/post", post: @post
 
 = edit_button [ :edit, :admin, @post ]

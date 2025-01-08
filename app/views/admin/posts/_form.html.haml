@@ -8,9 +8,9 @@
   = f.input :media
   = f.input :visible
   = f.input :intern
-  = f.input :created_at, as: :bootstrap_datepicker
+  = f.input :created_at, as: :datetime
   = f.input :attachment
-  = save_button
+  = f.submit "Speichern", class: "btn btn-primary"
   = cancel_button :back
 
 %br

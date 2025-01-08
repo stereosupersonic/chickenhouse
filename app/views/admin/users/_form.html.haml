@@ -5,5 +5,5 @@
   = f.input :password,              label: "Passwort",             as: :password
   = f.input :password_confirmation, label: "Passwort wiederholen", as: :password
 
-  = save_button
+  = f.submit "Speichern", class: "btn btn-primary"
   = cancel_button admin_users_path

@@ -19,7 +19,7 @@ class Admin::PostsController < Admin::BaseController
 
   # POST /admin/posts
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user: Current.user))
 
     if @post.save
       redirect_to admin_posts_url, notice: "Post was successfully created."
@@ -52,6 +52,6 @@ class Admin::PostsController < Admin::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :content, :content_type, :media, :intern, :attachment, :visible, :created_at)
+    params.require(:post).permit(:title, :content, :content_type, :media, :intern, :attachment, :visible, :created_at, :display_type)
   end
 end

@@ -8,10 +8,6 @@ module ApplicationHelper
     Current.user
   end
 
-  def current_role
-    admin? ? "admin" : "user"
-  end
-
   def format_time(time)
     time&.strftime "%H:%M"
   end
@@ -54,7 +50,7 @@ module ApplicationHelper
   end
 
   def edit_button(link, text = "Ändern", options = {})
-    link = link.is_a?(ActiveRecord::Base) ? [:edit, link] : link
+    link = link.is_a?(ActiveRecord::Base) ? [ :edit, link ] : link
     options.reverse_merge! class: "btn btn-primary btn-sm"
     button_with_icon text, link, "pencil", options
   end
@@ -70,7 +66,7 @@ module ApplicationHelper
   end
 
   def delete_button(link, text = "Löschen", options = {})
-    options.reverse_merge! data: { confirm: "Sind Sie sicher?" }, method: :delete, class: "form_submitter btn btn-danger btn-sm"
+    options.reverse_merge! data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "form_submitter btn btn-danger btn-sm"
     button_with_icon text, link, "trash-o", options
   end
 
@@ -78,5 +74,4 @@ module ApplicationHelper
     options.reverse_merge! class: "btn btn-default btn-sm"
     button_with_icon text, link, "arrow-left", options
   end
-
 end

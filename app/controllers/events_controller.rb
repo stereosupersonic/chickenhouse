@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   allow_unauthenticated_access only: %i[ index show ]
+  before_action :resume_session, only: %i[ index show ]
   def index
     @events = Event.next_events.paginate page: params[:page], per_page: 5
   end

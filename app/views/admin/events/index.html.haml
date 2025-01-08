@@ -1,9 +1,5 @@
-%ol.breadcrumb
-  %li= link_to "Home", root_path
-  %li= link_to "Administration", admin_root_path
-  %li.strong=  "Events"
-
 %h3= "Events: #{Event.count}"
+
 %table.table.table-bordered.table-striped.table-hover
   %tr
     %th= I18n.t("activerecord.attributes.event.title")

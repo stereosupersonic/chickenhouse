@@ -14,7 +14,7 @@ class Admin::EventsController < Admin::BaseController
   def edit; end
 
   def create
-    @event = Event.new event_params.merge(user: current_user)
+    @event = Event.new event_params.merge(user: Current.user)
 
     if @event.save
       redirect_to admin_events_url, notice: "Event was successfully created."
@@ -24,7 +24,7 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def update
-    if @event.update event_params.merge(user: current_user)
+    if @event.update event_params.merge(user: Current.user)
       redirect_to admin_events_url, notice: "Event was successfully updated."
     else
       render action: "edit"
