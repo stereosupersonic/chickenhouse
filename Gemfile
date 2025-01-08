@@ -43,6 +43,9 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "haml-rails", "~> 2.1"
+gem "friendly_id", "~> 5.5"
+gem "will_paginate", "~> 4.0"
+gem "simple_form", "~> 5.3"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -53,6 +56,7 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  gem "simplecov", "~> 0.22.0"
 end
 
 group :development do
@@ -60,9 +64,15 @@ group :development do
   gem "web-console"
   gem "html2haml"
   gem "haml_lint", "~> 0.59.0"
+
+  gem "annotate", ">= 2.6"
 end
 
 group :test do
   gem "rspec-rails", "~> 7.1"
   gem "factory_bot_rails", "~> 6.4"
+  gem "faker", "~> 3.5"
+  gem "capybara", "~> 3.40"
+  gem "webdrivers", "~> 5.3"
+  gem "launchy", "~> 3.0"
 end

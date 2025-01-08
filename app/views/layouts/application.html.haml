@@ -17,5 +17,34 @@
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
 
-  %body{ class: "#{controller_name} #{action_name}" }
-    = yield
+
+  %body{ id: "#{controller.controller_name}_#{controller.action_name}", class: "#{controller.controller_name} #{controller.action_name}" }
+    #wrap
+      %header
+        .banner
+          = image_tag 'banner_v3.png',:class => 'img-responsive'
+          = render 'layouts/navigation'
+    .container
+      %main{:role => "main"}
+        .row
+          = render 'layouts/messages'
+          .col-sm-9.col-xs-12
+            = yield
+          .col-sm-3.hidden-xs.float-right
+            = render 'layouts/sidebar'
+    -#= auto_discovery_link_tag :atom,  posts_url(:format=>'atom'), :title=>'Henaheisl Blog'
+
+    %footer.footer
+      %p
+        ="© 1991 - #{Time.now.year} Henaheisl e.V. - Alle Rechte vorbehalten"
+      %p
+        %span
+          = link_to 'Impressum', impressum_path
+          = "|"
+        %span
+          = link_to 'info@henaheisl.de', "mailto:info@henaheisl.de"
+          = "|"
+        %span
+          = link_to 'http://facebook.com/henaheisl',:target => '_blank' do
+            %i.fa.fa-facebook-square
+            Facebook

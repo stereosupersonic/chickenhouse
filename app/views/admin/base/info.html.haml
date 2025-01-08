@@ -1,0 +1,19 @@
+-# encoding: utf-8
+%ol.breadcrumb
+  %li= link_to 'Home', root_path
+  %li= link_to 'Administration', admin_root_path
+  %li.strong Info
+
+%p
+  = "Ruby Version: #{RUBY_VERSION}"
+  %br
+  = "Rails Version: #{link_to Rails.version, 'https://github.com/rails/rails/tree/v'+Rails.version}".html_safe
+  %br
+  = "Rails.env: #{Rails.env}"
+  %br
+  = "Platform: #{RUBY_PLATFORM}"
+  %h4 Environment
+  -ENV.keys.each do |key |
+    = "ENV[#{key}] => #{ENV[key]}"
+    %br
+
