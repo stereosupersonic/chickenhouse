@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :admin do
+    root "base#index"
     resources :users
     resources :events
     resources :posts
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
+  get "login" =>  "sessions#new", :as => "login"
   # Defines the root path route ("/")
   root "pages#welcome"
 end

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
+
   def index
     @posts = Post.visible.order("created_at desc").paginate page: params[:page], per_page: 5
 

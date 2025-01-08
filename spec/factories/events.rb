@@ -25,10 +25,10 @@
 
 FactoryBot.define do
   factory :event do
-    title { "MyString" }
-    content { "MyText" }
+    title { Faker::Lorem.sentence(word_count: 3) }
+    content { Faker::Lorem.paragraph(sentence_count: 5) }
     user
-    location { "MyString" }
+    location { "#{Faker::Address.city}, #{Faker::Address.country}" }
     start_date { 1.day.since }
     end_date { Time.zone.now }
     all_day { false }

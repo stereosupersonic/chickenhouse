@@ -1,4 +1,3 @@
--# encoding: utf-8
 %ol.breadcrumb
   %li= link_to "Home", root_path
   %li= link_to "Administration", admin_root_path
@@ -23,8 +22,7 @@
           = edit_button edit_admin_post_path(post)
           = delete_button [ :admin, post ]
 
-= pagination_links @posts
+= will_paginate @posts
 .panel
   = new_button new_admin_post_path
   = back_button :back
-

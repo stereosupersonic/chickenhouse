@@ -2,4 +2,4 @@
   - posts.each do | post |
     - cache([ post, current_role ]) do
       = render post
-  = pagination_links posts
+  = will_paginate posts

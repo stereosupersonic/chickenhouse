@@ -7,7 +7,7 @@ describe "Events", js: true do
   it "as admin i want to create a new event" do
     sign_in admin
 
-    visit admin_root_path
+    visit "admin_root_path"
 
     click_link "Events"
     click_link "Neu"

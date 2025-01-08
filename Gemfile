@@ -57,6 +57,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   gem "simplecov", "~> 0.22.0"
+  gem "factory_bot_rails", "~> 6.4"
 end
 
 group :development do
@@ -64,13 +65,11 @@ group :development do
   gem "web-console"
   gem "html2haml"
   gem "haml_lint", "~> 0.59.0"
-
   gem "annotate", ">= 2.6"
 end
 
 group :test do
   gem "rspec-rails", "~> 7.1"
-  gem "factory_bot_rails", "~> 6.4"
   gem "faker", "~> 3.5"
   gem "capybara", "~> 3.40"
   gem "webdrivers", "~> 5.3"
