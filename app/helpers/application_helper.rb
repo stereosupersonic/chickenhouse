@@ -24,7 +24,7 @@ module ApplicationHelper
 
   def button_with_icon(text, link, icon, options = {})
     options.reverse_merge! class: "btn btn-default btn-sm"
-    link_to tag.i("&nbsp;".html_safe, class: "fa fa-#{icon}") + text, link, options
+    link_to tag.i("&nbsp;".html_safe, class: "fa-solid fa-#{icon}") + text, link, options
   end
 
   def show_button(link, text = "Anzeigen", options = {})
@@ -54,7 +54,7 @@ module ApplicationHelper
   def edit_button(link, text = "Ändern", options = {})
     link = link.is_a?(ActiveRecord::Base) ? [ :edit, link ] : link
     options.reverse_merge! class: "btn btn-primary btn-sm"
-    button_with_icon text, link, "pencil", options
+    button_with_icon text, link, "pen", options
   end
 
   def cancel_button(link = root_path, text = "Abbrechen", options = {})
@@ -69,7 +69,7 @@ module ApplicationHelper
 
   def delete_button(link, text = "Löschen", options = {})
     options.reverse_merge! data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "form_submitter btn btn-danger btn-sm"
-    button_with_icon text, link, "trash-o", options
+    button_with_icon text, link, "trash", options
   end
 
   def back_button(link, text = I18n.t("common.actions.back"), options = {})

@@ -19,7 +19,7 @@
         %td
           = edit_button edit_admin_event_path(event)
           = delete_button admin_event_path(event)
-= pagy_nav @pagy
+= raw pagy_bootstrap_nav @pagy
 .panel
   = new_button new_admin_event_path
   = back_button admin_root_path
