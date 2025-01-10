@@ -1,12 +1,16 @@
 %nav.navbar.navbar-expand-lg.navbar-light
   .container-fluid
     .navbar-brand
-      .nav-link= link_to "Home", root_path
+      .nav-link
+        = link_to root_path do
+          .fa.fa-home
+
     %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNavAltMarkup", "data-bs-toggle" => "collapse", type: "button"}
       %span.navbar-toggler-icon
+
     #navbarNavAltMarkup.collapse.navbar-collapse
       .navbar-nav
-        .nav-link= link_to "Kalender", events_path
+        .nav-link.active= link_to "Kalender", events_path
         .nav-link= link_to "Blog", posts_path
         .nav-link= link_to "Über Uns", about_path
         - if admin?

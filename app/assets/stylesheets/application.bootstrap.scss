@@ -16,17 +16,18 @@ $link-hover-color: #bf000c;
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-
+@import 'layout.css.scss';
 
 
 body {
   background-color: $fcb-white;
   a {
     transition: .3s all ease;
-
+    color: #373737;
     &:hover {
-      text-decoration: none;
       font-weight: bold;
+      color: $fcb-red;
+      text-decoration: underline;
     }
 
     &:focus {
