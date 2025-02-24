@@ -72,7 +72,7 @@ group :test do
   gem "faker", "~> 3.5"
   gem "capybara", "~> 3.40"
   gem "webdrivers", "~> 5.3"
-  gem "launchy", "~> 3.0"
+  gem "launchy", "~> 3.1"
 end
 
 gem "pagy", "~> 9.3"
