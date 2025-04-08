@@ -63,7 +63,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "html2haml"
-  gem "haml_lint", "~> 0.59.0"
+  gem "haml_lint", "~> 0.62.0"
   gem "annotate", ">= 2.6"
 end
 
