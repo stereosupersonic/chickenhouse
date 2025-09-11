@@ -23,8 +23,8 @@ module Authentication
 
     def resume_session
       session = Current.session ||= find_session_by_cookie
-    Rails.logger.info "resume_session #{session}"
-    session
+      Rails.logger.info "resume_session #{session}"
+      session
     end
 
     def find_session_by_cookie
@@ -37,7 +37,8 @@ module Authentication
     end
 
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || root_url
+      return_to_after_authenticating = session.delete(:return_to_after_authenticating)
+      return_to_after_authenticating || root_url
     end
 
     def start_new_session_for(user)

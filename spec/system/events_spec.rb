@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "Events", js: true do
+describe "Events" do
   let(:user)  { create(:user, username: "stereosupersonic") }
   let(:admin) { create(:admin) }
 
@@ -12,7 +12,7 @@ describe "Events", js: true do
     click_link "Events"
     click_link "Neu"
 
-    fill_in "* Titel", with: "SuperMega Event"
+    fill_in "Titel", with: "SuperMega Event"
 
     click_on "Speichern"
 
@@ -35,6 +35,7 @@ describe "Events", js: true do
     create(:event, title: "Perfekter event", user:)
 
     visit root_path
+
     within("#sidebar") do
       expect(page).to have_content "Megasuper event"
       expect(page).to have_content "Geiler event"

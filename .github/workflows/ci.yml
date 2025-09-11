@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   scan_ruby:
@@ -37,3 +37,34 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: |
+        docker compose -f docker-compose.test.yml up -d --build
+        docker compose -f docker-compose.test.yml ps
+        echo "Waiting for the app to start..."
+        docker compose -f docker-compose.test.yml logs
+        docker stats --no-stream
+
+    - name: prepare
+      run: |
+        docker compose -f docker-compose.test.yml ps
+        docker compose -f docker-compose.test.yml logs
+        docker stats --no-stream
+        docker compose -f docker-compose.test.yml exec -T app bin/rails db:create --trace
+        docker compose -f docker-compose.test.yml exec -T app bin/rails db:test:prepare --trace
+
+    - name: Run tests
+      run: |
+        docker compose -f docker-compose.test.yml exec -e CI=true -T app bundle exec rspec .
+
+    - name: Stop containers
+      if: always()
+      run: docker compose -f docker-compose.test.yml down

@@ -36,7 +36,6 @@ FactoryBot.define do
   factory :post do
     content { Faker::Lorem.sentence }
     title { Faker::Book.title }
-    created_at {  Faker::Date.between(from: 2.years.ago, to: 1.day.ago) }
     user
   end
 end

@@ -1,0 +1,56 @@
+
+x-base: &base
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/app
+    - bundle:/usr/local/bundle
+    - rails_cache:/app/tmp/cache
+    - node_modules:/app/node_modules
+  restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+  stop_grace_period: "3s"
+  environment:
+    - DATABASE_HOST=postgres
+    - DATABASE_PORT=5432
+    - DATABASE_USERNAME=postgres
+    - DATABASE_PASSWORD=postgresdb
+    - RAILS_LOG_TO_STDOUT=true
+    - ROLLBAR_ENABLED=${ROLLBAR_ENABLED}
+    - ROLLBAR_ACCESS_TOKEN=${ROLLBAR_ACCESS_TOKEN}
+    - RAILS_ENV=${RAILS_ENV}
+  depends_on:
+    postgres:
+      condition: service_healthy
+
+services:
+  app:
+    <<: *base
+    ports:
+      - '3000:3000'
+    healthcheck:
+      test: curl --fail http://0.0.0.0:3000/up || exit 1
+      retries: 3
+      start_period: 10s
+
+  postgres:
+    image: postgres:14-alpine
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgresdb
+    ports:
+      - 5432
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+
+volumes:
+  postgres:
+  bundle:
+  rails_cache:
+  node_modules:

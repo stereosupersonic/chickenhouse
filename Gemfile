@@ -4,8 +4,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
+# Use PostgreSQL as the database for Active Record
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -57,6 +56,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "simplecov", "~> 0.22.0"
   gem "factory_bot_rails", "~> 6.4"
+  gem "pry-nav", "~> 1.0"
 end
 
 group :development do
@@ -64,7 +64,7 @@ group :development do
   gem "web-console"
   gem "html2haml"
   gem "haml_lint", "~> 0.59.0"
-  gem "annotate", ">= 2.6"
+
 end
 
 group :test do
@@ -76,3 +76,6 @@ group :test do
 end
 
 gem "pagy", "~> 9.3"
+gem "rollbar", "~> 3.6"
+gem "pg", "~> 1.6"
+gem "annotate", "~> 2.6"

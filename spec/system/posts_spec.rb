@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "Posts", js: true do
+describe "Posts" do
   let(:user) { create(:user, username: "stereosupersonic") }
 
   it "as admin i want to manage posts", js: true do
@@ -10,12 +10,12 @@ describe "Posts", js: true do
 
     click_link "Posts"
     click_link "Neu"
-    fill_in "* Titel", with: "Coole Mega Fugge"
+    fill_in "Titel *", with: "Coole Mega Fugge"
     click_on "Speichern"
     expect(page).to have_content "Coole Mega Fugge"
 
     click_link "Ändern"
-    fill_in "* Titel", with: "Coole Mega fucke"
+    fill_in "Titel *", with: "Coole Mega fucke"
 
     click_on "Speichern"
 
@@ -35,6 +35,7 @@ describe "Posts", js: true do
            user: user)
 
     visit root_path
+
     within("#posts") do
       expect(page).to have_content "Coole Mega Fugge"
       expect(page).to have_content "der Lorem Ipsum of the Posts"
