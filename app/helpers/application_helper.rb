@@ -73,7 +73,7 @@ module ApplicationHelper
   end
 
   def back_button(link, text = I18n.t("common.actions.back"), options = {})
-    options.reverse_merge! class: "btn btn-default btn-sm"
+    options.reverse_merge! class: "btn btn-light"
     button_with_icon text, link, "arrow-left", options
   end
 end

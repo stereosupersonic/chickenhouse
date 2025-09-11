@@ -38,6 +38,7 @@ class Event < ApplicationRecord
   end
 
   def html_content
+    content.html_safe
     # RedCloth.new(content).to_html.html_safe
   end
 end

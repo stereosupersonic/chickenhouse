@@ -20,11 +20,7 @@ $title-meta-color: $meta-grey;
 
 
 .footer {
-    position: relative;
-    margin-top: -150px;
-    /* negative value of footer height */
-    height: 150px;
-    clear: both;
+    margin-top: auto;
     padding: 40px 0;
     color: $title-meta-color;
     text-align: center;
@@ -60,14 +56,14 @@ $title-meta-color: $meta-grey;
 
 nav {
     // font-size: $font-size-large;
-    background-color: green;
+    // background-color: green;
 
       .fa-home {
           font-size: 30px;
       }
 
       .nav-link {
-     	a {
+      a {
           color: $fcb-white;
       }
 

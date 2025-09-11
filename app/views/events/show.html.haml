@@ -1,5 +1,15 @@
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: "#"} Home
+    %li.breadcrumb-item
+      %a{href: "#"} Library
+    %li.breadcrumb-item.active{"aria-current" => "page"} Data
+
 = render @event
-= @event.html_content
+.card
+  .card-body
+    = @event.html_content
 
 = back_button root_path
 - if admin?

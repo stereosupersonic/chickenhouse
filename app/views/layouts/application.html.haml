@@ -20,16 +20,17 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
 
 
-  %body{ id: "#{controller.controller_name}_#{controller.action_name}", class: "#{controller.controller_name} #{controller.action_name}" }
+  %body{ id: "#{controller.controller_name}_#{controller.action_name}", class: "#{controller.controller_name} #{controller.action_name} d-flex flex-column min-vh-100" }
     = auto_discovery_link_tag :atom,  posts_url(format: "atom"), title: "Henaheisl Blog"
 
     %header
       .banner.d-flex.justify-content-center
-        = image_tag "banner_v3.png", class: "img-responsive"
+        = link_to root_path do
+          = image_tag "banner_v3.png", class: "img-responsive"
 
       = render "layouts/navigation"
       = render "layouts/messages"
-    %main
+    %main.flex-grow-1
       .container-fluid
         .row.pt-3
           .col-sm-9
