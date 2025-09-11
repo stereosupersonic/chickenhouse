@@ -1,24 +1,9 @@
-# README
+Chickenhouse
+===========
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[This is the source of Henaheisl.de](http://www.henaheisl.de)
 
-Things you may want to cover:
 
-* Ruby version
+------------
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Michael Deimel (stereosupersonic) - [m.deimel@deimel.de](mailto:m.deimel@deimel.de)
