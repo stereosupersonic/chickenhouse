@@ -64,7 +64,6 @@ group :development do
   gem "web-console"
   gem "html2haml"
   gem "haml_lint", "~> 0.59.0"
-
 end
 
 group :test do
