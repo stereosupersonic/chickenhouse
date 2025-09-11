@@ -25,11 +25,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    new_params = user_params.dup
-    new_params[:username] = new_params[:username].strip
-    new_params[:email] = new_params[:email].strip
-    if @user.update(new_params)
-      redirect_to admin_root_path, notice: "the account was successfully updated."
+    if @user.update(user_params)
+      redirect_to admin_root_path, notice: "The account was successfully updated."
     else
       flash[:alert] = "Account not updated."
       render :edit
@@ -53,11 +50,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(
-      :username,
-      :email,
-      :password,
-      :password_confirmation
-    )
+    permitted_params = [ :username, :email_address, :password, :password_confirmation ]
+    permitted_params << :admin if Current.user&.admin?
+    params.require(:user).permit(permitted_params)
   end
 end

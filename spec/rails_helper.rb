@@ -1,10 +1,7 @@
 # This file is copied to spec/ when you run "rails generate rspec:install"
 require "spec_helper"
 
-if ENV["CI"].blank?
-  require "simplecov"
-  SimpleCov.start "rails"
-end
+
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
@@ -37,6 +34,11 @@ begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
+end
+
+if ENV.fetch("CI", "").blank?
+  require "simplecov"
+  SimpleCov.start "rails"
 end
 
 RSpec.configure do |config|

@@ -12,7 +12,8 @@ describe "Events" do
     click_link "Events"
     click_link "Neu"
 
-    fill_in "Titel", with: "SuperMega Event"
+    fill_in "Titel *", with: "SuperMega Event"
+    fill_in "Beschreibung *", with: "SuperMega Event"
 
     click_on "Speichern"
 

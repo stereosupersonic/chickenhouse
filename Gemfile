@@ -54,7 +54,7 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-  gem "simplecov", "~> 0.22.0"
+  gem "simplecov", "~> 0.22.0", require: false
   gem "factory_bot_rails", "~> 6.4"
   gem "pry-nav", "~> 1.0"
 end

@@ -25,7 +25,10 @@ class Event < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 10000 }
+  validates :location, length: { maximum: 255 }
+  validates :slug, presence: true, uniqueness: true
 
   belongs_to :user
 
@@ -38,7 +41,6 @@ class Event < ApplicationRecord
   end
 
   def html_content
-    content.html_safe
-    # RedCloth.new(content).to_html.html_safe
+    ActionController::Base.helpers.simple_format(ActionController::Base.helpers.sanitize(content))
   end
 end
