@@ -1,10 +1,13 @@
 require "capybara_helper"
 
-describe "Posts" do
+describe "Posts", type: :system do
   let(:user) { create(:user, username: "stereosupersonic") }
 
   it "as admin i want to manage posts", js: true do
-    sign_in create(:admin)
+    visit root_path
+    expect(page).to have_content "Blog"
+    admin = create(:admin)
+    sign_in admin
 
     visit admin_root_path
 

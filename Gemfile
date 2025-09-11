@@ -69,9 +69,9 @@ end
 group :test do
   gem "rspec-rails", "~> 7.1"
   gem "faker", "~> 3.5"
-  gem "capybara", "~> 3.40"
-  gem "webdrivers", "~> 5.3"
-  gem "launchy", "~> 3.0"
+  gem "capybara"
+  gem "webdrivers", require: false
+  gem "launchy"
 end
 
 gem "pagy", "~> 9.3"

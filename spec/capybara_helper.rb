@@ -1,5 +1,6 @@
 require "rails_helper"
 require "capybara/rspec"
+require "webdrivers"
 
 RSpec.configure do |config|
   config.include Capybara::RSpecMatchers

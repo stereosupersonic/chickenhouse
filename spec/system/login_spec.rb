@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "Login" do
+describe "Login", type: :system do
   it "as normal user" do
     visit root_path
 

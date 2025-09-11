@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "Events" do
+describe "Events", type: :system do
   let(:user)  { create(:user, username: "stereosupersonic") }
   let(:admin) { create(:admin) }
 
