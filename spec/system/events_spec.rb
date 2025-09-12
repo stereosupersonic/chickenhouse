@@ -5,13 +5,18 @@ describe "Events", type: :system do
   let(:admin) { create(:admin) }
 
   context "as admin" do
-    it "i want to create a new event" do
+    it "i want to manage a new event" do
       sign_in admin
 
       visit admin_root_path
 
       click_link "Events"
       click_link "Neu"
+
+      click_on "Speichern"
+
+      expect(page).to have_content "Bitte überprüfen sie nachfolgende Probleme:"
+      expect(page).to have_content "Titel muss ausgefüllt werden"
 
       fill_in "Titel *", with: "SuperMega Event"
       fill_in "Beschreibung *", with: "SuperMega Event"
@@ -20,6 +25,21 @@ describe "Events", type: :system do
 
       expect(page).to have_content "Event was successfully created."
       expect(page).to have_content "SuperMega Event"
+
+      click_link "Ändern"
+      fill_in "Titel *", with: ""
+      click_on "Speichern"
+      expect(page).to have_content "Titel muss ausgefüllt werden"
+
+      click_on "Speichern"
+      fill_in "Titel *", with: "Coole Mega fucke"
+
+      click_on "Speichern"
+
+      expect(page).to have_content "Coole Mega fucke"
+
+      click_link "Löschen"
+      expect(page).not_to have_content "Coole Mega fucke"
     end
   end
 

@@ -3,16 +3,14 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  email_address   :string           not null
-#  password_digest :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  admin           :boolean          default(FALSE)
+#  email_address   :string
+#  password_digest :string
+#  slug            :string
+#  username        :string
+#  created_at      :datetime
+#  updated_at      :datetime
 #
-# Indexes
-#
-#  index_users_on_email_address  (email_address) UNIQUE
-#
-
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy

@@ -3,7 +3,7 @@ class Admin::PostsController < Admin::BaseController
 
   # GET /admin/posts
   def index
-    @pagy, @posts = pagy(Post.order("created_at desc"))
+    @pagy, @posts = pagy(Post.order("created_at desc"), limit: 25)
   end
 
   def show; end

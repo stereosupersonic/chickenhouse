@@ -9,7 +9,7 @@
     %th
   %tr
     - for user in @users
-      %tr
+      %tr{ id: dom_id(user) }
         %td= user.username
         %td= user.email_address
         %td= boolean_value user.admin?

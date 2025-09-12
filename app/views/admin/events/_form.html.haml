@@ -1,5 +1,4 @@
-= simple_form_for [ :admin, @event ] do |f|
-  = debug @event.errors
+= simple_form_for [ :admin, @event ], data: { turbo: false }  do |f|
   = f.error_notification
   = f.input :title, hint: "Titel des Events"
   = f.input :content, input_html: { class: "wysihtml5" }

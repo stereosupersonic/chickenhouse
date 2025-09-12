@@ -15,14 +15,18 @@ describe "Posts", type: :system do
     click_link "Neu"
 
     click_on "Speichern"
-    # save_and_open_page
-    expect(page).to have_content "Coole Mega Fugge"
+
+    expect(page).to have_content "Bitte überprüfen sie nachfolgende Probleme:"
+    expect(page).to have_content "Titel muss ausgefüllt werden"
 
     fill_in "Titel *", with: "Coole Mega Fugge"
     click_on "Speichern"
     expect(page).to have_content "Coole Mega Fugge"
 
     click_link "Ändern"
+    fill_in "Titel *", with: ""
+    click_on "Speichern"
+    expect(page).to have_content "Titel muss ausgefüllt werden"
     fill_in "Titel *", with: "Coole Mega fucke"
 
     click_on "Speichern"
@@ -50,6 +54,13 @@ describe "Posts", type: :system do
 
     click_link "Coole Mega Fugge"
     within("#posts_show") do
+      expect(page).to have_content "Coole Mega Fugge"
+      expect(page).to have_content "der Lorem Ipsum of the Posts"
+    end
+
+    visit root_path
+    click_link "Blog"
+    within("#posts") do
       expect(page).to have_content "Coole Mega Fugge"
       expect(page).to have_content "der Lorem Ipsum of the Posts"
     end
