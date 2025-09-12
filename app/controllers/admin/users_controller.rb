@@ -52,6 +52,6 @@ class Admin::UsersController < Admin::BaseController
   def user_params
     permitted_params = %i[username email_address password password_confirmation]
     permitted_params << :admin if Current.user&.admin?
-    params.expect(user: [permitted_params])
+    params.expect(user: [ permitted_params ])
   end
 end

@@ -17,7 +17,7 @@ RSpec.configure do |config|
   config.before(:each, :js, type: :system) do
     # https://api.rubyonrails.org/v6.0.1/classes/ActionDispatch/SystemTestCase.html#method-c-driven_by
     ENV["SELENIUM_BROWSER"].presence&.to_sym || :headless_chrome
-    driven_by :cuprite, screen_size: [1400, 1400]
+    driven_by :cuprite, screen_size: [ 1400, 1400 ]
   end
 end
 
