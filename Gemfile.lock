@@ -367,6 +367,9 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    rubocop-rspec (3.7.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
     ruby_parser (3.21.1)
       racc (~> 1.5)
@@ -378,6 +381,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.17.4)
+    shoulda-matchers (6.5.0)
+      activesupport (>= 5.2.0)
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -492,6 +497,8 @@ DEPENDENCIES
   rollbar (~> 3.6)
   rspec-rails (~> 7.1)
   rubocop-rails-omakase
+  rubocop-rspec (~> 3.7)
+  shoulda-matchers (~> 6.0)
   simple_form (~> 5.3)
   simplecov (~> 0.22.0)
   solid_cable

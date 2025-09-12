@@ -3,8 +3,9 @@
     %li.breadcrumb-item
       %a{href: "#"} Home
     %li.breadcrumb-item
-      %a{href: "#"} Library
-    %li.breadcrumb-item.active{"aria-current" => "page"} Data
+      = link_to "Events", events_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}
+      = @event.titel
 
 = render @event
 

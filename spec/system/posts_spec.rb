@@ -13,6 +13,11 @@ describe "Posts", type: :system do
 
     click_link "Posts"
     click_link "Neu"
+
+    click_on "Speichern"
+    # save_and_open_page
+    expect(page).to have_content "Coole Mega Fugge"
+
     fill_in "Titel *", with: "Coole Mega Fugge"
     click_on "Speichern"
     expect(page).to have_content "Coole Mega Fugge"

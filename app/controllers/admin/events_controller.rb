@@ -2,7 +2,7 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_admin_event, only: %i[show edit update destroy]
 
   def index
-    @pagy, @events = pagy(Event.order("start_date DESC"))
+    @pagy, @events = pagy(Event.order(start_date: :desc))
   end
 
   def show; end
@@ -44,6 +44,6 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:title, :content, :user_id, :location, :start_date, :end_date, :visible, :all_day)
+    params.expect(event: %i[title content user_id location start_date end_date visible all_day])
   end
 end

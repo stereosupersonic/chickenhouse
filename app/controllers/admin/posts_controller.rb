@@ -6,18 +6,14 @@ class Admin::PostsController < Admin::BaseController
     @pagy, @posts = pagy(Post.order("created_at desc"))
   end
 
-  # GET /admin/posts/1
   def show; end
 
-  # GET /admin/posts/new
   def new
     @post = Post.new
   end
 
-  # GET /admin/posts/1/edit
   def edit; end
 
-  # POST /admin/posts
   def create
     @post = Post.new(post_params.merge(user: Current.user))
 
@@ -28,7 +24,6 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
-  # PATCH/PUT /admin/posts/1
   def update
     if @post.update(post_params)
       redirect_to admin_posts_url, notice: "Post was successfully updated."
@@ -37,9 +32,9 @@ class Admin::PostsController < Admin::BaseController
     end
   end
 
-  # DELETE /admin/posts/1
   def destroy
     @post.destroy
+
     redirect_to admin_posts_url, notice: "Post was successfully destroyed."
   end
 

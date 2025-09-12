@@ -35,7 +35,7 @@ class Event < ApplicationRecord
 
   scope :visible, -> { where(visible: true) }
 
-  scope :next_events, -> { visible.where(start_date: Time.zone.now..).order(:start_date) }
+  scope :next_events, -> { visible.where(start_date: Time.zone.now.beginning_of_day..).order(:start_date) }
 
   def self.next_event
     next_events.first

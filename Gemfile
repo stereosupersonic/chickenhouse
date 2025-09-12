@@ -78,4 +78,7 @@ group :test do
   gem "webdrivers"
   gem "launchy"
   gem "cuprite", "~> 0.17"
+  gem "shoulda-matchers", "~> 6.0"
 end
+
+gem "rubocop-rspec", "~> 3.7"

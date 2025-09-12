@@ -1,5 +1,6 @@
 
 = simple_form_for [ :admin, @post ] do |f|
+  = debug @post.errors.full_messages
   = f.error_notification
   = f.input :title
   = f.input :content, input_html: { class: "wysihtml5" }
