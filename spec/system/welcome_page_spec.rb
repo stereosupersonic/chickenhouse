@@ -34,7 +34,7 @@ describe "welcome", type: :system do
     expect(page).to have_content "title 1"
     expect(page).to have_content "title 2"
     expect(page).to have_content "title 3"
-    expect(page).to_not have_css("img[src*='logo_fcb']")
+    expect(page).not_to have_css("img[src*='logo_fcb']")
   end
 
   it "shows the recent events but none in the past" do
@@ -44,6 +44,6 @@ describe "welcome", type: :system do
     visit root_path
 
     expect(page).to have_content "event 1"
-    expect(page).to_not have_content "old event"
+    expect(page).not_to have_content "old event"
   end
 end

@@ -1,7 +1,7 @@
 class Admin::BaseController < ApplicationController
   before_action :require_admin!
 
-  rate_limit to: 100, within: 1.hour, only: [ :index, :create, :update, :destroy ], with: -> { redirect_to admin_root_path, alert: "Too many requests. Please try again later." }
+  rate_limit to: 100, within: 1.hour, only: %i[index create update destroy], with: -> { redirect_to admin_root_path, alert: "Too many requests. Please try again later." }
 
   def index; end
 

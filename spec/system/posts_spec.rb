@@ -3,7 +3,7 @@ require "capybara_helper"
 describe "Posts", type: :system do
   let(:user) { create(:user, username: "stereosupersonic") }
 
-  it "as admin i want to manage posts", js: true do
+  it "as admin i want to manage posts", :js do
     visit root_path
     expect(page).to have_content "Blog"
     admin = create(:admin)
@@ -24,18 +24,17 @@ describe "Posts", type: :system do
 
     expect(page).to have_content "Coole Mega fucke"
 
-    click_link "Löschen"
-    # accept modal confirm dialog
-    page.driver.browser.switch_to.alert.accept
-
+    accept_confirm("Are you sure?") do
+      click_link "Löschen"
+    end
     expect(page).not_to have_content "Coole Mega fucke"
   end
 
   it "as public user i want to see the Post" do
     create(:post,
-           title:      "Coole Mega Fugge",
-           content:    "der Lorem Ipsum of the Posts",
-           user: user)
+           title:   "Coole Mega Fugge",
+           content: "der Lorem Ipsum of the Posts",
+           user:    user)
 
     visit root_path
 

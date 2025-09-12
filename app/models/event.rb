@@ -23,10 +23,11 @@
 
 class Event < ApplicationRecord
   extend FriendlyId
+
   friendly_id :title, use: :slugged
 
   validates :title, presence: true, length: { maximum: 255 }
-  validates :content, presence: true, length: { maximum: 10000 }
+  validates :content, presence: true, length: { maximum: 10_000 }
   validates :location, length: { maximum: 255 }
   validates :slug, presence: true, uniqueness: true
 
@@ -34,7 +35,7 @@ class Event < ApplicationRecord
 
   scope :visible, -> { where(visible: true) }
 
-  scope :next_events, -> { visible.where("start_date >= ? ", Time.zone.now).order("start_date") }
+  scope :next_events, -> { visible.where(start_date: Time.zone.now..).order(:start_date) }
 
   def self.next_event
     next_events.first

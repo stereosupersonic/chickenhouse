@@ -45,6 +45,11 @@ gem "haml-rails", "~> 2.1"
 gem "friendly_id", "~> 5.5"
 gem "simple_form", "~> 5.3"
 
+gem "pagy", "~> 9.3"
+gem "rollbar", "~> 3.6"
+gem "pg", "~> 1.6"
+gem "annotate", "~> 2.6"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -70,11 +75,7 @@ group :test do
   gem "rspec-rails", "~> 7.1"
   gem "faker", "~> 3.5"
   gem "capybara"
-  gem "webdrivers", require: false
+  gem "webdrivers"
   gem "launchy"
+  gem "cuprite", "~> 0.17"
 end
-
-gem "pagy", "~> 9.3"
-gem "rollbar", "~> 3.6"
-gem "pg", "~> 1.6"
-gem "annotate", "~> 2.6"
