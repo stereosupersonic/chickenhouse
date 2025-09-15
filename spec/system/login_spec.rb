@@ -1,6 +1,6 @@
 require "capybara_helper"
 
-describe "Login" do
+describe "Login", type: :system do
   it "as normal user" do
     visit root_path
 
@@ -13,6 +13,17 @@ describe "Login" do
 
     click_link "Ausloggen"
     expect(page).to have_content "Goodbye!"
+  end
+
+  it "as a user with a wrong password" do
+    visit root_path
+
+    expect(page).not_to have_link "Login"
+    user = create(:user, username: "tim")
+     user.password = "wrongpassword"
+    sign_in user
+
+    expect(page).to have_content "Try another email address or password"
   end
 
   it "as admin user" do

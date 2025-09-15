@@ -2,7 +2,7 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_admin_event, only: %i[show edit update destroy]
 
   def index
-    @pagy, @events = pagy(Event.order("start_date DESC"))
+    @pagy, @events = pagy(Event.order(start_date: :desc), limit: 25)
   end
 
   def show; end

@@ -1,5 +1,6 @@
 require "rails_helper"
 require "capybara/rspec"
+require "capybara/cuprite"
 
 RSpec.configure do |config|
   config.include Capybara::RSpecMatchers
@@ -13,10 +14,21 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
-  config.before(:each, type: :system, js: true) do
-    # https://api.rubyonrails.org/v6.0.1/classes/ActionDispatch/SystemTestCase.html#method-c-driven_by
-    browser = ENV["SELENIUM_BROWSER"].presence&.to_sym || :headless_chrome
-    driven_by :selenium, using: browser, screen_size: [ 1600, 1400 ]
+  if ENV["CHROME_URL"].present?
+    Capybara.register_driver(:cuprite) do |app|
+      Capybara::Cuprite::Driver.new(
+        app,
+        window_size: [ 1200, 800 ],
+        browser_options: { 'no-sandbox': nil },
+        inspector: true,
+        url: ENV['CHROME_URL']
+      )
+    end
+    Capybara.javascript_driver = :cuprite
+  else
+    config.before(:each, :js, type: :system) do
+      driven_by :cuprite, screen_size: [ 1400, 1400 ]
+    end
   end
 end
 

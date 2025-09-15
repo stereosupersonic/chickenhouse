@@ -1,9 +1,10 @@
-= simple_form_for [ :admin, @user ] do |f|
+= simple_form_for [ :admin, @user ], data: { turbo: false } do |f|
   = f.error_notification
   = f.input :username,              label: "Name"
-  = f.input :email,                 label: "E-Mail",               as: :email
+  = f.input :email_address,         label: "E-Mail",               as: :email
   = f.input :password,              label: "Passwort",             as: :password
   = f.input :password_confirmation, label: "Passwort wiederholen", as: :password
+  = f.input :admin,                  label: "Admin",               as: :boolean
 
   = f.submit "Speichern", class: "btn btn-primary"
   = cancel_button admin_users_path

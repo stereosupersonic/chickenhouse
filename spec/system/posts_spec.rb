@@ -1,20 +1,32 @@
 require "capybara_helper"
 
-describe "Posts" do
+describe "Posts", type: :system do
   let(:user) { create(:user, username: "stereosupersonic") }
 
-  it "as admin i want to manage posts", js: true do
-    sign_in create(:admin)
+  it "as admin i want to manage posts", :js do
+    visit root_path
+    expect(page).to have_content "Blog"
+    admin = create(:admin)
+    sign_in admin
 
     visit admin_root_path
 
     click_link "Posts"
     click_link "Neu"
+
+    click_on "Speichern"
+
+    expect(page).to have_content "Bitte überprüfen sie nachfolgende Probleme:"
+    expect(page).to have_content "Titel muss ausgefüllt werden"
+
     fill_in "Titel *", with: "Coole Mega Fugge"
     click_on "Speichern"
     expect(page).to have_content "Coole Mega Fugge"
 
     click_link "Ändern"
+    fill_in "Titel *", with: ""
+    click_on "Speichern"
+    expect(page).to have_content "Titel muss ausgefüllt werden"
     fill_in "Titel *", with: "Coole Mega fucke"
 
     click_on "Speichern"
@@ -22,17 +34,15 @@ describe "Posts" do
     expect(page).to have_content "Coole Mega fucke"
 
     click_link "Löschen"
-    # accept modal confirm dialog
-    page.driver.browser.switch_to.alert.accept
 
     expect(page).not_to have_content "Coole Mega fucke"
   end
 
   it "as public user i want to see the Post" do
     create(:post,
-           title:      "Coole Mega Fugge",
-           content:    "der Lorem Ipsum of the Posts",
-           user: user)
+           title:   "Coole Mega Fugge",
+           content: "der Lorem Ipsum of the Posts",
+           user:    user)
 
     visit root_path
 
@@ -43,6 +53,13 @@ describe "Posts" do
 
     click_link "Coole Mega Fugge"
     within("#posts_show") do
+      expect(page).to have_content "Coole Mega Fugge"
+      expect(page).to have_content "der Lorem Ipsum of the Posts"
+    end
+
+    visit root_path
+    click_link "Blog"
+    within("#posts") do
       expect(page).to have_content "Coole Mega Fugge"
       expect(page).to have_content "der Lorem Ipsum of the Posts"
     end

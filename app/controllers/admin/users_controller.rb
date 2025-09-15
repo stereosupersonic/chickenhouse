@@ -25,11 +25,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    new_params = user_params.dup
-    new_params[:username] = new_params[:username].strip
-    new_params[:email] = new_params[:email].strip
-    if @user.update(new_params)
-      redirect_to admin_root_path, notice: "the account was successfully updated."
+    if @user.update(user_params)
+      redirect_to admin_users_url, notice: "The account was successfully updated."
     else
       flash[:alert] = "Account not updated."
       render :edit
@@ -37,7 +34,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    if current_user == @user
+    if Current.user == @user
       flash[:alert] = "Sich selbst kann man nicht löschen"
       redirect_to admin_users_url
     else
@@ -49,15 +46,12 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def set_user
-    @user = User.friendly.find params[:id]
+    @user = User.find params[:id]
   end
 
   def user_params
-    params.require(:user).permit(
-      :username,
-      :email,
-      :password,
-      :password_confirmation
-    )
+    permitted_params = %i[username email_address password password_confirmation]
+    permitted_params << :admin if Current.user&.admin?
+    params.require(:user).permit(permitted_params)
   end
 end
