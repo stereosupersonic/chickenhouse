@@ -40,7 +40,7 @@ class Admin::EventsController < Admin::BaseController
   private
 
   def set_admin_event
-    @event = Event.friendly.find(params[:id])
+    @event = Event.by_slug params[:id]
   end
 
   def event_params
