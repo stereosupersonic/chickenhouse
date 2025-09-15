@@ -1,5 +1,8 @@
 %h3= "Events: #{Event.count}"
 
+.panel.pb-3
+  = new_button new_admin_event_path
+
 %table.table.table-bordered.table-striped.table-hover
   %tr
     %th= I18n.t("activerecord.attributes.event.title")
@@ -23,5 +26,4 @@
 = raw pagy_bootstrap_nav @pagy
 
 .panel
-  = new_button new_admin_event_path
   = back_button admin_root_path

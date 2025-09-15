@@ -1,7 +1,7 @@
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
-      %a{href: "#"} Home
+      = link_to "Home", root_path
     %li.breadcrumb-item.active{"aria-current" => "page"}
       = link_to "Events", events_path
 

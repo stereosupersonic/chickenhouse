@@ -1,4 +1,5 @@
 = render "next_event", event: @next_event
+
 - if @current_posts.any?
   = render "posts/posts", posts: @current_posts
 - else

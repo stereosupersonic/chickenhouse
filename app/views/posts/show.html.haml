@@ -7,10 +7,10 @@
     %li.breadcrumb-item.active{"aria-current" => "page"}
       .text-nowrap.fw-bold= @post.title
 
-
 = render @post
 
-= back_button root_path
+.pt-3
+  = back_button root_path
 - if admin?
   = edit_button [ :edit, :admin, @post ]
   = delete_button [ :admin, @post ]

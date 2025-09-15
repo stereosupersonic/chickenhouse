@@ -48,7 +48,8 @@ describe "Events", type: :system do
       visit admin_root_path
 
       expect(page).to_not have_link "Events"
-      expect(page).to have_css "h1", text: "Login"
+      expect(page).to have_css "h2", text: "Login"
+      expect(page).to have_text "Bitte melden Sie sich an"
     end
 
     it "i want to see the last event on top of the page" do
@@ -56,13 +57,13 @@ describe "Events", type: :system do
 
       visit root_path
 
-      within("#next-event") do
+      within(".next-event") do
         expect(page).to have_content "Megasuper event"
       end
     end
 
     it "i want to see the next 3 events in the sidebar" do
-      create(:event, title: "Megasuper event", user: user)
+      event = create(:event, title: "Megasuper event", content: "some blah", user: user)
       create(:event, title: "Geiler event", user: user)
       create(:event, title: "Perfekter event", user: user)
 
@@ -74,9 +75,12 @@ describe "Events", type: :system do
         expect(page).to have_content "Perfekter event"
       end
 
-      click_on "Megasuper event"
+      within(".sidebar-event.event-#{event.id}") do
+        click_on "Megasuper event"
+      end
 
-      expect(page).to have_content "Megasuper event1"
+      expect(page).to have_content "Megasuper event"
+      expect(page).to have_content "some blah"
     end
 
     it "i want to see the all next events under 'Kalender'" do

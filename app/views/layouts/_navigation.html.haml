@@ -1,20 +1,21 @@
 %nav.navbar.navbar-expand-lg.navbar-light
   .container-fluid
-    .navbar-brand
-      .nav-link
-        = link_to root_path do
-          .fa.fa-home
+    = link_to root_path, class: "navbar-brand" do
+      %i.fa.fa-home
 
-    %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNavAltMarkup", "data-bs-toggle" => "collapse", type: "button"}
+    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
       %span.navbar-toggler-icon
 
-    #navbarNavAltMarkup.collapse.navbar-collapse
-      .navbar-nav
-        .nav-link.active= link_to "Kalender", events_path
-        .nav-link= link_to "Blog", posts_path
-        .nav-link= link_to "Über Uns", about_path
+    #navbarNav.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto
+        %li.nav-item
+          = link_to "Kalender", events_path, class: "nav-link"
+        %li.nav-item
+          = link_to "Blog", posts_path, class: "nav-link"
+        %li.nav-item
+          = link_to "Über Uns", about_path, class: "nav-link"
         - if admin?
-          .nav-link=  link_to "Admin", admin_root_path
+          %li.nav-item
+            = link_to "Admin", admin_root_path, class: "nav-link"
 
   = render "layouts/personal_box"
-  ´

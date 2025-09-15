@@ -1,1 +1,8 @@
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to "Home", root_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}
+      .text-nowrap.fw-bold Posts
+
 = render "posts/posts", posts: @posts
