@@ -1,10 +1,10 @@
 $fa-font-path: 'fafonts';
 
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/brands';
-@import '@fortawesome/fontawesome-free/scss/solid';
-@import '@fortawesome/fontawesome-free/scss/regular';
-@import '@fortawesome/fontawesome-free/scss/v4-shims';
+// @import '@fortawesome/fontawesome-free/scss/brands';
+// @import '@fortawesome/fontawesome-free/scss/solid';
+// @import '@fortawesome/fontawesome-free/scss/regular';
+// @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 
 $fcb-red: rgb(246,30,27);
@@ -48,31 +48,31 @@ body {
 
   .navbar {
     background-color: $fcb-red !important;
-    
+
     .navbar-brand {
       color: $fcb-white !important;
       font-size: 1.5rem;
-      
+
       &:hover,
       &:focus {
         color: $link-hover-color !important;
       }
     }
-    
+
     .nav-link {
       color: $fcb-white !important;
       font-size: 1.2rem;
       font-weight: 500;
-      
+
       &:hover,
       &:focus {
         color: $link-hover-color !important;
       }
     }
-    
+
     .navbar-toggler {
       border-color: $fcb-white;
-      
+
       .navbar-toggler-icon {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
       }
@@ -93,22 +93,63 @@ body {
     border-radius: 0.375rem;
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
-    
+
     .breadcrumb-item {
       a {
         color: #6c757d;
         text-decoration: none;
-        
+
         &:hover {
           color: $fcb-red;
           text-decoration: underline;
         }
       }
-      
+
       &.active {
         color: #495057;
         font-weight: 500;
       }
     }
+  }
+
+  // Login form styling
+  .card {
+    border: none;
+    border-radius: 0.75rem;
+    
+    .card-title {
+      color: $fcb-red;
+      font-weight: 600;
+    }
+  }
+
+  .btn-primary {
+    background-color: $fcb-red;
+    border-color: $fcb-red;
+    
+    &:hover,
+    &:focus {
+      background-color: $fcb-red-2;
+      border-color: $fcb-red-2;
+    }
+    
+    &:active {
+      background-color: $fcb-red-2;
+      border-color: $fcb-red-2;
+    }
+  }
+
+  .form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    
+    &:focus {
+      border-color: $fcb-red;
+      box-shadow: 0 0 0 0.2rem rgba(246, 30, 27, 0.25);
+    }
+  }
+
+  .alert {
+    border-radius: 0.5rem;
   }
 }

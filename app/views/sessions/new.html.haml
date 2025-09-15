@@ -1,10 +1,44 @@
-%h1 Login
+.row.justify-content-center
+  .col-md-6.col-lg-4
+    .card.shadow
+      .card-body.p-4
+        .text-center.mb-4
+          %h2.card-title Login
+          %p.text-muted Bitte melden Sie sich an
 
-= tag.div(flash[:alert], style: "color:red") if flash[:alert]
-= tag.div(flash[:notice], style: "color:green") if flash[:notice]
-= form_with url: session_path do |form|
-  = form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address]
-  %br/
-  = form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72
-  %br/
-  = form.submit "Sign in"
+        - if flash[:alert]
+          .alert.alert-danger.alert-dismissible.fade.show{role: "alert"}
+            = flash[:alert]
+            %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", type: "button"}
+
+        - if flash[:notice]
+          .alert.alert-success.alert-dismissible.fade.show{role: "alert"}
+            = flash[:notice]
+            %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", type: "button"}
+
+        = form_with url: session_path, local: true, class: "needs-validation", novalidate: true do |form|
+          .mb-3
+            = form.label :email_address, "E-Mail-Adresse", class: "form-label"
+            = form.email_field :email_address, 
+              required: true, 
+              autofocus: true, 
+              autocomplete: "username", 
+              placeholder: "ihre@email.de", 
+              value: params[:email_address],
+              class: "form-control form-control-lg"
+            .invalid-feedback
+              Bitte geben Sie eine gültige E-Mail-Adresse ein.
+
+          .mb-3
+            = form.label :password, "Passwort", class: "form-label"
+            = form.password_field :password, 
+              required: true, 
+              autocomplete: "current-password", 
+              placeholder: "Ihr Passwort", 
+              maxlength: 72,
+              class: "form-control form-control-lg"
+            .invalid-feedback
+              Bitte geben Sie Ihr Passwort ein.
+
+          .d-grid.gap-2
+            = form.submit "Anmelden", class: "btn btn-primary btn-lg"
