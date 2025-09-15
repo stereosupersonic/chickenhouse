@@ -33,9 +33,8 @@ describe "Posts", type: :system do
 
     expect(page).to have_content "Coole Mega fucke"
 
-    accept_confirm("Are you sure?") do
-      click_link "Löschen"
-    end
+    click_link "Löschen"
+
     expect(page).not_to have_content "Coole Mega fucke"
   end
 
