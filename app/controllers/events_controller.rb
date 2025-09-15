@@ -6,6 +6,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.friendly.find_by!(id: params[:id])
+    @event = Event.friendly.find params[:id]
   end
 end

@@ -62,7 +62,7 @@ describe "Events", type: :system do
     end
 
     it "i want to see the next 3 events in the sidebar" do
-      create(:event, title: "Megasuper event", user: user)
+      event = create(:event, title: "Megasuper event", content: "some blah", user: user)
       create(:event, title: "Geiler event", user: user)
       create(:event, title: "Perfekter event", user: user)
 
@@ -74,9 +74,12 @@ describe "Events", type: :system do
         expect(page).to have_content "Perfekter event"
       end
 
-      click_on "Megasuper event"
+      within(".sidebar-event.event-#{event.id}") do
+        click_on "Megasuper event"
+      end
 
-      expect(page).to have_content "Megasuper event1"
+      expect(page).to have_content "Megasuper event"
+      expect(page).to have_content "some blah"
     end
 
     it "i want to see the all next events under 'Kalender'" do

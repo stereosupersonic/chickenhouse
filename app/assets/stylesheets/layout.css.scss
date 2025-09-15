@@ -123,7 +123,6 @@ nav {
 .blog-post {
     border: 1px solid $border-color;
     margin-bottom: 20px;
-    background-color: $main-bg;
     padding-left: 15px;
     padding-bottom: 5px;
     border-radius: 4px;
@@ -181,9 +180,7 @@ nav {
         text-align: center;
         height: 23px;
     }
-    .date {
-        margin-left: 15px;
-    }
+
     .event-header {
         margin-left: 70px;
     }

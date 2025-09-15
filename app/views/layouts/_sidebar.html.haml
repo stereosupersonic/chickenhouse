@@ -5,7 +5,7 @@
     - if Event.next_events.present?
       %ul#next-events
         - Event.next_events.limit(3).each do |event|
-          %li.sidebar-event
+          %li.sidebar-event{ class: "event-#{event.id}" }
             = link_to event_path(event) do
               %i.fa.fa-calendar
               = "#{truncate(event.title, length: 21)} (#{time_ago_in_words event.start_date})".html_safe
