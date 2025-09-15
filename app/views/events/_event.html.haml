@@ -13,6 +13,6 @@
   .event-header
     .event-title= link_to event.title, event
     %p.event-meta
-      = format_datetime event.start_date
+      = event.formatted_start_date
       Uhr
       = event.location

@@ -45,16 +45,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
 
-  def html_content
-    if display_type.to_s == "raw"
-      content.html_safe
-    else
-      content.html_safe
-      # RedCloth.new(content).to_html.html_safe
-    end
-  end
-
   def author
-    user.try(:email_address) || "Anonymous"
+    user&.email_address || "Anonymous"
   end
 end

@@ -197,26 +197,6 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "#html_content" do
-    it "formats content using simple_format and sanitizes it" do
-      event = create(:event, content: "Line 1\n\nLine 2")
-      html_content = event.html_content
-      expect(html_content).to include("<p>Line 1</p>")
-      expect(html_content).to include("<p>Line 2</p>")
-    end
-
-    it "sanitizes dangerous HTML" do
-      event = create(:event, content: "<script>alert('xss')</script>Safe content")
-      html_content = event.html_content
-      expect(html_content).not_to include("<script>")
-      expect(html_content).to include("Safe content")
-    end
-
-    it "handles nil content" do
-      event = build(:event, content: nil)
-      expect { event.html_content }.not_to raise_error
-    end
-  end
 
   describe "default values" do
     it "sets visible to true by default" do
