@@ -56,7 +56,7 @@ describe "Events", type: :system do
 
       visit root_path
 
-      within("#next-event") do
+      within(".next-event") do
         expect(page).to have_content "Megasuper event"
       end
     end
