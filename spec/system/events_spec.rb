@@ -48,7 +48,8 @@ describe "Events", type: :system do
       visit admin_root_path
 
       expect(page).to_not have_link "Events"
-      expect(page).to have_css "h1", text: "Login"
+      expect(page).to have_css "h2", text: "Login"
+      expect(page).to have_text "Bitte melden Sie sich an"
     end
 
     it "i want to see the last event on top of the page" do
