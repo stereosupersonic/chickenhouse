@@ -42,17 +42,18 @@
       %p
         = "© 1991 - #{Time.now.year} Henaheisl e.V. - Alle Rechte vorbehalten"
       %p
-        %span
+        %span.text-nowrap
           = link_to "Impressum", impressum_path
           = "|"
-        %span
+        %span.text-nowrap
           = link_to "info@henaheisl.de", "mailto:info@henaheisl.de"
           = "|"
-        %span
+        %span.text-nowrap
           = link_to "http://facebook.com/henaheisl", target: "_blank" do
             %i.fa-brands.fa-facebook
             Facebook
-        %span
-          = link_to "https://www.instagram.com/p/C3UWlGlsnW7", target: "_blank" do
+          = "|"
+        %span.text-nowrap
+          = link_to "https://www.instagram.com/henaheisl", target: "_blank" do
             %i.fa-brands.fa-instagram
             Instagram
