@@ -35,6 +35,7 @@ RUN apt-get update -qq && \
     git \
     node-gyp \
     pkg-config \
+    postgresql-client \
     # psych gem
     libyaml-dev \
     python-is-python3 && \
