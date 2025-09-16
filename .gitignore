@@ -41,4 +41,4 @@
 .DS_Store
 .env
 /.claude
-.kamal/secrets
+/.kamal
