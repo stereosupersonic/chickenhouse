@@ -122,30 +122,6 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe "#html_content" do
-    context "when display_type is raw" do
-      it "returns content as html_safe" do
-        post = create(:post, content: "<p>Raw HTML</p>", display_type: "raw")
-        html_content = post.html_content
-        expect(html_content).to eq("<p>Raw HTML</p>")
-        expect(html_content).to be_html_safe
-      end
-    end
-
-    context "when display_type is not raw" do
-      it "returns content as html_safe" do
-        post = create(:post, content: "Regular content", display_type: "textile")
-        html_content = post.html_content
-        expect(html_content).to eq("Regular content")
-        expect(html_content).to be_html_safe
-      end
-    end
-
-    it "handles nil content" do
-      post = build(:post, content: "")
-      expect(post.html_content).to be_html_safe
-    end
-  end
 
   describe "#author" do
     it "returns user email when user is present" do

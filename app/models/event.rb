@@ -44,8 +44,4 @@ class Event < ApplicationRecord
   def self.by_slug(slug)
     friendly.find slug
   end
-
-  def html_content
-    ActionController::Base.helpers.simple_format(ActionController::Base.helpers.sanitize(content))
-  end
 end

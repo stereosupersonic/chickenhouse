@@ -4,7 +4,9 @@ class PagesController < ApplicationController
   before_action :resume_session
 
   def welcome
-    @pagy, @current_posts = pagy(Post.current.visible.order("created_at desc"))
-    @next_event = Event.next_event
+    @pagy, current_posts = pagy(Post.current.visible.order("created_at desc"))
+    @current_posts = PostPresenter.wrap(current_posts)
+    next_event = Event.next_event
+    @next_event = next_event ? EventPresenter.new(next_event) : nil
   end
 end
