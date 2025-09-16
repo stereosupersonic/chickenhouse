@@ -28,6 +28,7 @@ FactoryBot.define do
     title { Faker::Lorem.sentence(word_count: 3) }
     content { Faker::Lorem.paragraph(sentence_count: 5) }
     user
+    visible { true }
     location { "#{Faker::Address.city}, #{Faker::Address.country}" }
     start_date {  Faker::Date.between(from: 2.days.ago, to: 1.year.from_now) }
     all_day { false }

@@ -3,4 +3,5 @@
 - if @current_posts.any?
   = render "posts/posts", posts: @current_posts
 - else
-  = image_tag "logo_fcb.png", class: "img-responsive"
+  .d-flex.justify-content-center.m-5
+    = image_tag "logo_fcb.png", class: "img-responsive"

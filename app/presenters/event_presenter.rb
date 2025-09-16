@@ -7,9 +7,9 @@ class EventPresenter < ApplicationPresenter
     return "" if o.start_date.blank?
 
     if o.all_day?
-      o.start_date.strftime("%B %d, %Y")
+      I18n.localize(o.start_date, format: :day)
     else
-      o.start_date.strftime("%B %d, %Y at %l:%M %p")
+      I18n.localize(o.start_date, format: :short)
     end
   end
 end
