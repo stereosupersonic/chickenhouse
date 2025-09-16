@@ -82,3 +82,5 @@ group :test do
 end
 
 gem "rubocop-rspec", "~> 3.7"
+
+gem "dotenv-rails", "~> 3.1"

@@ -11,9 +11,15 @@
     - else
       .sidebar-event
         = "Keine Events in der nächsten Zeit"
+  .sidebar-module.sidebar-module-inset
+    %h3
+      %i.fa-brands.fa-instagram
+      = link_to "Instagram", "https://www.instagram.com/p/C3UWlGlsnW7"
 
   .sidebar-module.sidebar-module-inset
-    %h3.title= link_to "Henaheisl on Facebook", "http://www.facebook.com/henaheisl"
+    %h3
+      %i.fa-brands.fa-facebook
+      = link_to "Facebook", "http://www.facebook.com/henaheisl"
     .fb-like-box{"data-href" => "http://www.facebook.com/henaheisl",
                  "data-colorscheme" => "light",
                  "data-show-faces"  => "true",

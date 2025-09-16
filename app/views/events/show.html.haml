@@ -5,7 +5,7 @@
     %li.breadcrumb-item
       = link_to "Events", events_path
     %li.breadcrumb-item.active{"aria-current" => "page"}
-      = @event.title
+      .text-nowrap.fw-bold= @event.title
 
 = render @event
 

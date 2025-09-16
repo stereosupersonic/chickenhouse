@@ -114,9 +114,8 @@ body {
 
   // Login form styling
   .card {
-    border: none;
     border-radius: 0.75rem;
-    
+
     .card-title {
       color: $fcb-red;
       font-weight: 600;
@@ -126,13 +125,13 @@ body {
   .btn-primary {
     background-color: $fcb-red;
     border-color: $fcb-red;
-    
+
     &:hover,
     &:focus {
       background-color: $fcb-red-2;
       border-color: $fcb-red-2;
     }
-    
+
     &:active {
       background-color: $fcb-red-2;
       border-color: $fcb-red-2;
@@ -142,7 +141,7 @@ body {
   .form-control {
     border-radius: 0.5rem;
     border: 1px solid #ced4da;
-    
+
     &:focus {
       border-color: $fcb-red;
       box-shadow: 0 0 0 0.2rem rgba(246, 30, 27, 0.25);
@@ -152,30 +151,30 @@ body {
   .alert {
     border-radius: 0.5rem;
     border: none;
-    
+
     .btn-close {
       background: none;
       border: none;
       font-size: 1.25rem;
       line-height: 1;
       opacity: 0.5;
-      
+
       &:hover {
         opacity: 0.75;
       }
-      
+
       &:focus {
         box-shadow: none;
         outline: none;
       }
     }
-    
+
     &.alert-success {
       background-color: #d1e7dd;
       color: #0f5132;
       border-left: 4px solid #198754;
     }
-    
+
     &.alert-danger {
       background-color: #f8d7da;
       color: #842029;
