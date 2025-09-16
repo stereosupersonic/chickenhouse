@@ -11,7 +11,8 @@ describe "welcome", type: :system do
     expect(page).to have_link "Blog"
     expect(page).not_to have_link "Kontakt"
     expect(page).to have_link "Über Uns"
-    expect(page).to have_link "Henaheisl on Facebook"
+    expect(page).to have_link "Instagram"
+    expect(page).to have_link "Facebook"
     expect(page).to have_link "Impressum"
     expect(page).to have_content "Alle Rechte vorbehalten"
   end
