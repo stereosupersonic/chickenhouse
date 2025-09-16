@@ -9,4 +9,8 @@ class PagesController < ApplicationController
     next_event = Event.next_event
     @next_event = next_event ? EventPresenter.new(next_event) : nil
   end
+
+  def exception
+    raise "This is a test exception to verify error reporting via Rollbar, Sentry, etc."
+  end
 end
