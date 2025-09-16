@@ -12,5 +12,4 @@ class EventPresenter < ApplicationPresenter
       o.start_date.strftime("%B %d, %Y at %l:%M %p")
     end
   end
-
 end

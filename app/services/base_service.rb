@@ -43,5 +43,4 @@ class BaseService
   def set_result(value)
     @result = value
   end
-
 end
