@@ -157,7 +157,7 @@ GEM
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
-    haml_lint (0.59.0)
+    haml_lint (0.66.0)
       haml (>= 5.0)
       parallel (~> 1.10)
       rainbow
@@ -260,7 +260,7 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.4.0)
+    prism (1.5.1)
     propshaft (1.2.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -486,7 +486,7 @@ DEPENDENCIES
   faker (~> 3.5)
   friendly_id (~> 5.5)
   haml-rails (~> 2.1)
-  haml_lint (~> 0.59.0)
+  haml_lint (~> 0.66.0)
   html2haml
   jbuilder
   jsbundling-rails
