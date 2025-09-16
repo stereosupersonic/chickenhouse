@@ -68,11 +68,11 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "html2haml"
-  gem "haml_lint", "~> 0.59.0"
+  gem "haml_lint", "~> 0.66.0"
 end
 
 group :test do
-  gem "rspec-rails", "~> 7.1"
+  gem "rspec-rails", "~> 8.0"
   gem "faker", "~> 3.5"
   gem "capybara"
   gem "webdrivers"
