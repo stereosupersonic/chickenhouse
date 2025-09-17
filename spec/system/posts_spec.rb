@@ -9,7 +9,7 @@ describe "Posts", type: :system do
   context "as admin" do
     before { sign_in admin }
 
-    it "as admin i want to manage posts", js: true do
+    it "as admin i want to manage posts" do
       visit root_path
       expect(page).to have_content "Blog"
 
@@ -24,7 +24,8 @@ describe "Posts", type: :system do
       expect(page).to have_content "Titel muss ausgefüllt werden"
 
       fill_in "Titel *", with: "Coole Mega Fugge"
-      find("#post_content").set("Mega Beitrag")
+      find("#post_content_trix_input_post", visible: false).set("Mega Beitrag")
+
       # fill_in_rich_text_area doesnt work with docker tests
       # fill_in_rich_text_area "Content", with: "Mega Beitrag"
       click_on "Speichern"
