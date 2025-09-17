@@ -19,7 +19,7 @@ RSpec.configure do |config|
     Capybara.register_driver(:cuprite) do |app|
       Capybara::Cuprite::Driver.new(
         app,
-        window_size: [ 1200, 800 ],
+        window_size: [ 1400, 1400 ],
         browser_options: { 'no-sandbox': nil },
         inspector: true,
         url: ENV['CHROME_URL']
