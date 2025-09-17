@@ -84,3 +84,5 @@ group :test do
   gem "cuprite", "~> 0.17"
   gem "shoulda-matchers", "~> 6.0"
 end
+
+gem "lograge", "~> 0.14.0"
