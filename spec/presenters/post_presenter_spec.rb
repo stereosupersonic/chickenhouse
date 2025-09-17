@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe PostPresenter, type: :presenter do
-  describe "#html_content old_content" do
+  describe "#html_content for old_content" do
     context "when display_type is raw" do
       it "returns content as html_safe" do
         post = create(:post, old_content: "<p>Raw HTML</p>", display_type: "raw")
