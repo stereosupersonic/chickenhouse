@@ -4,5 +4,6 @@
       .col-12
         = render post
 
-.d-flex.justify-content-center.mt-4
-  = raw pagy_bootstrap_nav @pagy
+- if @pagy.pages > 1
+  .d-flex.justify-content-center.mt-4
+    = raw pagy_bootstrap_nav @pagy
