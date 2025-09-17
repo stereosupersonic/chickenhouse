@@ -37,6 +37,7 @@ env:
     - RAILS_MASTER_KEY
     - ROLLBAR_ENABLED
     - ROLLBAR_ACCESS_TOKEN
+    - NEWRELIC_LICENSE_KEY
   clear:
     DATABASE_HOST: chickenhouse-postgres
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
