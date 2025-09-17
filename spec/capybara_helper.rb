@@ -7,6 +7,7 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 
+
   Capybara.default_max_wait_time = 10 # The maximum number of seconds to wait for asynchronous processes to finish.
   Capybara.default_normalize_ws = true # match DOM Elements with text spanning over multiple line
 
