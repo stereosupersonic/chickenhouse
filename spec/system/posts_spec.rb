@@ -9,7 +9,7 @@ describe "Posts", type: :system do
   context "as admin" do
     before { sign_in admin }
 
-    it "as admin i want to manage posts" do
+    it "as admin i want to manage posts", js: true do
       visit root_path
       expect(page).to have_content "Blog"
 
@@ -24,7 +24,9 @@ describe "Posts", type: :system do
       expect(page).to have_content "Titel muss ausgefüllt werden"
 
       fill_in "Titel *", with: "Coole Mega Fugge"
-      fill_in "Beitrag", with: "Mega Beitrag"
+      find("#post_content").set("Mega Beitrag")
+      # fill_in_rich_text_area doesnt work with docker tests
+      # fill_in_rich_text_area "Content", with: "Mega Beitrag"
       click_on "Speichern"
 
       expect(page).to have_content "Post was successfully created."
@@ -61,7 +63,7 @@ describe "Posts", type: :system do
     it "as public user i want to see the Post" do
       create(:post,
              title:   "Coole Mega Fugge",
-             content: "der Lorem Ipsum of the Posts",
+             old_content: "der Lorem Ipsum of the Posts",
              user:    user)
 
       visit root_path

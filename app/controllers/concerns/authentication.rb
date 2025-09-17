@@ -24,7 +24,7 @@ module Authentication
 
   def resume_session
     session = Current.session ||= find_session_by_cookie
-    Rails.logger.info "resume_session #{session}"
+    Rails.logger.debug "resume_session #{session.inspect}"
     session
   end
 

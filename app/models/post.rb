@@ -44,6 +44,9 @@ class Post < ApplicationRecord
   # do_not_validate_attachment_file_type :attachment
 
   validates :title, presence: true
+  validates :content, presence: true
+
+  has_rich_text :content
 
   def author
     user&.email_address || "Anonymous"

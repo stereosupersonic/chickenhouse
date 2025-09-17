@@ -12,10 +12,10 @@
         %i.fa.fa-calendar.me-1
         = format_date post.created_at
       .card-text
-        - if post.content_type.to_s == "picture"
+        - if post.old_content_type.to_s == "picture"
           = image_tag post.media, class: "img-fluid rounded mb-3"
           = post.html_content
-        - elsif post.content_type.to_s == "video"
+        - elsif post.old_content_type.to_s == "video"
           .ratio.ratio-16x9.mb-3
             = youtube_video post.media
           .video-description= post.html_content

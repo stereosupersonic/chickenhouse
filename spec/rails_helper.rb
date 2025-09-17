@@ -39,9 +39,13 @@ if ENV.fetch("CI", "").blank?
   SimpleCov.start "rails"
 end
 
+require "action_text/system_test_helper"
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include ActionText::SystemTestHelper, type: :system
+
   # Remove this line if you"re not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join("spec/fixtures")

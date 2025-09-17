@@ -97,9 +97,9 @@ describe "Events", type: :system do
     end
 
     it "i want to see the next 3 events in the sidebar" do
-      event = create(:event, title: "Megasuper event", content: "some blah", user: user)
-      create(:event, title: "Geiler event", user: user)
-      create(:event, title: "Perfekter event", user: user)
+      event = create(:event, title: "Megasuper event", content: "some blah", user: user, start_date: 1.day.from_now)
+      create(:event, title: "Geiler event", user: user, start_date: 2.days.from_now)
+      create(:event, title: "Perfekter event", user: user, start_date: 3.days.from_now)
 
       visit root_path
 

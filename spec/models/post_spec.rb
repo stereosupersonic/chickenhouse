@@ -40,6 +40,7 @@ RSpec.describe Post, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:content) }
 
     it "is valid with a title" do
       post = build(:post, title: "Test Post")
@@ -50,6 +51,12 @@ RSpec.describe Post, type: :model do
       post = build(:post, title: nil)
       expect(post).not_to be_valid
       expect(post.errors[:title]).to include("muss ausgefüllt werden")
+    end
+
+    it "is invalid without a content" do
+      post = build(:post, content: nil)
+      expect(post).not_to be_valid
+      expect(post.errors[:content]).to include("muss ausgefüllt werden")
     end
 
     it "is invalid with empty title" do
@@ -114,7 +121,7 @@ RSpec.describe Post, type: :model do
   describe "default values" do
     it "sets default values correctly" do
       post = described_class.new
-      expect(post.content_type).to eq("article")
+      expect(post.old_content_type).to eq("article")
       expect(post.display_type).to eq("textile")
       expect(post.intern).to be false
       expect(post.twitter_export).to be true

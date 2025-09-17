@@ -1,7 +1,16 @@
 %ul.list-group
-  %li.list-group-item= show_button admin_posts_path,  "Posts"
-  %li.list-group-item= show_button admin_events_path, "Events"
-  %li.list-group-item= show_button admin_users_path,  "Users"
+  %li.list-group-item.list-group-item-action
+    = link_to "Posts", admin_posts_path
+    %span.badge.bg-primary.rounded-pill
+      = Post.count
+  %li.list-group-item.list-group-item-action
+    = link_to "Events", admin_events_path
+    %span.badge.bg-primary.rounded-pill
+      = Event.count
+  %li.list-group-item.list-group-item-action
+    = link_to "Users", admin_users_path
+    %span.badge.bg-primary.rounded-pill
+      = User.count
 
 .mt-4
   %h2 Debug

@@ -18,3 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+import "trix"
+import "@rails/actiontext"
