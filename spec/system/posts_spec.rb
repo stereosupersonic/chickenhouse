@@ -24,7 +24,9 @@ describe "Posts", type: :system do
       expect(page).to have_content "Titel muss ausgefüllt werden"
 
       fill_in "Titel *", with: "Coole Mega Fugge"
-      fill_in_rich_text_area "Content", with: "Mega Beitrag"
+      find("#post_content").set("Mega Beitrag")
+      # fill_in_rich_text_area doesnt work with docker tests
+      # fill_in_rich_text_area "Content", with: "Mega Beitrag"
       click_on "Speichern"
 
       expect(page).to have_content "Post was successfully created."
