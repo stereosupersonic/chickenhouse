@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_08_094225) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_17_095132) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.string "title", limit: 255, null: false
     t.text "content", null: false
@@ -41,14 +44,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_08_094225) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text "content"
+    t.text "old_content"
     t.string "title", limit: 255
     t.boolean "intern", default: false
     t.integer "user_id", null: false
     t.text "media"
     t.string "media_type", limit: 255
     t.datetime "out_of_date"
-    t.string "content_type", limit: 255, default: "article"
+    t.string "old_content_type", limit: 255, default: "article"
     t.string "attachment_file_name", limit: 255
     t.string "attachment_content_type", limit: 255
     t.integer "attachment_file_size"

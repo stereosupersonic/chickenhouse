@@ -49,6 +49,6 @@ class Admin::PostsController < Admin::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :content, :content_type, :media, :intern, :attachment, :visible, :created_at, :display_type)
+    params.require(:post).permit(:title, :old_content, :old_content_type, :content, :content_type, :media, :intern, :attachment, :visible, :created_at, :display_type)
   end
 end

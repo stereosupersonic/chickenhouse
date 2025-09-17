@@ -34,7 +34,7 @@
 require "faker"
 FactoryBot.define do
   factory :post do
-    content { Faker::Lorem.sentence }
+    old_content { Faker::Lorem.sentence }
     title { Faker::Book.title }
     user
   end

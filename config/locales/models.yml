@@ -13,7 +13,7 @@ de:
         end_date: Ende
         all_day: Ganztägig
       post:
-        content: Beitrag
+        old_content: Beitrag
         title: Titel
       user:
         name: Name

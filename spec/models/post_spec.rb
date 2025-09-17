@@ -114,7 +114,7 @@ RSpec.describe Post, type: :model do
   describe "default values" do
     it "sets default values correctly" do
       post = described_class.new
-      expect(post.content_type).to eq("article")
+      expect(post.old_content_type).to eq("article")
       expect(post.display_type).to eq("textile")
       expect(post.intern).to be false
       expect(post.twitter_export).to be true

@@ -61,7 +61,7 @@ describe "Posts", type: :system do
     it "as public user i want to see the Post" do
       create(:post,
              title:   "Coole Mega Fugge",
-             content: "der Lorem Ipsum of the Posts",
+             old_content: "der Lorem Ipsum of the Posts",
              user:    user)
 
       visit root_path

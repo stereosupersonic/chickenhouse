@@ -2,8 +2,8 @@
 = simple_form_for [ :admin, @post ], data: { turbo: false } do |f|
   = f.error_notification
   = f.input :title
-  = f.input :content, input_html: { class: "wysihtml5" }
-  = f.input :content_type, as: :select, collection: [ "article", "video", "picture" ]
+  = f.input :old_content, input_html: { class: "wysihtml5" }
+  = f.input :old_content_type, as: :select, collection: [ "article", "video", "picture" ]
   = f.input :display_type, as: :select, collection: [ "textile", "raw" ]
   = f.input :media
   = f.input :visible
