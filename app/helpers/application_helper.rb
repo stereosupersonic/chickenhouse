@@ -22,7 +22,8 @@ module ApplicationHelper
     date&.strftime "%d.%m.%Y"
   end
 
-  def format_datetime(date)
+  def format_datetime(date = nil)
+    return "" if date.nil?
     date&.strftime "%d.%m.%Y %H:%M"
   end
 

@@ -30,6 +30,7 @@ class Event < ApplicationRecord
   validates :content, presence: true, length: { maximum: 10_000 }
   validates :location, length: { maximum: 255 }
   validates :slug, presence: true, uniqueness: true
+  validates :start_date, presence: true
 
   belongs_to :user
 

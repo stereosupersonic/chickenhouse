@@ -14,12 +14,13 @@
       %th
   %tbody
     - @events.each do |event|
+      - event_presenter = EventPresenter.new(event)
       %tr{id: dom_id(event), class: "#{ event.start_date.past? ? 'danger' : ''}"}
-        %td= link_to event.title, admin_event_path(event)
-        %td= event.location
-        %td= boolean_value event.visible
-        %td= format_datetime event.start_date
-        %td= format_datetime event.end_date
+        %td= link_to event_presenter.title, admin_event_path(event)
+        %td= event_presenter.location
+        %td= boolean_value event_presenter.visible
+        %td= format_datetime event_presenter.start_date
+        %td= format_datetime event_presenter.end_date
         %td
           = edit_button edit_admin_event_path(event)
           = delete_button admin_event_path(event)

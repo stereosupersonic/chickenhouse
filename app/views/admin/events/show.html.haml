@@ -8,9 +8,10 @@
   .card
     .card-body
       = event_presenter.html_content
+  %br
   %p
-    %b Content:
-    = event_presenter.content
+    %b raw Content:
+    = debug event_presenter.content
   %p
     %b User:
     = event_presenter.user&.username
@@ -19,10 +20,10 @@
     = event_presenter.location
   %p
     %b Start date:
-    = event_presenter.start_date
+    = event_presenter.formatted_start_date
   %p
     %b End date:
-    = event_presenter.end_date
+    = event_presenter.formatted_end_date
   %p
     %b All day:
     = event_presenter.all_day

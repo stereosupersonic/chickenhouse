@@ -22,6 +22,8 @@ describe "Events", type: :system do
 
       fill_in "Titel *", with: "SuperMega Event"
       fill_in "Beschreibung *", with: "SuperMega Event Beschreibung"
+      fill_in "Start *", with: "14.11.2024 12:00"
+      fill_in "Ende", with: "14.11.2024 14:00"
 
       click_on "Speichern"
 

@@ -3,11 +3,12 @@
   = f.input :title, hint: "Titel des Events"
   = f.input :content, input_html: { class: "wysihtml5" }
   = f.input :location
-  = f.input :start_date
-  = f.input :end_date
+  = f.input :start_date, as: :datetime, html5: true
+  = f.input :end_date, as: :datetime, html5: true
   = f.input :all_day
   = f.input :visible
   = f.submit "Speichern", class: "btn btn-primary"
+
   = cancel_button [ :admin, :events ]
 -# :javascript
 -#   $('.wysihtml5').wysihtml5({"html": true});
