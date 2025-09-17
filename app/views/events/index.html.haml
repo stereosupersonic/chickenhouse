@@ -6,6 +6,6 @@
       .text-nowrap.fw-bold= "Events"
 
 - @events.each do | event |
-  = render event
+  = render EventPresenter.new(event)
 
 = raw pagy_bootstrap_nav @pagy

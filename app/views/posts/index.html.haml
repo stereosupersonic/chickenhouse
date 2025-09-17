@@ -5,4 +5,4 @@
     %li.breadcrumb-item.active{"aria-current" => "page"}
       .text-nowrap.fw-bold Posts
 
-= render "posts/posts", posts: @posts
+= render "posts/posts", posts: PostPresenter.wrap(@posts)

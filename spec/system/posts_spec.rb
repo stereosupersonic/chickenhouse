@@ -1,67 +1,88 @@
 require "capybara_helper"
 
 describe "Posts", type: :system do
-  let(:user) { create(:user, username: "stereosupersonic") }
+  include ActionView::RecordIdentifier
 
-  it "as admin i want to manage posts", :js do
-    visit root_path
-    expect(page).to have_content "Blog"
-    admin = create(:admin)
-    sign_in admin
+  let(:user)  { create(:user, username: "stereosupersonic") }
+  let(:admin) { create(:admin) }
 
-    visit admin_root_path
+  context "as admin" do
+    before { sign_in admin }
 
-    click_link "Posts"
-    click_link "Neu"
+    it "as admin i want to manage posts" do
+      visit root_path
+      expect(page).to have_content "Blog"
 
-    click_on "Speichern"
+      visit admin_root_path
 
-    expect(page).to have_content "Bitte überprüfen sie nachfolgende Probleme:"
-    expect(page).to have_content "Titel muss ausgefüllt werden"
+      click_link "Posts"
+      click_link "Neu"
 
-    fill_in "Titel *", with: "Coole Mega Fugge"
-    click_on "Speichern"
-    expect(page).to have_content "Coole Mega Fugge"
+      click_on "Speichern"
 
-    click_link "Ändern"
-    fill_in "Titel *", with: ""
-    click_on "Speichern"
-    expect(page).to have_content "Titel muss ausgefüllt werden"
-    fill_in "Titel *", with: "Coole Mega fucke"
+      expect(page).to have_content "Bitte überprüfen sie nachfolgende Probleme:"
+      expect(page).to have_content "Titel muss ausgefüllt werden"
 
-    click_on "Speichern"
+      fill_in "Titel *", with: "Coole Mega Fugge"
+      fill_in "Beitrag", with: "Mega Beitrag"
+      click_on "Speichern"
 
-    expect(page).to have_content "Coole Mega fucke"
+      expect(page).to have_content "Post was successfully created."
+      expect(page).to have_content "Coole Mega Fugge"
 
-    click_link "Löschen"
+      click_link "Ändern"
+      fill_in "Titel *", with: ""
+      click_on "Speichern"
 
-    expect(page).not_to have_content "Coole Mega fucke"
+      expect(page).to have_content "Titel muss ausgefüllt werden"
+      fill_in "Titel *", with: "Coole Mega fucke"
+
+      click_on "Speichern"
+
+      expect(page).to have_content "Post was successfully updated."
+      expect(page).to have_content "Coole Mega fucke"
+
+      within("##{dom_id(Post.last)}") do
+        click_link "Coole Mega fucke"
+      end
+      # show page
+      expect(page).to have_content "Coole Mega fucke"
+      expect(page).to have_content "Mega Beitrag"
+
+      click_link "Zurück"
+
+      click_link "Löschen"
+
+      expect(page).not_to have_content "Coole Mega fucke"
+    end
   end
 
-  it "as public user i want to see the Post" do
-    create(:post,
-           title:   "Coole Mega Fugge",
-           content: "der Lorem Ipsum of the Posts",
-           user:    user)
+  context "as public user" do
+    it "as public user i want to see the Post" do
+      create(:post,
+             title:   "Coole Mega Fugge",
+             content: "der Lorem Ipsum of the Posts",
+             user:    user)
 
-    visit root_path
+      visit root_path
 
-    within("#posts") do
-      expect(page).to have_content "Coole Mega Fugge"
-      expect(page).to have_content "der Lorem Ipsum of the Posts"
-    end
+      within("#posts") do
+        expect(page).to have_content "Coole Mega Fugge"
+        expect(page).to have_content "der Lorem Ipsum of the Posts"
+      end
 
-    click_link "Coole Mega Fugge"
-    within("#posts_show") do
-      expect(page).to have_content "Coole Mega Fugge"
-      expect(page).to have_content "der Lorem Ipsum of the Posts"
-    end
+      click_link "Coole Mega Fugge"
+      within("#posts_show") do
+        expect(page).to have_content "Coole Mega Fugge"
+        expect(page).to have_content "der Lorem Ipsum of the Posts"
+      end
 
-    visit root_path
-    click_link "Blog"
-    within("#posts") do
-      expect(page).to have_content "Coole Mega Fugge"
-      expect(page).to have_content "der Lorem Ipsum of the Posts"
+      visit root_path
+      click_link "Blog"
+      within("#posts") do
+        expect(page).to have_content "Coole Mega Fugge"
+        expect(page).to have_content "der Lorem Ipsum of the Posts"
+      end
     end
   end
 end

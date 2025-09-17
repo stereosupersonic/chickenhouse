@@ -9,7 +9,7 @@ class EventPresenter < ApplicationPresenter
     if o.all_day?
       I18n.localize(o.start_date, format: :day)
     else
-      I18n.localize(o.start_date, format: :short)
+      I18n.localize(o.start_date, format: :default)
     end
   end
 end

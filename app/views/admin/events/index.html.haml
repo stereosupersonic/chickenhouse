@@ -4,17 +4,18 @@
   = new_button new_admin_event_path
 
 %table.table.table-bordered.table-striped.table-hover
-  %tr
-    %th= I18n.t("activerecord.attributes.event.title")
-    %th= I18n.t("activerecord.attributes.event.location")
-    %th Sichtbar
-    %th= I18n.t("activerecord.attributes.event.start_date")
-    %th= I18n.t("activerecord.attributes.event.end_date")
-    %th
-  %tr
+  %thead
+    %tr
+      %th= I18n.t("activerecord.attributes.event.title")
+      %th= I18n.t("activerecord.attributes.event.location")
+      %th Sichtbar
+      %th= I18n.t("activerecord.attributes.event.start_date")
+      %th= I18n.t("activerecord.attributes.event.end_date")
+      %th
+  %tbody
     - @events.each do |event|
-      %tr{class: "#{ event.start_date.past? ? 'danger' : ''}"}
-        %td= event.title
+      %tr{id: dom_id(event), class: "#{ event.start_date.past? ? 'danger' : ''}"}
+        %td= link_to event.title, admin_event_path(event)
         %td= event.location
         %td= boolean_value event.visible
         %td= format_datetime event.start_date

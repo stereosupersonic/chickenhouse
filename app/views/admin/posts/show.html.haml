@@ -1,5 +1,8 @@
 
-= render "/posts/post", post: @post
+%h1 Post
 
-= edit_button [ :edit, :admin, @post ]
-= back_button admin_posts_path
+.post_details
+  = render "posts/post", post: @post
+
+  = edit_button [ :edit, :admin, @post ]
+  = back_button admin_posts_path

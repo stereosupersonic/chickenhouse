@@ -1,7 +1,8 @@
 require "capybara_helper"
 
 describe "Users", type: :system do
-   include ActionView::RecordIdentifier
+  include ActionView::RecordIdentifier
+
   let(:admin) { create(:admin) }
 
   context "as admin" do

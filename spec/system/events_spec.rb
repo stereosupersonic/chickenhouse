@@ -1,6 +1,8 @@
 require "capybara_helper"
 
 describe "Events", type: :system do
+  include ActionView::RecordIdentifier
+
   let(:user)  { create(:user, username: "stereosupersonic") }
   let(:admin) { create(:admin) }
 
@@ -19,7 +21,7 @@ describe "Events", type: :system do
       expect(page).to have_content "Titel muss ausgefüllt werden"
 
       fill_in "Titel *", with: "SuperMega Event"
-      fill_in "Beschreibung *", with: "SuperMega Event"
+      fill_in "Beschreibung *", with: "SuperMega Event Beschreibung"
 
       click_on "Speichern"
 
@@ -32,14 +34,28 @@ describe "Events", type: :system do
       expect(page).to have_content "Titel muss ausgefüllt werden"
 
       click_on "Speichern"
-      fill_in "Titel *", with: "Coole Mega fucke"
+      fill_in "Titel *", with: "Cooler Mega Event"
 
       click_on "Speichern"
 
-      expect(page).to have_content "Coole Mega fucke"
+      expect(page).to have_content "Cooler Mega Event"
 
-      click_link "Löschen"
-      expect(page).not_to have_content "Coole Mega fucke"
+      within("##{dom_id(Event.last)}") do
+        click_link "Cooler Mega Event"
+      end
+      # show page
+      within(".event_details") do
+        expect(page).to have_content "Cooler Mega Event"
+        expect(page).to have_content "SuperMega Event Beschreibung"
+        expect(page).to have_content admin.username
+      end
+
+      click_link "Zurück"
+
+      within("##{dom_id(Event.last)}") do
+        click_link "Löschen"
+      end
+      expect(page).not_to have_content "Cooler Mega Event"
     end
   end
 
@@ -52,14 +68,30 @@ describe "Events", type: :system do
       expect(page).to have_text "Bitte melden Sie sich an"
     end
 
-    it "i want to see the last event on top of the page" do
-      create(:event, title: "Megasuper event", user: user)
-
+    it "i want to see the last event on top of the page", js: true  do
+        start_date =  Time.new(2024, 11, 14, 12, 0, 0)
+      create(:event, title: "Megasuper event", location: "Reiter Bräu", start_date: start_date, user: user, all_day: false)
+      travel_to start_date do
       visit root_path
 
       within(".next-event") do
         expect(page).to have_content "Megasuper event"
+            expect(page).to have_content "Donnerstag, 14. November 2024, 12:00 Uhr - Reiter Bräu"
+        end
       end
+    end
+
+     it "i want to see the last event on top of the page when its a whole day", js: true do
+      start_date =  Time.new(2024, 11, 14, 12, 0, 0)
+      create(:event, title: "Megasuper event", location: "Reiter Bräu", start_date: start_date, user: user, all_day: true)
+      travel_to start_date do
+      visit root_path
+
+      within(".next-event") do
+        expect(page).to have_content "Megasuper event"
+        expect(page).to have_content "14. November 2024 - Reiter Bräu"
+      end
+    end
     end
 
     it "i want to see the next 3 events in the sidebar" do

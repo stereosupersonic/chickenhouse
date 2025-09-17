@@ -1,3 +1,5 @@
+- event_presenter = EventPresenter.new(@event)
+
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
@@ -5,13 +7,13 @@
     %li.breadcrumb-item
       = link_to "Events", events_path
     %li.breadcrumb-item.active{"aria-current" => "page"}
-      .text-nowrap.fw-bold= @event.title
+      .text-nowrap.fw-bold= event_presenter.title
 
-= render @event
+= render event_presenter
 
 .card
   .card-body
-    = @event.html_content
+    = event_presenter.html_content
 
 .pt-3
   = back_button root_path

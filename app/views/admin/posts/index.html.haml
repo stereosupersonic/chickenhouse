@@ -3,15 +3,16 @@
   = new_button new_admin_post_path
 
 %table.table.table-bordered.table-striped.table-hover
-  %tr
-    %th Name
-    %th Intern
-    %th Sichtbar
-    %th Erstellt
-    %th
-  %tr
+  %thead
+    %tr
+      %th Name
+      %th Intern
+      %th Sichtbar
+      %th Erstellt
+      %th
+  %tbody
     - @posts.each do |post|
-      %tr
+      %tr{id: dom_id(post)}
         %td= link_to post.title, [ :admin, post ]
         %td= boolean_value post.intern
         %td= boolean_value post.visible

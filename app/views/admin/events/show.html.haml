@@ -1,24 +1,31 @@
-%p
-  %b Title:
-  = @event.title
-%p
-  %b Content:
-  = @event.content
-%p
-  %b User:
-  = @event.user_id
-%p
-  %b Location:
-  = @event.location
-%p
-  %b Start date:
-  = @event.start_date
-%p
-  %b End date:
-  = @event.end_date
-%p
-  %b All day:
-  = @event.all_day
+- event_presenter = EventPresenter.new(@event)
 
-  = edit_button [ :admin, @event ]
-  = back_button :back
+%h1 Event
+
+.event_details
+  = render "events/event", event: event_presenter
+
+  .card
+    .card-body
+      = event_presenter.html_content
+  %p
+    %b Content:
+    = event_presenter.content
+  %p
+    %b User:
+    = event_presenter.user&.username
+  %p
+    %b Location:
+    = event_presenter.location
+  %p
+    %b Start date:
+    = event_presenter.start_date
+  %p
+    %b End date:
+    = event_presenter.end_date
+  %p
+    %b All day:
+    = event_presenter.all_day
+
+= edit_button [ :edit, :admin, @event ]
+= back_button admin_events_path

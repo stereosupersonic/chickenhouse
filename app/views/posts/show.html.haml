@@ -1,3 +1,5 @@
+- post_presenter = PostPresenter.new(@post)
+
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
@@ -5,9 +7,9 @@
     %li.breadcrumb-item
       = link_to "Posts", posts_path
     %li.breadcrumb-item.active{"aria-current" => "page"}
-      .text-nowrap.fw-bold= @post.title
+      .text-nowrap.fw-bold= post_presenter.title
 
-= render @post
+= render post_presenter
 
 .pt-3
   = back_button root_path
