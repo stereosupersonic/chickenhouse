@@ -63,35 +63,35 @@ describe "Events", type: :system do
     it "i can't to see the admin section" do
       visit admin_root_path
 
-      expect(page).to_not have_link "Events"
+      expect(page).not_to have_link "Events"
       expect(page).to have_css "h2", text: "Login"
       expect(page).to have_text "Bitte melden Sie sich an"
     end
 
-    it "i want to see the last event on top of the page", js: true  do
-        start_date =  Time.new(2024, 11, 14, 12, 0, 0)
+    it "i want to see the last event on top of the page" do
+      start_date = Time.zone.local(2024, 11, 14, 12, 0, 0)
       create(:event, title: "Megasuper event", location: "Reiter Bräu", start_date: start_date, user: user, all_day: false)
       travel_to start_date do
-      visit root_path
+        visit root_path
 
-      within(".next-event") do
-        expect(page).to have_content "Megasuper event"
-            expect(page).to have_content "Donnerstag, 14. November 2024, 12:00 Uhr - Reiter Bräu"
+        within(".next-event") do
+          expect(page).to have_content "Megasuper event"
+          expect(page).to have_content "Donnerstag, 14. November 2024, 12:00 Uhr - Reiter Bräu"
         end
       end
     end
 
-     it "i want to see the last event on top of the page when its a whole day", js: true do
-      start_date =  Time.new(2024, 11, 14, 12, 0, 0)
+    it "i want to see the last event on top of the page when its a whole day" do
+      start_date = Time.zone.local(2024, 11, 14, 12, 0, 0)
       create(:event, title: "Megasuper event", location: "Reiter Bräu", start_date: start_date, user: user, all_day: true)
       travel_to start_date do
-      visit root_path
+        visit root_path
 
-      within(".next-event") do
-        expect(page).to have_content "Megasuper event"
-        expect(page).to have_content "14. November 2024 - Reiter Bräu"
+        within(".next-event") do
+          expect(page).to have_content "Megasuper event"
+          expect(page).to have_content "14. November 2024 - Reiter Bräu"
+        end
       end
-    end
     end
 
     it "i want to see the next 3 events in the sidebar" do

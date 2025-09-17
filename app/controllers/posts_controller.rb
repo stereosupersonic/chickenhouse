@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  allow_unauthenticated_access only: %i[ index show ]
-  before_action :resume_session, only: %i[ index show ]
+  allow_unauthenticated_access only: %i[index show]
+  before_action :resume_session, only: %i[index show]
   def index
-    @pagy, @posts = pagy(Post.visible.order("created_at desc"))
+    @pagy, @posts = pagy(Post.visible.order(created_at: :desc))
 
     respond_to do |format|
       format.html

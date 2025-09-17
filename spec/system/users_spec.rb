@@ -50,7 +50,7 @@ describe "Users", type: :system do
       expect(page).not_to have_content "Coole Mega fucker"
 
       within "##{dom_id(admin)}" do
-       click_link "Löschen"
+        click_link "Löschen"
       end
 
       expect(page).to have_content "Sich selbst kann man nicht löschen"
