@@ -1,6 +1,10 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def youtube_video(video_id)
+    "<iframe src=\"http://www.youtube.com/embed/#{h(video_id)}\" frameborder=\"0\" allowfullscreen></iframe>".html_safe
+  end
+
   def admin?
     # TODO
     current_user&.admin?
