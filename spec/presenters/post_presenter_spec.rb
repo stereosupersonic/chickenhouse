@@ -7,6 +7,7 @@ RSpec.describe PostPresenter, type: :presenter do
         post = create(:post, old_content: "<p>Raw HTML</p>", display_type: "raw")
         presenter = described_class.new(post)
         html_content = presenter.html_content
+
         expect(html_content).to eq("<p>Raw HTML</p>")
         expect(html_content).to be_html_safe
       end
@@ -17,6 +18,7 @@ RSpec.describe PostPresenter, type: :presenter do
         post = create(:post, old_content: "Regular content", display_type: "textile")
         presenter = described_class.new(post)
         html_content = presenter.html_content
+
         expect(html_content).to eq("Regular content")
         expect(html_content).to be_html_safe
       end
@@ -28,7 +30,26 @@ RSpec.describe PostPresenter, type: :presenter do
       post = create(:post, content: "# Regular content")
       presenter = described_class.new(post)
       html_content = presenter.html_content
+
       expect(html_content).to be_a(ActionText::RichText)
+      expect(html_content.to_plain_text).to eq("# Regular content")
     end
   end
+
+    describe "#author" do
+    it "returns user email when user is present" do
+      user = create(:user, username: "Mr. Blah")
+      post = create(:post, user: user)
+      presenter = described_class.new(post)
+
+      expect(presenter.author_name).to eq("Mr. Blah")
+    end
+
+    it "returns Anonymous when user is not present" do
+      post = build(:post, user: nil)
+      presenter = described_class.new(post)
+
+      expect(presenter.author_name).to eq("Anonymous")
+    end
+    end
 end

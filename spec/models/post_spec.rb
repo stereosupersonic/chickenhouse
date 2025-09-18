@@ -129,20 +129,6 @@ RSpec.describe Post, type: :model do
     end
   end
 
-
-  describe "#author" do
-    it "returns user email when user is present" do
-      user = create(:user, email_address: "author@example.com")
-      post = create(:post, user: user)
-      expect(post.author).to eq("author@example.com")
-    end
-
-    it "returns Anonymous when user is not present" do
-      post = build(:post, user: nil)
-      expect(post.author).to eq("Anonymous")
-    end
-  end
-
   describe "attachment attributes" do
     it "can store attachment metadata" do
       post = create(:post,

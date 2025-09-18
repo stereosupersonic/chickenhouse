@@ -47,8 +47,4 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   has_rich_text :content
-
-  def author
-    user&.email_address || "Anonymous"
-  end
 end
