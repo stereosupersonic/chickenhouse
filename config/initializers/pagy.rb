@@ -11,7 +11,7 @@
 # Pagy.new|Pagy::Countless.new|Pagy::Calendar::*.new or any of the #pagy* controller methods
 # Here are the few that make more sense as DEFAULTs:
 Pagy::DEFAULT[:limit]         = 5                    # default
-Pagy::DEFAULT[:size]          = [1,4,4,1]             # show first, 4 before, 4 after, last
+Pagy::DEFAULT[:size]          = [ 1, 4, 4, 1 ]             # show first, 4 before, 4 after, last
 # Pagy::DEFAULT[:ends]        = true                  # default
 # Pagy::DEFAULT[:page_param]  = :page                 # default
 # Pagy::DEFAULT[:count_args]  = []                    # example for non AR ORMs
@@ -26,7 +26,7 @@ Pagy::DEFAULT[:size]          = [1,4,4,1]             # show first, 4 before, 4 
 
 # Size extra: Enable the Array type for the `:size` variable (e.g. `size: [1,4,4,1]`)
 # See https://ddnexus.github.io/pagy/docs/extras/size
-require 'pagy/extras/size'   # must be required before the other extras
+require "pagy/extras/size"   # must be required before the other extras
 
 
 # Backend Extras
@@ -151,7 +151,7 @@ require "pagy/extras/bootstrap"
 
 # Overflow extra: Allow for easy handling of overflowing pages
 # See https://ddnexus.github.io/pagy/docs/extras/overflow
-require 'pagy/extras/overflow'
+require "pagy/extras/overflow"
 Pagy::DEFAULT[:overflow] = :last_page    # default  (other options: :last_page and :exception)
 
 # Trim extra: Remove the page=1 param from links
