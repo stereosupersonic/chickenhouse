@@ -179,7 +179,7 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
-    haml-rails (2.1.0)
+    haml-rails (3.0.0)
       actionpack (>= 5.1)
       activesupport (>= 5.1)
       haml (>= 4.0.6)
@@ -530,7 +530,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.4)
   faker (~> 3.5)
   friendly_id (~> 5.5)
-  haml-rails (~> 2.1)
+  haml-rails (~> 3.0)
   haml_lint (~> 0.66.0)
   html2haml
   image_processing (~> 1.2)
