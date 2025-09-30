@@ -7,6 +7,7 @@ class PagesController < ApplicationController
     @pagy, current_posts = pagy(Post.current.visible.order("created_at desc"))
     @current_posts = PostPresenter.wrap(current_posts)
     next_event = Event.next_event
+
     @next_event = next_event ? EventPresenter.new(next_event) : nil
   end
 

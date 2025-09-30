@@ -47,4 +47,11 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   has_rich_text :content
+
+  def convert_to_xls
+    require 'csv'
+    CSV.generate(col_sep: "\t") do |csv|
+      csv << [title, created_at.strftime("%d.%m.%Y"), content.to_s.gsub(/<\/?[^>]*>/, ""), user ? user.name : "N/A"]
+    end
+  end
 end
