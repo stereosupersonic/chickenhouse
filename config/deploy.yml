@@ -113,3 +113,20 @@ accessories:
         - POSTGRES_PASSWORD
     directories:
       - data:/var/lib/postgresql/data
+
+  postgres_backup:
+    image: kartoza/pg-backup:17-3.5
+    host: 37.120.188.157
+    env:
+      clear:
+        POSTGRES_USER: postgres
+        POSTGRES_HOST: chickenhouse-postgres
+        DBLIST: chickenhouse_production # Only back up the primary DB
+        POSTGRES_PORT: 5432
+        REMOVE_BEFORE: "30"
+        ARCHIVE_FILENAME: $(date +%Y-%m-%d_%H:%M:%S) # 2025-10-04_10:43:01.chickenhouse_production.dmp
+        CRON_SCHEDULE: "0 2 * * *"  # Daily at 2 AM
+      secret:
+        - POSTGRES_PASS
+    directories:
+      - /home/stereosonic/backups:/backups
