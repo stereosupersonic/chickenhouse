@@ -51,7 +51,7 @@ gem "pg", "~> 1.6"
 gem "annotate", "~> 2.6"
 
 gem "dotenv-rails", "~> 3.1"
-gem "newrelic_rpm", "~> 9.21"
+gem "newrelic_rpm", "~> 9.22"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
