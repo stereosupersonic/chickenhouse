@@ -82,7 +82,7 @@ group :test do
   gem "webdrivers"
   gem "launchy"
   gem "cuprite", "~> 0.17"
-  gem "shoulda-matchers", "~> 6.0"
+  gem "shoulda-matchers", "~> 7.0"
 end
 
 gem "lograge", "~> 0.14.0"
