@@ -87,4 +87,4 @@ end
 
 gem "lograge", "~> 0.14.0"
 
-gem "aws-sdk-s3", "~> 1.202"
+gem "aws-sdk-s3", "~> 1.203"
