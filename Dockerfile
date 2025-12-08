@@ -33,6 +33,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
     build-essential \
     git \
+    curl \
     node-gyp \
     pkg-config \
     postgresql-client \
