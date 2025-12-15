@@ -45,7 +45,7 @@ gem "haml-rails", "~> 3.0"
 gem "friendly_id", "~> 5.5"
 gem "simple_form", "~> 5.4"
 
-gem "pagy", "~> 9.3"
+gem "pagy", "~> 43.2"
 gem "rollbar", "~> 3.7"
 gem "pg", "~> 1.6"
 gem "annotate", "~> 2.6"
