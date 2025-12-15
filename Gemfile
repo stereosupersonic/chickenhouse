@@ -46,12 +46,12 @@ gem "friendly_id", "~> 5.5"
 gem "simple_form", "~> 5.4"
 
 gem "pagy", "~> 9.3"
-gem "rollbar", "~> 3.6"
+gem "rollbar", "~> 3.7"
 gem "pg", "~> 1.6"
 gem "annotate", "~> 2.6"
 
 gem "dotenv-rails", "~> 3.1"
-gem "newrelic_rpm", "~> 9.21"
+gem "newrelic_rpm", "~> 9.24"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -72,7 +72,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "html2haml"
-  gem "haml_lint", "~> 0.66.0"
+  gem "haml_lint", "~> 0.67.0"
 end
 
 group :test do
