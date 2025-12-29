@@ -251,7 +251,7 @@ GEM
       logger
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.0)
+    minitest (6.0.1)
       prism (~> 1.5)
     msgpack (1.8.0)
     net-imap (0.5.13)
@@ -435,7 +435,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sexp_processor (4.17.4)
+    sexp_processor (4.17.5)
     shoulda-matchers (6.5.0)
       activesupport (>= 5.2.0)
     simple_form (5.4.0)
