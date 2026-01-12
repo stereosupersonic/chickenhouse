@@ -438,7 +438,7 @@ GEM
     sexp_processor (4.17.5)
     shoulda-matchers (6.5.0)
       activesupport (>= 5.2.0)
-    simple_form (5.4.0)
+    simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
     simplecov (0.22.0)
