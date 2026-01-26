@@ -23,7 +23,7 @@
     "nodemon": "^3.1.11",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
-    "sass": "^1.94.2",
+    "sass": "^1.97.3",
     "trix": "^2.1.15"
   },
   "browserslist": [
