@@ -52,7 +52,9 @@ gem "annotate", "~> 2.6"
 
 gem "dotenv-rails", "~> 3.1"
 gem "newrelic_rpm", "~> 9.24"
+gem "lograge", "~> 0.14.0"
 
+gem "aws-sdk-s3", "~> 1.202"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -69,8 +71,6 @@ group :development, :test do
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
   gem "html2haml"
   gem "haml_lint", "~> 0.67.0"
 end
@@ -84,7 +84,3 @@ group :test do
   gem "cuprite", "~> 0.17"
   gem "shoulda-matchers", "~> 6.0"
 end
-
-gem "lograge", "~> 0.14.0"
-
-gem "aws-sdk-s3", "~> 1.202"
