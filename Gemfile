@@ -55,6 +55,7 @@ gem "newrelic_rpm", "~> 9.24"
 gem "lograge", "~> 0.14.0"
 
 gem "aws-sdk-s3", "~> 1.202"
+gem "icalendar", "~> 2.10"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
