@@ -42,3 +42,4 @@
 .env
 /.claude
 /.kamal
+squirrel.toml

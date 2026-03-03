@@ -1,6 +1,8 @@
 - content_for(:title) { "Impressum" }
+- content_for(:description) { "Impressum und Datenschutzerklärung des Henaheisl e.V. - FC Bayern Fanclub Wartenberg." }
 
-%h4
+%h1 Impressum
+%p
   henaheisl.de ist die Internetseit des offiziellen FC Bayern Fanclubs Henaheisl e.V.
 %p
   Henaheisl e.V. ist ein Fanclub und steht dadurch nicht mit der FC Bayern München AG, dem Verein, oder anderen offiziellen Institutionen in Verbindung bzw.
@@ -33,9 +35,9 @@
 %p
   Quelle:
   %i
-    %a{href: "http://www.e-recht24.de/impressum-generator.html", rel: "nofollow"} http://www.e-recht24.de
+    %a{href: "https://www.e-recht24.de/impressum-generator.html", rel: "nofollow"} http://www.e-recht24.de
 
-%h1 Haftungsausschluss (Disclaimer)
+%h2 Haftungsausschluss (Disclaimer)
 %p
   %strong Haftung für Inhalte
 %p Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
@@ -49,19 +51,19 @@
   %i
     Quellenangaben:
     = succeed "," do
-      %a{href: "http://www.e-recht24.de/muster-disclaimer.html", rel: "nofollow", target: "_blank"} eRecht24 Disclaimer
-    %a{href: "http://www.e-recht24.de/muster-disclaimer.html", rel: "nofollow", target: "_blank"} eRecht24 Disclaimer
+      %a{href: "https://www.e-recht24.de/muster-disclaimer.html", rel: "nofollow", target: "_blank", rel: "noopener"} eRecht24 Disclaimer
+    %a{href: "https://www.e-recht24.de/muster-disclaimer.html", rel: "nofollow", target: "_blank", rel: "noopener"} eRecht24 Disclaimer
 
-%h1 Datenschutzerklärung:
+%h2 Datenschutzerklärung
 %p
   %strong Datenschutzerklärung für die Nutzung von Facebook-Plugins (Like-Button)
 %p
   Auf unseren Seiten sind Plugins des sozialen Netzwerks Facebook (Facebook Inc., 1601 Willow Road, Menlo Park, California, 94025, USA) integriert. Die Facebook-Plugins erkennen Sie an dem Facebook-Logo oder dem "Like-Button" ("Gefällt mir") auf unserer Seite. Eine Übersicht über die Facebook-Plugins finden Sie hier:
   = succeed "." do
-    %a{href: "http://developers.facebook.com/docs/plugins/", target: "_blank"} http://developers.facebook.com/docs/plugins/
+    %a{href: "https://developers.facebook.com/docs/plugins/", target: "_blank", rel: "noopener"} https://developers.facebook.com/docs/plugins/
   %br/
   Wenn Sie unsere Seiten besuchen, wird über das Plugin eine direkte Verbindung zwischen Ihrem Browser und dem Facebook-Server hergestellt. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Wenn Sie den Facebook "Like-Button" anklicken während Sie in Ihrem Facebook-Account eingeloggt sind, können Sie die Inhalte unserer Seiten auf Ihrem Facebook-Profil verlinken. Dadurch kann Facebook den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von facebook unter
-  %a{href: "http://de-de.facebook.com/policy.php", target: "_blank"} http://de-de.facebook.com/policy.php
+  %a{href: "https://de-de.facebook.com/policy.php", target: "_blank", rel: "noopener"} https://de-de.facebook.com/policy.php
 %p Wenn Sie nicht wünschen, dass Facebook den Besuch unserer Seiten Ihrem Facebook-Nutzerkonto zuordnen kann, loggen Sie sich bitte aus Ihrem Facebook-Benutzerkonto aus.
 %p  
 %p
@@ -71,7 +73,7 @@
 %p
   Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren:
   = succeed "." do
-    %a{href: "http://tools.google.com/dlpage/gaoptout?hl=de"} http://tools.google.com/dlpage/gaoptout?hl=de
+    %a{href: "https://tools.google.com/dlpage/gaoptout?hl=de"} https://tools.google.com/dlpage/gaoptout?hl=de
   %p  
   %p
     %strong Datenschutzerklärung für die Nutzung von Twitter
@@ -79,16 +81,16 @@
   %p
     Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Twitter erhalten. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Twitter unter
     = succeed "." do
-      %a{href: "http://twitter.com/privacy", target: "_blank"} http://twitter.com/privacy
+      %a{href: "https://x.com/privacy", target: "_blank", rel: "noopener"} https://x.com/privacy
   %p
     Ihre Datenschutzeinstellungen bei Twitter können Sie in den Konto-Einstellungen unter
-    %a{href: "http://twitter.com/account/settings", target: "_blank"} http://twitter.com/account/settings
+    %a{href: "https://x.com/settings", target: "_blank", rel: "noopener"} https://x.com/settings
     ändern. 
   %p
     %i
       Quellenangaben:
       = succeed "," do
-        %a{href: "http://www.e-recht24.de/artikel/datenschutz/6590-facebook-like-button-datenschutz-disclaimer.html", rel: "nofollow", target: "_blank"} Facebook Datenschutzerklärung
+        %a{href: "https://www.e-recht24.de/artikel/datenschutz/6590-facebook-like-button-datenschutz-disclaimer.html", rel: "nofollow", target: "_blank", rel: "noopener"} Facebook Datenschutzerklärung
       = succeed "," do
-        %a{href: "http://www.google.com/intl/de/analytics/privacyoverview.html", rel: "nofollow", target: "_blank"} Datenschutzerklärung für Google Analytics
-      %a{href: "http://twitter.com/privacy", rel: "nofollow", target: "_blank"} Twitter Bedingungen
+        %a{href: "https://www.google.com/intl/de/analytics/privacyoverview.html", rel: "nofollow", target: "_blank", rel: "noopener"} Datenschutzerklärung für Google Analytics
+      %a{href: "https://x.com/privacy", rel: "nofollow", target: "_blank", rel: "noopener"} Twitter Bedingungen

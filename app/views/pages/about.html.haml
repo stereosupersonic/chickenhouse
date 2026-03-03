@@ -1,5 +1,8 @@
 
-- content_for(:title) { " Über uns" }
+- content_for(:title) { "Über uns" }
+- content_for(:description) { "Erfahre mehr über den Henaheisl e.V. - FC Bayern Fanclub aus Wartenberg, gegründet am 20. Juli 1991. Geschichte, Vereinsheim und sportliche Erfolge." }
+
+%h1 Über den Henaheisl e.V.
 
 %h2 Der Verein
 %p
@@ -10,8 +13,8 @@
   firmiert unser Verein nun als Henaheisl e.V.
 
 %p
-  %h4 Gründungsversammlung am 20. Juli 1991 im Henaheisl
-  = image_tag "gruendungsversammlung.jpg", class: "img-thumbnail img-fluid"
+  %h3 Gründungsversammlung am 20. Juli 1991 im Henaheisl
+  = image_tag "gruendungsversammlung.jpg", class: "img-thumbnail img-fluid", alt: "Gründungsversammlung des Henaheisl e.V. am 20. Juli 1991"
   %br
   .strong-inline Gründungsmitglieder:
   %ul
@@ -27,9 +30,9 @@
     %li Markus Loibl (Fotograf)
 %br
 %p
-  %h4 Mitgliedschaft beim FC Bayern
+  %h3 Mitgliedschaft beim FC Bayern
 
-  = image_tag "gruendungsurkunde.jpg", class: "img-thumbnail img-fluid"
+  = image_tag "gruendungsurkunde.jpg", class: "img-thumbnail img-fluid", alt: "Gründungsurkunde FC Bayern Fanclub Henaheisl e.V."
   %br
   die offizielle Aufnahme als Fanclub beim FC Bayern erfolgte 1992
 %br
@@ -40,7 +43,7 @@
 %p
   Das Baudatum steht nicht genau fest, es dürfte aber in den 1930ern gewesen sein. Nachdem Mitte der 70er die ursprünglichen Bewohner ihr trautes Heim verlassen mussten, wurde es als Gartenhäuschen umgebaut. Erst Ende der 80er wurde es von ein paar unerschrockenen dauerparty-erprobten-Nachtschwärmern entdeckt und in vielen mühevollen Arbeitsstunden zu ihren Domizil umgebaut.
 
-%h4 Beitrag vom Bayerischen Rundfunk
+%h3 Beitrag vom Bayerischen Rundfunk
 
 %video{controls: true, style: "max-width: 100%; height: auto;"}
   %source{src: "/videos/blickpunkt-sport.mp4", type: "video/mp4"}
@@ -64,6 +67,6 @@
   %b http://ourworld.compuserve.com/homepages/wartenberg/
 
 %p
-  = image_tag "homepage-v1.jpg", class: "img-thumbnail img-fluid"
+  = image_tag "homepage-v1.jpg", class: "img-thumbnail img-fluid", alt: "Die erste Henaheisl Webseite aus dem Jahr 2001"
   %br
   Die Seit im Jahr 2001
