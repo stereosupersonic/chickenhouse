@@ -58,7 +58,7 @@ RSpec.describe Posts::Search do
 
       result = described_class.call(query: "Sommerfest")
 
-      expect(result.result).to eq([title_match, body_match])
+      expect(result.result).to eq([ title_match, body_match ])
     end
 
     it "returns Post.none for blank query" do
