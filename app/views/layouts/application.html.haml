@@ -34,6 +34,8 @@
   %body{ id: "#{controller.controller_name}_#{controller.action_name}", class: "#{controller.controller_name} #{controller.action_name} d-flex flex-column min-vh-100" }
     = auto_discovery_link_tag :atom,  posts_url(format: "atom"), title: "Henaheisl Blog"
 
+    %a.visually-hidden-focusable.skip-link{ href: "#main-content" } Zum Inhalt springen
+
     %header
       .banner.d-flex.justify-content-center
         = link_to root_path, "aria-label": "Henaheisl e.V. Startseite" do
@@ -41,7 +43,7 @@
 
       = render "layouts/messages"
       = render "layouts/navigation"
-    %main.flex-grow-1
+    %main#main-content.flex-grow-1{ tabindex: "-1" }
       .container-fluid
         .row.pt-3
           .col-sm-9
@@ -60,11 +62,11 @@
           = link_to "info@henaheisl.de", "mailto:info@henaheisl.de"
           = "|"
         %span.text-nowrap
-          = link_to "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener" do
-            %i.fa-brands.fa-facebook
+          = link_to "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Facebook (öffnet in neuem Fenster)" do
+            %i.fa-brands.fa-facebook{"aria-hidden" => "true"}
             Facebook
           = "|"
         %span.text-nowrap
-          = link_to "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener" do
-            %i.fa-brands.fa-instagram
+          = link_to "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Instagram (öffnet in neuem Fenster)" do
+            %i.fa-brands.fa-instagram{"aria-hidden" => "true"}
             Instagram

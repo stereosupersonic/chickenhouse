@@ -1,8 +1,14 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def youtube_video(video_id)
-    "<iframe src=\"http://www.youtube.com/embed/#{h(video_id)}\" frameborder=\"0\" allowfullscreen></iframe>".html_safe
+  def youtube_video(video_id, title: "YouTube Video")
+    tag.iframe(
+      src: "https://www.youtube.com/embed/#{h(video_id)}",
+      title: title,
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+      allowfullscreen: true,
+      loading: "lazy"
+    )
   end
 
   def admin?

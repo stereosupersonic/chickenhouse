@@ -1,9 +1,9 @@
-%nav.navbar.navbar-expand-lg.navbar-light
+%nav.navbar.navbar-expand-lg.navbar-light{"aria-label" => "Hauptnavigation"}
   .container-fluid
     = link_to root_path, class: "navbar-brand", "aria-label": "Startseite" do
-      %i.fa.fa-home
+      %i.fa.fa-home{"aria-hidden" => "true"}
 
-    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
+    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Navigation umschalten", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", type: "button"}
       %span.navbar-toggler-icon
 
     #navbarNav.collapse.navbar-collapse
@@ -18,11 +18,11 @@
           %li.nav-item
             = link_to "Admin", admin_root_path, class: "nav-link"
       %button.btn.nav-link.ms-auto{ "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarSearch", "aria-controls" => "navbarSearch", "aria-expanded" => "false", "aria-label" => "Suche öffnen" }
-        %i.fa-solid.fa-magnifying-glass
+        %i.fa-solid.fa-magnifying-glass{"aria-hidden" => "true"}
 
   #navbarSearch.collapse
     .container-fluid.py-2
-      = form_tag posts_path, method: :get, class: "d-flex" do
+      = form_tag posts_path, method: :get, class: "d-flex", role: "search" do
         = text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Suche...", "aria-label" => "Suche"
         = submit_tag "Suchen", class: "btn btn-outline-secondary"
 
