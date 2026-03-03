@@ -17,13 +17,10 @@
         - if admin?
           %li.nav-item
             = link_to "Admin", admin_root_path, class: "nav-link"
-      %button.btn.nav-link.ms-auto{ "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarSearch", "aria-controls" => "navbarSearch", "aria-expanded" => "false", "aria-label" => "Suche öffnen" }
-        %i.fa-solid.fa-magnifying-glass{"aria-hidden" => "true"}
-
-  #navbarSearch.collapse
-    .container-fluid.py-2
-      = form_tag posts_path, method: :get, class: "d-flex", role: "search" do
-        = text_field_tag :q, params[:q], class: "form-control me-2", placeholder: "Suche...", "aria-label" => "Suche"
-        = submit_tag "Suchen", class: "btn btn-outline-secondary"
+        %li.nav-item.d-flex.align-items-center{ data: { controller: "search-toggle" } }
+          = form_tag posts_path, method: :get, class: "d-flex align-items-center d-none", role: "search", data: { search_toggle_target: "form" } do
+            = text_field_tag :q, params[:q], class: "form-control form-control-sm me-1", placeholder: "Suche...", "aria-label" => "Suche", data: { search_toggle_target: "input" }
+          %button.btn.nav-link{ type: "button", "aria-label" => "Suche öffnen", data: { action: "search-toggle#toggle" } }
+            %i.fa-solid.fa-magnifying-glass{"aria-hidden" => "true"}
 
   = render "layouts/personal_box"
