@@ -114,7 +114,7 @@ RSpec.describe "Posts", type: :request do
         get "/posts.atom"
       end
 
-      it "only include the  posts in feed" do
+      it "only include the posts in feed" do
         expect(response.body).to include("Old content for visible post")
       end
     end

@@ -25,13 +25,13 @@ module Posts
           )
           .order(
             Arel.sql(Post.sanitize_sql_array([
-              "ts_rank(" \
-              "setweight(to_tsvector('german', COALESCE(posts.title, '')), 'A') || " \
-              "setweight(to_tsvector('german', COALESCE(action_text_rich_texts.body::text, '')), 'B'), " \
-              "plainto_tsquery('german', ?)" \
-              ") DESC",
-              query
-            ]))
+                                               "ts_rank(" \
+                                               "setweight(to_tsvector('german', COALESCE(posts.title, '')), 'A') || " \
+                                               "setweight(to_tsvector('german', COALESCE(action_text_rich_texts.body::text, '')), 'B'), " \
+                                               "plainto_tsquery('german', ?)" \
+                                               ") DESC",
+                                               query
+                                             ]))
           )
       )
 
