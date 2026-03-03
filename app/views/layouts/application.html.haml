@@ -1,11 +1,22 @@
 !!!
-%html
+%html{lang: "de"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= content_for(:title) || "Henaheisl e.V."
+    - page_title = content_for?(:title) ? "#{content_for(:title)} - Henaheisl e.V." : "Henaheisl e.V. - FC Bayern Fanclub Wartenberg"
+    - page_description = content_for?(:description) ? content_for(:description) : "Henaheisl e.V. - Offizieller FC Bayern Fanclub aus Wartenberg, gegründet 1991."
+    - page_image = content_for?(:og_image) ? content_for(:og_image) : image_url("banner_v3.png")
+    %title= page_title
     %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
     %meta{content: "yes", name: "mobile-web-app-capable"}/
+    %meta{name: "description", content: page_description}/
+    %link{rel: "canonical", href: request.original_url.split("?").first}/
+    %meta{property: "og:title", content: page_title}/
+    %meta{property: "og:description", content: page_description}/
+    %meta{property: "og:image", content: page_image}/
+    %meta{property: "og:url", content: request.original_url.split("?").first}/
+    %meta{property: "og:type", content: "website"}/
+    %meta{property: "og:locale", content: "de_DE"}/
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -25,8 +36,8 @@
 
     %header
       .banner.d-flex.justify-content-center
-        = link_to root_path do
-          = image_tag "banner_v3.png", class: "img-responsive"
+        = link_to root_path, "aria-label": "Henaheisl e.V. Startseite" do
+          = image_tag "banner_v3.png", class: "img-fluid", alt: "Henaheisl e.V. - FC Bayern Fanclub Wartenberg"
 
       = render "layouts/messages"
       = render "layouts/navigation"
@@ -49,11 +60,11 @@
           = link_to "info@henaheisl.de", "mailto:info@henaheisl.de"
           = "|"
         %span.text-nowrap
-          = link_to "http://facebook.com/henaheisl", target: "_blank" do
+          = link_to "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener" do
             %i.fa-brands.fa-facebook
             Facebook
           = "|"
         %span.text-nowrap
-          = link_to "https://www.instagram.com/henaheisl", target: "_blank" do
+          = link_to "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener" do
             %i.fa-brands.fa-instagram
             Instagram

@@ -36,6 +36,13 @@ $title-meta-color: $meta-grey;
     color: #fff;
     margin-right: 10px;
     font-size: 15pt;
+
+    @media (max-width: 575.98px) {
+        position: relative;
+        font-size: 11pt;
+        text-align: right;
+        padding: 5px 10px;
+    }
 }
 
 #personal_box p {
