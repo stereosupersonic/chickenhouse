@@ -2,7 +2,7 @@
 service: chickenhouse
 
 # Name of the container image.
-image: stereosupersonic/chickenhouse
+image: chickenhouse
 
 # Deploy to these servers.
 servers:
@@ -21,15 +21,9 @@ proxy:
   ssl: true
   host: www.henaheisl.de
 
-# Credentials for your image host.
+# Use local registry on the server (no external registry needed).
 registry:
-  # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
-  username: stereosupersonic
-
-  # Always use an access token rather than real password when possible.
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  server: localhost:5555
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
