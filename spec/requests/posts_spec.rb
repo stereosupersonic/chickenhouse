@@ -119,6 +119,35 @@ RSpec.describe "Posts", type: :request do
       end
     end
 
+    context "with search query" do
+      let!(:user) { create(:user) }
+      let!(:matching_post) { create(:post, title: "Sommerfest 2026", content: "Ein tolles Fest", user: user) }
+      let!(:non_matching_post) { create(:post, title: "Winterpause", content: "Nichts los", user: user) }
+
+      it "returns only matching posts" do
+        get "/posts", params: { q: "Sommerfest" }
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Sommerfest 2026")
+        expect(response.body).not_to include("Winterpause")
+      end
+
+      it "shows search result info" do
+        get "/posts", params: { q: "Sommerfest" }
+
+        expect(response.body).to include("Suchergebnisse für:")
+        expect(response.body).to include("Sommerfest")
+      end
+
+      it "returns all posts without search query" do
+        get "/posts"
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Sommerfest 2026")
+        expect(response.body).to include("Winterpause")
+      end
+    end
+
     context "when using PostPresenter" do
       let!(:user) { create(:user, username: "testauthor") }
       let!(:post) { create(:post, title: "Test Post", content: "Test content", user: user) }

@@ -60,6 +60,42 @@ describe "Posts", type: :system do
     end
   end
 
+  context "search" do
+    it "finds posts by search query" do
+      create(:post, title: "Sommerfest 2026", content: "Ein tolles Fest", user: user)
+      create(:post, title: "Winterpause", content: "Nichts los", user: user)
+
+      visit posts_path(q: "Sommerfest")
+
+      expect(page).to have_content "Sommerfest 2026"
+      expect(page).not_to have_content "Winterpause"
+      expect(page).to have_content "Suchergebnisse für:"
+    end
+
+    it "clears the search" do
+      create(:post, title: "Sommerfest 2026", content: "Ein tolles Fest", user: user)
+      create(:post, title: "Winterpause", content: "Nichts los", user: user)
+
+      visit posts_path(q: "Sommerfest")
+
+      expect(page).to have_content "Sommerfest 2026"
+      expect(page).not_to have_content "Winterpause"
+
+      click_link "Suche zurücksetzen"
+
+      expect(page).to have_content "Sommerfest 2026"
+      expect(page).to have_content "Winterpause"
+      expect(page).not_to have_content "Suchergebnisse für:"
+    end
+
+    it "shows search form in navigation" do
+      visit posts_path
+
+      expect(page).to have_css "i.fa-solid.fa-magnifying-glass"
+      expect(page).to have_field "q"
+    end
+  end
+
   context "as public user" do
     it "as public user i want to see the Post" do
       create(:post,

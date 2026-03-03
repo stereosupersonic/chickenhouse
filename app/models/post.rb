@@ -39,6 +39,11 @@ class Post < ApplicationRecord
 
   scope :visible, -> { where(visible: true) }
   scope :current, -> { where("created_at > ?", 6.months.ago) }
+  scope :search, ->(query) {
+    left_joins(:rich_text_content)
+      .where("posts.title ILIKE :q OR action_text_rich_texts.body ILIKE :q", q: "%#{query}%")
+      .distinct
+  }
 
   # has_attached_file :attachment
   # do_not_validate_attachment_file_type :attachment
