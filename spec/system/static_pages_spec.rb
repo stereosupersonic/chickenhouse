@@ -10,6 +10,23 @@ describe "static pages", type: :system do
     expect(page).to have_content "Das Henaheisl"
   end
 
+  describe "bilder page" do
+    it "shows data protection notice" do
+      visit "/bilder"
+
+      expect(page).to have_content "Bilder / Fotoalben"
+      expect(page).to have_content "Datenschutzgründen"
+      expect(page).to have_content "info@henaheisl.de"
+    end
+
+    it "shows data protection notice for nested album URLs" do
+      visit "/bilder/123/456"
+
+      expect(page).to have_content "Bilder / Fotoalben"
+      expect(page).to have_content "Datenschutz-Grundverordnung"
+    end
+  end
+
   it "impressum page" do
     visit root_path
 
