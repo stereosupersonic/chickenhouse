@@ -28,8 +28,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "login" =>  "sessions#new", :as => "login"
   # Legacy routes - old album URLs
-  get "bilder/*path", to: "pages#bilder"
-  get "bilder", to: "pages#bilder"
+  get "bilder(/*path)", to: "pages#bilder", as: :bilder
 
   # Defines the root path route ("/")
   root "pages#welcome"
