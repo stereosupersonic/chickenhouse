@@ -67,3 +67,12 @@ jobs:
 
       - name: Deploy with Kamal
         run: bin/kamal deploy
+
+      - name: Notify Rollbar of deploy
+        if: success()
+        run: |
+          curl -s -X POST https://api.rollbar.com/api/1/deploy \
+            -F access_token=${{ secrets.ROLLBAR_ACCESS_TOKEN }} \
+            -F environment=production \
+            -F revision=${{ github.sha }} \
+            -F local_username=${{ github.actor }}
