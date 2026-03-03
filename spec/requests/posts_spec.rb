@@ -114,8 +114,37 @@ RSpec.describe "Posts", type: :request do
         get "/posts.atom"
       end
 
-      it "only include the  posts in feed" do
+      it "only include the posts in feed" do
         expect(response.body).to include("Old content for visible post")
+      end
+    end
+
+    context "with search query" do
+      let!(:user) { create(:user) }
+      let!(:matching_post) { create(:post, title: "Sommerfest 2026", content: "Ein tolles Fest", user: user) }
+      let!(:non_matching_post) { create(:post, title: "Winterpause", content: "Nichts los", user: user) }
+
+      it "returns only matching posts" do
+        get "/posts", params: { q: "Sommerfest" }
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Sommerfest 2026")
+        expect(response.body).not_to include("Winterpause")
+      end
+
+      it "shows search result info" do
+        get "/posts", params: { q: "Sommerfest" }
+
+        expect(response.body).to include("Suchergebnisse für:")
+        expect(response.body).to include("Sommerfest")
+      end
+
+      it "returns all posts without search query" do
+        get "/posts"
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("Sommerfest 2026")
+        expect(response.body).to include("Winterpause")
       end
     end
 

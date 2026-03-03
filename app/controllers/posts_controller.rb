@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
   before_action :resume_session, only: %i[index show]
   def index
-    @pagy, @posts = pagy(Post.visible.order(created_at: :desc))
+    posts = Post.visible.order(created_at: :desc)
+    posts = Posts::Search.call(query: params[:q], scope: posts).result if params[:q].present?
+    @pagy, @posts = pagy(posts)
 
     respond_to do |format|
       format.html

@@ -91,6 +91,52 @@ RSpec.describe Post, type: :model do
         expect(described_class.current.pluck(:title)).not_to include("Old Post")
       end
     end
+
+    describe ".search" do
+      let(:user) { create(:user) }
+
+      it "finds posts by title" do
+        post = create(:post, title: "Sommerfest 2026", user: user)
+        create(:post, title: "Winterpause", user: user)
+
+        results = described_class.search("Sommerfest")
+
+        expect(results).to include(post)
+        expect(results.count).to eq(1)
+      end
+
+      it "finds posts by rich text content" do
+        post = create(:post, title: "Einladung", content: "Kommt zum großen Hühnerfest", user: user)
+        create(:post, title: "Anderer Beitrag", content: "Nichts besonderes", user: user)
+
+        results = described_class.search("Hühnerfest")
+
+        expect(results).to include(post)
+        expect(results.count).to eq(1)
+      end
+
+      it "is case insensitive" do
+        post = create(:post, title: "GROSSES FEST", user: user)
+
+        expect(described_class.search("grosses")).to include(post)
+        expect(described_class.search("GROSSES")).to include(post)
+      end
+
+      it "returns no duplicates when query matches both title and content" do
+        post = create(:post, title: "Hühnerfest", content: "Das große Hühnerfest", user: user)
+
+        results = described_class.search("Hühnerfest")
+
+        expect(results.count).to eq(1)
+        expect(results).to include(post)
+      end
+
+      it "returns empty relation when nothing matches" do
+        create(:post, title: "Sommerfest", user: user)
+
+        expect(described_class.search("Weihnachten")).to be_empty
+      end
+    end
   end
 
   describe "friendly_id" do
