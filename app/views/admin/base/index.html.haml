@@ -18,7 +18,7 @@
     %dt Deploy SHA
     %dd= ENV["DEPLOY_SHA"].presence || "n/a"
     %dt Deploy Timestamp
-    %dd= ENV["DEPLOY_TIMESTAMP"].present? ? Time.iso8601(ENV["DEPLOY_TIMESTAMP"]).strftime("%d.%m.%Y %H:%M:%S UTC") : "n/a"
+    %dd= ENV["DEPLOY_TIMESTAMP"].present? ? Time.zone.parse(ENV["DEPLOY_TIMESTAMP"]).strftime("%d.%m.%Y %H:%M:%S UTC") : "n/a"
   %p
     This link will intentionally raise an error to test error reporting:
     %strong
