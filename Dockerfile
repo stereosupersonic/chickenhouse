@@ -77,6 +77,11 @@ RUN rm -rf node_modules
 # Final stage for app image
 FROM base
 
+ARG DEPLOY_SHA
+ARG DEPLOY_TIMESTAMP
+ENV DEPLOY_SHA=${DEPLOY_SHA} \
+    DEPLOY_TIMESTAMP=${DEPLOY_TIMESTAMP}
+
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
