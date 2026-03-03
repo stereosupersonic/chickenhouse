@@ -78,7 +78,7 @@ builder:
   arch: amd64
   args:
     DEPLOY_SHA: <%= `git rev-parse HEAD`.strip %>
-    DEPLOY_TIMESTAMP: <%= Time.now.utc.iso8601 %>
+    DEPLOY_TIMESTAMP: <%= Time.now.utc.strftime("%Y-%m-%dT%H:%M:%SZ") %>
 
   # # Build image via remote server (useful for faster amd64 builds on arm64 computers)
   # remote: ssh://docker@docker-builder-server
