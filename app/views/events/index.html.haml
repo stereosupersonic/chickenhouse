@@ -8,7 +8,10 @@
     %li.breadcrumb-item.active{"aria-current" => "page"}
       .text-nowrap.fw-bold= "Events"
 
-%h1 Kalender
+%h1
+  Kalender
+  = link_to calendar_url(protocol: "webcal"), title: "Kalender abonnieren", "aria-label": "Kalender abonnieren" do
+    %i.fa.fa-calendar-plus{"aria-hidden" => "true"}
 
 - @events.each do | event |
   = render EventPresenter.new(event)
