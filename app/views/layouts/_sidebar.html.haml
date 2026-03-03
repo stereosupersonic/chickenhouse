@@ -1,4 +1,4 @@
-#sidebar
+%aside#sidebar{"aria-label" => "Seitenleiste"}
   .sidebar-module.sidebar-module-inset
     %h3.title.text-decoration-none Nächste Events
     - if Event.next_events.present?
@@ -6,20 +6,20 @@
         - Event.next_events.limit(3).each do |event|
           %li.sidebar-event{ class: "event-#{event.id}" }
             = link_to event_path(event) do
-              %i.fa.fa-calendar
-              = "#{truncate(event.title, length: 21)} (#{time_ago_in_words event.start_date})".html_safe
+              %i.fa.fa-calendar{"aria-hidden" => "true"}
+              = "#{truncate(event.title, length: 21)} (#{time_ago_in_words event.start_date})"
     - else
       .sidebar-event
         = "Keine Events in der nächsten Zeit"
   .sidebar-module.sidebar-module-inset
     %h3
-      %i.fa-brands.fa-instagram
-      = link_to "Instagram", "https://www.instagram.com/henaheisl"
+      %i.fa-brands.fa-instagram{"aria-hidden" => "true"}
+      = link_to "Instagram", "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Instagram (öffnet in neuem Fenster)"
 
   .sidebar-module.sidebar-module-inset
     %h3
-      %i.fa-brands.fa-facebook
-      = link_to "Facebook", "https://www.facebook.com/henaheisl"
+      %i.fa-brands.fa-facebook{"aria-hidden" => "true"}
+      = link_to "Facebook", "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Facebook (öffnet in neuem Fenster)"
     .fb-like-box{"data-href" => "https://www.facebook.com/henaheisl",
                  "data-colorscheme" => "light",
                  "data-show-faces"  => "true",

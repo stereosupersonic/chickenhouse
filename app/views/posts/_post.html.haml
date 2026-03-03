@@ -2,22 +2,22 @@
   .card.mb-3
     - if admin?
       .position-absolute.top-0.end-0.p-2
-        = link_to [ :edit, :admin, post ], class: "btn btn-outline-primary btn-sm" do
-          %i.fa.fa-edit
+        = link_to [ :edit, :admin, post ], class: "btn btn-outline-primary btn-sm", "aria-label": "#{post.title} bearbeiten" do
+          %i.fa.fa-edit{"aria-hidden" => "true"}
           Edit
     .card-body
       %h5.card-title
         = link_to post.title, post, class: "text-decoration-none"
       %p.card-text.text-muted.small
-        %i.fa.fa-calendar.me-1
+        %i.fa.fa-calendar.me-1{"aria-hidden" => "true"}
         = format_date post.created_at
       .card-text
         - if post.old_content_type.to_s == "picture"
-          = image_tag post.media, class: "img-fluid rounded mb-3"
+          = image_tag post.media, class: "img-fluid rounded mb-3", alt: post.title
           = post.html_content
         - elsif post.old_content_type.to_s == "video"
           .ratio.ratio-16x9.mb-3
-            = youtube_video post.media
+            = youtube_video post.media, title: post.title
           .video-description= post.html_content
         - else
           = post.html_content
