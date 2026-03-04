@@ -34,6 +34,8 @@ env:
     - NEWRELIC_LICENSE_KEY
     - AWS_SECRET
     - AWS_ACCESS_KEY
+    - UMAMI_WEBSITE_ID
+
   clear:
     DATABASE_HOST: chickenhouse-postgres
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.

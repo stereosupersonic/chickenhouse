@@ -55,6 +55,7 @@ jobs:
           NEWRELIC_LICENSE_KEY: ${{ secrets.NEWRELIC_LICENSE_KEY }}
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET: ${{ secrets.AWS_SECRET }}
+          UMAMI_WEBSITE_ID: ${{ secrets.UMAMI_WEBSITE_ID }}
         run: |
           mkdir -p .kamal
           cat > .kamal/secrets <<EOF
@@ -66,6 +67,7 @@ jobs:
           NEWRELIC_LICENSE_KEY=${NEWRELIC_LICENSE_KEY}
           AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
           AWS_SECRET=${AWS_SECRET}
+          UMAMI_WEBSITE_ID=${UMAMI_WEBSITE_ID}
           EOF
 
       - name: Deploy with Kamal
