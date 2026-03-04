@@ -51,7 +51,7 @@ gem "pg", "~> 1.6"
 gem "annotate", "~> 2.6"
 
 gem "dotenv-rails", "~> 3.1"
-gem "newrelic_rpm", "~> 9.24"
+gem "newrelic_rpm"
 gem "lograge", "~> 0.14.0"
 
 gem "aws-sdk-s3", "~> 1.202"
