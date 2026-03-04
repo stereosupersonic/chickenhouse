@@ -20,6 +20,8 @@
     = csrf_meta_tags
     = csp_meta_tag
 
+    %script{defer: true, src: "https://cloud.umami.is/script.js", "data-website-id": "df47e257-95c0-4ad2-bc02-47255fde4b57"}{}
+
     = yield :head
 
     %link{href: "/icon.png", rel: "icon", type: "image/png"}/
