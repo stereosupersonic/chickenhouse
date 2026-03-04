@@ -1,0 +1,19 @@
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/debug-1.11.1/ext/debug
+/opt/hostedtoolcache/Ruby/3.3.9/x64/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20251222-2170-cv2dvv sitelibdir\=./.gem.20251222-2170-cv2dvv clean
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20251222-2170-cv2dvv sitelibdir\=./.gem.20251222-2170-cv2dvv
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20251222-2170-cv2dvv sitelibdir\=./.gem.20251222-2170-cv2dvv install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20251222-2170-cv2dvv/debug
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20251222-2170-cv2dvv sitelibdir\=./.gem.20251222-2170-cv2dvv clean

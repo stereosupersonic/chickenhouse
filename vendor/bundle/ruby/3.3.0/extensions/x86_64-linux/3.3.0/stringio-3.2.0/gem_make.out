@@ -1,0 +1,19 @@
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/stringio-3.2.0/ext/stringio
+/opt/hostedtoolcache/Ruby/3.3.9/x64/bin/ruby extconf.rb
+checking for rb_io_mode_t in ruby/io.h... no
+creating Makefile
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20251229-2172-sovxwa sitelibdir\=./.gem.20251229-2172-sovxwa clean
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20251229-2172-sovxwa sitelibdir\=./.gem.20251229-2172-sovxwa
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20251229-2172-sovxwa sitelibdir\=./.gem.20251229-2172-sovxwa install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20251229-2172-sovxwa
+
+current directory: /home/runner/work/chickenhouse/chickenhouse/vendor/bundle/ruby/3.3.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20251229-2172-sovxwa sitelibdir\=./.gem.20251229-2172-sovxwa clean
