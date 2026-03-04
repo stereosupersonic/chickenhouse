@@ -19,6 +19,11 @@
     %dd= ENV["DEPLOY_SHA"].presence || "n/a"
     %dt Deploy Timestamp
     %dd= ENV["DEPLOY_TIMESTAMP"].present? ? Time.zone.parse(ENV["DEPLOY_TIMESTAMP"]).strftime("%d.%m.%Y %H:%M:%S UTC") : "n/a"
+    %dt Ruby Version
+    %dd= ENV["RUBY_VERSION"].presence || "n/a"
+    %dt Rails Version
+    %dd= Rails.version
+
   %p
     This link will intentionally raise an error to test error reporting:
     %strong

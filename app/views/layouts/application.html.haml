@@ -20,6 +20,9 @@
     = csrf_meta_tags
     = csp_meta_tag
 
+    - if ENV["UMAMI_WEBSITE_ID"].present?
+      %script{defer: true, src: "https://cloud.umami.is/script.js", "data-website-id": ENV["UMAMI_WEBSITE_ID"]}{}
+
     = yield :head
 
     %link{href: "/icon.png", rel: "icon", type: "image/png"}/
@@ -53,7 +56,7 @@
 
     %footer.footer
       %p
-        = "© 1991 - #{Time.now.year} Henaheisl e.V. - Alle Rechte vorbehalten"
+        = "© 1991 - #{Date.current.year} Henaheisl e.V. - Alle Rechte vorbehalten"
       %p
         %span.text-nowrap
           = link_to "Impressum", impressum_path
