@@ -566,7 +566,7 @@ DEPENDENCIES
   kamal
   launchy
   lograge (~> 0.14.0)
-  newrelic_rpm
+  newrelic_rpm (~> 10.2.0)
   pagy (~> 9.3)
   pg (~> 1.6)
   propshaft
