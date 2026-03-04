@@ -81,6 +81,9 @@ jobs:
       - name: Run RuboCop auto-fix
         run: bundle exec rubocop -a --fail-level fatal || true
 
+      - name: Clean up vendor directory
+        run: git checkout -- vendor/ 2>/dev/null || true && rm -rf vendor/bundle
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
