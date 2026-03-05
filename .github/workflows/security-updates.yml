@@ -31,6 +31,9 @@ jobs:
       - name: Install JS dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Unfreeze bundle for updates
+        run: bundle config set frozen false
+
       - name: Run bundler-audit and collect vulnerable gems
         id: audit
         run: |
@@ -59,6 +62,9 @@ jobs:
             echo "Updating vulnerable gems: $gems"
             bundle update $gems
           fi
+
+      - name: Update all gems to latest patch versions
+        run: bundle update --patch
 
       - name: Check for JS vulnerabilities
         id: js_audit
