@@ -23,6 +23,31 @@ RSpec.describe PostPresenter, type: :presenter do
     end
   end
 
+  describe "#meta_description" do
+    it "returns truncated plain text from rich text content" do
+      post = create(:post, content: "This is a test post with some content for meta description purposes.")
+      presenter = described_class.new(post)
+
+      expect(presenter.meta_description).to include("This is a test post")
+      expect(presenter.meta_description.length).to be <= 160
+    end
+
+    it "returns truncated plain text from old_content" do
+      post = create(:post, old_content: "<p>Legacy HTML content here</p>")
+      presenter = described_class.new(post)
+
+      expect(presenter.meta_description).to eq("Legacy HTML content here")
+    end
+
+    it "returns empty string when no content" do
+      post = build(:post, old_content: nil)
+      allow(post).to receive(:content).and_return(nil)
+      presenter = described_class.new(post)
+
+      expect(presenter.meta_description).to eq("")
+    end
+  end
+
     describe "#author" do
     it "returns user email when user is present" do
       user = create(:user, username: "Mr. Blah")

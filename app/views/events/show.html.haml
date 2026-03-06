@@ -1,4 +1,6 @@
 - event_presenter = EventPresenter.new(@event)
+- content_for(:title) { event_presenter.title }
+- content_for(:description) { "#{event_presenter.title} - #{event_presenter.formatted_start_date}#{" - #{@event.location}" if @event.location.present?}" }
 
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
@@ -8,6 +10,8 @@
       = link_to "Events", events_path
     %li.breadcrumb-item.active{"aria-current" => "page"}
       .text-nowrap.fw-bold= event_presenter.title
+
+%h1= event_presenter.title
 
 = render event_presenter
 

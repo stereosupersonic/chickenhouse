@@ -1,9 +1,9 @@
-%div{id: dom_id(event), class: "event"}
+%article{id: dom_id(event), class: "event"}
   - if admin?
     .edit_it
       = link_to [ :edit, :admin, event ], "aria-label": "#{event.title} bearbeiten" do
         %i.fa.fa-edit{"aria-hidden" => "true"}
-  .date
+  .date{"aria-hidden" => "true"}
     %span.calicon.caliconSmall
       %span
         %span.month
@@ -13,7 +13,8 @@
   .event-header
     .event-title= link_to event.title, event
     %p.event-meta
-      = event.formatted_start_date
+      %time{datetime: event.start_date.iso8601}
+        = event.formatted_start_date
       - if event.location.present?
         &nbsp;-&nbsp;
         = event.location
