@@ -1,6 +1,6 @@
 class EventPresenter < ApplicationPresenter
   def html_content
-    simple_format(sanitize(o.content))
+    h.auto_link(simple_format(sanitize(o.content)), html: { target: "_blank", rel: "noopener noreferrer" })
   end
 
   def formatted_start_date

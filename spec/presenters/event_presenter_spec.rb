@@ -18,6 +18,15 @@ RSpec.describe EventPresenter, type: :presenter do
       expect(html_content).to include("Safe content")
     end
 
+    it "auto-links URLs" do
+      event = create(:event, content: "Check https://example.com for details")
+      presenter = described_class.new(event)
+      html_content = presenter.html_content
+      expect(html_content).to include('href="https://example.com"')
+      expect(html_content).to include('target="_blank"')
+      expect(html_content).to include('rel="noopener noreferrer"')
+    end
+
     it "handles nil content" do
       event = build(:event, content: nil)
       presenter = described_class.new(event)
