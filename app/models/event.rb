@@ -2,18 +2,18 @@
 #
 # Table name: events
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  all_day    :boolean          default(FALSE)
 #  content    :text             not null
-#  created_at :datetime         not null
 #  end_date   :datetime
 #  location   :string(255)
 #  slug       :string           not null
 #  start_date :datetime         not null
 #  title      :string(255)      not null
+#  visible    :boolean          default(TRUE), not null
+#  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer          not null
-#  visible    :boolean          default(TRUE), not null
 #
 # Indexes
 #
@@ -21,6 +21,10 @@
 #  index_events_on_start_date  (start_date)
 #  index_events_on_user_id     (user_id)
 #  index_events_on_visible     (visible)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 
 class Event < ApplicationRecord

@@ -12,7 +12,6 @@ module ApplicationHelper
   end
 
   def admin?
-    # TODO
     current_user&.admin?
   end
 
@@ -38,11 +37,6 @@ module ApplicationHelper
     link_to tag.i("&nbsp;".html_safe, class: "fa-solid fa-#{icon}") + text, link, options
   end
 
-  def show_button(link, text = "Anzeigen", options = {})
-    options.reverse_merge! class: "btn btn-link"
-    button_with_icon text, link, "arrow-right", options
-  end
-
   def boolean_value(value)
     case value
     when true then "Ja"
@@ -51,7 +45,6 @@ module ApplicationHelper
       ""
     end
   end
-
 
   def new_button(link, text = "Neu", options = {})
     add_button link, text, options
@@ -71,11 +64,6 @@ module ApplicationHelper
   def cancel_button(link = root_path, text = "Abbrechen", options = {})
     options.reverse_merge! class: "btn btn-danger btn-sm"
     button_with_icon text, link, "ban", options
-  end
-
-  def save_button(link = "#", text = "Speichern", options = {})
-    options.reverse_merge! class: "form_submitter btn btn-success btn-sm"
-    button_with_icon text, link, "check", options
   end
 
   def delete_button(link, text = "Löschen", options = {})

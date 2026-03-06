@@ -20,9 +20,6 @@ Rails.application.routes.draw do
   get "about" => "pages#about", :as => "about"
   get "exception" => "pages#exception", :as => "exception"
   get "impressum" => "pages#impressum", :as => "impressum"
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "login" =>  "sessions#new", :as => "login"
   # Legacy routes - old album URLs
   get "bilder(/*path)", to: "pages#bilder", as: :bilder, defaults: { format: :html }

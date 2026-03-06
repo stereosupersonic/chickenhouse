@@ -2,32 +2,27 @@
 #
 # Table name: posts
 #
-#  id                      :integer          not null, primary key
-#  attachment_content_type :string
-#  attachment_file_name    :string
-#  attachment_file_size    :integer
-#  attachment_updated_at   :datetime
-#  content                 :text
-#  content_type            :string           default("article")
-#  display_type            :string           default("textile")
-#  intern                  :boolean          default(FALSE)
-#  media                   :text
-#  media_type              :string
-#  out_of_date             :datetime
-#  slug                    :string
-#  title                   :string
-#  twitter_export          :boolean          default(TRUE)
-#  visible                 :boolean          default(TRUE)
-#  created_at              :datetime
-#  updated_at              :datetime
-#  album_id                :integer
-#  user_id                 :integer
+#  id               :bigint           not null, primary key
+#  display_type     :string(255)      default("textile")
+#  intern           :boolean          default(FALSE)
+#  media            :text
+#  old_content      :text
+#  old_content_type :string(255)      default("article")
+#  slug             :string(255)
+#  title            :string(255)      not null
+#  visible          :boolean          default(TRUE)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :integer          not null
 #
 # Indexes
 #
-#  index_posts_on_album_id  (album_id)
-#  index_posts_on_intern    (intern)
-#  index_posts_on_visible   (visible)
+#  index_posts_on_user_id  (user_id)
+#  index_posts_on_visible  (visible)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

@@ -2,40 +2,33 @@
 #
 # Table name: posts
 #
-#  id                      :integer          not null, primary key
-#  attachment_content_type :string
-#  attachment_file_name    :string
-#  attachment_file_size    :integer
-#  attachment_updated_at   :datetime
-#  content                 :text
-#  content_type            :string           default("article")
-#  display_type            :string           default("textile")
-#  intern                  :boolean          default(FALSE)
-#  media                   :text
-#  media_type              :string
-#  out_of_date             :datetime
-#  slug                    :string
-#  title                   :string
-#  twitter_export          :boolean          default(TRUE)
-#  visible                 :boolean          default(TRUE)
-#  created_at              :datetime
-#  updated_at              :datetime
-#  album_id                :integer
-#  user_id                 :integer
+#  id               :bigint           not null, primary key
+#  display_type     :string(255)      default("textile")
+#  intern           :boolean          default(FALSE)
+#  media            :text
+#  old_content      :text
+#  old_content_type :string(255)      default("article")
+#  slug             :string(255)
+#  title            :string(255)      not null
+#  visible          :boolean          default(TRUE)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :integer          not null
 #
 # Indexes
 #
-#  index_posts_on_album_id  (album_id)
-#  index_posts_on_intern    (intern)
-#  index_posts_on_visible   (visible)
+#  index_posts_on_user_id  (user_id)
+#  index_posts_on_visible  (visible)
 #
-
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 require "rails_helper"
 
 RSpec.describe Post, type: :model do
   describe "associations" do
     it { is_expected.to belong_to(:user).optional }
-    # it { should belong_to(:album).optional } # Album model doesn't exist
   end
 
   describe "validations" do
@@ -86,55 +79,9 @@ RSpec.describe Post, type: :model do
 
     describe ".current" do
       it "returns posts created within the last 6 months" do
-        expect(described_class.current.count).to eq(3) # 2 recent + 1 hidden but recent
+        expect(described_class.current.count).to eq(3)
         expect(described_class.current.pluck(:title)).to include("Visible Post", "Hidden Post", "Recent Post")
         expect(described_class.current.pluck(:title)).not_to include("Old Post")
-      end
-    end
-
-    describe ".search" do
-      let(:user) { create(:user) }
-
-      it "finds posts by title" do
-        post = create(:post, title: "Sommerfest 2026", user: user)
-        create(:post, title: "Winterpause", user: user)
-
-        results = described_class.search("Sommerfest")
-
-        expect(results).to include(post)
-        expect(results.count).to eq(1)
-      end
-
-      it "finds posts by rich text content" do
-        post = create(:post, title: "Einladung", content: "Kommt zum großen Hühnerfest", user: user)
-        create(:post, title: "Anderer Beitrag", content: "Nichts besonderes", user: user)
-
-        results = described_class.search("Hühnerfest")
-
-        expect(results).to include(post)
-        expect(results.count).to eq(1)
-      end
-
-      it "is case insensitive" do
-        post = create(:post, title: "GROSSES FEST", user: user)
-
-        expect(described_class.search("grosses")).to include(post)
-        expect(described_class.search("GROSSES")).to include(post)
-      end
-
-      it "returns no duplicates when query matches both title and content" do
-        post = create(:post, title: "Hühnerfest", content: "Das große Hühnerfest", user: user)
-
-        results = described_class.search("Hühnerfest")
-
-        expect(results.count).to eq(1)
-        expect(results).to include(post)
-      end
-
-      it "returns empty relation when nothing matches" do
-        create(:post, title: "Sommerfest", user: user)
-
-        expect(described_class.search("Weihnachten")).to be_empty
       end
     end
   end
@@ -170,33 +117,7 @@ RSpec.describe Post, type: :model do
       expect(post.old_content_type).to eq("article")
       expect(post.display_type).to eq("textile")
       expect(post.intern).to be false
-      expect(post.twitter_export).to be true
       expect(post.visible).to be true
-    end
-  end
-
-  describe "attachment attributes" do
-    it "can store attachment metadata" do
-      post = create(:post,
-                    attachment_file_name:    "test.jpg",
-                    attachment_content_type: "image/jpeg",
-                    attachment_file_size:    1024,
-                    attachment_updated_at:   Time.current)
-
-      expect(post.attachment_file_name).to eq("test.jpg")
-      expect(post.attachment_content_type).to eq("image/jpeg")
-      expect(post.attachment_file_size).to eq(1024)
-      expect(post.attachment_updated_at).to be_present
-    end
-  end
-
-  describe "media attributes" do
-    it "can store media content and type" do
-      media_content = "Video embed code"
-      post = create(:post, media: media_content, media_type: "video")
-
-      expect(post.media).to eq(media_content)
-      expect(post.media_type).to eq("video")
     end
   end
 

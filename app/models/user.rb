@@ -2,13 +2,13 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
+#  id              :bigint           not null, primary key
 #  admin           :boolean          default(FALSE), not null
-#  created_at      :datetime         not null
 #  email_address   :string           not null
 #  password_digest :string           not null
-#  updated_at      :datetime         not null
 #  username        :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #

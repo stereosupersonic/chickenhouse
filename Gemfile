@@ -48,7 +48,7 @@ gem "simple_form", "~> 5.4"
 gem "pagy", "~> 9.3"
 gem "rollbar", "~> 3.7"
 gem "pg", "~> 1.6"
-gem "annotate", "~> 2.6"
+gem "annotaterb", "~> 4.13"
 
 gem "dotenv-rails", "~> 3.1"
 gem "newrelic_rpm", "~> 10.2.0"
