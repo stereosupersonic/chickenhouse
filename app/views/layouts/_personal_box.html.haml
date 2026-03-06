@@ -2,7 +2,7 @@
   - if current_user
     %i.fa-solid.fa-user{"aria-hidden" => "true"}
     = current_user.username
-    |
+    %span{"aria-hidden" => "true"} |
     = link_to session_path, data: { turbo_method: :delete }, "aria-label": "Ausloggen" do
       %i.fa-solid.fa-right-from-bracket{"aria-hidden" => "true"}
       Ausloggen
