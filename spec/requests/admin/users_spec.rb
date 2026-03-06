@@ -35,6 +35,37 @@ RSpec.describe "Admin::Users", type: :request do
     end
   end
 
+  describe "GET /admin/users/new" do
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/users/new"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /admin/users/:id" do
+    let!(:target_user) { create(:user) }
+
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/users/#{target_user.id}"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /admin/users/:id/edit" do
+    let!(:target_user) { create(:user) }
+
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/users/#{target_user.id}/edit"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "POST /admin/users" do
     before { sign_in(admin) }
 

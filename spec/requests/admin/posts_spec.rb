@@ -35,6 +35,37 @@ RSpec.describe "Admin::Posts", type: :request do
     end
   end
 
+  describe "GET /admin/posts/new" do
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/posts/new"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /admin/posts/:id" do
+    let!(:existing_post) { create(:post, user: admin) }
+
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/posts/#{existing_post.slug}"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /admin/posts/:id/edit" do
+    let!(:existing_post) { create(:post, user: admin) }
+
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/posts/#{existing_post.slug}/edit"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "POST /admin/posts" do
     before { sign_in(admin) }
 

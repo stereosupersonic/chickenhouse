@@ -35,6 +35,37 @@ RSpec.describe "Admin::Events", type: :request do
     end
   end
 
+  describe "GET /admin/events/new" do
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/events/new"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /admin/events/:id" do
+    let!(:event) { create(:event, user: admin) }
+
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/events/#{event.slug}"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /admin/events/:id/edit" do
+    let!(:event) { create(:event, user: admin) }
+
+    before { sign_in(admin) }
+
+    it "returns success" do
+      get "/admin/events/#{event.slug}/edit"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "POST /admin/events" do
     before { sign_in(admin) }
 

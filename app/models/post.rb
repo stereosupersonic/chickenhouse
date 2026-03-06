@@ -31,6 +31,9 @@
 #
 
 class Post < ApplicationRecord
+  OLD_CONTENT_TYPES = %w[article video picture].freeze
+  DISPLAY_TYPES = %w[textile raw].freeze
+
   extend FriendlyId
 
   friendly_id :title, use: :slugged

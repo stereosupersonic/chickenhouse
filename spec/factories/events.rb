@@ -3,21 +3,23 @@
 # Table name: events
 #
 #  id         :integer          not null, primary key
-#  all_day    :boolean
-#  content    :text
+#  all_day    :boolean          default(FALSE)
+#  content    :text             not null
+#  created_at :datetime         not null
 #  end_date   :datetime
-#  location   :string
-#  slug       :string
-#  start_date :datetime
-#  title      :string
-#  visible    :boolean          default(TRUE)
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer
+#  location   :string(255)
+#  slug       :string           not null
+#  start_date :datetime         not null
+#  title      :string(255)      not null
+#  updated_at :datetime         not null
+#  user_id    :integer          not null
+#  visible    :boolean          default(TRUE), not null
 #
 # Indexes
 #
+#  index_events_on_slug        (slug) UNIQUE
 #  index_events_on_start_date  (start_date)
+#  index_events_on_user_id     (user_id)
 #  index_events_on_visible     (visible)
 #
 

@@ -5,9 +5,7 @@ class Admin::EventsController < Admin::BaseController
     @pagy, @events = pagy(Event.order(start_date: :desc), limit: 25)
   end
 
-  def show
-    @event = EventPresenter.new(@event)
-  end
+  def show; end
 
   def new
     @event = Event.new

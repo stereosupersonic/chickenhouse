@@ -6,9 +6,7 @@ class Admin::PostsController < Admin::BaseController
     @pagy, @posts = pagy(Post.order("created_at desc"), limit: 25)
   end
 
-  def show
-    @post = PostPresenter.new(@post)
-  end
+  def show; end
 
   def new
     @post = Post.new

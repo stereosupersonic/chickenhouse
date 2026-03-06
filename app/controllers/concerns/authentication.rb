@@ -23,9 +23,7 @@ module Authentication
   end
 
   def resume_session
-    session = Current.session ||= find_session_by_cookie
-    Rails.logger.debug "resume_session #{session.inspect}"
-    session
+    Current.session ||= find_session_by_cookie
   end
 
   def find_session_by_cookie
@@ -45,10 +43,7 @@ module Authentication
   def start_new_session_for(user)
     user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
       Current.session = session
-      Rails.logger.info "######################################"
-      Rails.logger.info "Session started for user #{user.id} with session #{session.id}"
-      Rails.logger.info "######################################"
-
+      Rails.logger.info "Session started for user #{user.id}"
       cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
     end
   end
