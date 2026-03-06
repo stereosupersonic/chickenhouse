@@ -31,12 +31,14 @@
 #
 
 class Post < ApplicationRecord
+  OLD_CONTENT_TYPES = %w[article video picture].freeze
+  DISPLAY_TYPES = %w[textile raw].freeze
+
   extend FriendlyId
 
   friendly_id :title, use: :slugged
 
   belongs_to :user, optional: true
-  belongs_to :album, optional: true
 
   scope :visible, -> { where(visible: true) }
   scope :current, -> { where("created_at > ?", 6.months.ago) }

@@ -1,6 +1,11 @@
 # This file is copied to spec/ when you run "rails generate rspec:install"
 require "spec_helper"
 
+unless ENV.fetch("CI", "").length > 0
+  require "simplecov"
+  SimpleCov.start "rails"
+end
+
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 # Prevent database truncation if the environment is production
@@ -32,11 +37,6 @@ begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
-end
-
-if ENV.fetch("CI", "").blank?
-  require "simplecov"
-  SimpleCov.start "rails"
 end
 
 require "action_text/system_test_helper"

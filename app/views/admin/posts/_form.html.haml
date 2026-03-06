@@ -5,8 +5,8 @@
   = f.input :content, as: :rich_text_area, label: 'Content', placeholder: 'Text goes here'
   - if !@post.new_record? || @post.old_content.present?
     = f.input :old_content, input_html: { class: "wysihtml5" }
-    = f.input :old_content_type, as: :select, collection: [ "article", "video", "picture" ]
-    = f.input :display_type, as: :select, collection: [ "textile", "raw" ]
+    = f.input :old_content_type, as: :select, collection: Post::OLD_CONTENT_TYPES
+    = f.input :display_type, as: :select, collection: Post::DISPLAY_TYPES
     = f.input :media
   = f.input :visible
   = f.input :intern

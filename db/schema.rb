@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_04_161452) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_06_212109) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_04_161452) do
     t.datetime "end_date"
     t.string "location", limit: 255
     t.string "slug", null: false
-    t.datetime "start_date"
+    t.datetime "start_date", null: false
     t.string "title", limit: 255, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_04_161452) do
     t.string "old_content_type", limit: 255, default: "article"
     t.datetime "out_of_date"
     t.string "slug", limit: 255
-    t.string "title", limit: 255
+    t.string "title", limit: 255, null: false
     t.boolean "twitter_export", default: true
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
