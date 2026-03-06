@@ -117,6 +117,21 @@ describe "Events", type: :system do
       expect(page).to have_content "some blah"
     end
 
+    it "renders URLs in event content as clickable links" do
+      create(:event,
+             title: "Event mit Link",
+             content: "Mehr Infos unter https://www.henaheisl.de und hier",
+             user: user,
+             start_date: 1.day.from_now)
+
+      visit events_path
+
+      click_link "Event mit Link"
+
+      expect(page).to have_link "https://www.henaheisl.de", href: "https://www.henaheisl.de"
+      expect(page).to have_css 'a[target="_blank"][rel="noopener noreferrer"]', text: "https://www.henaheisl.de"
+    end
+
     it "i want to see the all next events under 'Kalender'" do
       create(:event, title: "Megasuper event", user: user, start_date: 1.day.from_now)
       create(:event, title: "Geiler event", user: user, start_date: Time.zone.today)

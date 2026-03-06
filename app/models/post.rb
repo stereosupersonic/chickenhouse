@@ -36,7 +36,6 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
 
   belongs_to :user, optional: true
-  belongs_to :album, optional: true
 
   scope :visible, -> { where(visible: true) }
   scope :current, -> { where("created_at > ?", 6.months.ago) }

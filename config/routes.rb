@@ -7,11 +7,6 @@ Rails.application.routes.draw do
     resources :users
     resources :events
     resources :posts
-    resources :albums do
-      member do
-        put :reload_from_flickr
-      end
-    end
   end
 
   resources :events
