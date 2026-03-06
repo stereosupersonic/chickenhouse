@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_06_212109) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_06_214049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -82,27 +82,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_06_212109) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "album_id"
-    t.string "attachment_content_type", limit: 255
-    t.string "attachment_file_name", limit: 255
-    t.integer "attachment_file_size"
-    t.datetime "attachment_updated_at"
     t.datetime "created_at", null: false
     t.string "display_type", limit: 255, default: "textile"
     t.boolean "intern", default: false
     t.text "media"
-    t.string "media_type", limit: 255
     t.text "old_content"
     t.string "old_content_type", limit: 255, default: "article"
-    t.datetime "out_of_date"
     t.string "slug", limit: 255
     t.string "title", limit: 255, null: false
-    t.boolean "twitter_export", default: true
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.boolean "visible", default: true
-    t.index ["album_id"], name: "index_posts_on_album_id"
-    t.index ["title"], name: "index_posts_on_title"
     t.index ["user_id"], name: "index_posts_on_user_id"
     t.index ["visible"], name: "index_posts_on_visible"
   end

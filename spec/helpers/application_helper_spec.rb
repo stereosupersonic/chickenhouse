@@ -162,24 +162,5 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(result).to include("btn-danger")
       end
     end
-
-    describe "#save_button" do
-      it "renders a success button with check icon" do
-        result = helper.save_button
-
-        expect(result).to include("fa-check")
-        expect(result).to include("Speichern")
-        expect(result).to include("btn-success")
-      end
-    end
-
-    describe "#show_button" do
-      it "renders a link with arrow-right icon" do
-        result = helper.show_button("/admin/users/1")
-
-        expect(result).to include("fa-arrow-right")
-        expect(result).to include("Anzeigen")
-      end
-    end
   end
 end
