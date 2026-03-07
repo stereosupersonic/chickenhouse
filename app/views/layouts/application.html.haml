@@ -54,22 +54,26 @@
           .col-sm-3
             = render "layouts/sidebar"
 
-    %footer.footer
+    %footer.footer{"aria-label" => "Fußbereich"}
       %p
         = "© 1991 - #{Date.current.year} Henaheisl e.V. - Alle Rechte vorbehalten"
-      %p
-        %span.text-nowrap
-          = link_to "Impressum", impressum_path
-          = "|"
-        %span.text-nowrap
-          = link_to "info@henaheisl.de", "mailto:info@henaheisl.de"
-          = "|"
-        %span.text-nowrap
-          = link_to "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Facebook (öffnet in neuem Fenster)" do
-            %i.fa-brands.fa-facebook{"aria-hidden" => "true"}
-            Facebook
-          = "|"
-        %span.text-nowrap
-          = link_to "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Instagram (öffnet in neuem Fenster)" do
-            %i.fa-brands.fa-instagram{"aria-hidden" => "true"}
-            Instagram
+      %nav{"aria-label" => "Footer-Navigation"}
+        %ul.list-inline.mb-0
+          %li.list-inline-item
+            = link_to "Impressum", impressum_path
+          %li.list-inline-item{"aria-hidden" => "true"} |
+          %li.list-inline-item
+            = link_to "Datenschutz", impressum_path(anchor: "datenschutz")
+          %li.list-inline-item{"aria-hidden" => "true"} |
+          %li.list-inline-item
+            = link_to "info@henaheisl.de", "mailto:info@henaheisl.de"
+          %li.list-inline-item{"aria-hidden" => "true"} |
+          %li.list-inline-item
+            = link_to "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Facebook (öffnet in neuem Fenster)" do
+              %i.fa-brands.fa-facebook{"aria-hidden" => "true"}
+              Facebook
+          %li.list-inline-item{"aria-hidden" => "true"} |
+          %li.list-inline-item
+            = link_to "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Instagram (öffnet in neuem Fenster)" do
+              %i.fa-brands.fa-instagram{"aria-hidden" => "true"}
+              Instagram

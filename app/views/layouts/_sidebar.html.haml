@@ -1,6 +1,6 @@
 %aside#sidebar{"aria-label" => "Seitenleiste"}
   .sidebar-module.sidebar-module-inset
-    %h3.title.text-decoration-none
+    %h2.title.text-decoration-none.h5
       Nächste Events
       = link_to calendar_url(protocol: "webcal"), title: "Kalender abonnieren", "aria-label": "Kalender abonnieren" do
         %i.fa.fa-calendar-plus{"aria-hidden" => "true"}
@@ -15,12 +15,12 @@
       .sidebar-event
         = "Keine Events in der nächsten Zeit"
   .sidebar-module.sidebar-module-inset
-    %h3
+    %h2.h5
       %i.fa-brands.fa-instagram{"aria-hidden" => "true"}
       = link_to "Instagram", "https://www.instagram.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Instagram (öffnet in neuem Fenster)"
 
   .sidebar-module.sidebar-module-inset
-    %h3
+    %h2.h5
       %i.fa-brands.fa-facebook{"aria-hidden" => "true"}
       = link_to "Facebook", "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Facebook (öffnet in neuem Fenster)"
     .fb-like-box{"data-href" => "https://www.facebook.com/henaheisl",
