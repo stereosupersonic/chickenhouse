@@ -17,6 +17,10 @@
     %meta{property: "og:url", content: request.original_url.split("?").first}/
     %meta{property: "og:type", content: "website"}/
     %meta{property: "og:locale", content: "de_DE"}/
+    %meta{name: "twitter:card", content: "summary_large_image"}/
+    %meta{name: "twitter:title", content: page_title}/
+    %meta{name: "twitter:description", content: page_description}/
+    %meta{name: "twitter:image", content: page_image}/
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -24,6 +28,8 @@
       %script{defer: true, src: "https://cloud.umami.is/script.js", "data-website-id": ENV["UMAMI_WEBSITE_ID"]}{}
 
     = yield :head
+
+    = json_ld(organization_structured_data)
 
     %link{href: "/icon.png", rel: "icon", type: "image/png"}/
     %link{href: "/icon.svg", rel: "icon", type: "image/svg+xml"}/

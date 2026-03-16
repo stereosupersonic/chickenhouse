@@ -1,6 +1,8 @@
 - post_presenter = PostPresenter.new(@post)
 - content_for(:title) { post_presenter.title }
 - content_for(:description) { post_presenter.meta_description }
+- content_for(:head) { json_ld(blog_posting_structured_data(@post)) }
+- content_for(:head) { json_ld(breadcrumb_structured_data([{ name: "Home", url: root_url }, { name: "Posts", url: posts_url }, { name: post_presenter.title }])) }
 
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb

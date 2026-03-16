@@ -1,6 +1,8 @@
 - event_presenter = EventPresenter.new(@event)
 - content_for(:title) { event_presenter.title }
 - content_for(:description) { "#{event_presenter.title} - #{event_presenter.formatted_start_date}#{" - #{@event.location}" if @event.location.present?}" }
+- content_for(:head) { json_ld(event_structured_data(@event)) }
+- content_for(:head) { json_ld(breadcrumb_structured_data([{ name: "Home", url: root_url }, { name: "Events", url: events_url }, { name: event_presenter.title }])) }
 
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
