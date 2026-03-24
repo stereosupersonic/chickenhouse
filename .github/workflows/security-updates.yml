@@ -91,6 +91,7 @@ jobs:
         run: git checkout -- vendor/ 2>/dev/null || true && rm -rf vendor/bundle
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
           branch: security/batch-dependency-updates
@@ -114,3 +115,9 @@ jobs:
           assignees: stereosupersonic
           reviewers: stereosupersonic
           delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number != ''
+        run: gh pr merge --auto --squash ${{ steps.cpr.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
