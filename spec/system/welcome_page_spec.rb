@@ -9,7 +9,7 @@ describe "welcome", type: :system do
     expect(page).not_to have_link "Bilder"
     expect(page).to have_link "Kalender"
     expect(page).to have_link "Blog"
-    expect(page).not_to have_link "Kontakt"
+    expect(page).to have_link "Kontakt"
     expect(page).to have_link "Über Uns"
     expect(page).to have_link "Instagram"
     expect(page).to have_link "Facebook"
