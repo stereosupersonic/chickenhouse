@@ -216,6 +216,37 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#past?" do
+    context "without end_date" do
+      it "returns false for an event starting today" do
+        event = build(:event, start_date: Time.zone.now.beginning_of_day)
+        expect(event).not_to be_past
+      end
+
+      it "returns false for an event that started this morning" do
+        event = build(:event, start_date: 2.hours.ago)
+        expect(event).not_to be_past
+      end
+
+      it "returns true for an event that started yesterday" do
+        event = build(:event, start_date: 1.day.ago)
+        expect(event).to be_past
+      end
+    end
+
+    context "with end_date" do
+      it "returns false when end_date is in the future" do
+        event = build(:event, start_date: 2.hours.ago, end_date: 2.hours.from_now)
+        expect(event).not_to be_past
+      end
+
+      it "returns true when end_date is in the past" do
+        event = build(:event, start_date: 2.days.ago, end_date: 1.hour.ago)
+        expect(event).to be_past
+      end
+    end
+  end
+
   describe "timestamps and dates" do
     it "can store start_date and end_date" do
       start_time = 1.day.from_now

@@ -49,7 +49,7 @@ class Event < ApplicationRecord
   end
 
   def past?
-    start_date < Time.zone.now
+    (end_date || start_date.end_of_day) < Time.zone.now
   end
 
   def self.by_slug(slug)
