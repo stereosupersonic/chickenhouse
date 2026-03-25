@@ -32,7 +32,7 @@ describe "static pages", type: :system do
 
     click_link "Kontakt"
 
-    expect(page).to have_content "Kontakt"
+    expect(page).to have_css("h1", text: "Kontakt")
     expect(page).to have_content "Henaheisl e.V."
     expect(page).to have_content "Wartenberg"
     expect(page).to have_link "info@henaheisl.de"
