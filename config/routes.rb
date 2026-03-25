@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "contact" => "pages#contact", :as => "contact"
   get "exception" => "pages#exception", :as => "exception"
   get "impressum" => "pages#impressum", :as => "impressum"
+  get "nobigbirds" => "pages#nobigbirds", :as => "nobigbirds"
   get "login" =>  "sessions#new", :as => "login"
   # Legacy routes - old album URLs
   get "bilder(/*path)", to: "pages#bilder", as: :bilder, defaults: { format: :html }

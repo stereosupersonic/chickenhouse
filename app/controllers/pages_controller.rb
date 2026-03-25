@@ -18,6 +18,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def nobigbirds
+  end
+
   def exception
     raise "This is a test exception to verify error reporting via Rollbar, Sentry, etc."
   end
