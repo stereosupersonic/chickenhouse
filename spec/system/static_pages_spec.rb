@@ -27,6 +27,17 @@ describe "static pages", type: :system do
     end
   end
 
+  it "contact page" do
+    visit root_path
+
+    click_link "Kontakt"
+
+    expect(page).to have_content "Kontakt"
+    expect(page).to have_content "Henaheisl e.V."
+    expect(page).to have_content "Wartenberg"
+    expect(page).to have_link "info@henaheisl.de"
+  end
+
   it "impressum page" do
     visit root_path
 

@@ -1,0 +1,17 @@
+- content_for(:title) { "Kontakt" }
+- content_for(:description) { "Kontaktiere den Henaheisl e.V. - FC Bayern Fanclub Wartenberg. Wir freuen uns über deine Nachricht." }
+
+%h1 Kontakt
+
+%p Wir freuen uns über deine Nachricht!
+
+%address
+  %strong Henaheisl e.V.
+  %br/
+  Badstr. 27
+  %br/
+  85456 Wartenberg
+
+%p
+  %strong E-Mail:
+  = mail_to "info@henaheisl.de"

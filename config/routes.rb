@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "sitemap.xml" => "sitemaps#show", as: :sitemap, defaults: { format: :xml }
   get "about" => "pages#about", :as => "about"
+  get "contact" => "pages#contact", :as => "contact"
   get "exception" => "pages#exception", :as => "exception"
   get "impressum" => "pages#impressum", :as => "impressum"
   get "login" =>  "sessions#new", :as => "login"

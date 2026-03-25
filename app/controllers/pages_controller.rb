@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     @next_event = Event.next_event
   end
 
+  def contact
+  end
+
   def bilder
     respond_to do |format|
       format.html
