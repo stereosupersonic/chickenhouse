@@ -3,7 +3,7 @@
 - content_for(:description) { "#{event_presenter.title} - #{event_presenter.formatted_start_date}#{" - #{@event.location}" if @event.location.present?}" }
 - content_for(:head) { json_ld(event_structured_data(@event)) }
 - content_for(:head) { json_ld(breadcrumb_structured_data([{ name: "Home", url: root_url }, { name: "Events", url: events_url }, { name: event_presenter.title }])) }
-- if @event.start_date < Time.zone.now
+- if @event.past?
   - content_for(:head) { tag.meta(name: "robots", content: "noindex, follow") }
 
 %nav{"aria-label" => "breadcrumb"}

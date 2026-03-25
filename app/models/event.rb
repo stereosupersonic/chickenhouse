@@ -48,6 +48,10 @@ class Event < ApplicationRecord
     next_events.first
   end
 
+  def past?
+    start_date < Time.zone.now
+  end
+
   def self.by_slug(slug)
     friendly.find slug
   end
