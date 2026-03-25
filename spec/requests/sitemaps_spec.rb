@@ -18,12 +18,14 @@ RSpec.describe "Sitemaps", type: :request do
       expect(response.body).to include(post_url(post))
     end
 
-    it "includes events" do
-      event = create(:event, title: "Sitemap Event")
+    it "includes upcoming visible events" do
+      upcoming = create(:event, title: "Upcoming Event", start_date: 1.week.from_now)
+      past = create(:event, title: "Past Event", start_date: 1.week.ago)
 
       get sitemap_path(format: :xml)
 
-      expect(response.body).to include(event_url(event))
+      expect(response.body).to include(event_url(upcoming))
+      expect(response.body).not_to include(event_url(past))
     end
 
     it "does not require authentication" do
