@@ -50,18 +50,18 @@ module StructuredDataHelper
 
     data["endDate"] = event.end_date.iso8601 if event.end_date.present?
 
-    if event.location.present?
-      data["location"] = {
-        "@type" => "Place",
-        "name" => event.location,
-        "address" => {
-          "@type" => "PostalAddress",
-          "addressLocality" => "Wartenberg",
-          "addressRegion" => "Bayern",
-          "addressCountry" => "DE"
-        }
+    data["location"] = {
+      "@type" => "Place",
+      "name" => event.location.presence || "Henaheisl e.V.",
+      "address" => {
+        "@type" => "PostalAddress",
+        "addressLocality" => "Wartenberg",
+        "addressRegion" => "Bayern",
+        "addressCountry" => "DE"
       }
-    end
+    }
+
+    data["image"] = image_url("banner_v3.png")
 
     data
   end

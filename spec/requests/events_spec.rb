@@ -49,6 +49,23 @@ RSpec.describe "Events", type: :request do
       expect(response.body).to include("Alle sind eingeladen")
     end
 
+    it "adds noindex tag for past events" do
+      event = create(:event, start_date: 1.day.ago)
+
+      get event_path(event)
+
+      expect(response.body).to include('name="robots"')
+      expect(response.body).to include("noindex")
+    end
+
+    it "does not add noindex tag for future events" do
+      event = create(:event, start_date: 1.day.from_now)
+
+      get event_path(event)
+
+      expect(response.body).not_to include("noindex")
+    end
+
     it "does not require authentication" do
       event = create(:event)
 
