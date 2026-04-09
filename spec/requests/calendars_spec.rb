@@ -27,6 +27,15 @@ RSpec.describe "Calendars", type: :request do
       expect(response.body).to include("UID:event-#{event.id}@")
     end
 
+    it "outputs timed event datetimes as UTC (with Z suffix)" do
+      create(:event, title: "Zeitgestempeltes Event", start_date: 1.week.from_now, all_day: false)
+
+      get calendar_path
+
+      expect(response.body).to match(/DTSTART:\d{8}T\d{6}Z/)
+      expect(response.body).to match(/DTEND:\d{8}T\d{6}Z/)
+    end
+
     it "excludes non-visible events" do
       create(:event, title: "Hidden Event", start_date: 1.week.from_now, visible: false)
 

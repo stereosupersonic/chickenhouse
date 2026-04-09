@@ -19,8 +19,8 @@ class CalendarsController < ApplicationController
           e.dtstart = Icalendar::Values::Date.new(event.start_date.to_date)
           e.dtend = Icalendar::Values::Date.new((event.end_date || event.start_date).to_date + 1.day)
         else
-          e.dtstart = Icalendar::Values::DateTime.new(event.start_date.utc)
-          e.dtend = Icalendar::Values::DateTime.new((event.end_date || event.start_date + 1.hour).utc)
+          e.dtstart = Icalendar::Values::DateTime.new(event.start_date.utc, "tzid" => "UTC")
+          e.dtend = Icalendar::Values::DateTime.new((event.end_date || event.start_date + 1.hour).utc, "tzid" => "UTC")
         end
       end
     end
