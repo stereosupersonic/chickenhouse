@@ -259,7 +259,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.1.0)
+    marcel (1.1.1)
     matrix (0.4.3)
     mcp (0.10.0)
       json-schema (>= 4.1)
