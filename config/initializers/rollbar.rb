@@ -66,4 +66,20 @@ Rollbar.configure do |config|
   # setup for Heroku. See:
   # https://devcenter.heroku.com/articles/deploying-to-a-custom-rails-environment
   config.environment = ENV["ROLLBAR_ENV"].presence || Rails.env
+
+  # Bot and vulnerability scanners probe for non-existent paths (/admin.php, wp-login.php, ...)
+  # and send malformed requests. These are noise, not application errors.
+  config.exception_level_filters.merge!(
+    "ActionController::RoutingError" => "ignore",
+    "ActionController::UnknownFormat" => "ignore",
+    "ActionController::UnknownHttpMethod" => "ignore",
+    "ActionController::BadRequest" => "ignore",
+    "ActionController::InvalidAuthenticityToken" => "ignore",
+    "ActionController::InvalidCrossOriginRequest" => "ignore",
+    "ActionDispatch::Http::Parameters::ParseError" => "ignore",
+    "ActionDispatch::Http::MimeNegotiation::InvalidType" => "ignore",
+    "ActionDispatch::RemoteIp::IpSpoofAttackError" => "ignore",
+    "Rack::QueryParser::InvalidParameterError" => "ignore",
+    "Rack::QueryParser::ParameterTypeError" => "ignore"
+  )
 end
