@@ -82,7 +82,6 @@ group :test do
   gem "rspec-rails", "~> 8.0"
   gem "faker", "~> 3.5"
   gem "capybara"
-  gem "webdrivers"
   gem "launchy"
   gem "cuprite", "~> 0.17"
   gem "shoulda-matchers", "~> 6.0"
