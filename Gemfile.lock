@@ -149,7 +149,7 @@ GEM
     erb (6.0.7)
     erubi (1.13.1)
     erubis (2.7.0)
-    et-orbi (1.4.1)
+    et-orbi (1.4.2)
       tzinfo
     factory_bot (6.5.6)
       activesupport (>= 6.1.0)
