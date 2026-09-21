@@ -456,7 +456,7 @@ GEM
       racc (~> 1.5)
       sexp_processor (~> 4.16)
     securerandom (0.4.1)
-    sexp_processor (4.17.5)
+    sexp_processor (4.17.6)
     shoulda-matchers (6.5.0)
       activesupport (>= 5.2.0)
     simple_form (5.4.1)
