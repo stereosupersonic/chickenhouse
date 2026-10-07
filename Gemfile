@@ -67,7 +67,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rubocop-rspec", "~> 3.7"
   gem "bundler-audit", require: false
-  gem "simplecov", "~> 0.22.0", require: false
+  gem "simplecov", "~> 1.3.2", require: false
   gem "factory_bot_rails", "~> 6.4"
   gem "pry-nav", "~> 1.0"
 end
