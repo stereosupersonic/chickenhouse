@@ -61,6 +61,15 @@ RSpec.describe Posts::Search do
       expect(result).to eq([ title_match, body_match ])
     end
 
+    it "ranks by relevance even when the scope is already ordered" do
+      title_match = create(:post, title: "Sommerfest 2026", content: "Allgemeine Informationen", created_at: 2.days.ago, user: user)
+      body_match = create(:post, title: "Anderer Beitrag", content: "Sommerfest im Garten", created_at: 1.day.ago, user: user)
+
+      result = described_class.call(query: "Sommerfest", scope: Post.order(created_at: :desc))
+
+      expect(result).to eq([ title_match, body_match ])
+    end
+
     it "searches within given scope" do
       visible_post = create(:post, title: "Sommerfest", visible: true, user: user)
       create(:post, title: "Sommerfest intern", visible: false, user: user)
