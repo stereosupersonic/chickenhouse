@@ -39,7 +39,8 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 2.2"
+gem "ruby-vips", "~> 2.3"
 
 gem "haml-rails", "~> 3.0"
 gem "friendly_id", "~> 5.5"
@@ -48,11 +49,10 @@ gem "simple_form", "~> 5.4"
 gem "pagy", "~> 9.3"
 gem "rollbar", "~> 3.7"
 gem "pg", "~> 1.6"
-gem "annotaterb", "~> 4.13"
 
 gem "dotenv-rails", "~> 3.1"
-gem "newrelic_rpm", "~> 10.2.0"
-gem "lograge", "~> 0.14.0"
+gem "newrelic_rpm", "~> 10.9.1"
+gem "lograge", "~> 0.15.1"
 
 gem "aws-sdk-s3", "~> 1.202"
 gem "icalendar", "~> 2.10"
@@ -68,14 +68,16 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rubocop-rspec", "~> 3.7"
   gem "bundler-audit", require: false
-  gem "simplecov", "~> 0.22.0", require: false
+  gem "simplecov", "~> 1.3.2", require: false
   gem "factory_bot_rails", "~> 6.4"
   gem "pry-nav", "~> 1.0"
 end
 
 group :development do
+  # Schema comments in models, factories and specs (config in .annotaterb.yml)
+  gem "annotaterb", "~> 4.13"
   gem "html2haml"
-  gem "haml_lint", "~> 0.67.0"
+  gem "haml_lint", "~> 0.78.0"
 end
 
 group :test do
@@ -84,5 +86,5 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "cuprite", "~> 0.17"
-  gem "shoulda-matchers", "~> 6.0"
+  gem "shoulda-matchers", "~> 8.0"
 end
