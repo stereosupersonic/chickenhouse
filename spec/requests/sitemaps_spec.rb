@@ -26,6 +26,14 @@ RSpec.describe "Sitemaps", type: :request do
       expect(response.body).not_to include(post_url(post))
     end
 
+    it "excludes intern posts" do
+      post = create(:post, intern: true)
+
+      get sitemap_path(format: :xml)
+
+      expect(response.body).not_to include(post_url(post))
+    end
+
     it "includes upcoming visible events" do
       upcoming = create(:event, title: "Upcoming Event", start_date: 1.week.from_now)
       past = create(:event, title: "Past Event", start_date: 1.week.ago)

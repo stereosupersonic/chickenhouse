@@ -30,10 +30,16 @@ class Post < ApplicationRecord
   belongs_to :user, optional: true
 
   scope :visible, -> { where(visible: true) }
+  scope :published, -> { visible.where(intern: false) }
   scope :current, -> { where("created_at > ?", 6.months.ago) }
 
   validates :title, presence: true
   validates :content, presence: true
 
   has_rich_text :content
+
+  # Intern posts are for members only.
+  def self.readable_by(user)
+    user ? visible : published
+  end
 end

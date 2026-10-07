@@ -203,4 +203,40 @@ RSpec.describe "Posts", type: :request do
       expect(response).to have_http_status(:not_found)
     end
   end
+
+  describe "intern posts" do
+    let(:member) { create(:user) }
+    let!(:intern_post) { create(:post, title: "Nur für Mitglieder", intern: true) }
+
+    def sign_in(user)
+      post session_path, params: { email_address: user.email_address, password: "password123" }
+    end
+
+    it "hides them from anonymous visitors" do
+      get posts_path
+      expect(response.body).not_to include("Nur für Mitglieder")
+
+      get root_path
+      expect(response.body).not_to include("Nur für Mitglieder")
+
+      get posts_path(format: :atom)
+      expect(response.body).not_to include("Nur für Mitglieder")
+
+      get post_path(intern_post)
+      expect(response).to have_http_status(:not_found)
+    end
+
+    it "shows them to members" do
+      sign_in member
+
+      get posts_path
+      expect(response.body).to include("Nur für Mitglieder")
+
+      get root_path
+      expect(response.body).to include("Nur für Mitglieder")
+
+      get post_path(intern_post)
+      expect(response).to have_http_status(:success)
+    end
+  end
 end

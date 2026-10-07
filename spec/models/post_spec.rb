@@ -81,6 +81,30 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe ".readable_by" do
+    let!(:public_post) { create(:post, title: "Public Post") }
+    let!(:intern_post) { create(:post, title: "Intern Post", intern: true) }
+    let!(:hidden_post) { create(:post, title: "Hidden Post", visible: false) }
+
+    it "returns visible public posts for anonymous visitors" do
+      expect(described_class.readable_by(nil)).to contain_exactly(public_post)
+    end
+
+    it "adds intern posts for members" do
+      expect(described_class.readable_by(create(:user))).to contain_exactly(public_post, intern_post)
+    end
+  end
+
+  describe ".published" do
+    it "returns visible posts that are not intern" do
+      public_post = create(:post)
+      create(:post, intern: true)
+      create(:post, visible: false)
+
+      expect(described_class.published).to contain_exactly(public_post)
+    end
+  end
+
   describe "friendly_id" do
     it "generates slug from title" do
       post = create(:post, title: "My Awesome Post")
