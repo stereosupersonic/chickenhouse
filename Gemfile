@@ -76,7 +76,7 @@ group :development do
   # Schema comments in models, factories and specs (config in .annotaterb.yml)
   gem "annotaterb", "~> 4.13"
   gem "html2haml"
-  gem "haml_lint", "~> 0.67.0"
+  gem "haml_lint", "~> 0.78.0"
 end
 
 group :test do

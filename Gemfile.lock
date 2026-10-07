@@ -190,9 +190,9 @@ GEM
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
-    haml_lint (0.67.0)
+    haml_lint (0.78.0)
       haml (>= 5.0)
-      parallel (~> 1.10)
+      parallel (>= 1.10)
       rainbow
       rubocop (>= 1.0)
       sysexits (~> 1.1)
@@ -548,7 +548,7 @@ DEPENDENCIES
   faker (~> 3.5)
   friendly_id (~> 5.5)
   haml-rails (~> 3.0)
-  haml_lint (~> 0.67.0)
+  haml_lint (~> 0.78.0)
   html2haml
   icalendar (~> 2.10)
   image_processing (~> 1.2)
