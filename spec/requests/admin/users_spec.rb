@@ -32,6 +32,13 @@ RSpec.describe "Admin::Users", type: :request do
         get "/admin/users"
         expect(response).to have_http_status(:success)
       end
+
+      it "renders no empty table rows" do
+        get "/admin/users"
+
+        rows = Nokogiri::HTML5(response.body).css("tr")
+        expect(rows.select { |row| row.css("th, td").empty? }).to be_empty
+      end
     end
   end
 

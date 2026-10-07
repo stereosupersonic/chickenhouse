@@ -7,14 +7,13 @@
     %th Admin
     %th
     %th
-  %tr
-    - for user in @users
-      %tr{ id: dom_id(user) }
-        %td= user.username
-        %td= user.email_address
-        %td= boolean_value user.admin?
-        %td= edit_button edit_admin_user_path user
-        %td= delete_button admin_user_path(user)
+  - for user in @users
+    %tr{ id: dom_id(user) }
+      %td= user.username
+      %td= user.email_address
+      %td= boolean_value user.admin?
+      %td= edit_button edit_admin_user_path user
+      %td= delete_button admin_user_path(user)
 - if @pagy.pages > 1
   .d-flex.justify-content-center.mt-4
     = raw pagy_bootstrap_nav @pagy
