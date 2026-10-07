@@ -111,6 +111,20 @@ RSpec.describe "Admin::Users", type: :request do
       expect(response).to redirect_to(admin_users_url)
       expect(target_user.reload.username).to eq("updatedname")
     end
+
+    context "with invalid params" do
+      before { patch "/admin/users/#{target_user.id}", params: { user: { username: "" } } }
+
+      it "shows the alert on the form" do
+        expect(response.body).to include("Account not updated.")
+      end
+
+      it "does not show the alert on the next page" do
+        get "/admin/users"
+
+        expect(response.body).not_to include("Account not updated.")
+      end
+    end
   end
 
   describe "DELETE /admin/users/:id" do
