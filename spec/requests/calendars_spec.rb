@@ -61,6 +61,14 @@ RSpec.describe "Calendars", type: :request do
       expect(response.body).not_to include("DTSTART;TZID")
     end
 
+    it "describes events in plain text" do
+      create(:event, content: "Grill & Chill <b>Party</b>", start_date: 1.week.from_now)
+
+      get calendar_path
+
+      expect(response.body).to include("DESCRIPTION:Grill & Chill Party")
+    end
+
     it "includes location when present" do
       create(:event, title: "Mit Ort", start_date: 1.week.from_now, location: "Wartenberg")
 
