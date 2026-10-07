@@ -2,17 +2,13 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
+#  id              :bigint(8)        not null, primary key
 #  admin           :boolean          default(FALSE), not null
-#  email_address   :string           not null
+#  email_address   :string           not null, uniquely indexed
 #  password_digest :string           not null
 #  username        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#
-# Indexes
-#
-#  index_users_on_email_address  (email_address) UNIQUE
 #
 
 require "rails_helper"

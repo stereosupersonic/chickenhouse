@@ -2,25 +2,18 @@
 #
 # Table name: events
 #
-#  id         :bigint           not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  all_day    :boolean          default(FALSE)
 #  content    :text             not null
 #  end_date   :datetime
 #  location   :string(255)
-#  slug       :string           not null
-#  start_date :datetime         not null
+#  slug       :string           not null, uniquely indexed
+#  start_date :datetime         not null, indexed
 #  title      :string(255)      not null
-#  visible    :boolean          default(TRUE), not null
+#  visible    :boolean          default(TRUE), not null, indexed
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer          not null
-#
-# Indexes
-#
-#  index_events_on_slug        (slug) UNIQUE
-#  index_events_on_start_date  (start_date)
-#  index_events_on_user_id     (user_id)
-#  index_events_on_visible     (visible)
+#  user_id    :integer          not null, indexed
 #
 # Foreign Keys
 #

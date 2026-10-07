@@ -2,7 +2,7 @@
 #
 # Table name: posts
 #
-#  id               :bigint           not null, primary key
+#  id               :bigint(8)        not null, primary key
 #  display_type     :string(255)      default("textile")
 #  intern           :boolean          default(FALSE)
 #  media            :text
@@ -10,15 +10,10 @@
 #  old_content_type :string(255)      default("article")
 #  slug             :string(255)
 #  title            :string(255)      not null
-#  visible          :boolean          default(TRUE)
+#  visible          :boolean          default(TRUE), indexed
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  user_id          :integer          not null
-#
-# Indexes
-#
-#  index_posts_on_user_id  (user_id)
-#  index_posts_on_visible  (visible)
+#  user_id          :integer          not null, indexed
 #
 # Foreign Keys
 #

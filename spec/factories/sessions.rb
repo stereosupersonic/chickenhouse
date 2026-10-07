@@ -2,16 +2,12 @@
 #
 # Table name: sessions
 #
-#  id         :bigint           not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  ip_address :string
 #  user_agent :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer          not null
-#
-# Indexes
-#
-#  index_sessions_on_user_id  (user_id)
+#  user_id    :integer          not null, indexed
 #
 # Foreign Keys
 #

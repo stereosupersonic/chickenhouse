@@ -48,7 +48,6 @@ gem "simple_form", "~> 5.4"
 gem "pagy", "~> 9.3"
 gem "rollbar", "~> 3.7"
 gem "pg", "~> 1.6"
-gem "annotaterb", "~> 4.13"
 
 gem "dotenv-rails", "~> 3.1"
 gem "newrelic_rpm", "~> 10.2.0"
@@ -74,6 +73,8 @@ group :development, :test do
 end
 
 group :development do
+  # Schema comments in models, factories and specs (config in .annotaterb.yml)
+  gem "annotaterb", "~> 4.13"
   gem "html2haml"
   gem "haml_lint", "~> 0.67.0"
 end
