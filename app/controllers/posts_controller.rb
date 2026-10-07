@@ -13,6 +13,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.friendly.find params[:id]
+    @post = Post.visible.friendly.find params[:id]
   end
 end

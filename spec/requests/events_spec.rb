@@ -66,6 +66,14 @@ RSpec.describe "Events", type: :request do
       expect(response.body).not_to include("noindex")
     end
 
+    it "returns not found for an invisible event" do
+      event = create(:event, visible: false)
+
+      get event_path(event)
+
+      expect(response).to have_http_status(:not_found)
+    end
+
     it "does not require authentication" do
       event = create(:event)
 

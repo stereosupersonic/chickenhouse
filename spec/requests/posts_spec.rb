@@ -184,4 +184,23 @@ RSpec.describe "Posts", type: :request do
       end
     end
   end
+
+  describe "GET /posts/:id" do
+    it "shows a visible post" do
+      post = create(:post, title: "Sommerfest")
+
+      get post_path(post)
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Sommerfest")
+    end
+
+    it "returns not found for an invisible post" do
+      post = create(:post, visible: false)
+
+      get post_path(post)
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 end
