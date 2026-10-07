@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
-  before_action :resume_session, only: %i[index show]
   def index
     posts = Post.visible.order(created_at: :desc)
     posts = Posts::Search.call(query: params[:q], scope: posts) if params[:q].present?
