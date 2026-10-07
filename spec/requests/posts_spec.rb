@@ -119,6 +119,27 @@ RSpec.describe "Posts", type: :request do
       end
     end
 
+    context "with a title containing an ampersand" do
+      before do
+        create(:post, title: "Grill & Chill", user: create(:user))
+        get "/posts.atom"
+      end
+
+      it "escapes the title once" do
+        expect(response.body).to include("<title>Grill &amp; Chill</title>")
+      end
+    end
+
+    context "when requested over https" do
+      before do
+        get "https://www.example.com/posts.atom"
+      end
+
+      it "links to the site over https" do
+        expect(response.body).to include('href="https://www.example.com/" rel="alternate"')
+      end
+    end
+
     context "with search query" do
       let!(:user) { create(:user) }
       let!(:matching_post) { create(:post, title: "Sommerfest 2026", content: "Ein tolles Fest", user: user) }
