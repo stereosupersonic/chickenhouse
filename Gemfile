@@ -85,5 +85,5 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "cuprite", "~> 0.17"
-  gem "shoulda-matchers", "~> 6.0"
+  gem "shoulda-matchers", "~> 8.0"
 end
