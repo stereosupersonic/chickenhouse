@@ -1,12 +1,10 @@
 class EventPresenter < ApplicationPresenter
   def html_content
-    h.auto_link(simple_format(sanitize(o.content)), html: { target: "_blank", rel: "noopener noreferrer" })
+    h.auto_link(h.simple_format(o.content), html: { target: "_blank", rel: "noopener noreferrer" })
   end
 
   def formatted_start_date
-    return "" if o.start_date.blank?
-
-   format_datetime(o.start_date)
+    format_datetime(o.start_date)
   end
 
   def formatted_end_date

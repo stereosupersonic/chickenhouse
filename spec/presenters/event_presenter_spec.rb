@@ -48,14 +48,6 @@ RSpec.describe EventPresenter, type: :presenter do
 
       expect(presenter.formatted_start_date).to eq(I18n.l(event.start_date, format: :day))
     end
-
-    it "returns empty string when start_date is blank" do
-      event = build(:event)
-      allow(event).to receive(:start_date).and_return(nil)
-      presenter = described_class.new(event)
-
-      expect(presenter.formatted_start_date).to eq("")
-    end
   end
 
   describe "#formatted_end_date" do

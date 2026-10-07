@@ -4,9 +4,10 @@
       Nächste Events
       = link_to calendar_url(protocol: "webcal"), title: "Kalender abonnieren", "aria-label": "Kalender abonnieren" do
         %i.fa.fa-calendar-plus{"aria-hidden" => "true"}
-    - if Event.next_events.present?
+    - next_events = Event.next_events.limit(3).to_a
+    - if next_events.any?
       %ul#next-events
-        - Event.next_events.limit(3).each do |event|
+        - next_events.each do |event|
           %li.sidebar-event{ class: "event-#{event.id}" }
             = link_to event_path(event) do
               %i.fa.fa-calendar{"aria-hidden" => "true"}
@@ -23,9 +24,3 @@
     %h2.h5
       %i.fa-brands.fa-facebook{"aria-hidden" => "true"}
       = link_to "Facebook", "https://www.facebook.com/henaheisl", target: "_blank", rel: "noopener", "aria-label": "Facebook (öffnet in neuem Fenster)"
-    .fb-like-box{"data-href" => "https://www.facebook.com/henaheisl",
-                 "data-colorscheme" => "light",
-                 "data-show-faces"  => "true",
-                 "data-header"      => "false",
-                 "data-stream"      => "false",
-                 "data-show-border" => "false"}

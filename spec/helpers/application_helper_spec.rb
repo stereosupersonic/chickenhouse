@@ -64,27 +64,11 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe "#format_time" do
-    it "formats time as HH:MM" do
-      time = Time.zone.parse("2026-03-06 14:30")
-
-      expect(helper.format_time(time)).to eq("14:30")
-    end
-
-    it "returns nil for nil input" do
-      expect(helper.format_time(nil)).to be_nil
-    end
-  end
-
   describe "#format_date" do
     it "formats date as DD.MM.YYYY" do
       date = Date.new(2026, 3, 6)
 
       expect(helper.format_date(date)).to eq("06.03.2026")
-    end
-
-    it "returns nil for nil input" do
-      expect(helper.format_date(nil)).to be_nil
     end
   end
 

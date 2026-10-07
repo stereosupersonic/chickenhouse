@@ -1,7 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: %i[show edit update destroy]
 
-  # GET /admin/posts
   def index
     @pagy, @posts = pagy(Post.order("created_at desc"), limit: 25)
   end
@@ -40,7 +39,6 @@ class Admin::PostsController < Admin::BaseController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.friendly.find(params[:id])
   end

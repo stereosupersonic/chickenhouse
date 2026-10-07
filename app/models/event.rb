@@ -44,8 +44,4 @@ class Event < ApplicationRecord
   def past?
     (end_date || start_date.end_of_day) < Time.zone.now
   end
-
-  def self.by_slug(slug)
-    friendly.find slug
-  end
 end

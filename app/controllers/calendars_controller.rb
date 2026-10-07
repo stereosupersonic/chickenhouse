@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
   allow_unauthenticated_access
 
   def show
-    events = Event.visible.where(start_date: Time.zone.now.beginning_of_day..).order(:start_date)
+    events = Event.next_events
 
     cal = Icalendar::Calendar.new
     cal.x_wr_calname = "Henaheisl e.V. - Kalender"
@@ -11,7 +11,7 @@ class CalendarsController < ApplicationController
       cal.event do |e|
         e.uid = "event-#{event.id}@#{request.host}"
         e.summary = event.title
-        e.description = event.content&.gsub(/<[^>]+>/, "")
+        e.description = event.content.gsub(/<[^>]+>/, "")
         e.location = event.location if event.location.present?
         e.url = event_url(event)
 

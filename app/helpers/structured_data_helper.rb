@@ -11,14 +11,9 @@ module StructuredDataHelper
       "alternateName" => "FC Bayern Fanclub Wartenberg",
       "description" => "Offizieller FC Bayern Fanclub aus Wartenberg, gegründet 1991.",
       "url" => root_url,
-      "logo" => image_url("banner_v3.png"),
+      "logo" => banner_image_url,
       "foundingDate" => "1991-07-20",
-      "address" => {
-        "@type" => "PostalAddress",
-        "addressLocality" => "Wartenberg",
-        "addressRegion" => "Bayern",
-        "addressCountry" => "DE"
-      },
+      "address" => club_address,
       "sameAs" => [
         "https://www.facebook.com/henaheisl",
         "https://www.instagram.com/henaheisl"
@@ -45,23 +40,16 @@ module StructuredDataHelper
         "url" => root_url
       },
       "eventAttendanceMode" => "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus" => "https://schema.org/EventScheduled"
+      "eventStatus" => "https://schema.org/EventScheduled",
+      "location" => {
+        "@type" => "Place",
+        "name" => event.location.presence || "Henaheisl e.V.",
+        "address" => club_address
+      },
+      "image" => banner_image_url
     }
 
     data["endDate"] = event.end_date.iso8601 if event.end_date.present?
-
-    data["location"] = {
-      "@type" => "Place",
-      "name" => event.location.presence || "Henaheisl e.V.",
-      "address" => {
-        "@type" => "PostalAddress",
-        "addressLocality" => "Wartenberg",
-        "addressRegion" => "Bayern",
-        "addressCountry" => "DE"
-      }
-    }
-
-    data["image"] = image_url("banner_v3.png")
 
     data
   end
@@ -84,7 +72,7 @@ module StructuredDataHelper
         "name" => "Henaheisl e.V.",
         "logo" => {
           "@type" => "ImageObject",
-          "url" => image_url("banner_v3.png")
+          "url" => banner_image_url
         }
       }
     }
@@ -104,5 +92,20 @@ module StructuredDataHelper
         element
       end
     }
+  end
+
+  private
+
+  def club_address
+    {
+      "@type" => "PostalAddress",
+      "addressLocality" => "Wartenberg",
+      "addressRegion" => "Bayern",
+      "addressCountry" => "DE"
+    }
+  end
+
+  def banner_image_url
+    image_url("banner_v3.png")
   end
 end

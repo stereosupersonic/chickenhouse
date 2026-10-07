@@ -7,6 +7,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.by_slug params[:id]
+    @event = Event.friendly.find params[:id]
   end
 end

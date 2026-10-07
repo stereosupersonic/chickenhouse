@@ -19,6 +19,13 @@ RSpec.describe "Sessions", type: :request do
         expect(response).to redirect_to(root_url)
       end
 
+      it "shows the welcome notice as a success message" do
+        post session_path, params: { email_address: "test@example.com", password: "password123" }
+        follow_redirect!
+
+        expect(response.body).to match(/alert-success.*Welcome back!/m)
+      end
+
       it "creates a session record" do
         expect {
           post session_path, params: { email_address: "test@example.com", password: "password123" }

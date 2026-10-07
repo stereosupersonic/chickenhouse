@@ -28,7 +28,7 @@ class Admin::UsersController < Admin::BaseController
     if @user.update(user_params)
       redirect_to admin_users_url, notice: "The account was successfully updated."
     else
-      flash[:alert] = "Account not updated."
+      flash.now[:alert] = "Account not updated."
       render :edit
     end
   end

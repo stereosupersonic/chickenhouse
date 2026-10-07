@@ -4,17 +4,18 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     - page_title = content_for?(:title) ? "#{content_for(:title)} - Henaheisl e.V." : "Henaheisl e.V. - FC Bayern Fanclub Wartenberg"
     - page_description = content_for?(:description) ? content_for(:description) : "Henaheisl e.V. - Offizieller FC Bayern Fanclub aus Wartenberg, gegründet 1991."
+    - canonical_url = request.original_url.split("?").first
     - page_image = content_for?(:og_image) ? content_for(:og_image) : image_url("banner_v3.png")
     %title= page_title
     %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
     %meta{content: "yes", name: "mobile-web-app-capable"}/
     %meta{name: "description", content: page_description}/
-    %link{rel: "canonical", href: request.original_url.split("?").first}/
+    %link{rel: "canonical", href: canonical_url}/
     %meta{property: "og:title", content: page_title}/
     %meta{property: "og:description", content: page_description}/
     %meta{property: "og:image", content: page_image}/
-    %meta{property: "og:url", content: request.original_url.split("?").first}/
+    %meta{property: "og:url", content: canonical_url}/
     %meta{property: "og:type", content: "website"}/
     %meta{property: "og:locale", content: "de_DE"}/
     %meta{name: "twitter:card", content: "summary_large_image"}/

@@ -1,7 +1,7 @@
 class PostPresenter < ApplicationPresenter
   def html_content
     if o.old_content.present?
-      sanitize(o.old_content).html_safe
+      h.sanitize(o.old_content)
     else
       o.content
     end
@@ -9,11 +9,9 @@ class PostPresenter < ApplicationPresenter
 
   def meta_description
     plain = if o.old_content.present?
-      ActionController::Base.helpers.strip_tags(o.old_content)
-    elsif o.content.present?
-      o.content.to_plain_text
+      h.strip_tags(o.old_content)
     else
-      ""
+      o.content.to_plain_text
     end
     plain.squish.truncate(160)
   end

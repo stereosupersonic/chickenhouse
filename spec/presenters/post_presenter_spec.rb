@@ -40,8 +40,7 @@ RSpec.describe PostPresenter, type: :presenter do
     end
 
     it "returns empty string when no content" do
-      post = build(:post, old_content: nil)
-      allow(post).to receive(:content).and_return(nil)
+      post = build(:post, old_content: nil, content: nil)
       presenter = described_class.new(post)
 
       expect(presenter.meta_description).to eq("")

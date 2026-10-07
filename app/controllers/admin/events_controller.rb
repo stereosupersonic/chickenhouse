@@ -40,10 +40,10 @@ class Admin::EventsController < Admin::BaseController
   private
 
   def set_admin_event
-    @event = Event.by_slug params[:id]
+    @event = Event.friendly.find params[:id]
   end
 
   def event_params
-    params.expect(event: [ :title, :content, :user_id, :location, :start_date, :end_date, :visible, :all_day ])
+    params.expect(event: [ :title, :content, :location, :start_date, :end_date, :visible, :all_day ])
   end
 end

@@ -2,18 +2,12 @@
 - content_for(:title) { event_presenter.title }
 - content_for(:description) { "#{event_presenter.title} - #{event_presenter.formatted_start_date}#{" - #{@event.location}" if @event.location.present?}" }
 - content_for(:head) { json_ld(event_structured_data(@event)) }
-- content_for(:head) { json_ld(breadcrumb_structured_data([{ name: "Home", url: root_url }, { name: "Events", url: events_url }, { name: event_presenter.title }])) }
+- breadcrumbs = [ { name: "Home", url: root_url }, { name: "Events", url: events_url }, { name: event_presenter.title } ]
+- content_for(:head) { json_ld(breadcrumb_structured_data(breadcrumbs)) }
 - if @event.past?
   - content_for(:head) { tag.meta(name: "robots", content: "noindex, follow") }
 
-%nav{"aria-label" => "breadcrumb"}
-  %ol.breadcrumb
-    %li.breadcrumb-item
-      = link_to "Home", root_path
-    %li.breadcrumb-item
-      = link_to "Events", events_path
-    %li.breadcrumb-item.active{"aria-current" => "page"}
-      .text-nowrap.fw-bold= event_presenter.title
+= render "shared/breadcrumbs", items: breadcrumbs
 
 %h1= event_presenter.title
 
