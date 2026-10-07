@@ -11,7 +11,7 @@ class CalendarsController < ApplicationController
       cal.event do |e|
         e.uid = "event-#{event.id}@#{request.host}"
         e.summary = event.title
-        e.description = event.content.gsub(/<[^>]+>/, "")
+        e.description = EventPresenter.new(event).plain_content
         e.location = event.location if event.location.present?
         e.url = event_url(event)
 

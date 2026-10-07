@@ -24,7 +24,7 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def update
-    if @event.update event_params.merge(user: Current.user)
+    if @event.update event_params
       redirect_to admin_events_url, notice: "Event was successfully updated."
     else
       render action: "edit"

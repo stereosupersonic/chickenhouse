@@ -7,9 +7,9 @@
     %span.calicon.caliconSmall
       %span
         %span.month
-          = "#{event.start_date.strftime('%d')}."
+          = l(event.start_date, format: "%d.")
         %span.day
-          = "#{event.start_date.strftime('%b')}"
+          = l(event.start_date, format: "%b")
   .event-header
     .event-title= link_to event.title, event
     %p.event-meta

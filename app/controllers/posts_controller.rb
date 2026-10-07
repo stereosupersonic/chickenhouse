@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
-  before_action :resume_session, only: %i[index show]
   def index
-    posts = Post.visible.order(created_at: :desc)
+    posts = Post.readable_by(Current.user).order(created_at: :desc)
     posts = Posts::Search.call(query: params[:q], scope: posts) if params[:q].present?
     @pagy, @posts = pagy(posts)
 
@@ -13,6 +12,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.friendly.find params[:id]
+    @post = Post.readable_by(Current.user).friendly.find params[:id]
   end
 end

@@ -34,6 +34,15 @@ RSpec.describe EventPresenter, type: :presenter do
     end
   end
 
+  describe "#plain_content" do
+    it "returns the content without tags or escaped entities" do
+      event = build(:event, content: "Grill & Chill <b>Party</b>\nAb 18 Uhr")
+      presenter = described_class.new(event)
+
+      expect(presenter.plain_content).to eq("Grill & Chill Party\nAb 18 Uhr")
+    end
+  end
+
   describe "#formatted_start_date" do
     it "formats start_date for regular events" do
       event = create(:event, start_date: Time.zone.parse("2026-06-15 18:00"), all_day: false)

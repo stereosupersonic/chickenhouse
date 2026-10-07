@@ -10,7 +10,7 @@ module Posts
       scope
         .left_joins(:rich_text_content)
         .where("#{DOCUMENT} @@ #{TS_QUERY}", query: query)
-        .order(Arel.sql(Post.sanitize_sql_array([ "ts_rank(#{DOCUMENT}, #{TS_QUERY}) DESC", { query: query } ])))
+        .reorder(Arel.sql(Post.sanitize_sql_array([ "ts_rank(#{DOCUMENT}, #{TS_QUERY}) DESC", { query: query } ])))
     end
   end
 end

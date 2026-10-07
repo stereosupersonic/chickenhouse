@@ -32,7 +32,7 @@ module StructuredDataHelper
       "@type" => "Event",
       "name" => event.title,
       "startDate" => event.start_date.iso8601,
-      "description" => event.content.truncate(300),
+      "description" => EventPresenter.new(event).plain_content.truncate(300),
       "url" => event_url(event),
       "organizer" => {
         "@type" => "Organization",

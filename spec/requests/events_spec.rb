@@ -16,6 +16,14 @@ RSpec.describe "Events", type: :request do
       expect(response.body).to include("Stammtisch")
     end
 
+    it "shows the month on the date badge in German" do
+      create(:event, start_date: Time.zone.local(Time.zone.today.year + 1, 10, 14, 18))
+
+      get events_path
+
+      expect(response.body).to match(%r{<span class="day">\s*Okt\s*</span>})
+    end
+
     it "does not display past events" do
       create(:event, title: "Past Event", start_date: 1.week.ago)
 
@@ -64,6 +72,14 @@ RSpec.describe "Events", type: :request do
       get event_path(event)
 
       expect(response.body).not_to include("noindex")
+    end
+
+    it "returns not found for an invisible event" do
+      event = create(:event, visible: false)
+
+      get event_path(event)
+
+      expect(response).to have_http_status(:not_found)
     end
 
     it "does not require authentication" do

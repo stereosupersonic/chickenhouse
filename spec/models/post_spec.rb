@@ -23,7 +23,7 @@ require "rails_helper"
 
 RSpec.describe Post, type: :model do
   describe "associations" do
-    it { is_expected.to belong_to(:user).optional }
+    it { is_expected.to belong_to(:user) }
   end
 
   describe "validations" do
@@ -78,6 +78,30 @@ RSpec.describe Post, type: :model do
         expect(described_class.current.pluck(:title)).to include("Visible Post", "Hidden Post", "Recent Post")
         expect(described_class.current.pluck(:title)).not_to include("Old Post")
       end
+    end
+  end
+
+  describe ".readable_by" do
+    let!(:public_post) { create(:post, title: "Public Post") }
+    let!(:intern_post) { create(:post, title: "Intern Post", intern: true) }
+    let!(:hidden_post) { create(:post, title: "Hidden Post", visible: false) }
+
+    it "returns visible public posts for anonymous visitors" do
+      expect(described_class.readable_by(nil)).to contain_exactly(public_post)
+    end
+
+    it "adds intern posts for members" do
+      expect(described_class.readable_by(create(:user))).to contain_exactly(public_post, intern_post)
+    end
+  end
+
+  describe ".published" do
+    it "returns visible posts that are not intern" do
+      public_post = create(:post)
+      create(:post, intern: true)
+      create(:post, visible: false)
+
+      expect(described_class.published).to contain_exactly(public_post)
     end
   end
 

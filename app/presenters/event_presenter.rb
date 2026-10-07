@@ -3,6 +3,10 @@ class EventPresenter < ApplicationPresenter
     h.auto_link(h.simple_format(o.content), html: { target: "_blank", rel: "noopener noreferrer" })
   end
 
+  def plain_content
+    Nokogiri::HTML5.fragment(o.content).text
+  end
+
   def formatted_start_date
     format_datetime(o.start_date)
   end

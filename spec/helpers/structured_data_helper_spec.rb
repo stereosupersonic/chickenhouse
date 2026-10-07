@@ -4,6 +4,14 @@ RSpec.describe StructuredDataHelper, type: :helper do
   describe "#event_structured_data" do
     let(:event) { create(:event, title: "Sommerfest", start_date: 1.day.from_now) }
 
+    it "describes the event in plain text" do
+      event = create(:event, content: "Grill & Chill <b>Party</b>")
+
+      data = helper.event_structured_data(event)
+
+      expect(data["description"]).to eq("Grill & Chill Party")
+    end
+
     it "always includes location" do
       data = helper.event_structured_data(event)
 

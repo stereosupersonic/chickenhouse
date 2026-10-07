@@ -7,6 +7,15 @@ RSpec.describe "Sessions", type: :request do
 
       expect(response).to have_http_status(:success)
     end
+
+    it "shows a signed-in user as signed in" do
+      create(:user, username: "Hennes", email_address: "hennes@example.com", password: "password123")
+      post session_path, params: { email_address: "hennes@example.com", password: "password123" }
+
+      get new_session_path
+
+      expect(response.body).to include("Hennes")
+    end
   end
 
   describe "POST /session" do
