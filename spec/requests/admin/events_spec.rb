@@ -113,6 +113,15 @@ RSpec.describe "Admin::Events", type: :request do
       expect(response).to redirect_to(admin_events_url)
       expect(event.reload.title).to eq("Updated Event")
     end
+
+    it "keeps the event's author" do
+      author = create(:user)
+      authored_event = create(:event, user: author)
+
+      patch "/admin/events/#{authored_event.slug}", params: { event: { title: "Updated Event" } }
+
+      expect(authored_event.reload.user).to eq(author)
+    end
   end
 
   describe "DELETE /admin/events/:id" do
