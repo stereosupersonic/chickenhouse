@@ -1,12 +1,7 @@
 - content_for(:title) { "Blog" }
 - content_for(:description) { "Neuigkeiten und Berichte vom Henaheisl e.V. - FC Bayern Fanclub Wartenberg." }
 
-%nav{"aria-label" => "breadcrumb"}
-  %ol.breadcrumb
-    %li.breadcrumb-item
-      = link_to "Home", root_path
-    %li.breadcrumb-item.active{"aria-current" => "page"}
-      .text-nowrap.fw-bold Posts
+= render "shared/breadcrumbs", items: [ { name: "Home", url: root_path }, { name: "Posts" } ]
 
 %h1 Blog
 

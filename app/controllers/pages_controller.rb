@@ -8,17 +8,11 @@ class PagesController < ApplicationController
     @next_event = Event.next_event
   end
 
-  def contact
-  end
-
   def bilder
     respond_to do |format|
       format.html
       format.any { head :not_found }
     end
-  end
-
-  def nobigbirds
   end
 
   def exception

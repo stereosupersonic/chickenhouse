@@ -1,0 +1,8 @@
+-# locals: (items:)
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    - items[0...-1].each do |item|
+      %li.breadcrumb-item
+        = link_to item[:name], item[:url]
+    %li.breadcrumb-item.active{"aria-current" => "page"}
+      .text-nowrap.fw-bold= items.last[:name]

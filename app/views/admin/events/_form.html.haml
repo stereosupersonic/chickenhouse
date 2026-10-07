@@ -1,7 +1,7 @@
 = simple_form_for [ :admin, @event ], data: { turbo: false }  do |f|
   = f.error_notification
   = f.input :title, hint: "Titel des Events"
-  = f.input :content, input_html: { class: "wysihtml5" }
+  = f.input :content
   = f.input :location
   = f.input :start_date, as: :datetime, html5: true
   = f.input :end_date, as: :datetime, html5: true

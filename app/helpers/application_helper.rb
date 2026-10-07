@@ -19,22 +19,38 @@ module ApplicationHelper
     Current.user
   end
 
-  def format_time(time)
-    time&.strftime "%H:%M"
-  end
-
   def format_date(date)
-    date&.strftime "%d.%m.%Y"
+    date.strftime "%d.%m.%Y"
   end
 
-  def format_datetime(date = nil)
+  def format_datetime(date)
     return "" if date.nil?
-    date&.strftime "%d.%m.%Y %H:%M"
+    date.strftime "%d.%m.%Y %H:%M"
   end
 
-  def button_with_icon(text, link, icon, options = {})
-    options.reverse_merge! class: "btn btn-default btn-sm"
+  def button_with_icon(text, link, icon, options)
     link_to tag.i("&nbsp;".html_safe, class: "fa-solid fa-#{icon}") + text, link, options
+  end
+
+  def new_button(link)
+    button_with_icon "Neu", link, "plus", class: "btn btn-primary btn-sm"
+  end
+
+  def edit_button(link)
+    button_with_icon "Ändern", link, "pen", class: "btn btn-primary btn-sm"
+  end
+
+  def cancel_button(link)
+    button_with_icon "Abbrechen", link, "ban", class: "btn btn-danger btn-sm"
+  end
+
+  def delete_button(link)
+    button_with_icon "Löschen", link, "trash",
+                     data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"
+  end
+
+  def back_button(link)
+    button_with_icon I18n.t("common.actions.back"), link, "arrow-left", class: "btn btn-light"
   end
 
   def boolean_value(value)
@@ -44,35 +60,5 @@ module ApplicationHelper
     else
       ""
     end
-  end
-
-  def new_button(link, text = "Neu", options = {})
-    add_button link, text, options
-  end
-
-  def add_button(link, text = "Neu", options = {})
-    options.reverse_merge! class: "btn btn-primary btn-sm"
-    button_with_icon text, link, "plus", options
-  end
-
-  def edit_button(link, text = "Ändern", options = {})
-    link = link.is_a?(ActiveRecord::Base) ? [ :edit, link ] : link
-    options.reverse_merge! class: "btn btn-primary btn-sm"
-    button_with_icon text, link, "pen", options
-  end
-
-  def cancel_button(link = root_path, text = "Abbrechen", options = {})
-    options.reverse_merge! class: "btn btn-danger btn-sm"
-    button_with_icon text, link, "ban", options
-  end
-
-  def delete_button(link, text = "Löschen", options = {})
-    options.reverse_merge! data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "form_submitter btn btn-danger btn-sm"
-    button_with_icon text, link, "trash", options
-  end
-
-  def back_button(link, text = I18n.t("common.actions.back"), options = {})
-    options.reverse_merge! class: "btn btn-light"
-    button_with_icon text, link, "arrow-left", options
   end
 end
