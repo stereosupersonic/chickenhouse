@@ -421,9 +421,9 @@ dompurify@^3.2.5:
     "@types/trusted-types" "^2.0.7"
 
 electron-to-chromium@^1.5.439:
-  version "1.5.445"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.445.tgz#616516dc50eb37c1649cd26019521b8960efd0e8"
-  integrity sha512-iX7o1nF+qNb3Bv5mLYgqfgF9Znh9e/8MKXdmbb8Gv2Q47OKIzTwEPD1oda1HrgEwYatTLJj0wQjHvIFt8Db53Q==
+  version "1.5.449"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.449.tgz#94cc7307abf5ec39d1afa619e53072c26a8ef8d1"
+  integrity sha512-dKeYk/3SFQz+nXi5whp3OuJzeWABEG4zCtkWJ9+Vby1E1iFM2y0gElRtQvNXRPJTsj8WAF4HMP7hvP790QtJ9g==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
