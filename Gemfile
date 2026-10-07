@@ -50,8 +50,8 @@ gem "rollbar", "~> 3.7"
 gem "pg", "~> 1.6"
 
 gem "dotenv-rails", "~> 3.1"
-gem "newrelic_rpm", "~> 10.2.0"
-gem "lograge", "~> 0.14.0"
+gem "newrelic_rpm", "~> 10.9.1"
+gem "lograge", "~> 0.15.1"
 
 gem "aws-sdk-s3", "~> 1.202"
 gem "icalendar", "~> 2.10"
