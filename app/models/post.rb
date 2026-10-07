@@ -27,7 +27,7 @@ class Post < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  belongs_to :user, optional: true
+  belongs_to :user
 
   scope :visible, -> { where(visible: true) }
   scope :published, -> { visible.where(intern: false) }

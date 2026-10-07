@@ -17,6 +17,6 @@ class PostPresenter < ApplicationPresenter
   end
 
   def author_name
-     user&.username.presence || "Anonymous"
+    o.user.username
   end
 end
