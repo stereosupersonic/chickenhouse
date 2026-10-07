@@ -41,7 +41,7 @@ services:
       test: pg_isready -U postgres -h 127.0.0.1
       interval: 5s
   chrome:
-    image: browserless/chrome:1.31-chrome-stable
+    image: ghcr.io/browserless/chromium:v2.57.0
     ports:
       - 3333:3333
     # Mount application source code to support file uploading
@@ -52,9 +52,10 @@ services:
     environment:
       # By default, it uses 3000, which is typically used by Rails.
       PORT: 3333
-      # Set connection timeout to avoid timeout exception during debugging
-      # https://docs.browserless.io/docs/docker.html#connection-timeout
-      CONNECTION_TIMEOUT: 600000
+      # Address the app container uses, advertised in Chrome's WebSocket URL
+      EXTERNAL: http://chrome:3333
+      # Session timeout in milliseconds, long enough to debug a spec
+      TIMEOUT: 600000
 
 volumes:
   postgres:

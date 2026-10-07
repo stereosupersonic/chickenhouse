@@ -15,21 +15,19 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
+  cuprite_options = {}
+
+  # In docker-compose.test.yml Chrome runs in its own container, so it connects to CHROME_URL
+  # and reaches the test server through this container's network address.
   if ENV["CHROME_URL"].present?
-    Capybara.register_driver(:cuprite) do |app|
-      Capybara::Cuprite::Driver.new(
-        app,
-        window_size: [ 1400, 1400 ],
-        browser_options: { 'no-sandbox': nil },
-        inspector: true,
-        url: ENV['CHROME_URL']
-      )
-    end
-    Capybara.javascript_driver = :cuprite
-  else
-    config.before(:each, :js, type: :system) do
-      driven_by :cuprite, screen_size: [ 1400, 1400 ]
-    end
+    cuprite_options = { url: ENV["CHROME_URL"], browser_options: { "no-sandbox": nil } }
+    Capybara.server_host = "0.0.0.0"
+    Capybara.always_include_port = true
+    Capybara.app_host = "http://#{Socket.ip_address_list.find(&:ipv4_private?).ip_address}"
+  end
+
+  config.before(:each, :js, type: :system) do
+    driven_by :cuprite, screen_size: [ 1400, 1400 ], options: cuprite_options
   end
 end
 
