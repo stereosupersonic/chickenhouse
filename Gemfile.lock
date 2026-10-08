@@ -132,9 +132,6 @@ GEM
     crass (1.0.7)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
-    cuprite (0.18)
-      capybara (~> 3.0)
-      ferrum (~> 0.18.0)
     date (3.5.1)
     debug (1.11.1)
       irb (~> 1.10)
@@ -158,11 +155,6 @@ GEM
       railties (>= 6.1.0)
     faker (3.8.0)
       i18n (>= 1.8.11, < 2)
-    ferrum (0.18.0)
-      addressable (~> 2.5)
-      base64 (~> 0.2)
-      concurrent-ruby (~> 1.1)
-      websocket-driver (~> 0.7)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
     ffi (1.17.4-arm-linux-gnu)
@@ -442,7 +434,13 @@ GEM
     ruby_parser (3.22.0)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
+    rubyzip (3.7.0)
     securerandom (0.4.1)
+    selenium-webdriver (4.50.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+      rubyzip (>= 1.2.2, < 4.0)
+      websocket (~> 1.0)
     sexp_processor (4.17.6)
     shoulda-matchers (8.0.1)
       activesupport (>= 7.2)
@@ -496,6 +494,7 @@ GEM
     unicode-emoji (4.3.0)
     uri (1.1.1)
     useragent (0.16.11)
+    websocket (1.2.11)
     websocket-driver (0.8.2)
       base64
       websocket-extensions (>= 0.1.0)
@@ -525,7 +524,6 @@ DEPENDENCIES
   bundler-audit
   capybara
   cssbundling-rails
-  cuprite (~> 0.17)
   debug
   dotenv-rails (~> 3.1)
   factory_bot_rails (~> 6.4)
@@ -554,6 +552,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   rubocop-rspec (~> 3.7)
   ruby-vips (~> 2.3)
+  selenium-webdriver
   shoulda-matchers (~> 8.0)
   simple_form (~> 5.4)
   simplecov (~> 1.3.2)

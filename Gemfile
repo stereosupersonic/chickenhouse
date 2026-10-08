@@ -85,6 +85,6 @@ group :test do
   gem "faker", "~> 3.5"
   gem "capybara"
   gem "launchy"
-  gem "cuprite", "~> 0.17"
+  gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 8.0"
 end

@@ -1,6 +1,5 @@
 require "rails_helper"
 require "capybara/rspec"
-require "capybara/cuprite"
 
 RSpec.configure do |config|
   config.include Capybara::RSpecMatchers
@@ -15,19 +14,19 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
-  cuprite_options = {}
+  selenium_options = {}
 
-  # In docker-compose.test.yml Chrome runs in its own container, so it connects to CHROME_URL
-  # and reaches the test server through this container's network address.
-  if ENV["CHROME_URL"].present?
-    cuprite_options = { url: ENV["CHROME_URL"], browser_options: { "no-sandbox": nil } }
+  # In docker-compose.test.yml Chrome runs in its own Selenium container. It drives the
+  # browser through SELENIUM_URL and reaches the test server at CAPYBARA_APP_HOST.
+  if ENV["SELENIUM_URL"].present?
+    selenium_options = { browser: :remote, url: ENV["SELENIUM_URL"] }
     Capybara.server_host = "0.0.0.0"
-    Capybara.always_include_port = true
-    Capybara.app_host = "http://#{Socket.ip_address_list.find(&:ipv4_private?).ip_address}"
+    Capybara.server_port = ENV.fetch("CAPYBARA_SERVER_PORT")
+    Capybara.app_host = ENV.fetch("CAPYBARA_APP_HOST")
   end
 
   config.before(:each, :js, type: :system) do
-    driven_by :cuprite, screen_size: [ 1400, 1400 ], options: cuprite_options
+    driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ], options: selenium_options
   end
 end
 
