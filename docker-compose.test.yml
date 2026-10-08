@@ -10,11 +10,13 @@ x-base: &base
     - RAILS_ENV=test
     - CI=true
     - RAILS_LOG_TO_STDOUT=true
-    # Chrome/Cuprite configuration
-    - CHROME_URL=http://chrome:3333
+    - SELENIUM_URL=http://chrome:4444/wd/hub
+    # Port of the Capybara test server, and the address Chrome reaches it at
+    - CAPYBARA_SERVER_PORT=30000
+    - CAPYBARA_APP_HOST=http://chickenhouse-test:30000
   depends_on:
     chrome:
-      condition: service_started
+      condition: service_healthy
     postgres:
       condition: service_healthy
   # Chrome needs additional capabilities in Docker
@@ -24,6 +26,12 @@ services:
     <<: *base
     ports:
       - '3000:3000'
+    # Chrome must not reach the app as "app": .app is an HSTS-preloaded TLD,
+    # so Chrome forces https://app and the plain-HTTP test server fails
+    networks:
+      default:
+        aliases:
+          - chickenhouse-test
     healthcheck:
       test: curl --fail http://0.0.0.0:3000/ready || exit 1
       retries: 3
@@ -41,20 +49,21 @@ services:
       test: pg_isready -U postgres -h 127.0.0.1
       interval: 5s
   chrome:
-    image: browserless/chrome:1.31-chrome-stable
-    ports:
-      - 3333:3333
-    # Mount application source code to support file uploading
-    # (otherwise Chrome won't be able to find files).
-    # NOTE: Make sure you use absolute paths in `#attach_file`.
-    volumes:
-      - .:/app:cached # change it for your rails' container directory
+    image: selenium/standalone-chrome:4
     environment:
-      # By default, it uses 3000, which is typically used by Rails.
-      PORT: 3333
-      # Set connection timeout to avoid timeout exception during debugging
-      # https://docs.browserless.io/docs/docker.html#connection-timeout
-      CONNECTION_TIMEOUT: 600000
+      # specs using using_session keep several browser sessions open at once
+      SE_NODE_MAX_SESSIONS: 8
+      SE_NODE_OVERRIDE_MAX_SESSIONS: "true"
+    ports:
+      - 4444:4444
+      # for debugging open with vnc://localhost:5900 password=secret
+      # but don't run chrome in headless mode
+      - 5900:5900
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4444/wd/hub/status || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres:
