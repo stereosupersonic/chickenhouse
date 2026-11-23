@@ -1,10 +1,8 @@
 # This file is copied to spec/ when you run "rails generate rspec:install"
 require "spec_helper"
 
-unless ENV.fetch("CI", "").length > 0
-  require "simplecov"
-  SimpleCov.start "rails"
-end
+require "simplecov"
+SimpleCov.start "rails"
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
