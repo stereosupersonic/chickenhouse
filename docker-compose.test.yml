@@ -49,7 +49,9 @@ services:
       test: pg_isready -U postgres -h 127.0.0.1
       interval: 5s
   chrome:
-    image: selenium/standalone-chrome:4
+    # Chrome 158 refuses the origin "*" that Capybara 3.40 clears storage with when it resets the
+    # browser between specs, so the image stays on 157.
+    image: selenium/standalone-chrome:157.0-20261101
     environment:
       # specs using using_session keep several browser sessions open at once
       SE_NODE_MAX_SESSIONS: 8
