@@ -22,8 +22,10 @@ proxy:
   host: www.henaheisl.de, henaheisl.de
 
 # Use local registry on the server (no external registry needed).
+# Kamal forwards this port from sun to the runner while it pushes the image. songinfo (5556) and exhiby (5558)
+# deploy to sun too; with a shared port, a deploy of theirs at the same time would hold the forward and fail ours.
 registry:
-  server: localhost:5555
+  server: localhost:5557
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
